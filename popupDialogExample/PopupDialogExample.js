@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { RoundButton } from 'react-native-button-component';
-import PopupDialog from 'react-native-popup-dialog';
+// import PopupDialog from 'react-native-popup-dialog';
+import PopupDialog from './src/PopupDialog';
 
 export default class PopupDialogExample extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ export default class PopupDialogExample extends Component {
         />
         <PopupDialog
           ref={(popupDialog => { this.popupDialog = popupDialog; })}
+          title="Popup Dialog"
         >
           <View>
             <Text>Hello</Text>
