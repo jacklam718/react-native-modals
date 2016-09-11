@@ -53,17 +53,15 @@ class Dialog extends Component {
   componentDidMount() {
     if (this.props.open) {
       this.open(this.props.onOpened);
-    } else {
-      this.close(this.props.onClosed);
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.open !== nextProps.open) {
       if (nextProps.open) {
-        return this.open(this.nextProps.onOpened);
+        return this.open(nextProps.onOpened);
       }
-      return this.close(this.nextProps.onClosed);
+      return this.close(nextProps.onClosed);
     }
     return nextProps;
   }
