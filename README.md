@@ -28,7 +28,7 @@ npm install --save react-native-popup-dialog
     }}
   />
   <PopupDialog
-    ref={(popupDialog => { this.popupDialog = popupDialog; })}
+    ref={(popupDialog) => { this.popupDialog = popupDialog; }}
   >
     <View>
       <Text>Hello</Text>
