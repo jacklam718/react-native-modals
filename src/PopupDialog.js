@@ -1,7 +1,7 @@
 // flow
 
 import React, { PropTypes, Component } from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 import Dialog from './components/Dialog';
 import DialogTitle from './components/DialogTitle';
 import ScaleAnimation from './animations/ScaleAnimation';
@@ -40,7 +40,6 @@ class PopupDialog extends Component {
       title = <DialogTitle {...this.props} />;
     }
 
-
     return (
       <Dialog
         ref={(dialog) => { this.dialog = dialog; }}
@@ -51,25 +50,5 @@ class PopupDialog extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  popupContainer: {
-    // flex: 1,
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: SCRREN_WIDTH,
-    height: SCRREN_HEIGHT,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // overflow: 'hidden',
-  },
-  hidden: {
-    top: -10000,
-    left: 0,
-    height: 0,
-    width: 0,
-  },
-});
 
 export default PopupDialog;

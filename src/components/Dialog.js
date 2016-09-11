@@ -85,14 +85,6 @@ class Dialog extends Component {
     }, this.props.animationDuration);
   }
 
-  open(onOpened = this.props.onOpened) {
-    this.setDialogState(1, onOpened);
-  }
-
-  close(onClosed = this.props.onClosed) {
-    this.setDialogState(0, onClosed);
-  }
-
   getDialogSize({ width, height }): Object {
     const size = { width, height };
     if (width > 0.0 && width < 1.0) {
@@ -104,23 +96,23 @@ class Dialog extends Component {
     return size;
   }
 
+  open(onOpened = this.props.onOpened) {
+    this.setDialogState(1, onOpened);
+  }
+
+  close(onClosed = this.props.onClosed) {
+    this.setDialogState(0, onClosed);
+  }
+
   render() {
     let hidden;
     let dialog;
-
     const dialogState = this.state.dialogState;
 
     if (dialogState === 'closed') {
       hidden = styles.hidden;
     } else {
       const size = this.getDialogSize(this.props);
-      let backgroundColor;
-      if (this.props.children) {
-        if (this.props.children.props.style) {
-          backgroundColor = { backgroundColor: this.props.children.props.style.backgroundColor };
-        }
-      }
-
       dialog = (
         <Animated.View style={[styles.dialog, size, this.dialogAnimation.animations]} >
           {this.props.children}
@@ -129,7 +121,7 @@ class Dialog extends Component {
     }
 
     return (
-      <View style={[styles.popupContainer, hidden]}>
+      <View style={[styles.container, hidden]}>
         <Overlay
           showOverlay={['opened', 'opening'].includes(dialogState)}
           onPress={this.onOverlayPress}
@@ -144,7 +136,7 @@ class Dialog extends Component {
 }
 
 const styles = StyleSheet.create({
-  popupContainer: {
+  container: {
     flex: 1,
     position: 'absolute',
     top: 0,
@@ -156,7 +148,6 @@ const styles = StyleSheet.create({
   },
   dialog: {
     borderRadius: 8,
-    // padding: 5,
     backgroundColor: '#ffffff',
   },
   hidden: {
