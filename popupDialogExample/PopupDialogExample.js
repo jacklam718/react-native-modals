@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { RoundButton } from 'react-native-button-component';
-// import PopupDialog from 'react-native-popup-dialog';
-import PopupDialog from './src/PopupDialog';
+import PopupDialog from 'react-native-popup-dialog';
 
 export default class PopupDialogExample extends Component {
   constructor(props) {
