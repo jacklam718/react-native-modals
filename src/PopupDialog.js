@@ -1,7 +1,6 @@
 // flow
 
 import React, {PropTypes, Component} from 'react';
-import {Dimensions} from 'react-native';
 import Dialog from './components/Dialog';
 import DialogTitle from './components/DialogTitle';
 import ScaleAnimation from './animations/ScaleAnimation';
