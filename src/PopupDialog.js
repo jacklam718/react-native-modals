@@ -45,13 +45,13 @@ class PopupDialog extends Component {
 		const title = this.props.title ? <DialogTitle {...this.props} /> : null;
 		
 		return (
-			<Dialog
-				ref={dialog => this.dialog = dialog}
-				{...this.props}
-			>
-				{title}
-				{this.props.children} // Critical!
-			</Dialog>
+				<Dialog
+						ref={dialog => this.dialog = dialog}
+						{...this.props}
+				>
+					{title}
+					{this.props.children} // Critical!
+				</Dialog>
 		);
 	}
 }

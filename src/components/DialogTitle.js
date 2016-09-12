@@ -3,11 +3,11 @@ import {View, Text, StyleSheet} from 'react-native';
 
 function DialogTitle({title, titleStyle, titleTextStyle}) {
 	return (
-		<View style={[styles.title, titleStyle]}>
-			<Text style={[styles.titleText, titleTextStyle]}>
-				{title}
-			</Text>
-		</View>
+			<View style={[styles.title, titleStyle]}>
+				<Text style={[styles.titleText, titleTextStyle]}>
+					{title}
+				</Text>
+			</View>
 	);
 }
 

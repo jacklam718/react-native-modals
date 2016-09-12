@@ -36,12 +36,12 @@ class Overlay extends Component {
 		const opacity = {opacity: this.state.opacity};
 		
 		return (
-			<Animated.View
-				pointerEvents={pointerEvents}
-				style={[styles.overlay, backgroundColor, opacity]}
-			>
-				<TouchableOpacity onPress={onPress} style={[styles.overlay]}/>
-			</Animated.View>
+				<Animated.View
+						pointerEvents={pointerEvents}
+						style={[styles.overlay, backgroundColor, opacity]}
+				>
+					<TouchableOpacity onPress={onPress} style={[styles.overlay]}/>
+				</Animated.View>
 		);
 	}
 }

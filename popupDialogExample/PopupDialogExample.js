@@ -19,21 +19,21 @@ export default class PopupDialogExample extends Component {
 	
 	render() {
 		return (
-			<View style={styles.container}>
-				<TouchableHighlight style={styles.button} onPress={this.openDialog}>
-					<Text style={styles.buttonText}>Open Dialog</Text>
-				</TouchableHighlight>
-				<PopupDialog
-					ref={(popupDialog => {
-						this.popupDialog = popupDialog;
-					})}
-					title="Popup Dialog"
-				>
-					<View>
-						<Text>Hello</Text>
-					</View>
-				</PopupDialog>
-			</View>
+				<View style={styles.container}>
+					<TouchableHighlight style={styles.button} onPress={this.openDialog}>
+						<Text style={styles.buttonText}>Open Dialog</Text>
+					</TouchableHighlight>
+					<PopupDialog
+							ref={(popupDialog => {
+								this.popupDialog = popupDialog;
+							})}
+							title="Popup Dialog"
+					>
+						<View>
+							<Text>Hello</Text>
+						</View>
+					</PopupDialog>
+				</View>
 		);
 	}
 }
@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
 	},
 	buttonText: {
 		alignSelf: 'center',
-		fontSize:15,
-		color:'rgba(255,255,255,0.9)',
-		fontWeight:"100"
+		fontSize: 15,
+		color: 'rgba(255,255,255,0.9)',
+		fontWeight: "100"
 	}
 });
