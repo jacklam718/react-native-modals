@@ -30,11 +30,7 @@ class PopupDialog extends Component {
 	}
 	
 	render() {
-		let title;
-		
-		if (this.props.title) {
-			title = <DialogTitle {...this.props} />;
-		}
+		const title = this.props.title ? <DialogTitle {...this.props} /> : null;
 		
 		return (
 			<Dialog
