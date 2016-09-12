@@ -28,7 +28,7 @@ class PopupDialog extends Component {
 	openDialog(onOpened) {
 		if (onOpened && typeof onOpened == 'function') {
 			this.dialog.open(onOpened);
-		}else{
+		} else {
 			this.dialog.open();
 		}
 	}
@@ -36,7 +36,7 @@ class PopupDialog extends Component {
 	closeDialog(onClosed) {
 		if (onClosed && typeof onClosed == 'function') {
 			this.dialog.closed(onClosed);
-		}else{
+		} else {
 			this.dialog.closed();
 		}
 	}
@@ -50,6 +50,7 @@ class PopupDialog extends Component {
 				{...this.props}
 			>
 				{title}
+				{this.props.children} // Critical!
 			</Dialog>
 		);
 	}
