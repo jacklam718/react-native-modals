@@ -43,6 +43,7 @@ npm install --save react-native-popup-dialog
 ### PopupDialog
 | Attribute | Type | Default | Note |
 |---|---|---|---|
+| `title` | `String` | The popup title
 | `width` | `Number` | Your device width | The Width of Dialog, you can use fixed width or use percentage
 | `height` | `Number` | 300 | The Width of Dialog, you can use fixed height or use percentage
 | `dialogAnimation` |  | `ScaleAnimation` | animation for dialog | |
