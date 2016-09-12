@@ -22,11 +22,15 @@ class PopupDialog extends Component {
 	static defaultProps = defaultProps;
 	
 	openDialog(onOpened) {
-		this.dialog.open(onOpened);
+		if (onOpened && typeof onOpened == 'function') {
+			this.dialog.open(onOpened);
+		}
 	}
 	
 	closeDialog(onClosed) {
-		this.dialog.closed(onClosed);
+		if (onClosed && typeof onClosed == 'function') {
+			this.dialog.closed(onClosed);
+		}
 	}
 	
 	render() {
