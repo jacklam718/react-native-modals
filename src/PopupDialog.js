@@ -21,6 +21,10 @@ class PopupDialog extends Component {
 	static propTypes = propTypes;
 	static defaultProps = defaultProps;
 	
+	constructor(props) {
+		super(props);
+	}
+	
 	openDialog(onOpened) {
 		if (onOpened && typeof onOpened == 'function') {
 			this.dialog.open(onOpened);
