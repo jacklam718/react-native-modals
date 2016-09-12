@@ -51,5 +51,5 @@ npm install --save react-native-popup-dialog
 | `overlayOpacity` | 0.5 | `Number` |
 | `closeOnTouchOutside` | true | `Bool` | When touch overlay will close dialog | |
 | `open` | false | `Bool` |  | |
-| `onOpened` | | `Function` | Callback function, will call the function while dialog opened | |
-| `onClosed` | | `Function` | Callback function, will call the function while dialog closed | |
+| `onOpened` | `Function` | | You can pass onOpend function as a aallback function, will call the function while dialog opened | |
+| `onClosed` | `Function` | | You can pass onClosed function as a callback function, will call the function while dialog closed | |
