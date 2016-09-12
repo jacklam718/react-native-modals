@@ -43,13 +43,13 @@ npm install --save react-native-popup-dialog
 ### PopupDialog
 | Attribute | Type | Default | Note |
 |---|---|---|---|
-| `width` |  | `Number` | The Width of Dialog, you can use fixed width or use percentage
-| `height` |  | `Number` | The Width of Dialog, you can use fixed height or use percentage
+| `width` | `Number` | Your device width | The Width of Dialog, you can use fixed width or use percentage
+| `height` | `Number` | 300 | The Width of Dialog, you can use fixed height or use percentage
 | `dialogAnimation` |  | `ScaleAnimation` | animation for dialog | |
-| `animationDuration` | 200 | `Number` | | |
-| `overlayBackgroundColor` | #000 | `String` |
-| `overlayOpacity` | 0.5 | `Number` |
-| `closeOnTouchOutside` | true | `Bool` | When touch overlay will close dialog | |
-| `open` | false | `Bool` |  | |
+| `animationDuration` | `Number` | `200` | | |
+| `overlayBackgroundColor` | `String` | `#000` |
+| `overlayOpacity` | `Number` | `0.5` |
+| `closeOnTouchOutside` | `Bool` | `true` | When touch overlay will close dialog | |
+| `open` | `Bool` | `false` |  | |
 | `onOpened` | `Function` | | You can pass onOpend function as a aallback function, will call the function while dialog opened | |
 | `onClosed` | `Function` | | You can pass onClosed function as a callback function, will call the function while dialog closed | |
