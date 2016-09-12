@@ -18,8 +18,8 @@ const defaultProps = {
 };
 
 class PopupDialog extends Component {
-	static propTypes = propTypes
-	static defaultProps = defaultProps
+	static propTypes = propTypes;
+	static defaultProps = defaultProps;
 	
 	openDialog(onOpened) {
 		this.dialog.open(onOpened);
