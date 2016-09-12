@@ -28,12 +28,16 @@ class PopupDialog extends Component {
 	openDialog(onOpened) {
 		if (onOpened && typeof onOpened == 'function') {
 			this.dialog.open(onOpened);
+		}else{
+			this.dialog.open();
 		}
 	}
 	
 	closeDialog(onClosed) {
 		if (onClosed && typeof onClosed == 'function') {
 			this.dialog.closed(onClosed);
+		}else{
+			this.dialog.closed();
 		}
 	}
 	
