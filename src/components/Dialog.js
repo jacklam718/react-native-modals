@@ -1,7 +1,7 @@
 // flow
 
-import React, {PropTypes, Component} from 'react';
-import {View, StyleSheet, Animated, Dimensions} from 'react-native';
+import React, { PropTypes, Component } from 'react';
+import { View, StyleSheet, Animated, Dimensions } from 'react-native';
 import Overlay from './Overlay';
 
 const SCRREN_WIDTH = Dimensions.get('window').width;
@@ -38,7 +38,7 @@ class Dialog extends Component {
 		super(props);
 		
 		// get animation from props
-		if (props.dialogAnimation) {
+		if ( props.dialogAnimation ) {
 			this.dialogAnimation = props.dialogAnimation;
 		}
 		
@@ -51,14 +51,14 @@ class Dialog extends Component {
 	}
 	
 	componentDidMount() {
-		if (this.props.open) {
+		if ( this.props.open ) {
 			this.open(this.props.onOpened);
 		}
 	}
 	
 	componentWillReceiveProps(nextProps) {
-		if (this.props.open !== nextProps.open) {
-			if (nextProps.open) {
+		if ( this.props.open !== nextProps.open ) {
+			if ( nextProps.open ) {
 				return this.open(nextProps.onOpened);
 			}
 			return this.close(nextProps.onClosed);
@@ -74,21 +74,21 @@ class Dialog extends Component {
 		this.dialogAnimation.toValue(toValue);
 		let dialogState = toValue ? 'opening' : 'closing';
 		
-		this.setState({dialogState});
+		this.setState({ dialogState });
 		
 		setTimeout(() => {
 			dialogState = dialogState === 'closing' ? 'closed' : 'opened';
-			this.setState({dialogState});
-			if (callback && typeof callback === 'function') callback();
+			this.setState({ dialogState });
+			if ( callback && typeof callback === 'function' ) callback();
 		}, this.props.animationDuration);
 	}
 	
-	getDialogSize({width, height}): Object {
-		const size = {width, height};
-		if (width > 0.0 && width < 1.0) {
+	getDialogSize({ width, height }): Object {
+		const size = { width, height };
+		if ( width > 0.0 && width < 1.0 ) {
 			size.width = width * SCRREN_WIDTH;
 		}
-		if (height > 0.0 && height < 1.0) {
+		if ( height > 0.0 && height < 1.0 ) {
 			size.height = height * SCRREN_HEIGHT;
 		}
 		return size;
@@ -107,7 +107,7 @@ class Dialog extends Component {
 		let dialog;
 		const dialogState = this.state.dialogState;
 		
-		if (dialogState === 'closed') {
+		if ( dialogState === 'closed' ) {
 			hidden = styles.hidden;
 		} else {
 			const size = this.getDialogSize(this.props);

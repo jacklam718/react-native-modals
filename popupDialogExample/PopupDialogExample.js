@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableHighlight, Dimensions} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, TouchableHighlight, Dimensions } from 'react-native';
 import PopupDialog from 'react-native-popup-dialog';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 export default class PopupDialogExample extends Component {
 	constructor(props) {
 		super(props);

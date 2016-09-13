@@ -1,6 +1,6 @@
 // flow
 
-import React, {PropTypes, Component} from 'react';
+import React, { PropTypes, Component } from 'react';
 import Dialog from './components/Dialog';
 import DialogTitle from './components/DialogTitle';
 import ScaleAnimation from './animations/ScaleAnimation';

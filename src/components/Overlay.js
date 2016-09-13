@@ -1,9 +1,9 @@
 // flow
 
-import React, {PropTypes, Component} from 'react';
-import {StyleSheet, Dimensions, TouchableOpacity, Animated} from 'react-native';
+import React, { PropTypes, Component } from 'react';
+import { StyleSheet, Dimensions, TouchableOpacity, Animated } from 'react-native';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 class Overlay extends Component {
 	constructor(props) {
@@ -14,8 +14,8 @@ class Overlay extends Component {
 	}
 	
 	componentWillReceiveProps(nextProps) {
-		if (this.props.showOverlay !== nextProps.showOverlay) {
-			if (nextProps.showOverlay) {
+		if ( this.props.showOverlay !== nextProps.showOverlay ) {
+			if ( nextProps.showOverlay ) {
 				Animated.timing(this.state.opacity, {
 					toValue: nextProps.opacity || 0,
 					duration: this.props.animationDuration,
@@ -30,10 +30,10 @@ class Overlay extends Component {
 	}
 	
 	render() {
-		const backgroundColor = {backgroundColor: this.props.backgroundColor};
+		const backgroundColor = { backgroundColor: this.props.backgroundColor };
 		const pointerEvents = this.props.showOverlay ? 'auto' : 'none';
 		const onPress = this.props.onPress;
-		const opacity = {opacity: this.state.opacity};
+		const opacity = { opacity: this.state.opacity };
 		
 		return (
 				<Animated.View
