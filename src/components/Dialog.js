@@ -79,7 +79,7 @@ class Dialog extends Component {
 		setTimeout(() => {
 			dialogState = dialogState === 'closing' ? 'closed' : 'opened';
 			this.setState({dialogState});
-			if (callback) callback();
+			if (callback && typeof callback === 'function') callback();
 		}, this.props.animationDuration);
 	}
 	
