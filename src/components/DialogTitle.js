@@ -8,7 +8,7 @@ function DialogTitle({ title, titleStyle, titleTextStyle }) {
         {title}
       </Text>
     </View>
-	);
+  );
 }
 
 DialogTitle.propTypes = {
