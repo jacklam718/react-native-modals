@@ -54,3 +54,14 @@ npm install --save react-native-popup-dialog
 | `open` | `Bool` | `false` |  | |
 | `onOpened` | `Function` | | You can pass onOpend function as a aallback function, will call the function while dialog opened | |
 | `onClosed` | `Function` | | You can pass onClosed function as a callback function, will call the function while dialog closed | |
+
+## Welcome Become a Contributor 😃 👍
+### I'm welcome anyone become a contributor.
+
+### You must follow style guide.
+  * [JavaScript](https://github.com/airbnb/javascript)
+  * [React](https://github.com/airbnb/javascript/tree/master/react)
+  * Use 2 spaces indentation
+
+### Additional, I recommend you use linter.
+  * [Configure Text Editors](https://github.com/kriasoft/react-starter-kit/blob/master/docs/how-to-configure-text-editors.md)
