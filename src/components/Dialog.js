@@ -82,7 +82,7 @@ class Dialog extends Component {
     }, this.props.animationDuration);
   }
 
-  getDialogSize({ width, height }): Object {
+  calculateDialogSize({ width, height }): Object {
     const size = { width, height };
     if (width > 0.0 && width < 1.0) {
       size.width = width * WIDTH;
@@ -109,7 +109,7 @@ class Dialog extends Component {
     if (dialogState === 'closed') {
       hidden = styles.hidden;
     } else {
-      const size = this.getDialogSize(this.props);
+      const size = this.calculateDialogSize(this.props);
       dialog = (
         <Animated.View style={[styles.dialog, size, this.dialogAnimation.animations]}>
           {this.props.children}
