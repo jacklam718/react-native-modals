@@ -6,46 +6,41 @@ import DialogTitle from './components/DialogTitle';
 import ScaleAnimation from './animations/ScaleAnimation';
 
 const propTypes = {
-	...Dialog.propTypes,
-	...DialogTitle.propTypes,
+  ...Dialog.propTypes,
+  ...DialogTitle.propTypes,
 };
 
 const defaultProps = {
-	animation: 'scale',
-	animationDuration: 200,
-	closeOnTouchOutside: true,
-	dialogAnimation: new ScaleAnimation(),
+  animation: 'scale',
+  animationDuration: 200,
+  closeOnTouchOutside: true,
+  dialogAnimation: new ScaleAnimation(),
 };
 
 class PopupDialog extends Component {
-	static propTypes = propTypes;
-	static defaultProps = defaultProps;
-	
-	constructor(props) {
-		super(props);
-	}
-	
-	openDialog(onOpened) {
-		this.dialog.open(onOpened);
-	}
-	
-	closeDialog(onClosed) {
-		this.dialog.closed(onClosed);
-	}
-	
-	render() {
-		const title = this.props.title ? <DialogTitle {...this.props} /> : null;
-		
-		return (
-				<Dialog
-						ref={dialog => this.dialog = dialog}
-						{...this.props}
-				>
-					{title}
-					{this.props.children} // Critical!
-				</Dialog>
-		);
-	}
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
+
+  openDialog(onOpened) {
+    this.dialog.open(onOpened);
+  }
+
+  closeDialog(onClosed) {
+    this.dialog.closed(onClosed);
+  }
+
+  render() {
+    const title = this.props.title ? <DialogTitle {...this.props} /> : null;
+
+    return (
+      <Dialog
+        ref={dialog => { this.dialog = dialog; }}
+        {...this.props.children}
+      >
+        {title}
+      </Dialog>
+    );
+  }
 }
 
 export default PopupDialog;
