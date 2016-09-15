@@ -35,9 +35,10 @@ class PopupDialog extends Component {
     return (
       <Dialog
         ref={dialog => { this.dialog = dialog; }}
-        {...this.props.children}
+        {...this.props}
       >
         {title}
+        {this.props.children}
       </Dialog>
     );
   }
