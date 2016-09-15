@@ -144,7 +144,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dialog: {
-    padding: 10,
     borderRadius: 8,
     backgroundColor: '#ffffff',
   },
