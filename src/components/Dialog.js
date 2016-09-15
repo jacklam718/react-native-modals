@@ -4,8 +4,7 @@ import React, { PropTypes, Component } from 'react';
 import { View, StyleSheet, Animated, Dimensions } from 'react-native';
 import Overlay from './Overlay';
 
-const SCRREN_WIDTH = Dimensions.get('window').width;
-const SCRREN_HEIGHT = Dimensions.get('window').height;
+const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
 
 const propTypes = {
   animation: PropTypes.string,
@@ -25,7 +24,7 @@ const propTypes = {
 const defaultProps = {
   animation: 'scale',
   animationDuration: 200,
-  width: SCRREN_WIDTH,
+  width: WIDTH,
   height: 300,
   closeOnTouchOutside: true,
 };
@@ -86,10 +85,10 @@ class Dialog extends Component {
   getDialogSize({ width, height }): Object {
     const size = { width, height };
     if (width > 0.0 && width < 1.0) {
-      size.width = width * SCRREN_WIDTH;
+      size.width = width * WIDTH;
     }
     if (height > 0.0 && height < 1.0) {
-      size.height = height * SCRREN_HEIGHT;
+      size.height = height * HEIGHT;
     }
     return size;
   }
@@ -139,8 +138,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
-    width: SCRREN_WIDTH,
-    height: SCRREN_HEIGHT,
+    width: WIDTH,
+    height: HEIGHT,
     justifyContent: 'center',
     alignItems: 'center',
   },
