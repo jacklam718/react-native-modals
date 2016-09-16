@@ -1,7 +1,8 @@
 ## React Native Popup Dialog
 React Native Popup Dialog for iOS & Android.
 
-![Example](https://jacklam718.github.io/react-native-popup-dialog/resources/react-native-popup-dialog.gif)
+<!-- ![Example](https://jacklam718.github.io/react-native-popup-dialog/resources/react-native-popup-dialog.gif) -->
+![Example](https://jacklam718.github.io/react-native-popup-dialog/resources/popup-dialog-scale-animation.gif)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Example](https://jacklam718.github.io/react-native-popup-dialog/resources/popup-dialog-slide-animation.gif)
 
 ## Installation
 npm install --save react-native-popup-dialog
