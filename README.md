@@ -13,6 +13,7 @@ npm install --save react-native-popup-dialog
 3. Overlay
 4. Animation
 5. ScaleAnimation
+6. SlideAnimation
 
 ## Examples
 [Example](https://github.com/jacklam718/react-native-popup-dialog/blob/master/popupDialogExample/PopupDialogExample.js)
@@ -20,6 +21,8 @@ npm install --save react-native-popup-dialog
 
 ## Usage
 ```javascript
+import PopupDialog from 'react-native-popup-dialog';
+
 <View style={styles.container}>
   <Button
     text="Open Dialog"
@@ -37,6 +40,27 @@ npm install --save react-native-popup-dialog
 </View>
 ```
 
+## Usage - With Animation
+```javascript
+import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
+
+<View style={styles.container}>
+  <Button
+    text="Open Dialog"
+    onPress={() => {
+      this.popupDialog.openDialog();
+    }}
+  />
+  <PopupDialog
+    ref={(popupDialog) => { this.popupDialog = popupDialog; }}
+    dialogAnimation = { new SlideAnimation({ slideFrom: 'bottom' }) }
+  >
+    <View>
+      <Text>Hello</Text>
+    </View>
+  </PopupDialog>
+</View>
+```
 
 ## Props
 
@@ -54,6 +78,22 @@ npm install --save react-native-popup-dialog
 | `open` | `Bool` | `false` |  | |
 | `onOpened` | `Function` | | You can pass onOpend function as a aallback function, will call the function while dialog opened | |
 | `onClosed` | `Function` | | You can pass onClosed function as a callback function, will call the function while dialog closed | |
+
+
+## Animation
+### Params for (*)Animation
+
+### ScaleAnimation
+| Param | Type | Default | Note |
+|---|---|---|---|
+| `toValue` | Number | 0 | |
+
+### SlideAnimation
+| Param | Type | Default | Note |
+|---|---|---|---|
+| `toValue` | Number | 0 | |
+| `slideFrom` | String | `bottom` | Available option: `top`, `bottom`, `left`, `right` |
+
 
 ## Welcome Become a Contributor 😃 👍
 ### I'm welcome anyone become a contributor.
