@@ -24,9 +24,8 @@ class Overlay extends Component {
   }
 
   render() {
+    const { onPress, pointerEvents } = this.props;
     const backgroundColor = { backgroundColor: this.props.backgroundColor };
-    const pointerEvents = this.props.showOverlay ? 'auto' : 'none';
-    const onPress = this.props.onPress;
     const opacity = { opacity: this.state.opacity };
 
     return (
@@ -47,6 +46,7 @@ Overlay.propTypes = {
   opacity: PropTypes.number,
   animationDuration: PropTypes.number,
   showOverlay: PropTypes.bool,
+  pointerEvents: PropTypes.string,
 };
 
 Overlay.defaultProps = {

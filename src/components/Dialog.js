@@ -10,6 +10,7 @@ const propTypes = {
   animation: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
+  overlayPointerEvents: PropTypes.string,
   overlayBackgroundColor: PropTypes.string,
   overlayOpacity: PropTypes.number,
   dialogAnimation: PropTypes.object,
@@ -104,7 +105,18 @@ class Dialog extends Component {
   render() {
     let hidden;
     let dialog;
+    let overlayPointerEvents;
+
     const dialogState = this.state.dialogState;
+    const isShowOverlay = ['opened', 'opening'].includes(dialogState);
+
+    if (this.props.overlayPointerEvents) {
+      overlayPointerEvents = this.props.overlayPointerEvents;
+    } else if (dialogState === 'opened') {
+      overlayPointerEvents = 'auto';
+    } else {
+      overlayPointerEvents = 'none';
+    }
 
     if (dialogState === 'closed') {
       hidden = styles.hidden;
@@ -116,11 +128,12 @@ class Dialog extends Component {
         </Animated.View>
       );
     }
-
+    console.log('render');
     return (
       <View style={[styles.container, hidden]}>
         <Overlay
-          showOverlay={['opened', 'opening'].includes(dialogState)}
+          pointerEvents={overlayPointerEvents}
+          showOverlay={isShowOverlay}
           onPress={this.onOverlayPress}
           backgroundColor={this.props.overlayBackgroundColor}
           opacity={this.props.overlayOpacity}
