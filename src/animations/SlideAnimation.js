@@ -3,13 +3,13 @@
 import { Animated } from 'react-native';
 import Animation from './Animation';
 
-type params = {
+type Param = {
   toValue: number,
   slide: string,
 }
 
 export default class SlideAnimation extends Animation {
-  constructor({ toValue = 0, slideFrom = 'bottom' }: params) {
+  constructor({ toValue = 0, slideFrom = 'bottom' }: Param) {
     super(toValue);
     this.animations = this.createAnimations(slideFrom);
   }
