@@ -73,6 +73,7 @@ import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 | `height` | `Number` | 300 | The Width of Dialog, you can use fixed height or use percentage
 | `dialogAnimation` |  | `ScaleAnimation` | animation for dialog | |
 | `animationDuration` | `Number` | `200` | | |
+| `overlayPointerEvents` | `String` | | Available option: `auto`, `none` |
 | `overlayBackgroundColor` | `String` | `#000` |
 | `overlayOpacity` | `Number` | `0.5` |
 | `closeOnTouchOutside` | `Bool` | `true` | When touch overlay will close dialog | |
