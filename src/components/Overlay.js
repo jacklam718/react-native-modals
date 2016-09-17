@@ -15,17 +15,11 @@ class Overlay extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.showOverlay !== nextProps.showOverlay) {
-      if (nextProps.showOverlay) {
-        Animated.timing(this.state.opacity, {
-          toValue: nextProps.opacity || 0,
-          duration: this.props.animationDuration,
-        }).start();
-      } else {
-        Animated.timing(this.state.opacity, {
-          toValue: 0,
-          duration: this.props.animationDuration,
-        }).start();
-      }
+      const toValue = nextProps.showOverlay ? nextProps.opacity : 0;
+      Animated.timing(this.state.opacity, {
+        toValue,
+        duration: this.props.animationDuration,
+      }).start();
     }
   }
 
