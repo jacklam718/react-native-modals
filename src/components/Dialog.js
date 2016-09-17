@@ -128,7 +128,7 @@ class Dialog extends Component {
         </Animated.View>
       );
     }
-    console.log('render');
+
     return (
       <View style={[styles.container, hidden]}>
         <Overlay
