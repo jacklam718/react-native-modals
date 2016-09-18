@@ -2,15 +2,13 @@
   "name": "popupDialogExample",
   "version": "0.0.1",
   "private": true,
-  "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
-    "postinstall": "react-native link"
-  },
   "dependencies": {
-    "react": "15.2.1",
-    "react-native": "0.31.0",
+    "react": "15.3.1",
+    "react-native": "github:exponentjs/react-native#sdk-10.0.0",
     "react-native-button-component": "0.0.5",
-    "react-native-linear-gradient": "^1.5.12",
-    "react-native-popup-dialog": "../"
-  }
+    "react-native-popup-dialog": "../",
+    "@exponent/vector-icons": "^1.0.1",
+    "exponent": "^10.0.0"
+  },
+  "main": "main.js"
 }
