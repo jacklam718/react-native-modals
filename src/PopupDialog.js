@@ -26,7 +26,7 @@ class PopupDialog extends Component {
   }
 
   closeDialog(onClosed) {
-    this.dialog.closed(onClosed);
+    this.dialog.close(onClosed);
   }
 
   render() {
