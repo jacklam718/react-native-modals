@@ -10,6 +10,7 @@ const propTypes = {
   animation: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
+  haveOverlay: PropTypes.bool,
   overlayPointerEvents: PropTypes.string,
   overlayBackgroundColor: PropTypes.string,
   overlayOpacity: PropTypes.number,
@@ -28,6 +29,7 @@ const defaultProps = {
   width: WIDTH,
   height: 300,
   closeOnTouchOutside: true,
+  haveOverlay: true,
 };
 
 class Dialog extends Component {
@@ -108,7 +110,7 @@ class Dialog extends Component {
     let overlayPointerEvents;
 
     const dialogState = this.state.dialogState;
-    const isShowOverlay = ['opened', 'opening'].includes(dialogState);
+    const isShowOverlay = (['opened', 'opening'].includes(dialogState) & this.props.haveOverlay);
 
     if (this.props.overlayPointerEvents) {
       overlayPointerEvents = this.props.overlayPointerEvents;
