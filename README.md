@@ -69,7 +69,7 @@ import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 ## Props
 
 ### PopupDialog
-| Attribute | Type | Default | Note |
+| Prop | Type | Default | Note |
 |---|---|---|---|
 | `title` | `String` | The popup title
 | `width` | `Number` | Your device width | The Width of Dialog, you can use fixed width or use percentage
