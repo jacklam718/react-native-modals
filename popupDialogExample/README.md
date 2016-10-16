@@ -1,6 +1,6 @@
 # Popup Dialog Example
 
-The easiest way to give this a try is to open it with the Exponent client: https://exp.host/@community/popup-dialog-example
+The easiest way to give this a try is to open it with the Exponent client: https://exp.host/@jacklam718/popup-dialog-example
 
 ### To get this code running locally
 

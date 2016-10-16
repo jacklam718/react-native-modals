@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight, Dimensions } from 'react-native';
-import PopupDialog from 'react-native-popup-dialog';
+import { View, Text, StyleSheet } from 'react-native';
+import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
+import Button from './Button';
 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
+const slideAnimation = new SlideAnimation({ slideFrom: 'bottom' });
 
 export default class PopupDialogExample extends Component {
   constructor(props) {
@@ -12,27 +13,51 @@ export default class PopupDialogExample extends Component {
       dialogOpen: false,
     };
 
-    this.openDialog = this.openDialog.bind(this);
+    this.openScaleAnimationDialog = this.openScaleAnimationDialog.bind(this);
+    this.openSlideAnimationDialog = this.openSlideAnimationDialog.bind(this);
   }
 
-  openDialog() {
-    this.popupDialog.openDialog();
+  openScaleAnimationDialog() {
+    this.scaleAnimationDialog.openDialog();
+  }
+
+  openSlideAnimationDialog() {
+    this.slideAnimationDialog.openDialog();
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <TouchableHighlight style={styles.button} onPress={this.openDialog}>
-          <Text style={styles.buttonText}>Open Dialog</Text>
-        </TouchableHighlight>
+        <Button
+          text="Open Dialog - Scale Animation"
+          onPress={this.openScaleAnimationDialog}
+        />
+
+        <Button
+          text="Open Dialog - Slide Animation"
+          onPress={this.openSlideAnimationDialog}
+        />
+
         <PopupDialog
           ref={(popupDialog) => {
-            this.popupDialog = popupDialog;
+            this.scaleAnimationDialog = popupDialog;
           }}
-          title="Popup Dialog"
+          title="Popup Dialog - Scale Animation"
         >
-          <View>
-            <Text>Hello</Text>
+          <View style={styles.dialogContentView}>
+            <Text>Scale Animation</Text>
+          </View>
+        </PopupDialog>
+
+        <PopupDialog
+          ref={(popupDialog) => {
+            this.slideAnimationDialog = popupDialog;
+          }}
+          dialogAnimation={slideAnimation}
+          title="Popup Dialog - Slide Animation"
+        >
+          <View style={styles.dialogContentView}>
+            <Text>Slide Animation</Text>
           </View>
         </PopupDialog>
       </View>
@@ -43,25 +68,12 @@ export default class PopupDialogExample extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-		// backgroundColor: '#000',
+    justifyContent: 'center',
   },
-  button: {
-		// flexDirection:'column',
-    width: WIDTH * 0.4,
-    height: HEIGHT * 0.08,
-    borderRadius: 50,
-		// borderColor: 'black',
-    borderWidth: 0,
-    backgroundColor: '#009688',
-    justifyContent: 'space-around',
-
-  },
-  buttonText: {
-    alignSelf: 'center',
-    fontSize: 15,
-    color: 'rgba(255,255,255,0.9)',
-    fontWeight: '100',
+  dialogContentView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
