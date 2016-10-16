@@ -1,6 +1,6 @@
 // flow
 
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import Dialog from './components/Dialog';
 import DialogTitle from './components/DialogTitle';
 import ScaleAnimation from './animations/ScaleAnimation';
@@ -11,7 +11,6 @@ const propTypes = {
 };
 
 const defaultProps = {
-  animation: 'scale',
   animationDuration: 200,
   closeOnTouchOutside: true,
   dialogAnimation: new ScaleAnimation(),

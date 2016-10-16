@@ -7,7 +7,6 @@ import Overlay from './Overlay';
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
 
 const propTypes = {
-  animation: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
   haveOverlay: PropTypes.bool,
@@ -24,7 +23,6 @@ const propTypes = {
 };
 
 const defaultProps = {
-  animation: 'scale',
   animationDuration: 200,
   width: WIDTH,
   height: 300,
