@@ -108,7 +108,7 @@ class Dialog extends Component {
     let overlayPointerEvents;
 
     const dialogState = this.state.dialogState;
-    const isShowOverlay = (['opened', 'opening'].includes(dialogState) & this.props.haveOverlay);
+    const isShowOverlay = (['opened', 'opening'].includes(dialogState) && this.props.haveOverlay);
 
     if (this.props.overlayPointerEvents) {
       overlayPointerEvents = this.props.overlayPointerEvents;
