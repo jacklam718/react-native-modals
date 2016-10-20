@@ -16,8 +16,4 @@ export default class Animation {
   createAnimations(): Object {
     return {};
   }
-
-  render() {
-    return null;
-  }
 }
