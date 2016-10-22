@@ -74,7 +74,8 @@ import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 ### PopupDialog
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| `title` | `String` | The popup title
+| `title` | `String` | | The popup title |
+| `haveTitleBar` | `Bool` | `true` | If true show title bar else will hide hide title bar | |
 | `width` | `Number` | Your device width | The Width of Dialog, you can use fixed width or use percentage
 | `height` | `Number` | 300 | The Width of Dialog, you can use fixed height or use percentage
 | `dialogAnimation` |  | `ScaleAnimation` | animation for dialog | |
