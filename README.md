@@ -76,6 +76,7 @@ import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 |---|---|---|---|
 | `title` | `String` | | The popup title |
 | `haveTitleBar` | `Bool` | `true` | If true show title bar else will hide hide title bar | |
+| `titleAlign` | `String` | `center` | The position of the title items. Available option: `left`, `center`, `right` | |
 | `width` | `Number` | Your device width | The Width of Dialog, you can use fixed width or use percentage
 | `height` | `Number` | 300 | The Width of Dialog, you can use fixed height or use percentage
 | `dialogAnimation` |  | `ScaleAnimation` | animation for dialog | |
@@ -102,7 +103,6 @@ import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 | `textContainerStyle` | `Object` or `Number` | | | |
 | `disabled` | `Boolean` | `false` | | |
 | `activeOpacity` | `Number` | | | |
-
 
 
 ## Animation

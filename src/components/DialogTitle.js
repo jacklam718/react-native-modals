@@ -7,14 +7,23 @@ type Param = {
   title: string | number,
   titleStyle: Object | number,
   titleTextStyle: Object | number,
+  titleAlign: string,
   haveTitleBar: Boolean,
 };
 
-function DialogTitle({ title, titleStyle, titleTextStyle, haveTitleBar = true }: Param) {
+const positions = {
+  left: 'flex-start',
+  right: 'flex-end',
+  center: 'center',
+};
+
+/* eslint max-len: [0]*/
+function DialogTitle({ title, titleStyle, titleTextStyle, haveTitleBar = true, titleAlign = 'center' }: Param) {
   const titleBar = haveTitleBar ? styles.titleBar : null;
+  const titleItemsAlign = { alignItems: positions[titleAlign] };
 
   return (
-    <View style={[styles.title, titleBar, titleStyle]}>
+    <View style={[styles.title, titleItemsAlign, titleBar, titleStyle]}>
       <Text style={[styles.titleText, titleTextStyle]}>
         {title}
       </Text>
@@ -25,7 +34,6 @@ function DialogTitle({ title, titleStyle, titleTextStyle, haveTitleBar = true }:
 const styles = StyleSheet.create({
   title: {
     padding: 24,
-    alignItems: 'center',
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },
