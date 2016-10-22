@@ -11,12 +11,16 @@ React Native Popup Dialog for iOS & Android.
 
 ## Exposed Modules
 
-1. PopupDialog
-2. Dialog
-3. Overlay
-4. Animation
-5. ScaleAnimation
-6. SlideAnimation
+1. Dialog
+2. PopupDialog
+3. ActionsDialog
+4. DialogButton
+5. DialogTitle
+6. Overlay
+7. Animation
+8. ScaleAnimation
+9. SlideAnimation
+
 
 ## Examples
 [Example](https://github.com/jacklam718/react-native-popup-dialog/blob/master/popupDialogExample/PopupDialogExample.js)
@@ -83,6 +87,21 @@ import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 | `open` | `Bool` | `false` |  | |
 | `onOpened` | `Function` | | You can pass onOpend function as a aallback function, will call the function while dialog opened | |
 | `onClosed` | `Function` | | You can pass onClosed function as a callback function, will call the function while dialog closed | |
+| `actions` | `Array` | | Array of `DialogButton` component for example: ```[<DialogButton text="CLOSE", align="center" onPress={this.closeDialog}/>]``` | |
+
+
+### DialogButton
+| Prop | Type | Default | Note |
+|---|---|---|---|
+| `text` | `String` | | | |
+| `align` | `String` | `center` | The position of the button. Available option: `left`, `center`, `right` | |
+| `onPress` | `Function` | | | |
+| `buttonStyle` | `Object` or `Number` | | | |
+| `textStyle` | `Object` or `Number` | | | |
+| `textContainerStyle` | `Object` or `Number` | | | |
+| `disabled` | `Boolean` | `false` | | |
+| `activeOpacity` | `Number` | | | |
+
 
 
 ## Animation

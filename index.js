@@ -1,9 +1,22 @@
 import PopupDialog from './src/PopupDialog';
 import Overlay from './src/components/Overlay';
+import DialogTitle from './src/components/DialogTitle';
+import DialogButton from './src/components/DialogButton';
 import Dialog from './src/components/Dialog';
+import ActionsDialog from './src/components/ActionsDialog';
 import Animation from './src/animations/Animation';
 import ScaleAnimation from './src/animations/ScaleAnimation';
 import SlideAnimation from './src/animations/SlideAnimation';
 
-export { Overlay, Dialog, Animation, ScaleAnimation, SlideAnimation };
+export {
+  Overlay,
+  DialogButton,
+  DialogTitle,
+  Dialog,
+  ActionsDialog,
+  Animation,
+  ScaleAnimation,
+  SlideAnimation,
+};
+
 export default PopupDialog;
