@@ -2,12 +2,15 @@
 
 import React, { Component } from 'react';
 import Dialog from './components/Dialog';
+import ActionsDialog from './components/ActionsDialog';
 import DialogTitle from './components/DialogTitle';
 import ScaleAnimation from './animations/ScaleAnimation';
 
 const propTypes = {
-  ...Dialog.propTypes,
-  ...DialogTitle.propTypes,
+  ...{
+    ...Dialog.propTypes,
+    ...ActionsDialog.propTypes,
+  },
 };
 
 const defaultProps = {
@@ -30,16 +33,31 @@ class PopupDialog extends Component {
 
   render() {
     const title = this.props.title ? <DialogTitle {...this.props} /> : null;
+    let dialog;
 
-    return (
-      <Dialog
-        ref={dialog => { this.dialog = dialog; }}
-        {...this.props}
-      >
-        {title}
-        {this.props.children}
-      </Dialog>
-    );
+    if (this.props.actions) {
+      dialog = (
+        <ActionsDialog
+          ref={_dialog => { this.dialog = _dialog; }}
+          {...this.props}
+        >
+          {title}
+          {this.props.children}
+        </ActionsDialog>
+      );
+    } else {
+      dialog = (
+        <Dialog
+          ref={_dialog => { this.dialog = _dialog; }}
+          {...this.props}
+        >
+          {title}
+          {this.props.children}
+        </Dialog>
+      );
+    }
+
+    return dialog;
   }
 }
 
