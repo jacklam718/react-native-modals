@@ -36,12 +36,6 @@ class Dialog extends Component {
 
   constructor(props) {
     super(props);
-
-    // get animation from props
-    if (props.dialogAnimation) {
-      this.dialogAnimation = props.dialogAnimation;
-    }
-
     // opened, opening, closed, closing,
     this.state = {
       dialogState: 'closed',
@@ -71,7 +65,7 @@ class Dialog extends Component {
   }
 
   setDialogState(toValue, callback) {
-    this.dialogAnimation.toValue(toValue);
+    this.props.dialogAnimation.toValue(toValue);
     let dialogState = toValue ? 'opening' : 'closing';
 
     this.setState({ dialogState });
