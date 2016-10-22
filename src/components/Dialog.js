@@ -107,8 +107,16 @@ class Dialog extends Component {
     let dialog;
     let overlayPointerEvents;
 
+    const {
+      children,
+      width,
+      height,
+      haveOverlay,
+      dialogAnimation: { animations: dialogAnimations },
+    } = this.props;
+
     const dialogState = this.state.dialogState;
-    const isShowOverlay = (['opened', 'opening'].includes(dialogState) && this.props.haveOverlay);
+    const isShowOverlay = (['opened', 'opening'].includes(dialogState) && haveOverlay);
 
     if (this.props.overlayPointerEvents) {
       overlayPointerEvents = this.props.overlayPointerEvents;
@@ -121,10 +129,10 @@ class Dialog extends Component {
     if (dialogState === 'closed') {
       hidden = styles.hidden;
     } else {
-      const size = this.calculateDialogSize(this.props);
+      const size = this.calculateDialogSize({ width, height });
       dialog = (
-        <Animated.View style={[styles.dialog, size, this.dialogAnimation.animations]}>
-          {this.props.children}
+        <Animated.View style={[styles.dialog, size, dialogAnimations]}>
+          {children}
         </Animated.View>
       );
     }
