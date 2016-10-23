@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import PopupDialog, { DialogButton, SlideAnimation, DefaultAnimation } from 'react-native-popup-dialog';
+import PopupDialog, {
+  DialogButton,
+  SlideAnimation,
+  ScaleAnimation,
+  DefaultAnimation,
+} from 'react-native-popup-dialog';
 import Button from './Button';
 
 const slideAnimation = new SlideAnimation({ slideFrom: 'bottom' });
+const scaleAnimation = new ScaleAnimation();
 const defaultAnimation = new DefaultAnimation({ animationDuration: 150 });
 
 export default class PopupDialogExample extends Component {
@@ -65,6 +71,7 @@ export default class PopupDialogExample extends Component {
           ref={(popupDialog) => {
             this.scaleAnimationDialog = popupDialog;
           }}
+          dialogAnimation={scaleAnimation}
           title="Popup Dialog - Scale Animation"
           actions={[
             <DialogButton
