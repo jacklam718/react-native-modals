@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import PopupDialog, { DialogButton, SlideAnimation } from 'react-native-popup-dialog';
+import PopupDialog, { DialogButton, SlideAnimation, DefaultAnimation } from 'react-native-popup-dialog';
 import Button from './Button';
 
 const slideAnimation = new SlideAnimation({ slideFrom: 'bottom' });
+const defaultAnimation = new DefaultAnimation({ animationDuration: 150 });
 
 export default class PopupDialogExample extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ export default class PopupDialogExample extends Component {
 
     this.openScaleAnimationDialog = this.openScaleAnimationDialog.bind(this);
     this.openSlideAnimationDialog = this.openSlideAnimationDialog.bind(this);
+    this.openDefaultAnimationDialog = this.openDefaultAnimationDialog.bind(this);
   }
 
   openScaleAnimationDialog() {
@@ -25,9 +27,18 @@ export default class PopupDialogExample extends Component {
     this.slideAnimationDialog.openDialog();
   }
 
+  openDefaultAnimationDialog() {
+    this.defaultAnimationDialog.openDialog();
+  }
+
   render() {
     return (
       <View style={styles.container}>
+        <Button
+          text="Open Dialog - Default Animation"
+          onPress={this.openDefaultAnimationDialog}
+        />
+
         <Button
           text="Open Dialog - Scale Animation"
           onPress={this.openScaleAnimationDialog}
@@ -37,6 +48,18 @@ export default class PopupDialogExample extends Component {
           text="Open Dialog - Slide Animation"
           onPress={this.openSlideAnimationDialog}
         />
+
+        <PopupDialog
+          ref={(defaultAnimationDialog) => {
+            this.defaultAnimationDialog = defaultAnimationDialog;
+          }}
+          dialogAnimation={defaultAnimation}
+          title="Popup Dialog - Default Animation"
+        >
+          <View style={styles.dialogContentView}>
+            <Text>Default Animation</Text>
+          </View>
+        </PopupDialog>
 
         <PopupDialog
           ref={(popupDialog) => {

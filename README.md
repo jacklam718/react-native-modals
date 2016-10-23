@@ -79,7 +79,7 @@ import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 | `titleAlign` | `String` | `center` | The position of the title items. Available option: `left`, `center`, `right` | |
 | `width` | `Number` | Your device width | The Width of Dialog, you can use fixed width or use percentage
 | `height` | `Number` | 300 | The Width of Dialog, you can use fixed height or use percentage
-| `dialogAnimation` |  | `ScaleAnimation` | animation for dialog | |
+| `dialogAnimation` |  | `DefaultAnimation` | animation for dialog | |
 | `animationDuration` | `Number` | `200` | | |
 | `overlayPointerEvents` | `String` | | Available option: `auto`, `none` |
 | `overlayBackgroundColor` | `String` | `#000` |
@@ -107,6 +107,12 @@ import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 
 ## Animation
 ### Params for (*)Animation
+
+### DefaultAnimation
+| Param | Type | Default | Note |
+|---|---|---|---|
+| `toValue` | Number | 0 | |
+| `animationDuration` | Number | 150 | |
 
 ### ScaleAnimation
 | Param | Type | Default | Note |

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Dialog from './components/Dialog';
 import ActionsDialog from './components/ActionsDialog';
 import DialogTitle from './components/DialogTitle';
-import ScaleAnimation from './animations/ScaleAnimation';
+import DefaultAnimation from './animations/DefaultAnimation';
 
 const propTypes = {
   ...{
@@ -16,7 +16,7 @@ const propTypes = {
 const defaultProps = {
   animationDuration: 200,
   closeOnTouchOutside: true,
-  dialogAnimation: new ScaleAnimation(),
+  dialogAnimation: new DefaultAnimation({ animationDuration: 150 }),
 };
 
 class PopupDialog extends Component {

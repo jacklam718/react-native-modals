@@ -5,6 +5,7 @@ import DialogButton from './src/components/DialogButton';
 import Dialog from './src/components/Dialog';
 import ActionsDialog from './src/components/ActionsDialog';
 import Animation from './src/animations/Animation';
+import DefaultAnimation from './src/animations/DefaultAnimation';
 import ScaleAnimation from './src/animations/ScaleAnimation';
 import SlideAnimation from './src/animations/SlideAnimation';
 
@@ -15,6 +16,7 @@ export {
   Dialog,
   ActionsDialog,
   Animation,
+  DefaultAnimation,
   ScaleAnimation,
   SlideAnimation,
 };
