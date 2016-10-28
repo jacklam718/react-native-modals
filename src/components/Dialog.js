@@ -14,6 +14,7 @@ const propTypes = {
   overlayBackgroundColor: PropTypes.string,
   overlayOpacity: PropTypes.number,
   dialogAnimation: PropTypes.object,
+  dialogStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
   animationDuration: PropTypes.number,
   closeOnTouchOutside: PropTypes.bool,
   open: PropTypes.bool,
@@ -115,7 +116,11 @@ class Dialog extends Component {
     } else {
       const size = this.calculateDialogSize(this.props);
       dialog = (
-        <Animated.View style={[styles.dialog, size, this.props.dialogAnimation.animations]}>
+        <Animated.View
+          style={[
+            styles.dialog, size, this.props.dialogStyle, this.props.dialogAnimation.animations,
+          ]}
+        >
           {this.props.children}
         </Animated.View>
       );

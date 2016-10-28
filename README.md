@@ -81,6 +81,7 @@ import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 | `width` | `Number` | Your device width | The Width of Dialog, you can use fixed width or use percentage
 | `height` | `Number` | 300 | The Width of Dialog, you can use fixed height or use percentage
 | `dialogAnimation` |  | `DefaultAnimation` | animation for dialog | |
+| `dialogStyle` | | | | |
 | `animationDuration` | `Number` | `200` | | |
 | `overlayPointerEvents` | `String` | | Available option: `auto`, `none` |
 | `overlayBackgroundColor` | `String` | `#000` |
