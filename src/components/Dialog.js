@@ -62,7 +62,9 @@ class Dialog extends Component {
   }
 
   onOverlayPress() {
-    this.close();
+    if (this.props.closeOnTouchOutside) {
+      this.close();
+    }
   }
 
   setDialogState(toValue, callback) {
