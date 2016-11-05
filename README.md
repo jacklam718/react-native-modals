@@ -13,14 +13,13 @@ React Native Popup Dialog for iOS & Android.
 
 1. Dialog
 2. PopupDialog
-3. ActionsDialog
-4. DialogButton
-5. DialogTitle
-6. Overlay
-7. Animation
-8. DefaultAnimation
-9. ScaleAnimation
-10. SlideAnimation
+3. DialogButton
+4. DialogTitle
+5. Overlay
+6. Animation
+7. DefaultAnimation
+8. ScaleAnimation
+9. SlideAnimation
 
 
 ## Examples

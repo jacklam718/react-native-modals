@@ -1,4 +1,4 @@
-// flow
+/* @flow */
 
 import React, { Component } from 'react';
 import Dialog from './components/Dialog';
@@ -33,31 +33,15 @@ class PopupDialog extends Component {
 
   render() {
     const title = this.props.title ? <DialogTitle {...this.props} /> : null;
-    let dialog;
-
-    if (this.props.actions) {
-      dialog = (
-        <ActionsDialog
-          ref={_dialog => { this.dialog = _dialog; }}
-          {...this.props}
-        >
-          {title}
-          {this.props.children}
-        </ActionsDialog>
-      );
-    } else {
-      dialog = (
-        <Dialog
-          ref={_dialog => { this.dialog = _dialog; }}
-          {...this.props}
-        >
-          {title}
-          {this.props.children}
-        </Dialog>
-      );
-    }
-
-    return dialog;
+    return (
+      <Dialog
+        ref={_dialog => { this.dialog = _dialog; }}
+        {...this.props}
+      >
+        {title}
+        {this.props.children}
+      </Dialog>
+    );
   }
 }
 

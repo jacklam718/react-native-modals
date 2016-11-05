@@ -1,4 +1,4 @@
-// flow
+/* @flow */
 
 import React, { PropTypes, Component } from 'react';
 import { View, StyleSheet, Animated, Dimensions } from 'react-native';
@@ -20,6 +20,7 @@ const propTypes = {
   open: PropTypes.bool,
   onOpened: PropTypes.func,
   onClosed: PropTypes.func,
+  actions: PropTypes.array,
   children: PropTypes.any,
 };
 
@@ -99,7 +100,10 @@ class Dialog extends Component {
     this.setDialogState(0, onClosed);
   }
 
-  get defaultPointerEvents() {
+  get pointerEvents() {
+    if (this.props.overlayPointerEvents) {
+      return this.props.overlayPointerEvents;
+    }
     return this.state.dialogState === 'opened' ? 'auto' : 'none';
   }
 
@@ -108,9 +112,7 @@ class Dialog extends Component {
     let dialog;
 
     const dialogState = this.state.dialogState;
-    const overlayPointerEvents = this.props.overlayPointerEvents
-      ? this.props.overlayPointerEvents
-      : this.defaultPointerEvents;
+    const overlayPointerEvents = this.pointerEvents;
     const isShowOverlay = (['opened', 'opening'].includes(dialogState) && this.props.haveOverlay);
 
     if (dialogState === 'closed') {
@@ -124,6 +126,7 @@ class Dialog extends Component {
           ]}
         >
           {this.props.children}
+          {this.props.actions}
         </Animated.View>
       );
     }
