@@ -2,15 +2,12 @@
 
 import React, { Component } from 'react';
 import Dialog from './components/Dialog';
-import ActionsDialog from './components/ActionsDialog';
 import DialogTitle from './components/DialogTitle';
 import DefaultAnimation from './animations/DefaultAnimation';
 
 const propTypes = {
-  ...{
-    ...Dialog.propTypes,
-    ...ActionsDialog.propTypes,
-  },
+  ...Dialog.propTypes,
+  ...DialogTitle.propTypes,
 };
 
 const defaultProps = {
