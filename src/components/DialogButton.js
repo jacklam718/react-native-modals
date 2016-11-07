@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
+import { Positions } from '../constants/Constants';
 
 const isAndroid = Platform.OS === 'android';
 
@@ -16,15 +17,9 @@ type Param = {
   activeOpacity: number,
 };
 
-const positions = {
-  left: 'flex-start',
-  right: 'flex-end',
-  center: 'center',
-};
-
 /* eslint max-len: [0]*/
 function DialogButton({ text, activeOpacity, disabled = false, align = 'center', onPress, buttonStyle, textStyle, textContainerStyle }: Param) {
-  const buttonAlign = { alignSelf: positions[align] };
+  const buttonAlign = { alignSelf: Positions[align] };
   const disabledText = disabled ? styles.disabledText : null;
 
   return (

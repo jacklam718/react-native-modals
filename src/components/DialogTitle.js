@@ -2,6 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Positions } from '../constants/Constants';
 
 type Param = {
   title: string | number,
@@ -11,16 +12,10 @@ type Param = {
   haveTitleBar: Boolean,
 };
 
-const positions = {
-  left: 'flex-start',
-  right: 'flex-end',
-  center: 'center',
-};
-
 /* eslint max-len: [0]*/
 function DialogTitle({ title, titleStyle, titleTextStyle, haveTitleBar = true, titleAlign = 'center' }: Param) {
   const titleBar = haveTitleBar ? styles.titleBar : null;
-  const titleItemsAlign = { alignItems: positions[titleAlign] };
+  const titleItemsAlign = { alignItems: Positions[titleAlign] };
 
   return (
     <View style={[styles.title, titleItemsAlign, titleBar, titleStyle]}>
