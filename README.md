@@ -117,8 +117,8 @@ import PopupDialog, { DialogTitle } from 'react-native-popup-dialog';
 | Prop | Type | Default | Note |
 |---|---|---|---|
 | `title` | `String` | | | |
-| `titleStyle` | `Object` | `Number` | | | |
-| `titleTextStyle` | `Object` | `Number` | | | |
+| `titleStyle` | `Object` or `Number` | | | |
+| `titleTextStyle` | `Object` or `Number` | | | |
 | `titleAlign` | `String` | `center` | | |
 | `haveTitleBar` | `Bool` | `true` | | |
 
