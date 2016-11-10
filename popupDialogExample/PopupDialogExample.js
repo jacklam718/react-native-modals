@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import PopupDialog, {
+  DialogTitle,
   DialogButton,
   SlideAnimation,
   ScaleAnimation,
@@ -59,8 +60,8 @@ export default class PopupDialogExample extends Component {
           ref={(defaultAnimationDialog) => {
             this.defaultAnimationDialog = defaultAnimationDialog;
           }}
+          dialogTitle={<DialogTitle title="Popup Dialog - Default Animation" />}
           dialogAnimation={defaultAnimation}
-          title="Popup Dialog - Default Animation"
         >
           <View style={styles.dialogContentView}>
             <Text>Default Animation</Text>
@@ -72,7 +73,7 @@ export default class PopupDialogExample extends Component {
             this.scaleAnimationDialog = popupDialog;
           }}
           dialogAnimation={scaleAnimation}
-          title="Popup Dialog - Scale Animation"
+          dialogTitle={<DialogTitle title="Popup Dialog - Scale Animation" />}
           actions={[
             <DialogButton
               text="CLOSE"
@@ -89,11 +90,11 @@ export default class PopupDialogExample extends Component {
         </PopupDialog>
 
         <PopupDialog
+          dialogTitle={<DialogTitle title="Popup Dialog - Slide Animation" />}
           ref={(popupDialog) => {
             this.slideAnimationDialog = popupDialog;
           }}
           dialogAnimation={slideAnimation}
-          title="Popup Dialog - Slide Animation"
         >
           <View style={styles.dialogContentView}>
             <Text>Slide Animation</Text>

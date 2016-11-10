@@ -1,13 +1,12 @@
 /* @flow */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Dialog from './components/Dialog';
-import DialogTitle from './components/DialogTitle';
 import DefaultAnimation from './animations/DefaultAnimation';
 
 const propTypes = {
   ...Dialog.propTypes,
-  ...DialogTitle.propTypes,
+  dialogTitle: PropTypes.element,
 };
 
 const defaultProps = {
@@ -29,13 +28,12 @@ class PopupDialog extends Component {
   }
 
   render() {
-    const title = this.props.title ? <DialogTitle {...this.props} /> : null;
     return (
       <Dialog
         ref={_dialog => { this.dialog = _dialog; }}
         {...this.props}
       >
-        {title}
+        {this.props.dialogTitle}
         {this.props.children}
       </Dialog>
     );

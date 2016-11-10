@@ -69,14 +69,34 @@ import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 </View>
 ```
 
+## Usage - With Dialog Dialog Title
+```javascript
+import PopupDialog, { DialogTitle } from 'react-native-popup-dialog';
+
+<View style={styles.container}>
+  <Button
+    text="Open Dialog"
+    onPress={() => {
+      this.popupDialog.openDialog();
+    }}
+  />
+  <PopupDialog
+    dialogTitle={<DialogTitle title="Dialog Title" />}
+    ref={(popupDialog) => { this.popupDialog = popupDialog; }}
+  >
+    <View>
+      <Text>Hello</Text>
+    </View>
+  </PopupDialog>
+</View>
+```
+
 ## Props
 
 ### PopupDialog
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| `title` | `String` | | The popup title |
-| `haveTitleBar` | `Bool` | `true` | If true show title bar else will hide hide title bar | |
-| `titleAlign` | `String` | `center` | The position of the title items. Available option: `left`, `center`, `right` | |
+| `dialogTitle` | `React Element` | | You can pass a `DialogTitle` component or pass a `View` for customizing titlebar |
 | `width` | `Number` | Your device width | The Width of Dialog, you can use fixed width or use percentage
 | `height` | `Number` | 300 | The Width of Dialog, you can use fixed height or use percentage
 | `dialogAnimation` |  | `DefaultAnimation` | animation for dialog | |
@@ -91,6 +111,16 @@ import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 | `onOpened` | `Function` | | You can pass onOpend function as a aallback function, will call the function while dialog opened | |
 | `onClosed` | `Function` | | You can pass onClosed function as a callback function, will call the function while dialog closed | |
 | `actions` | `Array` | | Array of `DialogButton` component for example: ```[<DialogButton text="CLOSE", align="center" onPress={this.closeDialog}/>]``` | |
+
+
+### DialogTitle
+| Prop | Type | Default | Note |
+|---|---|---|---|
+| `title` | `String` | | | |
+| `titleStyle` | `Object` | `Number` | | | |
+| `titleTextStyle` | `Object` | `Number` | | | |
+| `titleAlign` | `String` | `center` | | |
+| `haveTitleBar` | `Bool` | `true` | | |
 
 
 ### DialogButton
