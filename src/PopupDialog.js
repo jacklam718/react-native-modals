@@ -1,23 +1,21 @@
-/* @flow */
+// @flow
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Dialog from './components/Dialog';
-import DefaultAnimation from './animations/DefaultAnimation';
 
-const propTypes = {
-  ...Dialog.propTypes,
-  dialogTitle: PropTypes.element,
+type Props = {
+  dialogTitle: any;
+  children: any;
+  animationDuration: number;
 };
 
-const defaultProps = {
+const DefaultProps = {
   animationDuration: 200,
-  closeOnTouchOutside: true,
-  dialogAnimation: new DefaultAnimation({ animationDuration: 150 }),
 };
 
 class PopupDialog extends Component {
-  static propTypes = propTypes;
-  static defaultProps = defaultProps;
+  props: Props;
+  static defaultProps = DefaultProps;
 
   openDialog(onOpened) {
     this.dialog.open(onOpened);
