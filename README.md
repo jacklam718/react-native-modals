@@ -7,7 +7,11 @@ React Native Popup Dialog for iOS & Android.
 
 ## Installation
 
-`npm install --save react-native-popup-dialog`
+```
+npm install --save react-native-popup-dialog
+# OR
+yarn add react-native-popup-dialog
+```
 
 ## Exposed Modules
 
