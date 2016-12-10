@@ -1,31 +1,33 @@
 /* @flow */
 
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import { View, StyleSheet, Animated, Dimensions } from 'react-native';
 import Overlay from './Overlay';
+import DefaultAnimation from '../animations/DefaultAnimation';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
 
-const propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-  haveOverlay: PropTypes.bool,
-  overlayPointerEvents: PropTypes.string,
-  overlayBackgroundColor: PropTypes.string,
-  overlayOpacity: PropTypes.number,
-  dialogAnimation: PropTypes.object,
-  dialogStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
-  animationDuration: PropTypes.number,
-  closeOnTouchOutside: PropTypes.bool,
-  open: PropTypes.bool,
-  onOpened: PropTypes.func,
-  onClosed: PropTypes.func,
-  actions: PropTypes.array,
-  children: PropTypes.any,
+type Props = {
+  width: number;
+  height: number;
+  haveOverlay: bool;
+  overlayPointerEvents: string;
+  overlayBackgroundColor: string;
+  overlayOpacity: number;
+  dialogAnimation: Object;
+  dialogStyle: Object | number;
+  animationDuration: number;
+  closeOnTouchOutside: bool;
+  open: bool;
+  onOpened: Function;
+  onClosed: Function;
+  actions: Array;
+  children: any;
 };
 
 const defaultProps = {
   animationDuration: 200,
+  dialogAnimation: new DefaultAnimation({ animationDuration: 150 }),
   width: WIDTH,
   height: 300,
   closeOnTouchOutside: true,
@@ -33,8 +35,8 @@ const defaultProps = {
 };
 
 class Dialog extends Component {
-  static propTypes = propTypes
-  static defaultProps = defaultProps
+  props: Props;
+  static defaultProps = defaultProps;
 
   constructor(props) {
     super(props);
