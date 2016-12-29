@@ -5,7 +5,7 @@ import Animation from './Animation';
 
 type Param = {
   toValue: number,
-  slide: string,
+  slideFrom: string,
 }
 
 export default class SlideAnimation extends Animation {
