@@ -116,6 +116,7 @@ class Dialog extends Component {
     const dialogState = this.state.dialogState;
     const overlayPointerEvents = this.pointerEvents;
     const isShowOverlay = (['opened', 'opening'].includes(dialogState) && this.props.haveOverlay);
+    const dimensions = {width: Dimensions.get('window').width, height: Dimensions.get('window').height};
 
     if (dialogState === 'closed') {
       hidden = styles.hidden;
@@ -134,7 +135,7 @@ class Dialog extends Component {
     }
 
     return (
-      <View style={[styles.container, hidden]}>
+      <View style={[styles.container, hidden, dimensions]}>
         <Overlay
           pointerEvents={overlayPointerEvents}
           showOverlay={isShowOverlay}
@@ -155,8 +156,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
-    width: WIDTH,
-    height: HEIGHT,
     justifyContent: 'center',
     alignItems: 'center',
   },
