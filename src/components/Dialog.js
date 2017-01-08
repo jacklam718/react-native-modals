@@ -116,7 +116,10 @@ class Dialog extends Component {
     const dialogState = this.state.dialogState;
     const overlayPointerEvents = this.pointerEvents;
     const isShowOverlay = (['opened', 'opening'].includes(dialogState) && this.props.haveOverlay);
-    const dimensions = {width: Dimensions.get('window').width, height: Dimensions.get('window').height};
+    const dimensions = {
+      width: Dimensions.get('window').width,
+      height: Dimensions.get('window').height,
+    };
 
     if (dialogState === 'closed') {
       hidden = styles.hidden;

@@ -3,8 +3,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Dimensions, TouchableOpacity, Animated } from 'react-native';
 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
-
 type Props = {
   onPress: Function;
   backgroundColor: string;
@@ -46,7 +44,10 @@ class Overlay extends Component {
     const { onPress, pointerEvents } = this.props;
     const backgroundColor = { backgroundColor: this.props.backgroundColor };
     const opacity = { opacity: this.state.opacity };
-    const dimensions = {width: Dimensions.get('window').width, height: Dimensions.get('window').height }
+    const dimensions = {
+      width: Dimensions.get('window').width,
+      height: Dimensions.get('window').height,
+    };
 
     return (
       <Animated.View
