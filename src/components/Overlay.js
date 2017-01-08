@@ -46,13 +46,14 @@ class Overlay extends Component {
     const { onPress, pointerEvents } = this.props;
     const backgroundColor = { backgroundColor: this.props.backgroundColor };
     const opacity = { opacity: this.state.opacity };
+    const dimensions = {width: Dimensions.get('window').width, height: Dimensions.get('window').height }
 
     return (
       <Animated.View
         pointerEvents={pointerEvents}
-        style={[styles.overlay, backgroundColor, opacity]}
+        style={[styles.overlay, backgroundColor, opacity, dimensions]}
       >
-        <TouchableOpacity onPress={onPress} style={[styles.overlay]} />
+        <TouchableOpacity onPress={onPress} style={[styles.overlay, dimensions]} />
       </Animated.View>
     );
   }
@@ -63,8 +64,6 @@ const styles = StyleSheet.create({
     flex: 1,
     top: 0,
     left: 0,
-    width: WIDTH,
-    height: HEIGHT,
     position: 'absolute',
   },
 });
