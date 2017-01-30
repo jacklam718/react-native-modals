@@ -12,8 +12,7 @@ type Param = {
   haveTitleBar: Boolean,
 };
 
-/* eslint max-len: [0]*/
-function DialogTitle({ title, titleStyle, titleTextStyle, haveTitleBar = true, titleAlign = 'center' }: Param) {
+function DialogTitle({ title, titleStyle, titleTextStyle, haveTitleBar, titleAlign }: Param) {
   const titleBar = haveTitleBar ? styles.titleBar : null;
   const titleItemsAlign = { alignItems: Positions[titleAlign] };
 
@@ -25,6 +24,11 @@ function DialogTitle({ title, titleStyle, titleTextStyle, haveTitleBar = true, t
     </View>
   );
 }
+
+DialogTitle.defaultProps = {
+  titleAlign: 'center',
+  haveTitleBar: true,
+};
 
 const styles = StyleSheet.create({
   title: {
