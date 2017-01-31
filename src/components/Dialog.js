@@ -84,11 +84,19 @@ class Dialog extends Component {
   }
 
   calculateDialogSize({ width, height }): Object {
-    const size = { width, height };
-    if (width > 0.0 && width < 1.0) {
+    const size = {};
+
+    if (width) {
+      size.width = width;
+    }
+    if (height) {
+      size.height = height;
+    }
+
+    if (width > 0.0 && width <= 1.0) {
       size.width = width * WIDTH;
     }
-    if (height > 0.0 && height < 1.0) {
+    if (height > 0.0 && height <= 1.0) {
       size.height = height * HEIGHT;
     }
     return size;
