@@ -7,6 +7,19 @@ import DefaultAnimation from '../animations/DefaultAnimation';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
 
+// dialog states
+const DIALOG_OPENING: string = 'opening';
+const DIALOG_OPENED: string = 'opened';
+const DIALOG_CLOSING: string = 'closing';
+const DIALOG_CLOSED: string = 'closed';
+
+// default dialog config
+const DEFAULT_ANIMATION_DURATION: number = 150;
+const DEFAULT_WIDTH: number = WIDTH;
+const DEFAULT_HEIGHT: number = 300;
+const CLOSE_ON_TOUCH_OUTSIDE: bool = true;
+const HAVE_OVERLAY: bool = true;
+
 type Props = {
   width: number;
   height: number;
@@ -25,24 +38,29 @@ type Props = {
   children: any;
 };
 
-const defaultProps = {
-  animationDuration: 200,
-  dialogAnimation: new DefaultAnimation({ animationDuration: 150 }),
-  width: WIDTH,
-  height: 300,
-  closeOnTouchOutside: true,
-  haveOverlay: true,
-};
-
 class Dialog extends Component {
+  state: {
+    dialogState: DIALOG_OPENING | DIALOG_OPENED | DIALOG_CLOSING | DIALOG_CLOSED;
+  }
+
   props: Props;
-  static defaultProps = defaultProps;
+
+  static defaultProps = {
+    animationDuration: DEFAULT_ANIMATION_DURATION,
+    dialogAnimation: new DefaultAnimation({ animationDuration: DEFAULT_ANIMATION_DURATION }),
+    width: DEFAULT_WIDTH,
+    height: DEFAULT_HEIGHT,
+    closeOnTouchOutside: CLOSE_ON_TOUCH_OUTSIDE,
+    haveOverlay: HAVE_OVERLAY,
+    onOpened: () => {},
+    onClosed: () => {},
+  };
 
   constructor(props) {
     super(props);
     // opened, opening, closed, closing,
     this.state = {
-      dialogState: 'closed',
+      dialogState: DIALOG_CLOSED,
     };
 
     this.onOverlayPress = this.onOverlayPress.bind(this);
@@ -70,20 +88,20 @@ class Dialog extends Component {
     }
   }
 
-  setDialogState(toValue, callback) {
+  setDialogState(toValue: number, callback: Function) {
     this.props.dialogAnimation.toValue(toValue);
-    let dialogState = toValue ? 'opening' : 'closing';
+    let dialogState = toValue ? DIALOG_OPENING : DIALOG_CLOSING;
 
     this.setState({ dialogState });
 
     setTimeout(() => {
-      dialogState = dialogState === 'closing' ? 'closed' : 'opened';
+      dialogState = dialogState === DIALOG_CLOSING ? DIALOG_CLOSED : DIALOG_OPENED;
       this.setState({ dialogState });
-      if (callback && typeof callback === 'function') callback();
+      callback();
     }, this.props.animationDuration);
   }
 
-  calculateDialogSize({ width, height }): Object {
+  calculateDialogSize({ width, height }: {width: number, height: number}): Object {
     const size = {};
 
     if (width) {
@@ -114,36 +132,21 @@ class Dialog extends Component {
     if (this.props.overlayPointerEvents) {
       return this.props.overlayPointerEvents;
     }
-    return this.state.dialogState === 'opened' ? 'auto' : 'none';
+    return this.state.dialogState === DIALOG_OPENED ? 'auto' : 'none';
   }
 
   render() {
-    let hidden;
-    let dialog;
-
     const dialogState = this.state.dialogState;
+    const hidden = dialogState === DIALOG_CLOSED && styles.hidden;
     const overlayPointerEvents = this.pointerEvents;
-    const isShowOverlay = (['opened', 'opening'].includes(dialogState) && this.props.haveOverlay);
+    const isShowOverlay = (
+      [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState) && this.props.haveOverlay
+    );
     const dimensions = {
       width: Dimensions.get('window').width,
       height: Dimensions.get('window').height,
     };
-
-    if (dialogState === 'closed') {
-      hidden = styles.hidden;
-    } else {
-      const size = this.calculateDialogSize(this.props);
-      dialog = (
-        <Animated.View
-          style={[
-            styles.dialog, size, this.props.dialogStyle, this.props.dialogAnimation.animations,
-          ]}
-        >
-          {this.props.children}
-          {this.props.actions}
-        </Animated.View>
-      );
-    }
+    const dialogSize = this.calculateDialogSize(this.props);
 
     return (
       <View style={[styles.container, hidden, dimensions]}>
@@ -155,7 +158,17 @@ class Dialog extends Component {
           opacity={this.props.overlayOpacity}
           animationDuration={this.props.animationDuration}
         />
-        {dialog}
+        <Animated.View
+          style={[
+            styles.dialog,
+            dialogSize,
+            this.props.dialogStyle,
+            this.props.dialogAnimation.animations,
+          ]}
+        >
+          {this.props.children}
+          {this.props.actions}
+        </Animated.View>
       </View>
     );
   }

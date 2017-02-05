@@ -6,16 +6,10 @@ import Dialog from './components/Dialog';
 type Props = {
   dialogTitle: any;
   children: any;
-  animationDuration: number;
-};
-
-const DefaultProps = {
-  animationDuration: 200,
 };
 
 class PopupDialog extends Component {
   props: Props;
-  static defaultProps = DefaultProps;
 
   openDialog(onOpened) {
     this.dialog.open(onOpened);
