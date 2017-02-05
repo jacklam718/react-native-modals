@@ -3,15 +3,15 @@
 export type DialogType = {
   width: number;
   height: number;
-  haveOverlay: bool;
+  haveOverlay: boolean;
   overlayPointerEvents: string;
   overlayBackgroundColor: string;
   overlayOpacity: number;
   dialogAnimation: Object;
   dialogStyle: Object | number;
   animationDuration: number;
-  closeOnTouchOutside: bool;
-  open: bool;
+  closeOnTouchOutside: boolean;
+  open: boolean;
   onOpened: Function;
   onClosed: Function;
   actions: Array;
@@ -25,7 +25,7 @@ export type DialogButtonType = {
   buttonStyle: Object | number;
   textStyle: Object | number;
   textContainerStyle: Object | number;
-  disabled: Boolean;
+  disabled: boolean;
   activeOpacity: number;
 }
 
@@ -34,7 +34,7 @@ export type DialogTitleType = {
   titleStyle: Object | number;
   titleTextStyle: Object | number;
   titleAlign: string;
-  haveTitleBar: Boolean;
+  haveTitleBar: boolean;
 }
 
 export type OverlayType = {
@@ -42,6 +42,6 @@ export type OverlayType = {
   backgroundColor: string;
   opacity: number;
   animationDuration: number;
-  showOverlay: bool;
+  showOverlay: boolean;
   pointerEvents: string;
 }
