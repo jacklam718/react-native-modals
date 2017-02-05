@@ -84,7 +84,7 @@ class Dialog extends Component {
 
   onOverlayPress() {
     if (this.props.closeOnTouchOutside) {
-      this.close();
+      this.close(this.props.onClosed);
     }
   }
 
@@ -120,11 +120,11 @@ class Dialog extends Component {
     return size;
   }
 
-  open(onOpened = this.props.onOpened) {
+  open(onOpened: Function) {
     this.setDialogState(1, onOpened);
   }
 
-  close(onClosed = this.props.onClosed) {
+  close(onClosed: Function) {
     this.setDialogState(0, onClosed);
   }
 
