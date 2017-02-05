@@ -1,3 +1,9 @@
+import {
+  DialogType,
+  DialogButtonType,
+  DialogTitleType,
+  OverlayType,
+} from './src/Type';
 import PopupDialog from './src/PopupDialog';
 import Overlay from './src/components/Overlay';
 import DialogTitle from './src/components/DialogTitle';
@@ -17,6 +23,10 @@ export {
   DefaultAnimation,
   ScaleAnimation,
   SlideAnimation,
+  DialogType,
+  DialogButtonType,
+  DialogTitleType,
+  OverlayType,
 };
 
 export default PopupDialog;

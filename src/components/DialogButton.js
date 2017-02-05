@@ -2,23 +2,18 @@
 
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
+
 import { Positions } from '../constants/Constants';
+
+import { DialogButtonType } from '../Type';
 
 const isAndroid = Platform.OS === 'android';
 
-type Param = {
-  text: string,
-  align: string,
-  onPress: Function,
-  buttonStyle: Object | number,
-  textStyle: Object | number,
-  textContainerStyle: Object | number,
-  disabled: Boolean,
-  activeOpacity: number,
-};
+const DISABLED: bool = false;
+const ALIGN: string = 'center';
 
 /* eslint max-len: [0]*/
-function DialogButton({ text, activeOpacity, disabled = false, align = 'center', onPress, buttonStyle, textStyle, textContainerStyle }: Param) {
+function DialogButton({ text, activeOpacity, disabled, align, onPress, buttonStyle, textStyle, textContainerStyle }: DialogButtonType) {
   const buttonAlign = { alignSelf: Positions[align] };
   const disabledText = disabled ? styles.disabledText : null;
 
@@ -37,6 +32,11 @@ function DialogButton({ text, activeOpacity, disabled = false, align = 'center',
     </TouchableOpacity>
   );
 }
+
+DialogButton.defaultProps = {
+  disabled: DISABLED,
+  align: ALIGN,
+};
 
 const styles = StyleSheet.create({
   button: {

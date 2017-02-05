@@ -2,8 +2,11 @@
 
 import React, { Component } from 'react';
 import { View, StyleSheet, Animated, Dimensions } from 'react-native';
+
 import Overlay from './Overlay';
+
 import DefaultAnimation from '../animations/DefaultAnimation';
+import { DialogType } from '../Type';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
 
@@ -20,30 +23,12 @@ const DEFAULT_HEIGHT: number = 300;
 const CLOSE_ON_TOUCH_OUTSIDE: bool = true;
 const HAVE_OVERLAY: bool = true;
 
-type Props = {
-  width: number;
-  height: number;
-  haveOverlay: bool;
-  overlayPointerEvents: string;
-  overlayBackgroundColor: string;
-  overlayOpacity: number;
-  dialogAnimation: Object;
-  dialogStyle: Object | number;
-  animationDuration: number;
-  closeOnTouchOutside: bool;
-  open: bool;
-  onOpened: Function;
-  onClosed: Function;
-  actions: Array;
-  children: any;
-};
-
 class Dialog extends Component {
   state: {
     dialogState: DIALOG_OPENING | DIALOG_OPENED | DIALOG_CLOSING | DIALOG_CLOSED;
   }
 
-  props: Props;
+  props: DialogType;
 
   static defaultProps = {
     animationDuration: DEFAULT_ANIMATION_DURATION,

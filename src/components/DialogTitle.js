@@ -4,15 +4,12 @@ import React, { PropTypes } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Positions } from '../constants/Constants';
 
-type Param = {
-  title: string | number,
-  titleStyle: Object | number,
-  titleTextStyle: Object | number,
-  titleAlign: string,
-  haveTitleBar: Boolean,
-};
+import { DialogTitleType } from '../Type';
 
-function DialogTitle({ title, titleStyle, titleTextStyle, haveTitleBar, titleAlign }: Param) {
+const DEFAULT_TITLE_ALIGN: string = 'center';
+const HAVE_TITLE_BAR: bool = true;
+
+function DialogTitle({ title, titleStyle, titleTextStyle, haveTitleBar, titleAlign }: DialogTitleType) {
   const titleBar = haveTitleBar ? styles.titleBar : null;
   const titleItemsAlign = { alignItems: Positions[titleAlign] };
 
@@ -26,8 +23,8 @@ function DialogTitle({ title, titleStyle, titleTextStyle, haveTitleBar, titleAli
 }
 
 DialogTitle.defaultProps = {
-  titleAlign: 'center',
-  haveTitleBar: true,
+  titleAlign: DEFAULT_TITLE_ALIGN,
+  haveTitleBar: HAVE_TITLE_BAR,
 };
 
 const styles = StyleSheet.create({

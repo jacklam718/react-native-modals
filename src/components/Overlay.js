@@ -3,25 +3,23 @@
 import React, { Component } from 'react';
 import { StyleSheet, Dimensions, TouchableOpacity, Animated } from 'react-native';
 
-type Props = {
-  onPress: Function;
-  backgroundColor: string;
-  opacity: number;
-  animationDuration: number;
-  showOverlay: bool;
-  pointerEvents: string;
-}
+import { OverlayType } from '../Type';
 
-const DefaultProps = {
-  backgroundColor: '#000',
-  opacity: 0.5,
-  animationDuration: 200,
-  showOverlay: false,
-};
+// default overlay options
+const BACKGROUND_COLOR: string = '#000';
+const OPACITY: number = 0.5;
+const ANIMATION_DURATION: number = 2000;
+const SHOW_OVERLAY: bool = false;
 
 class Overlay extends Component {
-  props: Props;
-  static defaultProps = DefaultProps;
+  props: OverlayType;
+
+  static defaultProps = {
+    backgroundColor: BACKGROUND_COLOR,
+    opacity: OPACITY,
+    animationDuration: ANIMATION_DURATION,
+    showOverlay: SHOW_OVERLAY,
+  };
 
   constructor(props) {
     super(props);
