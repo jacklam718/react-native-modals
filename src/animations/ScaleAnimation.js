@@ -4,7 +4,7 @@ import { Animated } from 'react-native';
 import Animation from './Animation';
 
 export default class ScaleAnimation extends Animation {
-  toValue(toValue: number, onFinished) {
+  toValue(toValue: number, onFinished: Function) {
     switch (toValue) {
       case 0:
         Animated.spring(this.animate, {

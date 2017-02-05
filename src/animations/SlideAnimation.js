@@ -23,7 +23,7 @@ export default class SlideAnimation extends Animation {
     }).start(onFinished);
   }
 
-  createAnimations(slideFrom): Object {
+  createAnimations(slideFrom: string): Object {
     const transform = [];
 
     if (['top', 'bottom'].includes(slideFrom)) {
