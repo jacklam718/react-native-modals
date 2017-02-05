@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Dimensions, TouchableOpacity, Animated } from 'react-native';
 
-import { OverlayType } from '../Type';
+import type { OverlayType } from '../Type';
 
 // default overlay options
 const BACKGROUND_COLOR: string = '#000';
@@ -14,6 +14,10 @@ const SHOW_OVERLAY: bool = false;
 class Overlay extends Component {
   props: OverlayType;
 
+  state: {
+    opacity: Object,
+  }
+
   static defaultProps = {
     backgroundColor: BACKGROUND_COLOR,
     opacity: OPACITY,
@@ -21,14 +25,14 @@ class Overlay extends Component {
     showOverlay: SHOW_OVERLAY,
   };
 
-  constructor(props) {
+  constructor(props: OverlayType) {
     super(props);
     this.state = {
       opacity: new Animated.Value(0),
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: OverlayType) {
     if (this.props.showOverlay !== nextProps.showOverlay) {
       const toValue = nextProps.showOverlay ? nextProps.opacity : 0;
       Animated.timing(this.state.opacity, {

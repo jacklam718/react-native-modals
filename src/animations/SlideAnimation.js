@@ -14,7 +14,7 @@ export default class SlideAnimation extends Animation {
     this.animations = this.createAnimations(slideFrom);
   }
 
-  toValue(toValue: number, onFinished) {
+  toValue(toValue: number, onFinished: ?Function) {
     Animated.spring(this.animate, {
       toValue,
       velocity: 0,

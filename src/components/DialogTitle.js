@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Positions } from '../constants/Constants';
 
-import { DialogTitleType } from '../Type';
+import type { DialogTitleType } from '../Type';
 
 const DEFAULT_TITLE_ALIGN: string = 'center';
 const HAVE_TITLE_BAR: bool = true;

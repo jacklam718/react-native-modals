@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import React, { Component } from 'react';
 import { View, StyleSheet, Animated, Dimensions } from 'react-native';
@@ -6,9 +6,9 @@ import { View, StyleSheet, Animated, Dimensions } from 'react-native';
 import Overlay from './Overlay';
 
 import DefaultAnimation from '../animations/DefaultAnimation';
-import { DialogType } from '../Type';
+import type { DialogType } from '../Type';
 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
+const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
 // dialog states
 const DIALOG_OPENING: string = 'opening';
@@ -18,17 +18,13 @@ const DIALOG_CLOSED: string = 'closed';
 
 // default dialog config
 const DEFAULT_ANIMATION_DURATION: number = 150;
-const DEFAULT_WIDTH: number = WIDTH;
+const DEFAULT_WIDTH: number = screenWidth;
 const DEFAULT_HEIGHT: number = 300;
 const CLOSE_ON_TOUCH_OUTSIDE: bool = true;
 const HAVE_OVERLAY: bool = true;
 
 class Dialog extends Component {
-  state: {
-    dialogState: DIALOG_OPENING | DIALOG_OPENED | DIALOG_CLOSING | DIALOG_CLOSED;
-  }
-
-  props: DialogType;
+  props: DialogType
 
   static defaultProps = {
     animationDuration: DEFAULT_ANIMATION_DURATION,
@@ -39,10 +35,16 @@ class Dialog extends Component {
     haveOverlay: HAVE_OVERLAY,
     onOpened: () => {},
     onClosed: () => {},
-  };
+  }
 
-  constructor(props) {
-    super(props);
+  state: {
+    dialogState: string,
+  }
+
+  onOverlayPress: Function
+
+  constructor(props: DialogType) {
+    super();
     // opened, opening, closed, closing,
     this.state = {
       dialogState: DIALOG_CLOSED,
@@ -57,14 +59,14 @@ class Dialog extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: DialogType) {
     if (this.props.open !== nextProps.open) {
       if (nextProps.open) {
-        return this.open(nextProps.onOpened);
+        this.open(nextProps.onOpened);
+      } else {
+        this.close(nextProps.onClosed);
       }
-      return this.close(nextProps.onClosed);
     }
-    return nextProps;
   }
 
   onOverlayPress() {
@@ -73,9 +75,13 @@ class Dialog extends Component {
     }
   }
 
-  setDialogState(toValue: number, callback: Function) {
-    this.props.dialogAnimation.toValue(toValue);
+  setDialogState(toValue: number, callback: ?Function) {
     let dialogState = toValue ? DIALOG_OPENING : DIALOG_CLOSING;
+
+    // to make sure has passed the dialogAnimation prop and the dialogAnimation has toValue method
+    if (this.props.dialogAnimation && this.props.dialogAnimation.toValue) {
+      this.props.dialogAnimation.toValue(toValue);
+    }
 
     this.setState({ dialogState });
 
@@ -88,44 +94,39 @@ class Dialog extends Component {
     }, this.props.animationDuration);
   }
 
-  calculateDialogSize({ width, height }: {width: number, height: number}): Object {
-    const size = {};
-
-    if (width) {
-      size.width = width;
-    }
-    if (height) {
-      size.height = height;
-    }
-
-    if (width > 0.0 && width <= 1.0) {
-      size.width = width * WIDTH;
-    }
-    if (height > 0.0 && height <= 1.0) {
-      size.height = height * HEIGHT;
-    }
-    return size;
-  }
-
-  open(onOpened: Function) {
+  open(onOpened: ?Function) {
     this.setDialogState(1, onOpened);
   }
 
-  close(onClosed: Function) {
+  close(onClosed: ?Function) {
     this.setDialogState(0, onClosed);
   }
 
-  get pointerEvents() {
+  get pointerEvents(): string {
     if (this.props.overlayPointerEvents) {
       return this.props.overlayPointerEvents;
     }
     return this.state.dialogState === DIALOG_OPENED ? 'auto' : 'none';
   }
 
+  get dialogSize(): Object {
+    let { width, height } = this.props;
+
+    if (width && width > 0.0 && width <= 1.0) {
+      width = width * screenWidth;
+    }
+    if (height && height > 0.0 && height <= 1.0) {
+      height = height * screenHeight;
+    }
+
+    return { width, height };
+  }
+
   render() {
     const dialogState = this.state.dialogState;
-    const hidden = dialogState === DIALOG_CLOSED && styles.hidden;
     const overlayPointerEvents = this.pointerEvents;
+    const dialogSize = this.dialogSize;
+    const hidden = dialogState === DIALOG_CLOSED && styles.hidden;
     const isShowOverlay = (
       [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState) && this.props.haveOverlay
     );
@@ -133,7 +134,6 @@ class Dialog extends Component {
       width: Dimensions.get('window').width,
       height: Dimensions.get('window').height,
     };
-    const dialogSize = this.calculateDialogSize(this.props);
 
     return (
       <View style={[styles.container, hidden, dimensions]}>

@@ -4,12 +4,15 @@ import { Animated } from 'react-native';
 import Animation from './Animation';
 
 type Param = {
-  toValue: number,
-  animationDuration: number,
+  toValue?: number,
+  animationDuration?: number,
 }
 
 export default class DefaultAnimation extends Animation {
-  constructor({ toValue = 0, animationDuration = 200 }: Param = {}) {
+  animate: Object
+  animationDuration: number
+
+  constructor({ toValue = 0, animationDuration = 200 }: Param) {
     super(toValue);
 
     this.animationDuration = animationDuration;

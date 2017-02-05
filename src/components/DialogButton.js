@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native
 
 import { Positions } from '../constants/Constants';
 
-import { DialogButtonType } from '../Type';
+import type { DialogButtonType } from '../Type';
 
 const isAndroid = Platform.OS === 'android';
 
