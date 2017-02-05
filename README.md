@@ -29,7 +29,10 @@ yarn add react-native-popup-dialog
 7. DefaultAnimation
 8. ScaleAnimation
 9. SlideAnimation
-
+10. DialogType
+11. DialogButtonType
+12. DialogTitleType
+13. OverlayType
 
 ## Examples
 [Example](https://github.com/jacklam718/react-native-popup-dialog/blob/master/popupDialogExample/PopupDialogExample.js)
