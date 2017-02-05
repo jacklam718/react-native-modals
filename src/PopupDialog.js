@@ -11,11 +11,11 @@ type Props = {
 class PopupDialog extends Component {
   props: Props;
 
-  openDialog(onOpened) {
+  openDialog(onOpened: Function) {
     this.dialog.open(onOpened);
   }
 
-  closeDialog(onClosed) {
+  closeDialog(onClosed: Function) {
     this.dialog.close(onClosed);
   }
 
