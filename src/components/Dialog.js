@@ -94,9 +94,11 @@ class Dialog extends Component {
 
     if (Platform.OS === 'android') {
       BackAndroid.addEventListener(HARDWARE_BACK_PRESS_EVENT, () => {
-        if (this.props.closeOnHardwareBackPress) {
+        if (this.props.closeOnHardwareBackPress && this.state.dialogState === DIALOG_OPENED) {
           this.close(this.props.onClosed);
+          return false;
         }
+        return true;
       });
     }
   }
@@ -123,7 +125,7 @@ class Dialog extends Component {
     }
   }
 
-  setDialogState(toValue: number, callback: ?Function) {
+  setDialogState(toValue: number, callback?: Function = () => {}) {
     let dialogState = toValue ? DIALOG_OPENING : DIALOG_CLOSING;
 
     // to make sure has passed the dialogAnimation prop and the dialogAnimation has toValue method
@@ -136,9 +138,7 @@ class Dialog extends Component {
     setTimeout(() => {
       dialogState = dialogState === DIALOG_CLOSING ? DIALOG_CLOSED : DIALOG_OPENED;
       this.setState({ dialogState });
-      if (typeof callback === 'function') {
-        callback();
-      }
+      callback();
     }, this.props.animationDuration);
   }
 
