@@ -2,8 +2,5 @@
   "presets": [
     "es2016",
     "react-native"
-  ],
-  "plugins": [
-    "flow-react-proptypes"
   ]
 }
