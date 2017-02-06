@@ -7,7 +7,7 @@ import { Positions } from '../constants/Constants';
 import type { DialogTitleType } from '../Type';
 
 const DEFAULT_TITLE_ALIGN: string = 'center';
-const HAVE_TITLE_BAR: bool = true;
+const HAVE_TITLE_BAR: boolean = true;
 
 const styles = StyleSheet.create({
   title: {

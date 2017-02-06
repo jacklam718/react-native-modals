@@ -9,7 +9,7 @@ import type { OverlayType } from '../Type';
 const BACKGROUND_COLOR: string = '#000';
 const OPACITY: number = 0.5;
 const ANIMATION_DURATION: number = 2000;
-const SHOW_OVERLAY: bool = false;
+const SHOW_OVERLAY: boolean = false;
 
 const styles = StyleSheet.create({
   overlay: {
