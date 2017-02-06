@@ -9,7 +9,7 @@ import type { DialogButtonType } from '../Type';
 
 const isAndroid = Platform.OS === 'android';
 
-const DISABLED: bool = false;
+const DISABLED: boolean = false;
 const ALIGN: string = 'center';
 
 const styles = StyleSheet.create({

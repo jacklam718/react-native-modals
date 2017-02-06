@@ -1,7 +1,14 @@
 // @flow
 
 import React, { Component } from 'react';
-import { View, StyleSheet, Animated, Dimensions } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Animated,
+  Dimensions,
+  BackAndroid,
+  Platform,
+} from 'react-native';
 
 import Overlay from './Overlay';
 
@@ -20,8 +27,13 @@ const DIALOG_CLOSED: string = 'closed';
 const DEFAULT_ANIMATION_DURATION: number = 150;
 const DEFAULT_WIDTH: number = screenWidth;
 const DEFAULT_HEIGHT: number = 300;
-const CLOSE_ON_TOUCH_OUTSIDE: bool = true;
-const HAVE_OVERLAY: bool = true;
+const CLOSE_ON_TOUCH_OUTSIDE: boolean = true;
+const CLOSE_ON_HARDWARE_BACK_PRESS: boolean = true;
+const HAVE_OVERLAY: boolean = true;
+
+// event types
+// only for android
+const HARDWARE_BACK_PRESS_EVENT: string = 'hardwareBackPress';
 
 const styles = StyleSheet.create({
   container: {
@@ -57,6 +69,7 @@ class Dialog extends Component {
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
     closeOnTouchOutside: CLOSE_ON_TOUCH_OUTSIDE,
+    closeOnHardwareBackPress: CLOSE_ON_HARDWARE_BACK_PRESS,
     haveOverlay: HAVE_OVERLAY,
     onOpened: () => {},
     onClosed: () => {},
@@ -78,6 +91,14 @@ class Dialog extends Component {
     if (this.props.open) {
       this.open(this.props.onOpened);
     }
+
+    if (Platform.OS === 'android') {
+      BackAndroid.addEventListener(HARDWARE_BACK_PRESS_EVENT, () => {
+        if (this.props.closeOnHardwareBackPress) {
+          this.close(this.props.onClosed);
+        }
+      });
+    }
   }
 
   componentWillReceiveProps(nextProps: DialogType) {
@@ -87,6 +108,12 @@ class Dialog extends Component {
       } else {
         this.close(nextProps.onClosed);
       }
+    }
+  }
+
+  componentWillUnmount() {
+    if (Platform.OS === 'android') {
+      BackAndroid.removeEventListener(HARDWARE_BACK_PRESS_EVENT);
     }
   }
 
