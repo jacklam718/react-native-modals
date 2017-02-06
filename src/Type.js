@@ -1,5 +1,10 @@
 // @flow
 
+export type PopupDialogType = {
+  dialogTitle: any;
+  children: any;
+}
+
 export type DialogType = {
   width?: number;
   height?: number;

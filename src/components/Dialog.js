@@ -23,7 +23,32 @@ const DEFAULT_HEIGHT: number = 300;
 const CLOSE_ON_TOUCH_OUTSIDE: bool = true;
 const HAVE_OVERLAY: bool = true;
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  dialog: {
+    borderRadius: 8,
+    backgroundColor: '#ffffff',
+  },
+  hidden: {
+    top: -10000,
+    left: 0,
+    height: 0,
+    width: 0,
+  },
+});
+
 class Dialog extends Component {
+  state: {
+    dialogState: string,
+  }
+
   props: DialogType
 
   static defaultProps = {
@@ -37,14 +62,10 @@ class Dialog extends Component {
     onClosed: () => {},
   }
 
-  state: {
-    dialogState: string,
-  }
-
   onOverlayPress: Function
 
   constructor(props: DialogType) {
-    super();
+    super(props);
     // opened, opening, closed, closing,
     this.state = {
       dialogState: DIALOG_CLOSED,
@@ -94,11 +115,11 @@ class Dialog extends Component {
     }, this.props.animationDuration);
   }
 
-  open(onOpened: ?Function) {
+  open(onOpened?: Function = () => {}) {
     this.setDialogState(1, onOpened);
   }
 
-  close(onClosed: ?Function) {
+  close(onClosed?: Function = () => {}) {
     this.setDialogState(0, onClosed);
   }
 
@@ -113,10 +134,10 @@ class Dialog extends Component {
     let { width, height } = this.props;
 
     if (width && width > 0.0 && width <= 1.0) {
-      width = width * screenWidth;
+      width *= screenWidth;
     }
     if (height && height > 0.0 && height <= 1.0) {
-      height = height * screenHeight;
+      height *= screenHeight;
     }
 
     return { width, height };
@@ -160,26 +181,5 @@ class Dialog extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  dialog: {
-    borderRadius: 8,
-    backgroundColor: '#ffffff',
-  },
-  hidden: {
-    top: -10000,
-    left: 0,
-    height: 0,
-    width: 0,
-  },
-});
 
 export default Dialog;

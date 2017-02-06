@@ -3,26 +3,25 @@
 import React, { Component } from 'react';
 import Dialog from './components/Dialog';
 
-type Props = {
-  dialogTitle: any;
-  children: any;
-};
+import type { PopupDialogType } from './Type';
 
 class PopupDialog extends Component {
-  props: Props;
+  props: PopupDialogType;
 
-  openDialog(onOpened: Function) {
+  dialog: Object
+
+  openDialog(onOpened: ?Function) {
     this.dialog.open(onOpened);
   }
 
-  closeDialog(onClosed: Function) {
+  closeDialog(onClosed: ?Function) {
     this.dialog.close(onClosed);
   }
 
   render() {
     return (
       <Dialog
-        ref={_dialog => { this.dialog = _dialog; }}
+        ref={(dialog) => { this.dialog = dialog; }}
         {...this.props}
       >
         {this.props.dialogTitle}

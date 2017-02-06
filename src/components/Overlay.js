@@ -11,12 +11,21 @@ const OPACITY: number = 0.5;
 const ANIMATION_DURATION: number = 2000;
 const SHOW_OVERLAY: bool = false;
 
-class Overlay extends Component {
-  props: OverlayType;
+const styles = StyleSheet.create({
+  overlay: {
+    flex: 1,
+    top: 0,
+    left: 0,
+    position: 'absolute',
+  },
+});
 
+class Overlay extends Component {
   state: {
     opacity: Object,
   }
+
+  props: OverlayType
 
   static defaultProps = {
     backgroundColor: BACKGROUND_COLOR,
@@ -61,14 +70,5 @@ class Overlay extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  overlay: {
-    flex: 1,
-    top: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
 
 export default Overlay;

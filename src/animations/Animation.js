@@ -1,6 +1,5 @@
 // @flow
 
-import React, { Component } from 'react';
 import { Animated } from 'react-native';
 
 // Base Animation class
@@ -14,7 +13,7 @@ export default class Animation {
   }
 
   toValue(toValue: number) {
-    return;
+
   }
 
   createAnimations(): Object {
