@@ -1,11 +1,9 @@
 {
-  "babel": {
-    "presets": [
-      "es2015",
-      "react-native"
-    ],
-    "plugins": [
-      "flow-react-proptypes"
-    ]
-  }
+  "presets": [
+    "es2016",
+    "react-native"
+  ],
+  "plugins": [
+    "flow-react-proptypes"
+  ]
 }
