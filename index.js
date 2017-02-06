@@ -1,4 +1,5 @@
 import {
+  PopupDialogType,
   DialogType,
   DialogButtonType,
   DialogTitleType,
@@ -23,6 +24,7 @@ export {
   DefaultAnimation,
   ScaleAnimation,
   SlideAnimation,
+  PopupDialogType,
   DialogType,
   DialogButtonType,
   DialogTitleType,
