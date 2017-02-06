@@ -26,12 +26,20 @@
   "author": "jacklam <jacklam718@gmail.com> (https://github.com/jacklam718)",
   "license": "MIT",
   "homepage": "https://github.com/jacklam718/react-native-popup-dialog/blob/master/README.md",
+  "dependencies": {
+    "babel-plugin-flow-react-proptypes": "^0.21.0",
+    "babel-preset-es2016": "^6.22.0",
+    "babel-preset-react-native": "^1.9.1"
+  },
   "devDependencies": {
-    "babel-eslint": "^6.1.2",
-    "eslint": "^3.4.0",
-    "eslint-config-airbnb": "^10.0.1",
-    "eslint-plugin-import": "^1.14.0",
-    "eslint-plugin-jsx-a11y": "^2.2.1",
-    "eslint-plugin-react": "^6.2.0"
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.9.0",
+    "flow-bin": "^0.38.0",
+    "react": "^15.4.2",
+    "react-native": "^0.41.1"
   }
 }
