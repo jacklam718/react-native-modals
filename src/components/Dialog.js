@@ -96,9 +96,9 @@ class Dialog extends Component {
       BackAndroid.addEventListener(HARDWARE_BACK_PRESS_EVENT, () => {
         if (this.props.closeOnHardwareBackPress && this.state.dialogState === DIALOG_OPENED) {
           this.close(this.props.onClosed);
-          return false;
+          return true;
         }
-        return true;
+        return false;
       });
     }
   }
