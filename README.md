@@ -45,9 +45,9 @@ import PopupDialog from 'react-native-popup-dialog';
 
 <View style={styles.container}>
   <Button
-    text="Open Dialog"
+    text="Show Dialog"
     onPress={() => {
-      this.popupDialog.openDialog();
+      this.popupDialog.show();
     }}
   />
   <PopupDialog
@@ -66,9 +66,9 @@ import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 
 <View style={styles.container}>
   <Button
-    text="Open Dialog"
+    text="Show Dialog"
     onPress={() => {
-      this.popupDialog.openDialog();
+      this.popupDialog.show();
     }}
   />
   <PopupDialog
@@ -88,9 +88,9 @@ import PopupDialog, { DialogTitle } from 'react-native-popup-dialog';
 
 <View style={styles.container}>
   <Button
-    text="Open Dialog"
+    text="Show Dialog"
     onPress={() => {
-      this.popupDialog.openDialog();
+      this.popupDialog.show();
     }}
   />
   <PopupDialog
@@ -118,13 +118,13 @@ import PopupDialog, { DialogTitle } from 'react-native-popup-dialog';
 | `overlayPointerEvents` | `String` | | Available option: `auto`, `none` |
 | `overlayBackgroundColor` | `String` | `#000` |
 | `overlayOpacity` | `Number` | `0.5` |
-| `closeOnTouchOutside` | `Bool` | `true` | When touch overlay will close dialog, but if `haveOverlay` is false then the `closeOnTouchOutside` won't work| |
-| `closeOnHardwareBackPress` | `Bool` | `true` | Only for Android | |
-| `haveOverlay` | `Bool` | `true` | If false won't show overlay while dialog open | |
-| `open` | `Bool` | `false` |  | |
-| `onOpened` | `Function` | | You can pass onOpend function as a aallback function, will call the function while dialog opened | |
-| `onClosed` | `Function` | | You can pass onClosed function as a callback function, will call the function while dialog closed | |
-| `actions` | `Array` | | Array of `DialogButton` component for example: ```[<DialogButton text="CLOSE", align="center" onPress={this.closeDialog}/>]``` | |
+| `dismissOnTouchOutside` | `Bool` | `true` | When touch overlay will dismiss dialog, but if `haveOverlay` is false then the `dismissOnTouchOutside` won't work| |
+| `dismissOnHardwareBackPress` | `Bool` | `true` | Only for Android | |
+| `haveOverlay` | `Bool` | `true` | If false won't show overlay while dialog show | |
+| `show` | `Bool` | `false` |  | |
+| `onShowed` | `Function` | | You can pass showed function as a aallback function, will call the function when dialog showed | |
+| `onDismiss` | `Function` | | You can pass onDismiss function as a callback function, will call the function when dialog dismissed | |
+| `actions` | `Array` | | Array of `DialogButton` component for example: ```[<DialogButton text="DISMISS", align="center" onPress={this.dismiss}/>]``` | |
 
 
 ### DialogTitle

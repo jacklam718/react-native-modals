@@ -13,7 +13,7 @@ import {
 import Overlay from './Overlay';
 
 import DefaultAnimation from '../animations/DefaultAnimation';
-import type { DialogType } from '../Type';
+import { type DialogType } from '../Type';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
@@ -27,8 +27,8 @@ const DIALOG_CLOSED: string = 'closed';
 const DEFAULT_ANIMATION_DURATION: number = 150;
 const DEFAULT_WIDTH: number = screenWidth;
 const DEFAULT_HEIGHT: number = 300;
-const CLOSE_ON_TOUCH_OUTSIDE: boolean = true;
-const CLOSE_ON_HARDWARE_BACK_PRESS: boolean = true;
+const DISMISS_ON_TOUCH_OUTSIDE: boolean = true;
+const DISMISS_ON_HARDWARE_BACK_PRESS: boolean = true;
 const HAVE_OVERLAY: boolean = true;
 
 // event types
@@ -68,14 +68,17 @@ class Dialog extends Component {
     dialogAnimation: new DefaultAnimation({ animationDuration: DEFAULT_ANIMATION_DURATION }),
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
-    closeOnTouchOutside: CLOSE_ON_TOUCH_OUTSIDE,
-    closeOnHardwareBackPress: CLOSE_ON_HARDWARE_BACK_PRESS,
+    closeOnTouchOutside: DISMISS_ON_TOUCH_OUTSIDE,
+    dismissOnTouchOutside: DISMISS_ON_TOUCH_OUTSIDE,
+    closeOnHardwareBackPress: DISMISS_ON_HARDWARE_BACK_PRESS, // Note: closeOnHardwareBackPress deprecated
+    dismissOnHardwareBackPress: DISMISS_ON_HARDWARE_BACK_PRESS,
     haveOverlay: HAVE_OVERLAY,
-    onOpened: () => {},
-    onClosed: () => {},
+    onOpened: () => {}, // Note: onOpened deprecated
+    onClosed: () => {}, // Note: onClosed deprecated
+    onShowed: () => {},
+    onDismissed: () => {},
+    show: false,
   }
-
-  onOverlayPress: Function
 
   constructor(props: DialogType) {
     super(props);
@@ -84,26 +87,35 @@ class Dialog extends Component {
       dialogState: DIALOG_CLOSED,
     };
 
-    this.onOverlayPress = this.onOverlayPress.bind(this);
+    (this: any).onOverlayPress = this.onOverlayPress.bind(this);
+    (this: any).hardwareBackEventHandler = this.hardwareBackEventHandler.bind(this);
   }
 
   componentDidMount() {
-    if (this.props.open) {
-      this.open(this.props.onOpened);
+    const { show, onShowed } = this.props;
+
+    if (show) {
+      this.open(onShowed);
     }
 
-    if (Platform.OS === 'android') {
-      BackAndroid.addEventListener(HARDWARE_BACK_PRESS_EVENT, () => {
-        if (this.props.closeOnHardwareBackPress && this.state.dialogState === DIALOG_OPENED) {
-          this.close(this.props.onClosed);
-          return true;
-        }
-        return false;
-      });
+    BackAndroid.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.hardwareBackEventHandler);
+  }
+
+  hardwareBackEventHandler(): boolean {
+    const { onDismissed, closeOnHardwareBackPress, dismissOnHardwareBackPress } = this.props;
+    const { dialogState } = this.state;
+    // Note: closeOnHardwareBackPress is deprecated
+    const isDismissOnHardwareBackPress = (closeOnHardwareBackPress || dismissOnHardwareBackPress);
+
+    if (isDismissOnHardwareBackPress && dialogState === DIALOG_OPENED) {
+      this.dismiss(onDismissed);
+      return true;
     }
+    return false;
   }
 
   componentWillReceiveProps(nextProps: DialogType) {
+    // Note: deprecated. here only for backward compatibility
     if (this.props.open !== nextProps.open) {
       if (nextProps.open) {
         this.open(nextProps.onOpened);
@@ -111,17 +123,31 @@ class Dialog extends Component {
         this.close(nextProps.onClosed);
       }
     }
-  }
 
-  componentWillUnmount() {
-    if (Platform.OS === 'android') {
-      BackAndroid.removeEventListener(HARDWARE_BACK_PRESS_EVENT);
+    if (this.props.show !== nextProps.show) {
+      if (nextProps.show) {
+        this.show(nextProps.onShowed);
+      } else {
+        this.dismiss(nextProps.onDismissed);
+      }
     }
   }
 
+  componentWillUnmount() {
+    BackAndroid.removeEventListener(HARDWARE_BACK_PRESS_EVENT);
+  }
+
   onOverlayPress() {
-    if (this.props.closeOnTouchOutside) {
-      this.close(this.props.onClosed);
+    // Note: closeOnTouchOutside is deprecated
+    const { onClosed, onDismissed, dismissOnTouchOutside, closeOnTouchOutside } = this.props;
+
+    // Here only for backward compatibility
+    if (closeOnTouchOutside) {
+      this.close(onClosed);
+    }
+
+    if (dismissOnTouchOutside) {
+      this.dismiss(onDismissed);
     }
   }
 
@@ -142,12 +168,22 @@ class Dialog extends Component {
     }, this.props.animationDuration);
   }
 
+  // Note: open is deprecated
   open(onOpened?: Function = () => {}) {
     this.setDialogState(1, onOpened);
   }
 
+  // Note: close is deprecated
   close(onClosed?: Function = () => {}) {
     this.setDialogState(0, onClosed);
+  }
+
+  show(onShowed?: Function = () => {}) {
+    this.setDialogState(1, onShowed);
+  }
+
+  dismiss(onDismissed?: Function = () => {}) {
+    this.setDialogState(0, onDismissed);
   }
 
   get pointerEvents(): string {

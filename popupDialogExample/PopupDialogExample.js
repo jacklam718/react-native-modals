@@ -18,42 +18,42 @@ export default class PopupDialogExample extends Component {
     super(props);
 
     this.state = {
-      dialogOpen: false,
+      dialogShow: false,
     };
 
-    this.openScaleAnimationDialog = this.openScaleAnimationDialog.bind(this);
-    this.openSlideAnimationDialog = this.openSlideAnimationDialog.bind(this);
-    this.openDefaultAnimationDialog = this.openDefaultAnimationDialog.bind(this);
+    this.showScaleAnimationDialog = this.showScaleAnimationDialog.bind(this);
+    this.showSlideAnimationDialog = this.showSlideAnimationDialog.bind(this);
+    this.showDefaultAnimationDialog = this.showDefaultAnimationDialog.bind(this);
   }
 
-  openScaleAnimationDialog() {
-    this.scaleAnimationDialog.openDialog();
+  showScaleAnimationDialog() {
+    this.scaleAnimationDialog.show();
   }
 
-  openSlideAnimationDialog() {
-    this.slideAnimationDialog.openDialog();
+  showSlideAnimationDialog() {
+    this.slideAnimationDialog.show();
   }
 
-  openDefaultAnimationDialog() {
-    this.defaultAnimationDialog.openDialog();
+  showDefaultAnimationDialog() {
+    this.defaultAnimationDialog.show();
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Button
-          text="Open Dialog - Default Animation"
-          onPress={this.openDefaultAnimationDialog}
+          text="Show Dialog - Default Animation"
+          onPress={this.showDefaultAnimationDialog}
         />
 
         <Button
-          text="Open Dialog - Scale Animation"
-          onPress={this.openScaleAnimationDialog}
+          text="Show Dialog - Scale Animation"
+          onPress={this.showScaleAnimationDialog}
         />
 
         <Button
-          text="Open Dialog - Slide Animation"
-          onPress={this.openSlideAnimationDialog}
+          text="Show Dialog - Slide Animation"
+          onPress={this.showSlideAnimationDialog}
         />
 
         <PopupDialog
@@ -61,7 +61,6 @@ export default class PopupDialogExample extends Component {
             this.defaultAnimationDialog = defaultAnimationDialog;
           }}
           dialogTitle={<DialogTitle title="Popup Dialog - Default Animation" />}
-          dialogAnimation={defaultAnimation}
         >
           <View style={styles.dialogContentView}>
             <Text>Default Animation</Text>
@@ -76,16 +75,19 @@ export default class PopupDialogExample extends Component {
           dialogTitle={<DialogTitle title="Popup Dialog - Scale Animation" />}
           actions={[
             <DialogButton
-              text="CLOSE"
+              text="DISMISS"
               onPress={() => {
-                this.scaleAnimationDialog.closeDialog();
+                this.scaleAnimationDialog.dismiss();
               }}
               key="button-1"
             />,
           ]}
         >
           <View style={styles.dialogContentView}>
-            <Text>Scale Animation</Text>
+            <Button
+              text="Show Dialog - Default Animation"
+              onPress={this.showDefaultAnimationDialog}
+            />
           </View>
         </PopupDialog>
 
@@ -101,7 +103,7 @@ export default class PopupDialogExample extends Component {
           </View>
         </PopupDialog>
       </View>
-		);
+    );
   }
 }
 
