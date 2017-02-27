@@ -1,6 +1,8 @@
 ## React Native Popup Dialog
 React Native Popup Dialog for iOS & Android.
 
+Pull request are welcomed. Please follow [Airbnb JS Style Guide](https://github.com/airbnb/javascript)
+
 [Try it with Exponent](https://exp.host/@jacklam718/popup-dialog-example)
 <!-- ![Example](https://jacklam718.github.io/react-native-popup-dialog/resources/react-native-popup-dialog.gif) -->
 <img src="https://jacklam718.github.io/react-native-popup-dialog/resources/popup-dialog-scale-animation.gif" width="250" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://jacklam718.github.io/react-native-popup-dialog/resources/popup-dialog-slide-animation.gif" width="250" />
@@ -169,15 +171,3 @@ import PopupDialog, { DialogTitle } from 'react-native-popup-dialog';
 |---|---|---|---|
 | `toValue` | Number | 0 | |
 | `slideFrom` | String | `bottom` | Available option: `top`, `bottom`, `left`, `right` |
-
-
-## Welcome Become a Contributor 😃 👍
-### I'm welcome anyone become a contributor.
-
-### You must follow style guide.
-  * [JavaScript](https://github.com/airbnb/javascript)
-  * [React](https://github.com/airbnb/javascript/tree/master/react)
-  * Use 2 spaces indentation
-
-### Additional, I recommend you use linter.
-  * [Configure Text Editors](https://github.com/kriasoft/react-starter-kit/blob/master/docs/how-to-configure-text-editors.md)
