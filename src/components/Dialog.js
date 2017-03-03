@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dialog: {
-    borderRadius: 8,
     backgroundColor: '#ffffff',
   },
   hidden: {
@@ -206,10 +205,21 @@ class Dialog extends Component {
     return { width, height };
   }
 
+  get borderRadius(): Object {
+    let { borderRadius } = this.props;
+
+    if (borderRadius != null) {
+      return { borderRadius: borderRadius };
+    } else {
+      return { borderRadius: 8 };
+    }
+  }
+
   render() {
     const dialogState = this.state.dialogState;
     const overlayPointerEvents = this.pointerEvents;
     const dialogSize = this.dialogSize;
+    const borderRadius = this.borderRadius;
     const hidden = dialogState === DIALOG_CLOSED && styles.hidden;
     const isShowOverlay = (
       [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState) && this.props.haveOverlay
@@ -233,6 +243,7 @@ class Dialog extends Component {
           style={[
             styles.dialog,
             dialogSize,
+            borderRadius,
             this.props.dialogStyle,
             this.props.dialogAnimation.animations,
           ]}
