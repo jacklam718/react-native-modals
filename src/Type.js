@@ -15,14 +15,9 @@ export type DialogType = {
   dialogAnimation?: Object;
   dialogStyle?: Object | number;
   animationDuration?: number;
-  closeOnTouchOutside?: boolean;
   dismissOnTouchOutside?: boolean;
-  closeOnHardwareBackPress?: boolean;
   dismissOnHardwareBackPress?: boolean;
-  open?: boolean;
   show?: boolean;
-  onOpened?: Function;
-  onClosed?: Function;
   onShowed?: Function;
   onDismissed?: Function;
   actions?: Array<any>;

@@ -10,16 +10,6 @@ class PopupDialog extends Component {
 
   dialog: Object
 
-  // Note: openDialog is deprecated
-  openDialog(onOpened: ?Function) {
-    this.dialog.open(onOpened);
-  }
-
-  // Note: closeDialog is deprecated
-  closeDialog(onClosed: ?Function) {
-    this.dialog.close(onClosed);
-  }
-
   show(onShowed: ?Function) {
     this.dialog.show(onShowed);
   }

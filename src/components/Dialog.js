@@ -7,7 +7,6 @@ import {
   Animated,
   Dimensions,
   BackAndroid,
-  Platform,
 } from 'react-native';
 
 import Overlay from './Overlay';
@@ -68,13 +67,9 @@ class Dialog extends Component {
     dialogAnimation: new DefaultAnimation({ animationDuration: DEFAULT_ANIMATION_DURATION }),
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
-    closeOnTouchOutside: DISMISS_ON_TOUCH_OUTSIDE,
     dismissOnTouchOutside: DISMISS_ON_TOUCH_OUTSIDE,
-    closeOnHardwareBackPress: DISMISS_ON_HARDWARE_BACK_PRESS, // Note: closeOnHardwareBackPress deprecated
     dismissOnHardwareBackPress: DISMISS_ON_HARDWARE_BACK_PRESS,
     haveOverlay: HAVE_OVERLAY,
-    onOpened: () => {}, // Note: onOpened deprecated
-    onClosed: () => {}, // Note: onClosed deprecated
     onShowed: () => {},
     onDismissed: () => {},
     show: false,
@@ -95,19 +90,17 @@ class Dialog extends Component {
     const { show, onShowed } = this.props;
 
     if (show) {
-      this.open(onShowed);
+      this.show(onShowed);
     }
 
     BackAndroid.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.hardwareBackEventHandler);
   }
 
   hardwareBackEventHandler(): boolean {
-    const { onDismissed, closeOnHardwareBackPress, dismissOnHardwareBackPress } = this.props;
+    const { onDismissed, dismissOnHardwareBackPress } = this.props;
     const { dialogState } = this.state;
-    // Note: closeOnHardwareBackPress is deprecated
-    const isDismissOnHardwareBackPress = (closeOnHardwareBackPress || dismissOnHardwareBackPress);
 
-    if (isDismissOnHardwareBackPress && dialogState === DIALOG_OPENED) {
+    if (dismissOnHardwareBackPress && dialogState === DIALOG_OPENED) {
       this.dismiss(onDismissed);
       return true;
     }
@@ -115,15 +108,6 @@ class Dialog extends Component {
   }
 
   componentWillReceiveProps(nextProps: DialogType) {
-    // Note: deprecated. here only for backward compatibility
-    if (this.props.open !== nextProps.open) {
-      if (nextProps.open) {
-        this.open(nextProps.onOpened);
-      } else {
-        this.close(nextProps.onClosed);
-      }
-    }
-
     if (this.props.show !== nextProps.show) {
       if (nextProps.show) {
         this.show(nextProps.onShowed);
@@ -138,13 +122,7 @@ class Dialog extends Component {
   }
 
   onOverlayPress() {
-    // Note: closeOnTouchOutside is deprecated
-    const { onClosed, onDismissed, dismissOnTouchOutside, closeOnTouchOutside } = this.props;
-
-    // Here only for backward compatibility
-    if (closeOnTouchOutside) {
-      this.close(onClosed);
-    }
+    const { onDismissed, dismissOnTouchOutside } = this.props;
 
     if (dismissOnTouchOutside) {
       this.dismiss(onDismissed);
@@ -166,16 +144,6 @@ class Dialog extends Component {
       this.setState({ dialogState });
       callback();
     }, this.props.animationDuration);
-  }
-
-  // Note: open is deprecated
-  open(onOpened?: Function = () => {}) {
-    this.setDialogState(1, onOpened);
-  }
-
-  // Note: close is deprecated
-  close(onClosed?: Function = () => {}) {
-    this.setDialogState(0, onClosed);
   }
 
   show(onShowed?: Function = () => {}) {
