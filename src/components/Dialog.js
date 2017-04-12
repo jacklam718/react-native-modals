@@ -12,7 +12,7 @@ import {
 import Overlay from './Overlay';
 
 import DefaultAnimation from '../animations/DefaultAnimation';
-import { type DialogType } from '../Type';
+import type { DialogType } from '../Type';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
