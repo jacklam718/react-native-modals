@@ -1,11 +1,11 @@
 {
   "name": "react-native-popup-dialog",
-  "version": "0.7.24",
+  "version": "0.7.25",
   "description": "React Native Popup Dialog for IOS & Android.",
   "main": "dist/index.js",
   "scripts": {
+    "clean": "rimraf dist",
     "build": "npm run clean rimraf && babel src/ -d dist/"
-    "clean": "rimraf dist"
   },
   "repository": {
     "type": "git",
