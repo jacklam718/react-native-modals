@@ -124,7 +124,7 @@ import PopupDialog, { DialogTitle } from 'react-native-popup-dialog';
 | `dismissOnHardwareBackPress` | `Bool` | `true` | Only for Android | |
 | `haveOverlay` | `Bool` | `true` | If false won't show overlay while dialog show | |
 | `show` | `Bool` | `false` |  | |
-| `onShowed` | `Function` | | You can pass showed function as a aallback function, will call the function when dialog showed | |
+| `onShowed` | `Function` | | You can pass showed function as a callback function, will call the function when dialog showed | |
 | `onDismissed` | `Function` | | You can pass onDismissed function as a callback function, will call the function when dialog dismissed | |
 | `actions` | `Array` | | Array of `DialogButton` component for example: ```[<DialogButton text="DISMISS", align="center" onPress={this.dismiss}/>]``` | |
 
