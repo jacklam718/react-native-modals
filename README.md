@@ -1,6 +1,8 @@
 ## React Native Popup Dialog
 React Native Popup Dialog for iOS & Android.
 
+Another similar dialog component: [react-native-dialog-component](https://github.com/jacklam718/react-native-dialog-component) the main difference is style.
+
 Pull request are welcomed. Please follow [Airbnb JS Style Guide](https://github.com/airbnb/javascript)
 
 [Try it with Exponent](https://exp.host/@jacklam718/popup-dialog-example)
