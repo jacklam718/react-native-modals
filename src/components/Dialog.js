@@ -87,21 +87,21 @@ class Dialog extends Component {
   }
 
   componentDidMount() {
-    const { show, onShowed } = this.props;
+    const { show } = this.props;
 
     if (show) {
-      this.show(onShowed);
+      this.show();
     }
 
     BackAndroid.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.hardwareBackEventHandler);
   }
 
   hardwareBackEventHandler(): boolean {
-    const { onDismissed, dismissOnHardwareBackPress } = this.props;
+    const { dismissOnHardwareBackPress } = this.props;
     const { dialogState } = this.state;
 
     if (dismissOnHardwareBackPress && dialogState === DIALOG_OPENED) {
-      this.dismiss(onDismissed);
+      this.dismiss();
       return true;
     }
     return false;
@@ -110,9 +110,9 @@ class Dialog extends Component {
   componentWillReceiveProps(nextProps: DialogType) {
     if (this.props.show !== nextProps.show) {
       if (nextProps.show) {
-        this.show(nextProps.onShowed);
+        this.show();
       } else {
-        this.dismiss(nextProps.onDismissed);
+        this.dismiss();
       }
     }
   }
@@ -122,10 +122,10 @@ class Dialog extends Component {
   }
 
   onOverlayPress() {
-    const { onDismissed, dismissOnTouchOutside } = this.props;
+    const { dismissOnTouchOutside } = this.props;
 
     if (dismissOnTouchOutside) {
-      this.dismiss(onDismissed);
+      this.dismiss();
     }
   }
 
@@ -146,11 +146,13 @@ class Dialog extends Component {
     }, this.props.animationDuration);
   }
 
-  show(onShowed?: Function = () => {}) {
+  show() {
+    const { onShowed } = this.props;
     this.setDialogState(1, onShowed);
   }
 
-  dismiss(onDismissed?: Function = () => {}) {
+  dismiss() {
+    const { onDismissed } = this.props;
     this.setDialogState(0, onDismissed);
   }
 

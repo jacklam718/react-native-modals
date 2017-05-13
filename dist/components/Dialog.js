@@ -86,22 +86,22 @@ _this.onOverlayPress=_this.onOverlayPress.bind(_this);
 _this.hardwareBackEventHandler=_this.hardwareBackEventHandler.bind(_this);return _this;
 }_createClass(Dialog,[{key:'componentDidMount',value:function componentDidMount()
 
-{var _props=
-this.props,show=_props.show,onShowed=_props.onShowed;
+{var
+show=this.props.show;
 
 if(show){
-this.show(onShowed);
+this.show();
 }
 
 _reactNative.BackAndroid.addEventListener(HARDWARE_BACK_PRESS_EVENT,this.hardwareBackEventHandler);
 }},{key:'hardwareBackEventHandler',value:function hardwareBackEventHandler()
 
-{var _props2=
-this.props,onDismissed=_props2.onDismissed,dismissOnHardwareBackPress=_props2.dismissOnHardwareBackPress;var
+{var
+dismissOnHardwareBackPress=this.props.dismissOnHardwareBackPress;var
 dialogState=this.state.dialogState;
 
 if(dismissOnHardwareBackPress&&dialogState===DIALOG_OPENED){
-this.dismiss(onDismissed);
+this.dismiss();
 return true;
 }
 return false;
@@ -110,9 +110,9 @@ return false;
 nextProps){
 if(this.props.show!==nextProps.show){
 if(nextProps.show){
-this.show(nextProps.onShowed);
+this.show();
 }else{
-this.dismiss(nextProps.onDismissed);
+this.dismiss();
 }
 }
 }},{key:'componentWillUnmount',value:function componentWillUnmount()
@@ -121,11 +121,11 @@ this.dismiss(nextProps.onDismissed);
 _reactNative.BackAndroid.removeEventListener(HARDWARE_BACK_PRESS_EVENT);
 }},{key:'onOverlayPress',value:function onOverlayPress()
 
-{var _props3=
-this.props,onDismissed=_props3.onDismissed,dismissOnTouchOutside=_props3.dismissOnTouchOutside;
+{var
+dismissOnTouchOutside=this.props.dismissOnTouchOutside;
 
 if(dismissOnTouchOutside){
-this.dismiss(onDismissed);
+this.dismiss();
 }
 }},{key:'setDialogState',value:function setDialogState(
 
@@ -146,11 +146,13 @@ callback();
 },this.props.animationDuration);
 }},{key:'show',value:function show()
 
-{var onShowed=arguments.length>0&&arguments[0]!==undefined?arguments[0]:function(){};
+{var
+onShowed=this.props.onShowed;
 this.setDialogState(1,onShowed);
 }},{key:'dismiss',value:function dismiss()
 
-{var onDismissed=arguments.length>0&&arguments[0]!==undefined?arguments[0]:function(){};
+{var
+onDismissed=this.props.onDismissed;
 this.setDialogState(0,onDismissed);
 }},{key:'render',value:function render()
 
@@ -210,7 +212,7 @@ this.props.actions)));
 
 
 
-}},{key:'pointerEvents',get:function get(){if(this.props.overlayPointerEvents){return this.props.overlayPointerEvents;}return this.state.dialogState===DIALOG_OPENED?'auto':'none';}},{key:'dialogSize',get:function get(){var _props4=this.props,width=_props4.width,height=_props4.height;if(width&&width>0.0&&width<=1.0){width*=screenWidth;}if(height&&height>0.0&&height<=1.0){height*=screenHeight;}return{width:width,height:height};}}]);return Dialog;}(_react.Component);Dialog.defaultProps={animationDuration:DEFAULT_ANIMATION_DURATION,dialogAnimation:new _DefaultAnimation2.default({animationDuration:DEFAULT_ANIMATION_DURATION}),width:DEFAULT_WIDTH,height:DEFAULT_HEIGHT,dismissOnTouchOutside:DISMISS_ON_TOUCH_OUTSIDE,dismissOnHardwareBackPress:DISMISS_ON_HARDWARE_BACK_PRESS,haveOverlay:HAVE_OVERLAY,onShowed:function onShowed(){},onDismissed:function onDismissed(){},show:false};exports.default=
+}},{key:'pointerEvents',get:function get(){if(this.props.overlayPointerEvents){return this.props.overlayPointerEvents;}return this.state.dialogState===DIALOG_OPENED?'auto':'none';}},{key:'dialogSize',get:function get(){var _props=this.props,width=_props.width,height=_props.height;if(width&&width>0.0&&width<=1.0){width*=screenWidth;}if(height&&height>0.0&&height<=1.0){height*=screenHeight;}return{width:width,height:height};}}]);return Dialog;}(_react.Component);Dialog.defaultProps={animationDuration:DEFAULT_ANIMATION_DURATION,dialogAnimation:new _DefaultAnimation2.default({animationDuration:DEFAULT_ANIMATION_DURATION}),width:DEFAULT_WIDTH,height:DEFAULT_HEIGHT,dismissOnTouchOutside:DISMISS_ON_TOUCH_OUTSIDE,dismissOnHardwareBackPress:DISMISS_ON_HARDWARE_BACK_PRESS,haveOverlay:HAVE_OVERLAY,onShowed:function onShowed(){},onDismissed:function onDismissed(){},show:false};exports.default=
 
 
 Dialog;
