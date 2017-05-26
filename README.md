@@ -69,12 +69,6 @@ import PopupDialog from 'react-native-popup-dialog';
 import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 
 <View style={styles.container}>
-  <Button
-    text="Show Dialog"
-    onPress={() => {
-      this.popupDialog.show();
-    }}
-  />
   <PopupDialog
     ref={(popupDialog) => { this.popupDialog = popupDialog; }}
     dialogAnimation = { new SlideAnimation({ slideFrom: 'bottom' }) }
@@ -91,12 +85,6 @@ import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 import PopupDialog, { DialogTitle } from 'react-native-popup-dialog';
 
 <View style={styles.container}>
-  <Button
-    text="Show Dialog"
-    onPress={() => {
-      this.popupDialog.show();
-    }}
-  />
   <PopupDialog
     dialogTitle={<DialogTitle title="Dialog Title" />}
     ref={(popupDialog) => { this.popupDialog = popupDialog; }}
@@ -106,6 +94,21 @@ import PopupDialog, { DialogTitle } from 'react-native-popup-dialog';
     </View>
   </PopupDialog>
 </View>
+```
+
+## Methods
+#### show
+```javascript
+this.popupDialog.show(() => {
+  console.log('callback');
+});
+```
+
+#### dismiss
+```javascript
+this.popupDialog.dismiss(() => {
+  console.log('callback');
+});
 ```
 
 ## Props
