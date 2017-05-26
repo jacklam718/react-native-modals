@@ -9,9 +9,12 @@ var _reactNative=require('react-native');
 
 
 
+
+
+
 var _Overlay=require('./Overlay');var _Overlay2=_interopRequireDefault(_Overlay);
 
-var _DefaultAnimation=require('../animations/DefaultAnimation');var _DefaultAnimation2=_interopRequireDefault(_DefaultAnimation);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var babelPluginFlowReactPropTypes_proptype_DialogType=require('../Type').babelPluginFlowReactPropTypes_proptype_DialogType||require('react').PropTypes.any;var _Dimensions$get=
+var _DefaultAnimation=require('../animations/DefaultAnimation');var _DefaultAnimation2=_interopRequireDefault(_DefaultAnimation);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var BackHandler=_reactNative.BackHandler||_reactNative.BackAndroid;var babelPluginFlowReactPropTypes_proptype_DialogType=require('../Type').babelPluginFlowReactPropTypes_proptype_DialogType||require('react').PropTypes.any;var _Dimensions$get=
 
 
 _reactNative.Dimensions.get('window'),screenWidth=_Dimensions$get.width,screenHeight=_Dimensions$get.height;
@@ -93,7 +96,7 @@ if(show){
 this.show();
 }
 
-_reactNative.BackAndroid.addEventListener(HARDWARE_BACK_PRESS_EVENT,this.hardwareBackEventHandler);
+BackHandler.addEventListener(HARDWARE_BACK_PRESS_EVENT,this.hardwareBackEventHandler);
 }},{key:'hardwareBackEventHandler',value:function hardwareBackEventHandler()
 
 {var
@@ -118,7 +121,7 @@ this.dismiss();
 }},{key:'componentWillUnmount',value:function componentWillUnmount()
 
 {
-_reactNative.BackAndroid.removeEventListener(HARDWARE_BACK_PRESS_EVENT);
+BackHandler.removeEventListener(HARDWARE_BACK_PRESS_EVENT);
 }},{key:'onOverlayPress',value:function onOverlayPress()
 
 {var

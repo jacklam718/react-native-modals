@@ -6,8 +6,11 @@ import {
   StyleSheet,
   Animated,
   Dimensions,
-  BackAndroid,
+  BackAndroid as RNBackAndroid,
+  BackHandler as RNBackHandler,
 } from 'react-native';
+
+const BackHandler = RNBackHandler || RNBackAndroid;
 
 import Overlay from './Overlay';
 
@@ -93,7 +96,7 @@ class Dialog extends Component {
       this.show();
     }
 
-    BackAndroid.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.hardwareBackEventHandler);
+    BackHandler.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.hardwareBackEventHandler);
   }
 
   hardwareBackEventHandler(): boolean {
@@ -118,7 +121,7 @@ class Dialog extends Component {
   }
 
   componentWillUnmount() {
-    BackAndroid.removeEventListener(HARDWARE_BACK_PRESS_EVENT);
+    BackHandler.removeEventListener(HARDWARE_BACK_PRESS_EVENT);
   }
 
   onOverlayPress() {
