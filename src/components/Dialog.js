@@ -10,7 +10,7 @@ import {
   BackHandler as RNBackHandler,
 } from 'react-native';
 
-const BackHandler = RNBackHandler ? RNBackHandler : RNBackAndroid;
+const BackHandler = RNBackHandler || RNBackAndroid;
 
 import Overlay from './Overlay';
 
