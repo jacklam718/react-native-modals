@@ -176,3 +176,8 @@ this.popupDialog.dismiss(() => {
 |---|---|---|---|
 | `toValue` | Number | 0 | |
 | `slideFrom` | String | `bottom` | Available option: `top`, `bottom`, `left`, `right` |
+
+## Development
+`yarn`
+
+`yarn run build`
