@@ -11,7 +11,7 @@ import DialogTitle from './components/DialogTitle';
 import DialogButton from './components/DialogButton';
 import Dialog from './components/Dialog';
 import Animation from './animations/Animation';
-import DefaultAnimation from './animations/DefaultAnimation';
+import FadeInAnimation from './animations/FadeInAnimation';
 import ScaleAnimation from './animations/ScaleAnimation';
 import SlideAnimation from './animations/SlideAnimation';
 
@@ -21,7 +21,7 @@ export {
   DialogTitle,
   Dialog,
   Animation,
-  DefaultAnimation,
+  FadeInAnimation,
   ScaleAnimation,
   SlideAnimation,
   PopupDialogType,

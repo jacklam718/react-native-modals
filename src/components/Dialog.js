@@ -14,7 +14,7 @@ const BackHandler = RNBackHandler || RNBackAndroid;
 
 import Overlay from './Overlay';
 
-import DefaultAnimation from '../animations/DefaultAnimation';
+import FadeInAnimation from '../animations/FadeInAnimation';
 import type { DialogType } from '../Type';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
@@ -67,7 +67,7 @@ class Dialog extends Component {
 
   static defaultProps = {
     animationDuration: DEFAULT_ANIMATION_DURATION,
-    dialogAnimation: new DefaultAnimation({ animationDuration: DEFAULT_ANIMATION_DURATION }),
+    dialogAnimation: new FadeInAnimation({ animationDuration: DEFAULT_ANIMATION_DURATION }),
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
     dismissOnTouchOutside: DISMISS_ON_TOUCH_OUTSIDE,

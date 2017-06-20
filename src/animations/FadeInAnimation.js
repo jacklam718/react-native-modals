@@ -8,7 +8,7 @@ type Param = {
   animationDuration?: number,
 }
 
-export default class DefaultAnimation extends Animation {
+export default class FadeInAnimation extends Animation {
   animate: Object
   animationDuration: number
 
