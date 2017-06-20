@@ -150,8 +150,8 @@ callback();
 }},{key:'show',value:function show()
 
 {var
-onShowed=this.props.onShowed;
-this.setDialogState(1,onShowed);
+onShown=this.props.onShown;
+this.setDialogState(1,onShown);
 }},{key:'dismiss',value:function dismiss()
 
 {var
@@ -215,7 +215,7 @@ this.props.actions)));
 
 
 
-}},{key:'pointerEvents',get:function get(){if(this.props.overlayPointerEvents){return this.props.overlayPointerEvents;}return this.state.dialogState===DIALOG_OPENED?'auto':'none';}},{key:'dialogSize',get:function get(){var _props=this.props,width=_props.width,height=_props.height;if(width&&width>0.0&&width<=1.0){width*=screenWidth;}if(height&&height>0.0&&height<=1.0){height*=screenHeight;}return{width:width,height:height};}}]);return Dialog;}(_react.Component);Dialog.defaultProps={animationDuration:DEFAULT_ANIMATION_DURATION,dialogAnimation:new _FadeInAnimation2.default({animationDuration:DEFAULT_ANIMATION_DURATION}),width:DEFAULT_WIDTH,height:DEFAULT_HEIGHT,dismissOnTouchOutside:DISMISS_ON_TOUCH_OUTSIDE,dismissOnHardwareBackPress:DISMISS_ON_HARDWARE_BACK_PRESS,haveOverlay:HAVE_OVERLAY,onShowed:function onShowed(){},onDismissed:function onDismissed(){},show:false};exports.default=
+}},{key:'pointerEvents',get:function get(){if(this.props.overlayPointerEvents){return this.props.overlayPointerEvents;}return this.state.dialogState===DIALOG_OPENED?'auto':'none';}},{key:'dialogSize',get:function get(){var _props=this.props,width=_props.width,height=_props.height;if(width&&width>0.0&&width<=1.0){width*=screenWidth;}if(height&&height>0.0&&height<=1.0){height*=screenHeight;}return{width:width,height:height};}}]);return Dialog;}(_react.Component);Dialog.defaultProps={animationDuration:DEFAULT_ANIMATION_DURATION,dialogAnimation:new _FadeInAnimation2.default({animationDuration:DEFAULT_ANIMATION_DURATION}),width:DEFAULT_WIDTH,height:DEFAULT_HEIGHT,dismissOnTouchOutside:DISMISS_ON_TOUCH_OUTSIDE,dismissOnHardwareBackPress:DISMISS_ON_HARDWARE_BACK_PRESS,haveOverlay:HAVE_OVERLAY,onShown:function onShown(){},onDismissed:function onDismissed(){},show:false};exports.default=
 
 
 Dialog;

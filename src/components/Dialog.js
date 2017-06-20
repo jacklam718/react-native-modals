@@ -73,7 +73,7 @@ class Dialog extends Component {
     dismissOnTouchOutside: DISMISS_ON_TOUCH_OUTSIDE,
     dismissOnHardwareBackPress: DISMISS_ON_HARDWARE_BACK_PRESS,
     haveOverlay: HAVE_OVERLAY,
-    onShowed: () => {},
+    onShown: () => {},
     onDismissed: () => {},
     show: false,
   }
@@ -150,8 +150,8 @@ class Dialog extends Component {
   }
 
   show() {
-    const { onShowed } = this.props;
-    this.setDialogState(1, onShowed);
+    const { onShown } = this.props;
+    this.setDialogState(1, onShown);
   }
 
   dismiss() {

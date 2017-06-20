@@ -18,7 +18,7 @@ export type DialogType = {
   dismissOnTouchOutside?: boolean;
   dismissOnHardwareBackPress?: boolean;
   show?: boolean;
-  onShowed?: Function;
+  onShown?: Function;
   onDismissed?: Function;
   actions?: Array<any>;
   children: any;

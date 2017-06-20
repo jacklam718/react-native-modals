@@ -10,8 +10,8 @@ PopupDialog=function(_Component){_inherits(PopupDialog,_Component);function Popu
 
 
 
-onShowed){
-this.dialog.show(onShowed);
+onShown){
+this.dialog.show(onShown);
 }},{key:'dismiss',value:function dismiss(
 
 onDismissed){
