@@ -1,4 +1,4 @@
-Object.defineProperty(exports,"__esModule",{value:true});exports.OverlayType=exports.DialogTitleType=exports.DialogButtonType=exports.DialogType=exports.PopupDialogType=exports.SlideAnimation=exports.ScaleAnimation=exports.FadeInAnimation=exports.Animation=exports.Dialog=exports.DialogTitle=exports.DialogButton=exports.Overlay=undefined;var _Type=require('./Type');
+Object.defineProperty(exports,"__esModule",{value:true});exports.OverlayType=exports.DialogTitleType=exports.DialogButtonType=exports.DialogType=exports.PopupDialogType=exports.SlideAnimation=exports.ScaleAnimation=exports.FadeAnimation=exports.Animation=exports.Dialog=exports.DialogTitle=exports.DialogButton=exports.Overlay=undefined;var _Type=require('./Type');
 
 
 
@@ -11,7 +11,7 @@ var _DialogTitle=require('./components/DialogTitle');var _DialogTitle2=_interopR
 var _DialogButton=require('./components/DialogButton');var _DialogButton2=_interopRequireDefault(_DialogButton);
 var _Dialog=require('./components/Dialog');var _Dialog2=_interopRequireDefault(_Dialog);
 var _Animation=require('./animations/Animation');var _Animation2=_interopRequireDefault(_Animation);
-var _FadeInAnimation=require('./animations/FadeInAnimation');var _FadeInAnimation2=_interopRequireDefault(_FadeInAnimation);
+var _FadeAnimation=require('./animations/FadeAnimation');var _FadeAnimation2=_interopRequireDefault(_FadeAnimation);
 var _ScaleAnimation=require('./animations/ScaleAnimation');var _ScaleAnimation2=_interopRequireDefault(_ScaleAnimation);
 var _SlideAnimation=require('./animations/SlideAnimation');var _SlideAnimation2=_interopRequireDefault(_SlideAnimation);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}exports.
 
@@ -21,7 +21,7 @@ DialogButton=_DialogButton2.default;exports.
 DialogTitle=_DialogTitle2.default;exports.
 Dialog=_Dialog2.default;exports.
 Animation=_Animation2.default;exports.
-FadeInAnimation=_FadeInAnimation2.default;exports.
+FadeAnimation=_FadeAnimation2.default;exports.
 ScaleAnimation=_ScaleAnimation2.default;exports.
 SlideAnimation=_SlideAnimation2.default;exports.
 PopupDialogType=_Type.PopupDialogType;exports.

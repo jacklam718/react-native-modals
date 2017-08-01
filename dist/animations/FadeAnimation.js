@@ -8,15 +8,15 @@ var _Animation2=require('./Animation');var _Animation3=_interopRequireDefault(_A
 
 
 
-FadeInAnimation=function(_Animation){_inherits(FadeInAnimation,_Animation);
+FadeAnimation=function(_Animation){_inherits(FadeAnimation,_Animation);
 
 
 
-function FadeInAnimation(_ref){var _ref$toValue=_ref.toValue,toValue=_ref$toValue===undefined?0:_ref$toValue,_ref$animationDuratio=_ref.animationDuration,animationDuration=_ref$animationDuratio===undefined?200:_ref$animationDuratio;_classCallCheck(this,FadeInAnimation);var _this=_possibleConstructorReturn(this,(FadeInAnimation.__proto__||Object.getPrototypeOf(FadeInAnimation)).call(this,
+function FadeAnimation(_ref){var _ref$toValue=_ref.toValue,toValue=_ref$toValue===undefined?0:_ref$toValue,_ref$animationDuratio=_ref.animationDuration,animationDuration=_ref$animationDuratio===undefined?200:_ref$animationDuratio;_classCallCheck(this,FadeAnimation);var _this=_possibleConstructorReturn(this,(FadeAnimation.__proto__||Object.getPrototypeOf(FadeAnimation)).call(this,
 toValue));
 
 _this.animationDuration=animationDuration;return _this;
-}_createClass(FadeInAnimation,[{key:'toValue',value:function(_toValue){function toValue(_x){return _toValue.apply(this,arguments);}toValue.toString=function(){return _toValue.toString();};return toValue;}(function(
+}_createClass(FadeAnimation,[{key:'toValue',value:function(_toValue){function toValue(_x){return _toValue.apply(this,arguments);}toValue.toString=function(){return _toValue.toString();};return toValue;}(function(
 
 toValue){
 _reactNative.Animated.timing(this.animate,{
@@ -27,4 +27,4 @@ start();
 
 {
 return{opacity:this.animate};
-}}]);return FadeInAnimation;}(_Animation3.default);exports.default=FadeInAnimation;
+}}]);return FadeAnimation;}(_Animation3.default);exports.default=FadeAnimation;

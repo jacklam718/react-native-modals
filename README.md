@@ -24,20 +24,20 @@ yarn add react-native-popup-dialog
 
 ## Exposed Modules
 
-1. Dialog
-2. PopupDialog
-3. DialogButton
-4. DialogTitle
-5. Overlay
-6. Animation
-7. FadeInAnimation
-8. ScaleAnimation
-9. SlideAnimation
-10. PopupDialogType
-11. DialogType
-12. DialogButtonType
-13. DialogTitleType
-14. OverlayType
+* Dialog
+* PopupDialog
+* DialogButton
+* DialogTitle
+* Overlay
+* Animation
+* FadeAnimation
+* ScaleAnimation
+* SlideAnimation
+* PopupDialogType
+* DialogType
+* DialogButtonType
+* DialogTitleType
+* OverlayType
 
 ## Examples
 [Example](https://github.com/jacklam718/react-native-popup-dialog/blob/master/popup-dialog-example/PopupDialogExample.js)
@@ -119,7 +119,7 @@ this.popupDialog.dismiss(() => {
 | `dialogTitle` | `React Element` | | You can pass a `DialogTitle` component or pass a `View` for customizing titlebar |
 | `width` | `Number` | Your device width | The Width of Dialog, you can use fixed width or use percentage
 | `height` | `Number` | 300 | The Width of Dialog, you can use fixed height or use percentage
-| `dialogAnimation` |  | `FadeInAnimation` | animation for dialog | |
+| `dialogAnimation` |  | `FadeAnimation` | animation for dialog | |
 | `dialogStyle` | `Object` or `Number` | | | |
 | `animationDuration` | `Number` | `200` | | |
 | `overlayPointerEvents` | `String` | | Available option: `auto`, `none` |
@@ -160,7 +160,7 @@ this.popupDialog.dismiss(() => {
 ## Animation
 ### Params for (*)Animation
 
-### FadeInAnimation
+### FadeAnimation
 | Param | Type | Default | Note |
 |---|---|---|---|
 | `toValue` | Number | 0 | |
