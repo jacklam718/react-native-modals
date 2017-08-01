@@ -44,7 +44,8 @@ position:'absolute',
 top:0,
 left:0,
 justifyContent:'center',
-alignItems:'center'},
+alignItems:'center',
+zIndex:1000},
 
 dialog:{
 borderRadius:8,

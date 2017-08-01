@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     left: 0,
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 1000,
   },
   dialog: {
     borderRadius: 8,
