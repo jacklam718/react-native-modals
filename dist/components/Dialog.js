@@ -10,11 +10,12 @@ var _reactNative=require('react-native');
 
 
 
-
-
 var _Overlay=require('./Overlay');var _Overlay2=_interopRequireDefault(_Overlay);
 
-var _FadeInAnimation=require('../animations/FadeInAnimation');var _FadeInAnimation2=_interopRequireDefault(_FadeInAnimation);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var BackHandler=_reactNative.BackHandler||_reactNative.BackAndroid;var babelPluginFlowReactPropTypes_proptype_DialogType=require('../Type').babelPluginFlowReactPropTypes_proptype_DialogType||require('react').PropTypes.any;var _Dimensions$get=
+var _FadeAnimation=require('../animations/FadeAnimation');var _FadeAnimation2=_interopRequireDefault(_FadeAnimation);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var babelPluginFlowReactPropTypes_proptype_DialogType=require('../Type').babelPluginFlowReactPropTypes_proptype_DialogType||require('react').PropTypes.any;
+
+
+var BackHandler=_reactNative.BackHandler||_reactNative.BackAndroid;var _Dimensions$get=
 
 
 _reactNative.Dimensions.get('window'),screenWidth=_Dimensions$get.width,screenHeight=_Dimensions$get.height;
@@ -216,7 +217,7 @@ this.props.actions)));
 
 
 
-}},{key:'pointerEvents',get:function get(){if(this.props.overlayPointerEvents){return this.props.overlayPointerEvents;}return this.state.dialogState===DIALOG_OPENED?'auto':'none';}},{key:'dialogSize',get:function get(){var _props=this.props,width=_props.width,height=_props.height;if(width&&width>0.0&&width<=1.0){width*=screenWidth;}if(height&&height>0.0&&height<=1.0){height*=screenHeight;}return{width:width,height:height};}}]);return Dialog;}(_react.Component);Dialog.defaultProps={animationDuration:DEFAULT_ANIMATION_DURATION,dialogAnimation:new _FadeInAnimation2.default({animationDuration:DEFAULT_ANIMATION_DURATION}),width:DEFAULT_WIDTH,height:DEFAULT_HEIGHT,dismissOnTouchOutside:DISMISS_ON_TOUCH_OUTSIDE,dismissOnHardwareBackPress:DISMISS_ON_HARDWARE_BACK_PRESS,haveOverlay:HAVE_OVERLAY,onShown:function onShown(){},onDismissed:function onDismissed(){},show:false};exports.default=
+}},{key:'pointerEvents',get:function get(){if(this.props.overlayPointerEvents){return this.props.overlayPointerEvents;}return this.state.dialogState===DIALOG_OPENED?'auto':'none';}},{key:'dialogSize',get:function get(){var _props=this.props,width=_props.width,height=_props.height;if(width&&width>0.0&&width<=1.0){width*=screenWidth;}if(height&&height>0.0&&height<=1.0){height*=screenHeight;}return{width:width,height:height};}}]);return Dialog;}(_react.Component);Dialog.defaultProps={animationDuration:DEFAULT_ANIMATION_DURATION,dialogAnimation:new _FadeAnimation2.default({animationDuration:DEFAULT_ANIMATION_DURATION}),width:DEFAULT_WIDTH,height:DEFAULT_HEIGHT,dismissOnTouchOutside:DISMISS_ON_TOUCH_OUTSIDE,dismissOnHardwareBackPress:DISMISS_ON_HARDWARE_BACK_PRESS,haveOverlay:HAVE_OVERLAY,onShown:function onShown(){},onDismissed:function onDismissed(){},show:false};exports.default=
 
 
 Dialog;

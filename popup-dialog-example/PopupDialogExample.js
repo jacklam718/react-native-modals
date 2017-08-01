@@ -5,13 +5,13 @@ import PopupDialog, {
   DialogButton,
   SlideAnimation,
   ScaleAnimation,
-  FadeInAnimation,
+  FadeAnimation,
 } from 'react-native-popup-dialog';
 import Button from './Button';
 
 const slideAnimation = new SlideAnimation({ slideFrom: 'bottom' });
 const scaleAnimation = new ScaleAnimation();
-const defaultAnimation = new FadeInAnimation({ animationDuration: 150 });
+const fadeAnimation = new FadeAnimation({ animationDuration: 150 });
 
 const styles = StyleSheet.create({
   container: {
@@ -55,7 +55,7 @@ export default class PopupDialogExample extends Component {
 
     this.showScaleAnimationDialog = this.showScaleAnimationDialog.bind(this);
     this.showSlideAnimationDialog = this.showSlideAnimationDialog.bind(this);
-    this.showFadeInAnimationDialog = this.showFadeInAnimationDialog.bind(this);
+    this.showFadeAnimationDialog = this.showFadeAnimationDialog.bind(this);
   }
 
   // eslint-disable-next-line
@@ -71,7 +71,7 @@ export default class PopupDialogExample extends Component {
     this.slideAnimationDialog.show();
   }
 
-  showFadeInAnimationDialog() {
+  showFadeAnimationDialog() {
     this.fadeAnimationDialog.show();
   }
 
@@ -79,7 +79,7 @@ export default class PopupDialogExample extends Component {
     <View style={styles.container}>
       <Button
         text="Show Dialog - Default Animation"
-        onPress={this.showFadeInAnimationDialog}
+        onPress={this.showFadeAnimationDialog}
       />
 
       <Button
@@ -144,7 +144,7 @@ export default class PopupDialogExample extends Component {
           <View style={styles.dialogContentView}>
             <Button
               text="Show Dialog - Default Animation"
-              onPress={this.showFadeInAnimationDialog}
+              onPress={this.showFadeAnimationDialog}
             />
           </View>
         </PopupDialog>
