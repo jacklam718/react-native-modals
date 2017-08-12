@@ -1,8 +1,11 @@
 language: node_js
+cache: yarn
+before_install:
+  - npm install -g yarn --cache-min "infinity"
 node_js:
-- '7'
+  - '7'
 install:
-- yarn
+  - yarn
 deploy:
   provider: npm
   email: jacklam718@gmail.com
