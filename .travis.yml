@@ -1,6 +1,8 @@
 language: node_js
 node_js:
 - '7'
+install:
+- yarn
 deploy:
   provider: npm
   email: jacklam718@gmail.com
