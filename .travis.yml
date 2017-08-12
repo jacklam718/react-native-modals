@@ -1,16 +1,16 @@
 language: node_js
 cache: yarn
 before_install:
-  - npm install -g yarn --cache-min "infinity"
+- npm install -g yarn --cache-min "infinity"
 node_js:
-  - '7'
+- '7'
 install:
-  - yarn
+- yarn
 deploy:
   provider: npm
   email: jacklam718@gmail.com
   api_key:
-    secure: lufwz6mX0VkTWGgKwn1fsMpc/ZAul7M8bY5mjlrAGQX9mBpOinxSPPNBTVIqAUYVkO8yn3RQO+PT88Qf99t7dZWoNavY8rKtQVv35IuupV67zdEYOfxG7RVsVXfF/7Elr4+VgEFTs7amoYYjtPLCHEQ5o2niLx9cRtiFMlPvphYP6mGuUAtdrlwVzyZzrl1KfhpoWwsHw2f3y6aCN6y/AG2emRQoMPV28haYlbTzL9C/NyBqHbKuBa/v0wMKVmwrkbUDwdZ7AymiTCEpRdnPOTqfNcnQFJtsdpqzr7IKsByqvNOFA6KlYvivTF6IFiqdk5UZJP+t3e9uQOYLoRdvQkHqupuTpbB2lt8mzKc9VDAeOXnNyD+coz7tWqUkKnGeXqJIEloMdbQt33OAw/ba35waaMRCK6CBXpTzoUdhljJKcEkctOiICEZ5F1sc5/5pp8+nwhEzDsy3CVRrJbUNS6c5z4dAJqMc1dIhCrJQETXuG+PZJxlr84GhNo7VQ6yiZ9acRaQvYtanmC3q4pc6snFNLQKYoJtJwKQigGLgM53EF2QuRjHTN3SfFdl+y5g10EDme0FOA96AC64SrcbtYy+Om4oYncRraZ7m+4qlZvdVqFyddNnVLDy911GKsCE4McQl58uOmSB4l7ge+U5ut3Fo211ooWoyW0XWEMcT0E4=
+    secure: yOZH+22ufpqtah0n35Z7GkU3Nh6nnguMB//ScpoSs+1lan0j6ft4QENdNLzsqhbQy1nrliKdCHRJXpoLqZPHt2Taa1HVwe6GwxDpdNoHOLO4iBB6TvV2LeiP/kX2s/z69OOBRZPrXuy+XG4krBeyeL9dJNH1N5Ssv4jIb6vCz6rrguZ1HYWInl/oUMkkyipr63E6UheILGizGeeWBknDl16vgkadQ+nk2Wh/ji2Nk+Q3XVs7KN4Oze3RbeOtXHCXsGSYQvTignkGQzCSZCT0JNQQNgyphx4eRqxhU3KIlLg4QywNmECFJ1xUeWzuDZkStbwz2dZHxX7t72k733S7/1qBHo2H08qZXABb+1mQI0RaHk561beHlIG1IOndXSFuRfygAK1cTldUFvvXU7pOxHrU86WcET0qHaO1XmWPv2url4HXPJ8JozqV7RXKp/7MWmDhebR37537rHtsI74qseRFcrzbKyVYq5fijq6LizvR72g9VdM6G0sQwJtgliEwnoS3ZhmdvIrcphQs17ZhAjm0FBIg3QQjSsKiMvFbxNrIhgx0dTBVCuUInImpteYzRTH8KvdeVi3c/BILxayUn3jBi45NW7XfM+0PxnCMMxs0yYVKDCiVi/VskIGfARRgtwZffP0a8/fZUpVeWAM7A4RaB0PocgHwL3t2+n3pdvg=
   on:
     tags: true
     repo: jacklam718/react-native-popup-dialog
