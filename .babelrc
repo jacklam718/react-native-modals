@@ -1,9 +1,12 @@
 {
   "presets": [
-    "es2016",
     "react-native"
   ],
-  "plugins": [
-    "flow-react-proptypes"
-  ]
+  "env": {
+    "development": {
+      "plugins": [
+        "flow-react-proptypes"
+      ]
+    }
+  }
 }
