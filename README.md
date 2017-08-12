@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/jacklam718/react-native-popup-dialog.svg?branch=master)](https://travis-ci.org/jacklam718/react-native-popup-dialog)
+[![npm](https://img.shields.io/npm/dm/react-native-popup-dialog.svg)]()
+[![npm](https://img.shields.io/npm/v/react-native-popup-dialog.svg)]()
+
 ## React Native Popup Dialog
 React Native Popup Dialog for iOS & Android.
 
