@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && babel src/ -d dist/"
+    "build": "npm run clean && babel src/ -d dist/",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -28,22 +29,31 @@
   "license": "MIT",
   "homepage": "https://github.com/jacklam718/react-native-popup-dialog/blob/master/README.md",
   "dependencies": {
-    "babel-plugin-flow-react-proptypes": "^2.0.0",
-    "babel-preset-es2016": "^6.22.0",
-    "babel-preset-react-native": "^1.9.1",
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.1.1",
+    "babel-jest": "20.0.3",
+    "babel-plugin-flow-react-proptypes": "^4.1.0",
+    "babel-preset-react-native": "^2.1.0",
     "eslint": "^3.15.0",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.9.0",
     "flow-bin": "^0.38.0",
-    "react": "^15.4.2",
-    "react-native": "^0.41.1",
+    "jest": "^20.0.4",
+    "jest-react-native": "^18.0.0",
+    "react": "^15.6.1",
+    "react-native": "0.42",
+    "react-test-renderer": "^15.6.1",
     "rimraf": "^2.6.1"
+  },
+  "jest": {
+    "preset": "jest-react-native",
+    "modulePathIgnorePatterns": [
+      "popup-dialog-example/node_modules"
+    ]
   }
 }
