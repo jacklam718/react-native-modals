@@ -120,45 +120,45 @@ this.popupDialog.dismiss(() => {
 ### PopupDialog
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| `dialogTitle` | `React Element` | | You can pass a `DialogTitle` component or pass a `View` for customizing titlebar |
-| `width` | `Number` | Your device width | The Width of Dialog, you can use fixed width or use percentage
-| `height` | `Number` | 300 | The Width of Dialog, you can use fixed height or use percentage
-| `dialogAnimation` |  | `FadeAnimation` | animation for dialog | |
-| `dialogStyle` | `Object` or `Number` | | | |
-| `animationDuration` | `Number` | `200` | | |
-| `overlayPointerEvents` | `String` | | Available option: `auto`, `none` |
-| `overlayBackgroundColor` | `String` | `#000` |
-| `overlayOpacity` | `Number` | `0.5` |
-| `dismissOnTouchOutside` | `Bool` | `true` | When touch overlay will dismiss dialog, but if `haveOverlay` is false then the `dismissOnTouchOutside` won't work| |
-| `dismissOnHardwareBackPress` | `Bool` | `true` | Only for Android | |
-| `haveOverlay` | `Bool` | `true` | If false won't show overlay while dialog show | |
-| `show` | `Bool` | `false` |  | |
-| `onShown` | `Function` | | You can pass shown function as a callback function, will call the function when dialog shown | |
-| `onDismissed` | `Function` | | You can pass onDismissed function as a callback function, will call the function when dialog dismissed | |
-| `actions` | `Array` | | Array of `DialogButton` component for example: ```[<DialogButton text="DISMISS", align="center" onPress={this.dismiss}/>]``` | |
+| `dialogTitle?` | `React Element` | | You can pass a `DialogTitle` component or pass a `View` for customizing titlebar |
+| `width?` | `Number` | Your device width | The Width of Dialog, you can use fixed width or use percentage
+| `height?` | `Number` | 300 | The Width of Dialog, you can use fixed height or use percentage
+| `dialogAnimation?` |  | `FadeAnimation` | animation for dialog | |
+| `dialogStyle?` | `any` | | | |
+| `animationDuration?` | `Number` | `200` | | |
+| `overlayPointerEvents?` | `String` | | Available option: `auto`, `none` |
+| `overlayBackgroundColor?` | `String` | `#000` |
+| `overlayOpacity?` | `Number` | `0.5` |
+| `dismissOnTouchOutside?` | `Bool` | `true` | When touch overlay will dismiss dialog, but if `haveOverlay?` is false then the `dismissOnTouchOutside` won't work| |
+| `dismissOnHardwareBackPress?` | `Bool` | `true` | Only for Android | |
+| `haveOverlay?` | `Bool` | `true` | If false won't show overlay while dialog show | |
+| `show?` | `Bool` | `false` |  | |
+| `onShown?` | `Function` | | You can pass shown function as a callback function, will call the function when dialog shown | |
+| `onDismissed?` | `Function` | | You can pass onDismissed function as a callback function, will call the function when dialog dismissed | |
+| `actions?` | `Array` | | Array of `DialogButton` component for example: ```[<DialogButton text="DISMISS", align="center" onPress={this.dismiss}/>]``` | |
 
 
 ### DialogTitle
 | Prop | Type | Default | Note |
 |---|---|---|---|
 | `title` | `String` | | | |
-| `titleStyle` | `Object` or `Number` | | | |
-| `titleTextStyle` | `Object` or `Number` | | | |
-| `titleAlign` | `String` | `center` | | |
-| `haveTitleBar` | `Bool` | `true` | | |
+| `titleStyle?` | `any` | | | |
+| `titleTextStyle?` | `any` | | | |
+| `titleAlign?` | `String` | `center` | | |
+| `haveTitleBar?` | `Bool` | `true` | | |
 
 
 ### DialogButton
 | Prop | Type | Default | Note |
 |---|---|---|---|
 | `text` | `String` | | | |
-| `align` | `String` | `center` | The position of the button. Available option: `left`, `center`, `right` | |
-| `onPress` | `Function` | | | |
-| `buttonStyle` | `Object` or `Number` | | | |
-| `textStyle` | `Object` or `Number` | | | |
-| `textContainerStyle` | `Object` or `Number` | | | |
-| `disabled` | `Boolean` | `false` | | |
-| `activeOpacity` | `Number` | | | |
+| `align?` | `String` | `center` | The position of the button. Available option: `left`, `center`, `right` | |
+| `onPress?` | `Function` | | | |
+| `buttonStyle?` | `any` | | | |
+| `textStyle?` | `any` | | | |
+| `textContainerStyle?` | `any` | | | |
+| `disabled?` | `Boolean` | `false` | | |
+| `activeOpacity?` | `Number` | | | |
 
 
 ## Animation

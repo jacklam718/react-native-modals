@@ -1,7 +1,7 @@
 // @flow
 
 export type PopupDialogType = {
-  dialogTitle: any;
+  dialogTitle?: any;
   children: any;
 }
 
@@ -13,7 +13,7 @@ export type DialogType = {
   overlayBackgroundColor?: string;
   overlayOpacity?: number;
   dialogAnimation?: Object;
-  dialogStyle?: Object | number;
+  dialogStyle?: any;
   animationDuration?: number;
   dismissOnTouchOutside?: boolean;
   dismissOnHardwareBackPress?: boolean;
@@ -28,17 +28,17 @@ export type DialogButtonType = {
   text: string;
   onPress: Function;
   align?: string;
-  buttonStyle?: Object | number;
-  textStyle?: Object | number;
-  textContainerStyle?: Object | number;
+  buttonStyle?: any;
+  textStyle?: any;
+  textContainerStyle?: any;
   disabled?: boolean;
   activeOpacity?: number;
 }
 
 export type DialogTitleType = {
-  title: string | number;
-  titleStyle?: Object | number;
-  titleTextStyle?: Object | number;
+  title: any;
+  titleStyle?: any;
+  titleTextStyle?: any;
   titleAlign?: string;
   haveTitleBar?: boolean;
 }
