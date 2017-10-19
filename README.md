@@ -121,6 +121,7 @@ this.popupDialog.dismiss();
 | `height?` | `Number` | 300 | The Width of Dialog, you can use fixed height or use percentage
 | `dialogAnimation?` |  | `FadeAnimation` | animation for dialog | |
 | `dialogStyle?` | `any` | | | |
+| `containerStyle?` | `any` | | For example: ``` {  zIndex: 10, elevation: 10 } ``` | |
 | `animationDuration?` | `Number` | `200` | | |
 | `overlayPointerEvents?` | `String` | | Available option: `auto`, `none` |
 | `overlayBackgroundColor?` | `String` | `#000` |

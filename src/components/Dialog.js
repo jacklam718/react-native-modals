@@ -195,7 +195,7 @@ class Dialog extends Component {
     };
 
     return (
-      <View style={[styles.container, hidden, dimensions]}>
+      <View style={[styles.container, hidden, dimensions, this.props.containerStyle]}>
         <Overlay
           pointerEvents={overlayPointerEvents}
           showOverlay={isShowOverlay}
