@@ -68,6 +68,7 @@ class Dialog extends Component {
   props: DialogType
 
   static defaultProps = {
+    containerStyle: null,
     animationDuration: DEFAULT_ANIMATION_DURATION,
     dialogAnimation: new FadeAnimation({ animationDuration: DEFAULT_ANIMATION_DURATION }),
     width: DEFAULT_WIDTH,
