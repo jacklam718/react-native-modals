@@ -121,6 +121,7 @@ this.popupDialog.dismiss();
 | `height?` | `Number` | 300 | The Width of Dialog, you can use fixed height or use percentage
 | `dialogAnimation?` |  | `FadeAnimation` | animation for dialog | |
 | `dialogStyle?` | `any` | | | |
+| `containerStyle?` | `any` | | For example: ``` {  zIndex: 10, elevation: 10 } ``` | |
 | `animationDuration?` | `Number` | `200` | | |
 | `overlayPointerEvents?` | `String` | | Available option: `auto`, `none` |
 | `overlayBackgroundColor?` | `String` | `#000` |
@@ -131,7 +132,7 @@ this.popupDialog.dismiss();
 | `show?` | `Bool` | `false` |  | |
 | `onShown?` | `Function` | | You can pass shown function as a callback function, will call the function when dialog shown | |
 | `onDismissed?` | `Function` | | You can pass onDismissed function as a callback function, will call the function when dialog dismissed | |
-| `actions?` | `Array` | | Array of `DialogButton` component for example: ```[<DialogButton text="DISMISS", align="center" onPress={this.dismiss}/>]``` | |
+| `actions?` | `Array` | | Array of `DialogButton` component for example: ```[<DialogButton text="DISMISS" align="center" onPress={() => this.popupDialog.dismiss()}/>]``` | |
 
 
 ### DialogTitle

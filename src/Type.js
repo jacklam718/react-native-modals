@@ -14,6 +14,7 @@ export type DialogType = {
   overlayOpacity?: number;
   dialogAnimation?: Object;
   dialogStyle?: any;
+  containerStyle?: any;
   animationDuration?: number;
   dismissOnTouchOutside?: boolean;
   dismissOnHardwareBackPress?: boolean;
