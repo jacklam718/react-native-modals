@@ -61,12 +61,6 @@ const styles = StyleSheet.create({
 });
 
 class Dialog extends Component {
-  state: {
-    dialogState: string,
-  }
-
-  props: DialogType
-
   static defaultProps = {
     containerStyle: null,
     animationDuration: DEFAULT_ANIMATION_DURATION,
@@ -81,16 +75,9 @@ class Dialog extends Component {
     show: false,
   }
 
-  constructor(props: DialogType) {
-    super(props);
-    // opened, opening, closed, closing,
-    this.state = {
-      dialogState: DIALOG_CLOSED,
-    };
-
-    (this: any).onOverlayPress = this.onOverlayPress.bind(this);
-    (this: any).hardwareBackEventHandler = this.hardwareBackEventHandler.bind(this);
-  }
+  state = {
+    dialogState: DIALOG_CLOSED,
+  };
 
   componentDidMount() {
     const { show } = this.props;
@@ -100,17 +87,6 @@ class Dialog extends Component {
     }
 
     BackHandler.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.hardwareBackEventHandler);
-  }
-
-  hardwareBackEventHandler(): boolean {
-    const { dismissOnHardwareBackPress } = this.props;
-    const { dialogState } = this.state;
-
-    if (dismissOnHardwareBackPress && dialogState === DIALOG_OPENED) {
-      this.dismiss();
-      return true;
-    }
-    return false;
   }
 
   componentWillReceiveProps(nextProps: DialogType) {
@@ -127,7 +103,7 @@ class Dialog extends Component {
     BackHandler.removeEventListener(HARDWARE_BACK_PRESS_EVENT);
   }
 
-  onOverlayPress() {
+  onOverlayPress = () => {
     const { dismissOnTouchOutside } = this.props;
 
     if (dismissOnTouchOutside) {
@@ -152,16 +128,6 @@ class Dialog extends Component {
     }, this.props.animationDuration);
   }
 
-  show() {
-    const { onShown } = this.props;
-    this.setDialogState(1, onShown);
-  }
-
-  dismiss() {
-    const { onDismissed } = this.props;
-    this.setDialogState(0, onDismissed);
-  }
-
   get pointerEvents(): string {
     if (this.props.overlayPointerEvents) {
       return this.props.overlayPointerEvents;
@@ -181,6 +147,29 @@ class Dialog extends Component {
 
     return { width, height };
   }
+
+  show() {
+    const { onShown } = this.props;
+    this.setDialogState(1, onShown);
+  }
+
+  dismiss() {
+    const { onDismissed } = this.props;
+    this.setDialogState(0, onDismissed);
+  }
+
+  hardwareBackEventHandler = (): boolean => {
+    const { dismissOnHardwareBackPress } = this.props;
+    const { dialogState } = this.state;
+
+    if (dismissOnHardwareBackPress && dialogState === DIALOG_OPENED) {
+      this.dismiss();
+      return true;
+    }
+    return false;
+  }
+
+  props: DialogType
 
   render() {
     const dialogState = this.state.dialogState;
