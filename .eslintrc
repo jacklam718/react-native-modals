@@ -1,6 +1,5 @@
 {
   "extends": "airbnb",
-  "installedESLint": true,
   "parser": "babel-eslint",
   "ecmaFeatures": {
     "jsx": true
@@ -13,6 +12,8 @@
     "jsx-a11y"
   ],
   "rules": {
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
     "import/no-extraneous-dependencies": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
