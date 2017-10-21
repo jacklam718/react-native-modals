@@ -72,10 +72,14 @@ import PopupDialog from 'react-native-popup-dialog';
 ```javascript
 import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 
+const slideAnimation = new SlideAnimation({
+  slideFrom: 'bottom',
+});
+
 <View style={styles.container}>
   <PopupDialog
     ref={(popupDialog) => { this.popupDialog = popupDialog; }}
-    dialogAnimation = { new SlideAnimation({ slideFrom: 'bottom' }) }
+    dialogAnimation={slideAnimation}
   >
     <View>
       <Text>Hello</Text>
