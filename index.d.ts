@@ -40,6 +40,7 @@ declare module 'react-native-popup-dialog' {
         height?: number;
         dialogAnimation?: any;
         dialogStyle?: any;
+        containerStyle?: any;
         animationDuration?: number;
         overlayPointerEvents?: OverlayPointerEventTypes;
         overlayBackgroundColor?: string;
