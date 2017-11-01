@@ -100,7 +100,7 @@ class Dialog extends Component {
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener(HARDWARE_BACK_PRESS_EVENT);
+    BackHandler.removeEventListener(HARDWARE_BACK_PRESS_EVENT, this.hardwareBackEventHandler);
   }
 
   onOverlayPress = () => {
