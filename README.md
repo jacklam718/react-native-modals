@@ -122,7 +122,7 @@ this.popupDialog.dismiss();
 |---|---|---|---|
 | `dialogTitle?` | `React Element` | | You can pass a `DialogTitle` component or pass a `View` for customizing titlebar |
 | `width?` | `Number` | Your device width | The Width of Dialog, you can use fixed width or use percentage
-| `height?` | `Number` | 300 | The Width of Dialog, you can use fixed height or use percentage
+| `height?` | `Number` | 300 | The Height of Dialog, you can use fixed height or use percentage
 | `dialogAnimation?` |  | `FadeAnimation` | animation for dialog | |
 | `dialogStyle?` | `any` | | | |
 | `containerStyle?` | `any` | `null` | For example: ``` {  zIndex: 10, elevation: 10 } ``` | |
