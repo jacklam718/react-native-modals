@@ -2,8 +2,7 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Dimensions, TouchableOpacity, Animated } from 'react-native';
-
-import type { OverlayType } from '../Type';
+import type { OverlayType } from '../type';
 
 // default overlay options
 const BACKGROUND_COLOR: string = '#000';
@@ -21,12 +20,6 @@ const styles = StyleSheet.create({
 });
 
 class Overlay extends Component {
-  state: {
-    opacity: Object,
-  }
-
-  props: OverlayType
-
   static defaultProps = {
     backgroundColor: BACKGROUND_COLOR,
     opacity: OPACITY,
@@ -50,6 +43,8 @@ class Overlay extends Component {
       }).start();
     }
   }
+
+  props: OverlayType
 
   render() {
     const { onPress, pointerEvents } = this.props;

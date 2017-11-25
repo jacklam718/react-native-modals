@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native
 
 import { Positions } from '../constants/Constants';
 
-import type { DialogButtonType } from '../Type';
+import type { DialogButtonType } from '../type';
 
 const isAndroid = Platform.OS === 'android';
 
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
 });
 
-/* eslint max-len: [0]*/
+/* eslint max-len: [0] */
 function DialogButton({ text, activeOpacity, disabled, align, onPress, buttonStyle, textStyle, textContainerStyle }: DialogButtonType) {
   const buttonAlign = { alignSelf: Positions[align] };
   const disabledText = disabled ? styles.disabledText : null;

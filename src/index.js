@@ -4,7 +4,7 @@ import {
   DialogButtonType,
   DialogTitleType,
   OverlayType,
-} from './Type';
+} from './type';
 import PopupDialog from './PopupDialog';
 import Overlay from './components/Overlay';
 import DialogTitle from './components/DialogTitle';

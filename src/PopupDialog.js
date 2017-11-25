@@ -2,8 +2,7 @@
 
 import React, { Component } from 'react';
 import Dialog from './components/Dialog';
-
-import type { PopupDialogType } from './Type';
+import type { PopupDialogType } from './type';
 
 class PopupDialog extends Component {
   props: PopupDialogType;

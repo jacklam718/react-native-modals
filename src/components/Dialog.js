@@ -11,14 +11,10 @@ import {
 } from 'react-native';
 
 import Overlay from './Overlay';
-
 import FadeAnimation from '../animations/FadeAnimation';
-import type { DialogType } from '../Type';
+import type { DialogType } from '../type';
 
 const BackHandler = RNBackHandler || RNBackAndroid;
-
-
-const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
 // dialog states
 const DIALOG_OPENING: string = 'opening';
@@ -28,14 +24,13 @@ const DIALOG_CLOSED: string = 'closed';
 
 // default dialog config
 const DEFAULT_ANIMATION_DURATION: number = 150;
-const DEFAULT_WIDTH: number = screenWidth;
+const DEFAULT_WIDTH: number = Dimensions.get('window').width;
 const DEFAULT_HEIGHT: number = 300;
 const DISMISS_ON_TOUCH_OUTSIDE: boolean = true;
 const DISMISS_ON_HARDWARE_BACK_PRESS: boolean = true;
 const HAVE_OVERLAY: boolean = true;
 
 // event types
-// only for android
 const HARDWARE_BACK_PRESS_EVENT: string = 'hardwareBackPress';
 
 const styles = StyleSheet.create({
@@ -81,11 +76,9 @@ class Dialog extends Component {
 
   componentDidMount() {
     const { show } = this.props;
-
     if (show) {
       this.show();
     }
-
     BackHandler.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.hardwareBackEventHandler);
   }
 
@@ -93,9 +86,9 @@ class Dialog extends Component {
     if (this.props.show !== nextProps.show) {
       if (nextProps.show) {
         this.show();
-      } else {
-        this.dismiss();
+        return;
       }
+      this.dismiss();
     }
   }
 
@@ -105,27 +98,26 @@ class Dialog extends Component {
 
   onOverlayPress = () => {
     const { dismissOnTouchOutside } = this.props;
-
     if (dismissOnTouchOutside) {
       this.dismiss();
     }
   }
 
   setDialogState(toValue: number, callback?: Function = () => {}) {
+    const { animationDuration, dialogAnimation } = this.props;
     let dialogState = toValue ? DIALOG_OPENING : DIALOG_CLOSING;
 
     // to make sure has passed the dialogAnimation prop and the dialogAnimation has toValue method
-    if (this.props.dialogAnimation && this.props.dialogAnimation.toValue) {
-      this.props.dialogAnimation.toValue(toValue);
+    if (dialogAnimation && dialogAnimation.toValue) {
+      dialogAnimation.toValue(toValue);
     }
 
     this.setState({ dialogState });
 
     setTimeout(() => {
       dialogState = dialogState === DIALOG_CLOSING ? DIALOG_CLOSED : DIALOG_OPENED;
-      this.setState({ dialogState });
-      callback();
-    }, this.props.animationDuration);
+      this.setState({ dialogState }, () => { callback(); });
+    }, animationDuration);
   }
 
   get pointerEvents(): string {
@@ -136,26 +128,25 @@ class Dialog extends Component {
   }
 
   get dialogSize(): Object {
+    const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
     let { width, height } = this.props;
-
     if (width && width > 0.0 && width <= 1.0) {
       width *= screenWidth;
     }
     if (height && height > 0.0 && height <= 1.0) {
       height *= screenHeight;
     }
-
     return { width, height };
   }
 
-  show() {
+  show = () => {
     const { onShown } = this.props;
     if (![DIALOG_OPENING, DIALOG_OPENED].includes(this.state.dialogState)) {
       this.setDialogState(1, onShown);
     }
   }
 
-  dismiss() {
+  dismiss = () => {
     const { onDismissed } = this.props;
     if (![DIALOG_CLOSING, DIALOG_CLOSED].includes(this.state.dialogState)) {
       this.setDialogState(0, onDismissed);
@@ -165,7 +156,6 @@ class Dialog extends Component {
   hardwareBackEventHandler = (): boolean => {
     const { dismissOnHardwareBackPress } = this.props;
     const { dialogState } = this.state;
-
     if (dismissOnHardwareBackPress && dialogState === DIALOG_OPENED) {
       this.dismiss();
       return true;
@@ -183,13 +173,11 @@ class Dialog extends Component {
     const isShowOverlay = (
       [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState) && this.props.haveOverlay
     );
-    const dimensions = {
-      width: Dimensions.get('window').width,
-      height: Dimensions.get('window').height,
-    };
+    const { width, height } = Dimensions.get('window');
+    const containerSize = { width, height };
 
     return (
-      <View style={[styles.container, hidden, dimensions, this.props.containerStyle]}>
+      <View style={[styles.container, hidden, containerSize, this.props.containerStyle]}>
         <Overlay
           pointerEvents={overlayPointerEvents}
           showOverlay={isShowOverlay}
