@@ -150,12 +150,16 @@ class Dialog extends Component {
 
   show() {
     const { onShown } = this.props;
-    this.setDialogState(1, onShown);
+    if (![DIALOG_OPENING, DIALOG_OPENED].includes(this.state.dialogState)) {
+      this.setDialogState(1, onShown);
+    }
   }
 
   dismiss() {
     const { onDismissed } = this.props;
-    this.setDialogState(0, onDismissed);
+    if (![DIALOG_CLOSING, DIALOG_CLOSED].includes(this.state.dialogState)) {
+      this.setDialogState(0, onDismissed);
+    }
   }
 
   hardwareBackEventHandler = (): boolean => {
