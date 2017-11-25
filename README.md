@@ -50,10 +50,11 @@ yarn add react-native-popup-dialog
 ## Usage
 ```javascript
 import PopupDialog from 'react-native-popup-dialog';
+import { Button } from 'react-native'
 
 <View style={styles.container}>
   <Button
-    text="Show Dialog"
+    title="Show Dialog"
     onPress={() => {
       this.popupDialog.show();
     }}
