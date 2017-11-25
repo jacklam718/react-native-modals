@@ -1,6 +1,6 @@
 {
   "name": "react-native-popup-dialog",
-  "version": "0.10.41",
+  "version": "0.10.42",
   "description": "React Native Popup Dialog for IOS & Android.",
   "main": "dist/index.js",
   "scripts": {
