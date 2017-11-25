@@ -23,6 +23,7 @@ exports[`renders correctly 1`] = `
   }
 >
   <View
+    collapsable={undefined}
     pointerEvents="none"
     style={
       Object {
@@ -42,8 +43,10 @@ exports[`renders correctly 1`] = `
       accessibilityLabel={undefined}
       accessibilityTraits={undefined}
       accessible={true}
+      collapsable={undefined}
       hitSlop={undefined}
       isTVSelectable={true}
+      nativeID={undefined}
       onLayout={undefined}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -67,6 +70,7 @@ exports[`renders correctly 1`] = `
     />
   </View>
   <View
+    collapsable={undefined}
     style={
       Object {
         "backgroundColor": "#ffffff",
