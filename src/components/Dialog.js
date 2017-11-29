@@ -167,8 +167,6 @@ class Dialog extends Component {
 
   render() {
     const dialogState = this.state.dialogState;
-    const overlayPointerEvents = this.pointerEvents;
-    const dialogSize = this.dialogSize;
     const hidden = dialogState === DIALOG_CLOSED && styles.hidden;
     const isShowOverlay = (
       [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState) && this.props.haveOverlay
@@ -179,7 +177,7 @@ class Dialog extends Component {
     return (
       <View style={[styles.container, hidden, containerSize, this.props.containerStyle]}>
         <Overlay
-          pointerEvents={overlayPointerEvents}
+          pointerEvents={this.pointerEvents}
           showOverlay={isShowOverlay}
           onPress={this.onOverlayPress}
           backgroundColor={this.props.overlayBackgroundColor}
@@ -189,7 +187,7 @@ class Dialog extends Component {
         <Animated.View
           style={[
             styles.dialog,
-            dialogSize,
+            this.dialogSize,
             this.props.dialogStyle,
             this.props.dialogAnimation.animations,
           ]}
