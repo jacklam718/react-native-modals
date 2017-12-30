@@ -146,7 +146,7 @@ this.popupDialog.dismiss();
 | `title` | `String` | | | |
 | `titleStyle?` | `any` | | | |
 | `titleTextStyle?` | `any` | | | |
-| `titleAlign?` | `String` | `center` | | |
+| `titleAlign?` | `String` | `center` | Available option: `left`, `center`, `right` | |
 | `haveTitleBar?` | `Bool` | `true` | | |
 
 
