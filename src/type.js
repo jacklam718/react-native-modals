@@ -6,8 +6,8 @@ export type PopupDialogType = {
 }
 
 export type DialogType = {
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
   haveOverlay: boolean;
   overlayPointerEvents?: string;
   overlayBackgroundColor?: string;
