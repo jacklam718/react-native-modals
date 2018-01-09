@@ -139,15 +139,17 @@ class Dialog extends Component {
     return { width, height };
   }
 
-  show = () => {
+  show = (callback?: Function = () => {}) => {
     const { onShown } = this.props;
+    callback();
     if (![DIALOG_OPENING, DIALOG_OPENED].includes(this.state.dialogState)) {
       this.setDialogState(1, onShown);
     }
   }
 
-  dismiss = () => {
+  dismiss = (callback?: Function = () => {}) => {
     const { onDismissed } = this.props;
+    callback();
     if (![DIALOG_CLOSING, DIALOG_CLOSED].includes(this.state.dialogState)) {
       this.setDialogState(0, onDismissed);
     }

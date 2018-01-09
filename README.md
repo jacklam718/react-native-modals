@@ -108,12 +108,16 @@ import PopupDialog, { DialogTitle } from 'react-native-popup-dialog';
 ## Methods
 #### show
 ```javascript
-this.popupDialog.show();
+this.popupDialog.show(() => {
+  console.log('callback - will be called immediately')
+});
 ```
 
 #### dismiss
 ```javascript
-this.popupDialog.dismiss();
+this.popupDialog.dismiss(() => {
+  console.log('callback - will be called immediately')
+});
 ```
 
 ## Props
