@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Navigator, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
   SlideAnimation,
   ScaleAnimation,
   FadeAnimation,
-} from 'react-native-popup-dialog';
-import Button from './Button';
+} from './dist';
 
 const slideAnimation = new SlideAnimation({ slideFrom: 'bottom' });
 const scaleAnimation = new ScaleAnimation();
@@ -45,85 +44,61 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class PopupDialogExample extends Component {
-  constructor(props) {
-    super(props);
+export default class App extends Component {
+  state = {
+    dialogShow: false,
+  };
 
-    this.state = {
-      dialogShow: false,
-    };
-
-    this.showScaleAnimationDialog = this.showScaleAnimationDialog.bind(this);
-    this.showSlideAnimationDialog = this.showSlideAnimationDialog.bind(this);
-    this.showFadeAnimationDialog = this.showFadeAnimationDialog.bind(this);
-  }
-
-  // eslint-disable-next-line
-  configureScene() {
-    return Navigator.SceneConfigs.FloatFromRight;
-  }
-
-  showScaleAnimationDialog() {
+  showScaleAnimationDialog = () => {
     this.scaleAnimationDialog.show();
   }
 
-  showSlideAnimationDialog() {
+  showSlideAnimationDialog = () => {
     this.slideAnimationDialog.show();
   }
 
-  showFadeAnimationDialog() {
+  showFadeAnimationDialog = () => {
     this.fadeAnimationDialog.show();
   }
 
   renderScene = () => (
     <View style={styles.container}>
       <Button
-        text="Show Dialog - Default Animation"
+        title="Show Dialog - Default Animation"
         onPress={this.showFadeAnimationDialog}
       />
 
       <Button
-        text="Show Dialog - Scale Animation"
+        title="Show Dialog - Scale Animation"
         onPress={this.showScaleAnimationDialog}
       />
 
       <Button
-        text="Show Dialog - Slide Animation"
+        title="Show Dialog - Slide Animation"
         onPress={this.showSlideAnimationDialog}
       />
     </View>
     )
 
   render() {
-    const navigationBar = (
-      <Navigator.NavigationBar
-        style={styles.navigationBar}
-        routeMapper={{
-          LeftButton: () => null,
-          RightButton: () => null,
-          Title: route => (
-            <Text style={styles.navigationTitle}>
-              {route.title}
-            </Text>
-          ),
-        }}
-      />
-    );
     return (
       <View style={{ flex: 1 }}>
-        <Navigator
-          initialRoute={{
-            name: 'index',
-            title: 'Popup Dialog',
-          }}
-          ref={(navigator) => {
-            this.navigator = navigator;
-          }}
-          navigationBar={navigationBar}
-          renderScene={this.renderScene}
-          configureScene={this.configureScene}
-          style={styles.navigator}
-        />
+        <View style={styles.container}>
+          <Button
+            title="Show Dialog - Default Animation"
+            onPress={this.showFadeAnimationDialog}
+          />
+
+          <Button
+            title="Show Dialog - Scale Animation"
+            onPress={this.showScaleAnimationDialog}
+          />
+
+          <Button
+            title="Show Dialog - Slide Animation"
+            onPress={this.showSlideAnimationDialog}
+          />
+        </View>
 
         <PopupDialog
           ref={(popupDialog) => {
@@ -143,7 +118,7 @@ export default class PopupDialogExample extends Component {
         >
           <View style={styles.dialogContentView}>
             <Button
-              text="Show Dialog - Default Animation"
+              title="Show Dialog - Default Animation"
               onPress={this.showFadeAnimationDialog}
             />
           </View>

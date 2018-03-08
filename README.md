@@ -9,7 +9,10 @@ Another similar dialog component: [react-native-dialog-component](https://github
 
 Pull request are welcomed. Please follow [Airbnb JS Style Guide](https://github.com/airbnb/javascript)
 
-[Try it with Exponent](https://exp.host/@jacklam718/popup-dialog-example)
+[Try it with Exponent](https://exp.host/@jacklam718/popup-dialog-example)<br>
+<img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/popup-dialog.png" width="200">
+<br>
+<br>
 <!-- ![Example](https://jacklam718.github.io/react-native-popup-dialog/resources/react-native-popup-dialog.gif) -->
 <img src="https://jacklam718.github.io/react-native-popup-dialog/resources/popup-dialog-scale-animation.gif" width="250" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://jacklam718.github.io/react-native-popup-dialog/resources/popup-dialog-slide-animation.gif" width="250" />
 
