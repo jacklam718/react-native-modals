@@ -1,6 +1,6 @@
 {
   "name": "react-native-popup-dialog",
-  "version": "0.10.46",
+  "version": "0.11.46",
   "description": "React Native Popup Dialog for IOS & Android.",
   "main": "dist/index.js",
   "scripts": {
@@ -31,6 +31,10 @@
   "dependencies": {
     "babel-plugin-flow-react-proptypes": "^9.1.1",
     "prop-types": "^15.6.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.0.0",
+    "react-native": ">=0.50.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
