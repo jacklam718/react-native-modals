@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
   SlideAnimation,
   ScaleAnimation,
   FadeAnimation,
-} from './dist';
+} from 'react-native-popup-dialog';
 
 const slideAnimation = new SlideAnimation({ slideFrom: 'bottom' });
 const scaleAnimation = new ScaleAnimation();

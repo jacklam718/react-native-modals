@@ -47,7 +47,7 @@ yarn add react-native-popup-dialog
 * OverlayType
 
 ## Examples
-[Example](https://github.com/jacklam718/react-native-popup-dialog/blob/master/popup-dialog-example/PopupDialogExample.js)
+[Example](https://github.com/jacklam718/react-native-popup-dialog/blob/master/popup-dialog-example/App.js)
 
 
 ## Usage
