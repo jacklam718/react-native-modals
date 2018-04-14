@@ -9,6 +9,9 @@ Another similar dialog component: [react-native-dialog-component](https://github
 
 Pull request are welcomed. Please follow [Airbnb JS Style Guide](https://github.com/airbnb/javascript)
 
+#### How to thank me ?
+Just click on ⭐️ button 😘
+
 [Try it with Exponent](https://exp.host/@jacklam718/popup-dialog-example)<br>
 <img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/popup-dialog.png" width="200">
 <br>
