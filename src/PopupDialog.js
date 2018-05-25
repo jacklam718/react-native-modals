@@ -18,13 +18,15 @@ class PopupDialog extends Component {
   }
 
   render() {
+    const { children, dialogTitle, ...restProps } = this.props;
+
     return (
       <Dialog
         ref={(dialog) => { this.dialog = dialog; }}
-        {...this.props}
+        {...restProps}
       >
-        {this.props.dialogTitle}
-        {this.props.children}
+        {dialogTitle}
+        {children}
       </Dialog>
     );
   }

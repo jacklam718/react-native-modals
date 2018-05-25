@@ -103,23 +103,6 @@ class Dialog extends Component {
     }
   }
 
-  setDialogState(toValue: number, callback?: Function = () => {}) {
-    const { animationDuration, dialogAnimation } = this.props;
-    let dialogState = toValue ? DIALOG_OPENING : DIALOG_CLOSING;
-
-    // to make sure has passed the dialogAnimation prop and the dialogAnimation has toValue method
-    if (dialogAnimation && dialogAnimation.toValue) {
-      dialogAnimation.toValue(toValue);
-    }
-
-    this.setState({ dialogState });
-
-    setTimeout(() => {
-      dialogState = dialogState === DIALOG_CLOSING ? DIALOG_CLOSED : DIALOG_OPENED;
-      this.setState({ dialogState }, () => { callback(); });
-    }, animationDuration);
-  }
-
   get pointerEvents(): string {
     if (this.props.overlayPointerEvents) {
       return this.props.overlayPointerEvents;
@@ -137,6 +120,23 @@ class Dialog extends Component {
       height *= screenHeight;
     }
     return { width, height };
+  }
+
+  setDialogState(toValue: number, callback?: Function = () => {}) {
+    const { animationDuration, dialogAnimation } = this.props;
+    let dialogState = toValue ? DIALOG_OPENING : DIALOG_CLOSING;
+
+    // to make sure has passed the dialogAnimation prop and the dialogAnimation has toValue method
+    if (dialogAnimation && dialogAnimation.toValue) {
+      dialogAnimation.toValue(toValue);
+    }
+
+    this.setState({ dialogState });
+
+    setTimeout(() => {
+      dialogState = dialogState === DIALOG_CLOSING ? DIALOG_CLOSED : DIALOG_OPENED;
+      this.setState({ dialogState }, () => { callback(); });
+    }, animationDuration);
   }
 
   show = (callback?: Function = () => {}) => {
@@ -168,7 +168,7 @@ class Dialog extends Component {
   props: DialogType
 
   render() {
-    const dialogState = this.state.dialogState;
+    const { dialogState } = this.state;
     const hidden = dialogState === DIALOG_CLOSED && styles.hidden;
     const isShowOverlay = (
       [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState) && this.props.haveOverlay
