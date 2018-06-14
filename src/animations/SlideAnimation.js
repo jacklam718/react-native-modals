@@ -1,25 +1,31 @@
-/* @flow */
+// flow
 
 import { Animated } from 'react-native';
 import Animation from './Animation';
 
-type Param = {
+export type SlideAnimationProps = {
   toValue: number,
   slideFrom: string,
-}
+  useNativeDriver: boolean,
+};
 
 export default class SlideAnimation extends Animation {
-  constructor({ toValue = 0, slideFrom = 'bottom' }: Param) {
-    super(toValue);
+  constructor({
+    toValue = 0,
+    slideFrom = 'bottom',
+    useNativeDriver = true,
+  }: SlideAnimationProps) {
+    super({ toValue, useNativeDriver });
     this.animations = this.createAnimations(slideFrom);
   }
 
-  toValue(toValue: number, onFinished: ?Function) {
+  toValue(toValue: number, onFinished?: Function = () => {}): void {
     Animated.spring(this.animate, {
       toValue,
       velocity: 0,
       tension: 65,
       friction: 10,
+      useNativeDriver: this.useNativeDriver,
     }).start(onFinished);
   }
 

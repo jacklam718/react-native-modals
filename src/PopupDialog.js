@@ -9,11 +9,11 @@ class PopupDialog extends Component {
 
   dialog: Object
 
-  show(onShown: ?Function) {
+  show = (onShown: ?Function) => {
     this.dialog.show(onShown);
   }
 
-  dismiss(onDismissed: ?Function) {
+  dismiss = (onDismissed: ?Function) => {
     this.dialog.dismiss(onDismissed);
   }
 

@@ -2,21 +2,31 @@
 
 import { Animated } from 'react-native';
 
+export type AnimationProps = {
+  toValue?: number,
+  useNativeDriver?: boolean,
+};
+
 // Base Animation class
 export default class Animation {
+  useNativeDriver: boolean
   animate: Object
   animations: Object
 
-  constructor(toValue: ?number = 0) {
+  constructor({
+    toValue = 0,
+    useNativeDriver = true,
+  }: AnimationProps) {
+    this.useNativeDriver = useNativeDriver;
     this.animate = new Animated.Value(toValue);
     this.animations = this.createAnimations();
   }
 
-  toValue(toValue: number) {
-
+  toValue(): void {
+    throw Error('not implemented yet');
   }
 
   createAnimations(): Object {
-    return {};
+    throw Error('not implemented yet');
   }
 }
