@@ -3,18 +3,12 @@
 import { Animated } from 'react-native';
 import Animation from './Animation';
 
-export type SlideAnimationProps = {
-  toValue: number,
-  slideFrom: string,
-  useNativeDriver: boolean,
-};
-
 export default class SlideAnimation extends Animation {
   constructor({
     toValue = 0,
     slideFrom = 'bottom',
     useNativeDriver = true,
-  }: SlideAnimationProps) {
+  } = {}) {
     super({ toValue, useNativeDriver });
     this.animations = this.createAnimations(slideFrom);
   }

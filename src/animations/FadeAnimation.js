@@ -3,12 +3,6 @@
 import { Animated } from 'react-native';
 import Animation from './Animation';
 
-export type FadeAnimationProps = {
-  toValue: number,
-  animationDuration: number,
-  useNativeDriver: boolean,
-};
-
 export default class FadeAnimation extends Animation {
   animate: Object
   animationDuration: number
@@ -17,7 +11,7 @@ export default class FadeAnimation extends Animation {
     toValue = 0,
     animationDuration = 200,
     useNativeDriver = true,
-  }: FadeAnimationProps) {
+  } = {}) {
     super({ toValue, useNativeDriver });
     this.animationDuration = animationDuration;
   }

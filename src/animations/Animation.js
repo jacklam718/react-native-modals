@@ -2,11 +2,6 @@
 
 import { Animated } from 'react-native';
 
-export type AnimationProps = {
-  toValue?: number,
-  useNativeDriver?: boolean,
-};
-
 // Base Animation class
 export default class Animation {
   useNativeDriver: boolean
@@ -16,7 +11,7 @@ export default class Animation {
   constructor({
     toValue = 0,
     useNativeDriver = true,
-  }: AnimationProps) {
+  } = {}) {
     this.useNativeDriver = useNativeDriver;
     this.animate = new Animated.Value(toValue);
     this.animations = this.createAnimations();
