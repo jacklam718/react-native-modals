@@ -19,12 +19,13 @@ copyProps(window, global);
 
 const Enzyme = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
-// require('react-native-mock-render/mock');
 
 Enzyme.configure({ adapter: new Adapter() });
 
 // Ignore React Web errors when using React Native
+// eslint-disable-next-line
 console.error = message => message;
 
 // Jest doesn't support require.cache, so the correct way to do the mocking is using
-jest.mock('react-native', () => require('react-native-mock-render'), {virtual: true})
+// eslint-disable-next-line
+jest.mock('react-native', () => require('react-native-mock-render'), { virtual: true });
