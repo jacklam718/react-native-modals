@@ -52,12 +52,10 @@
     "eslint-plugin-react": "^7.5.1",
     "flow-bin": "^0.59.0",
     "jest": "^22.0.0",
-    "jsdom": "^11.11.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-native": "^0.50.4",
     "react-native-mock-render": "^0.0.26",
-    "react-test-renderer": "^16.1.1",
     "rimraf": "^2.6.2"
   },
   "jest": {
