@@ -1,1040 +1,121 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render with Default Animation correctly 1`] = `
-PopupDialog {
-  "context": Object {},
-  "dismiss": [Function],
-  "props": Object {
-    "dialogTitle": <DialogTitle
-      haveTitleBar={true}
-      title="Popup Dialog - Default Animation"
-      titleAlign="center"
-    />,
-  },
-  "refs": Object {},
-  "show": [Function],
-  "state": null,
-  "updater": Updater {
-    "_callbacks": Array [],
-    "_renderer": ReactShallowRenderer {
-      "_context": Object {},
-      "_element": <PopupDialog
-        dialogTitle={
-          <DialogTitle
-            haveTitleBar={true}
-            title="Popup Dialog - Default Animation"
-            titleAlign="center"
-          />
-        }
-      />,
-      "_forcedUpdate": false,
-      "_instance": [Circular],
-      "_newState": null,
-      "_rendered": <Dialog
-        animationDuration={150}
-        containerStyle={null}
-        dialogAnimation={
-          FadeAnimation {
-            "animate": 0,
-            "animationDuration": 150,
-            "animations": Object {
-              "opacity": 0,
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dismissOnHardwareBackPress={true}
-        dismissOnTouchOutside={true}
-        haveOverlay={true}
-        height={300}
-        onDismissed={[Function]}
-        onShown={[Function]}
-        show={false}
-        width={750}
-      >
-        <DialogTitle
-          haveTitleBar={true}
-          title="Popup Dialog - Default Animation"
-          titleAlign="center"
-        />
-      </Dialog>,
-      "_rendering": false,
-      "_updater": [Circular],
-    },
-  },
+exports[`should render with Default & show/hide Animation correctly 1`] = `
+Object {
+  "dialogState": "closed",
 }
 `;
 
-exports[`should render with Default Animation correctly 2`] = `
-PopupDialog {
-  "context": Object {},
-  "dismiss": [Function],
-  "props": Object {
-    "dialogTitle": <DialogTitle
-      haveTitleBar={true}
-      title="Popup Dialog - Default Animation"
-      titleAlign="center"
-    />,
-    "show": true,
-  },
-  "refs": Object {},
-  "show": [Function],
-  "state": Object {},
-  "updater": Updater {
-    "_callbacks": Array [],
-    "_renderer": ReactShallowRenderer {
-      "_context": Object {},
-      "_element": <PopupDialog
-        dialogTitle={
-          <DialogTitle
-            haveTitleBar={true}
-            title="Popup Dialog - Default Animation"
-            titleAlign="center"
-          />
-        }
-        show={true}
-      />,
-      "_forcedUpdate": false,
-      "_instance": [Circular],
-      "_newState": null,
-      "_rendered": <Dialog
-        animationDuration={150}
-        containerStyle={null}
-        dialogAnimation={
-          FadeAnimation {
-            "animate": 0,
-            "animationDuration": 150,
-            "animations": Object {
-              "opacity": 0,
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dismissOnHardwareBackPress={true}
-        dismissOnTouchOutside={true}
-        haveOverlay={true}
-        height={300}
-        onDismissed={[Function]}
-        onShown={[Function]}
-        show={true}
-        width={750}
-      >
-        <DialogTitle
-          haveTitleBar={true}
-          title="Popup Dialog - Default Animation"
-          titleAlign="center"
-        />
-      </Dialog>,
-      "_rendering": false,
-      "_updater": [Circular],
-    },
-  },
+exports[`should render with Default & show/hide Animation correctly 2`] = `
+Object {
+  "dialogState": "opening",
 }
 `;
 
-exports[`should render with Default Animation correctly 3`] = `
-PopupDialog {
-  "context": Object {},
-  "dismiss": [Function],
-  "props": Object {
-    "dialogTitle": <DialogTitle
-      haveTitleBar={true}
-      title="Popup Dialog - Default Animation"
-      titleAlign="center"
-    />,
-    "show": false,
-  },
-  "refs": Object {},
-  "show": [Function],
-  "state": Object {},
-  "updater": Updater {
-    "_callbacks": Array [],
-    "_renderer": ReactShallowRenderer {
-      "_context": Object {},
-      "_element": <PopupDialog
-        dialogTitle={
-          <DialogTitle
-            haveTitleBar={true}
-            title="Popup Dialog - Default Animation"
-            titleAlign="center"
-          />
-        }
-        show={false}
-      />,
-      "_forcedUpdate": false,
-      "_instance": [Circular],
-      "_newState": null,
-      "_rendered": <Dialog
-        animationDuration={150}
-        containerStyle={null}
-        dialogAnimation={
-          FadeAnimation {
-            "animate": 0,
-            "animationDuration": 150,
-            "animations": Object {
-              "opacity": 0,
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dismissOnHardwareBackPress={true}
-        dismissOnTouchOutside={true}
-        haveOverlay={true}
-        height={300}
-        onDismissed={[Function]}
-        onShown={[Function]}
-        show={false}
-        width={750}
-      >
-        <DialogTitle
-          haveTitleBar={true}
-          title="Popup Dialog - Default Animation"
-          titleAlign="center"
-        />
-      </Dialog>,
-      "_rendering": false,
-      "_updater": [Circular],
-    },
-  },
+exports[`should render with Default & show/hide Animation correctly 3`] = `
+Object {
+  "dialogState": "opened",
 }
 `;
 
-exports[`should render with FadeAnimation correctly 1`] = `
-PopupDialog {
-  "context": Object {},
-  "dismiss": [Function],
-  "props": Object {
-    "dialogAnimation": FadeAnimation {
-      "animate": 0,
-      "animationDuration": 200,
-      "animations": Object {
-        "opacity": 0,
-      },
-      "useNativeDriver": true,
-    },
-    "dialogTitle": <DialogTitle
-      haveTitleBar={true}
-      title="Popup Dialog - FadeAnimation Animation"
-      titleAlign="center"
-    />,
-  },
-  "refs": Object {},
-  "show": [Function],
-  "state": null,
-  "updater": Updater {
-    "_callbacks": Array [],
-    "_renderer": ReactShallowRenderer {
-      "_context": Object {},
-      "_element": <PopupDialog
-        dialogAnimation={
-          FadeAnimation {
-            "animate": 0,
-            "animationDuration": 200,
-            "animations": Object {
-              "opacity": 0,
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dialogTitle={
-          <DialogTitle
-            haveTitleBar={true}
-            title="Popup Dialog - FadeAnimation Animation"
-            titleAlign="center"
-          />
-        }
-      />,
-      "_forcedUpdate": false,
-      "_instance": [Circular],
-      "_newState": null,
-      "_rendered": <Dialog
-        animationDuration={150}
-        containerStyle={null}
-        dialogAnimation={
-          FadeAnimation {
-            "animate": 0,
-            "animationDuration": 200,
-            "animations": Object {
-              "opacity": 0,
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dismissOnHardwareBackPress={true}
-        dismissOnTouchOutside={true}
-        haveOverlay={true}
-        height={300}
-        onDismissed={[Function]}
-        onShown={[Function]}
-        show={false}
-        width={750}
-      >
-        <DialogTitle
-          haveTitleBar={true}
-          title="Popup Dialog - FadeAnimation Animation"
-          titleAlign="center"
-        />
-      </Dialog>,
-      "_rendering": false,
-      "_updater": [Circular],
-    },
-  },
+exports[`should render with Default & show/hide Animation correctly 4`] = `
+Object {
+  "dialogState": "closing",
 }
 `;
 
-exports[`should render with FadeAnimation correctly 2`] = `
-PopupDialog {
-  "context": Object {},
-  "dismiss": [Function],
-  "props": Object {
-    "dialogAnimation": FadeAnimation {
-      "animate": 0,
-      "animationDuration": 200,
-      "animations": Object {
-        "opacity": 0,
-      },
-      "useNativeDriver": true,
-    },
-    "dialogTitle": <DialogTitle
-      haveTitleBar={true}
-      title="Popup Dialog - FadeAnimation Animation"
-      titleAlign="center"
-    />,
-    "show": true,
-  },
-  "refs": Object {},
-  "show": [Function],
-  "state": Object {},
-  "updater": Updater {
-    "_callbacks": Array [],
-    "_renderer": ReactShallowRenderer {
-      "_context": Object {},
-      "_element": <PopupDialog
-        dialogAnimation={
-          FadeAnimation {
-            "animate": 0,
-            "animationDuration": 200,
-            "animations": Object {
-              "opacity": 0,
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dialogTitle={
-          <DialogTitle
-            haveTitleBar={true}
-            title="Popup Dialog - FadeAnimation Animation"
-            titleAlign="center"
-          />
-        }
-        show={true}
-      />,
-      "_forcedUpdate": false,
-      "_instance": [Circular],
-      "_newState": null,
-      "_rendered": <Dialog
-        animationDuration={150}
-        containerStyle={null}
-        dialogAnimation={
-          FadeAnimation {
-            "animate": 0,
-            "animationDuration": 200,
-            "animations": Object {
-              "opacity": 0,
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dismissOnHardwareBackPress={true}
-        dismissOnTouchOutside={true}
-        haveOverlay={true}
-        height={300}
-        onDismissed={[Function]}
-        onShown={[Function]}
-        show={true}
-        width={750}
-      >
-        <DialogTitle
-          haveTitleBar={true}
-          title="Popup Dialog - FadeAnimation Animation"
-          titleAlign="center"
-        />
-      </Dialog>,
-      "_rendering": false,
-      "_updater": [Circular],
-    },
-  },
+exports[`should render with Default & show/hide Animation correctly 5`] = `
+Object {
+  "dialogState": "closed",
 }
 `;
 
-exports[`should render with FadeAnimation correctly 3`] = `
-PopupDialog {
-  "context": Object {},
-  "dismiss": [Function],
-  "props": Object {
-    "dialogAnimation": FadeAnimation {
-      "animate": 0,
-      "animationDuration": 200,
-      "animations": Object {
-        "opacity": 0,
-      },
-      "useNativeDriver": true,
-    },
-    "dialogTitle": <DialogTitle
-      haveTitleBar={true}
-      title="Popup Dialog - FadeAnimation Animation"
-      titleAlign="center"
-    />,
-    "show": false,
-  },
-  "refs": Object {},
-  "show": [Function],
-  "state": Object {},
-  "updater": Updater {
-    "_callbacks": Array [],
-    "_renderer": ReactShallowRenderer {
-      "_context": Object {},
-      "_element": <PopupDialog
-        dialogAnimation={
-          FadeAnimation {
-            "animate": 0,
-            "animationDuration": 200,
-            "animations": Object {
-              "opacity": 0,
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dialogTitle={
-          <DialogTitle
-            haveTitleBar={true}
-            title="Popup Dialog - FadeAnimation Animation"
-            titleAlign="center"
-          />
-        }
-        show={false}
-      />,
-      "_forcedUpdate": false,
-      "_instance": [Circular],
-      "_newState": null,
-      "_rendered": <Dialog
-        animationDuration={150}
-        containerStyle={null}
-        dialogAnimation={
-          FadeAnimation {
-            "animate": 0,
-            "animationDuration": 200,
-            "animations": Object {
-              "opacity": 0,
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dismissOnHardwareBackPress={true}
-        dismissOnTouchOutside={true}
-        haveOverlay={true}
-        height={300}
-        onDismissed={[Function]}
-        onShown={[Function]}
-        show={false}
-        width={750}
-      >
-        <DialogTitle
-          haveTitleBar={true}
-          title="Popup Dialog - FadeAnimation Animation"
-          titleAlign="center"
-        />
-      </Dialog>,
-      "_rendering": false,
-      "_updater": [Circular],
-    },
-  },
+exports[`should render with FadeAnimation & show/hide correctly 1`] = `
+Object {
+  "dialogState": "closed",
 }
 `;
 
-exports[`should render with ScaleAnimation correctly 1`] = `
-PopupDialog {
-  "context": Object {},
-  "dismiss": [Function],
-  "props": Object {
-    "dialogAnimation": ScaleAnimation {
-      "animate": 0,
-      "animations": Object {
-        "transform": Array [
-          Object {
-            "scale": 0,
-          },
-          Object {
-            "scale": 0,
-          },
-        ],
-      },
-      "useNativeDriver": true,
-    },
-    "dialogTitle": <DialogTitle
-      haveTitleBar={true}
-      title="Popup Dialog - ScaleAnimation Animation"
-      titleAlign="center"
-    />,
-  },
-  "refs": Object {},
-  "show": [Function],
-  "state": null,
-  "updater": Updater {
-    "_callbacks": Array [],
-    "_renderer": ReactShallowRenderer {
-      "_context": Object {},
-      "_element": <PopupDialog
-        dialogAnimation={
-          ScaleAnimation {
-            "animate": 0,
-            "animations": Object {
-              "transform": Array [
-                Object {
-                  "scale": 0,
-                },
-                Object {
-                  "scale": 0,
-                },
-              ],
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dialogTitle={
-          <DialogTitle
-            haveTitleBar={true}
-            title="Popup Dialog - ScaleAnimation Animation"
-            titleAlign="center"
-          />
-        }
-      />,
-      "_forcedUpdate": false,
-      "_instance": [Circular],
-      "_newState": null,
-      "_rendered": <Dialog
-        animationDuration={150}
-        containerStyle={null}
-        dialogAnimation={
-          ScaleAnimation {
-            "animate": 0,
-            "animations": Object {
-              "transform": Array [
-                Object {
-                  "scale": 0,
-                },
-                Object {
-                  "scale": 0,
-                },
-              ],
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dismissOnHardwareBackPress={true}
-        dismissOnTouchOutside={true}
-        haveOverlay={true}
-        height={300}
-        onDismissed={[Function]}
-        onShown={[Function]}
-        show={false}
-        width={750}
-      >
-        <DialogTitle
-          haveTitleBar={true}
-          title="Popup Dialog - ScaleAnimation Animation"
-          titleAlign="center"
-        />
-      </Dialog>,
-      "_rendering": false,
-      "_updater": [Circular],
-    },
-  },
+exports[`should render with FadeAnimation & show/hide correctly 2`] = `
+Object {
+  "dialogState": "opening",
 }
 `;
 
-exports[`should render with ScaleAnimation correctly 2`] = `
-PopupDialog {
-  "context": Object {},
-  "dismiss": [Function],
-  "props": Object {
-    "dialogAnimation": ScaleAnimation {
-      "animate": 0,
-      "animations": Object {
-        "transform": Array [
-          Object {
-            "scale": 0,
-          },
-          Object {
-            "scale": 0,
-          },
-        ],
-      },
-      "useNativeDriver": true,
-    },
-    "dialogTitle": <DialogTitle
-      haveTitleBar={true}
-      title="Popup Dialog - ScaleAnimation Animation"
-      titleAlign="center"
-    />,
-    "show": true,
-  },
-  "refs": Object {},
-  "show": [Function],
-  "state": Object {},
-  "updater": Updater {
-    "_callbacks": Array [],
-    "_renderer": ReactShallowRenderer {
-      "_context": Object {},
-      "_element": <PopupDialog
-        dialogAnimation={
-          ScaleAnimation {
-            "animate": 0,
-            "animations": Object {
-              "transform": Array [
-                Object {
-                  "scale": 0,
-                },
-                Object {
-                  "scale": 0,
-                },
-              ],
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dialogTitle={
-          <DialogTitle
-            haveTitleBar={true}
-            title="Popup Dialog - ScaleAnimation Animation"
-            titleAlign="center"
-          />
-        }
-        show={true}
-      />,
-      "_forcedUpdate": false,
-      "_instance": [Circular],
-      "_newState": null,
-      "_rendered": <Dialog
-        animationDuration={150}
-        containerStyle={null}
-        dialogAnimation={
-          ScaleAnimation {
-            "animate": 0,
-            "animations": Object {
-              "transform": Array [
-                Object {
-                  "scale": 0,
-                },
-                Object {
-                  "scale": 0,
-                },
-              ],
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dismissOnHardwareBackPress={true}
-        dismissOnTouchOutside={true}
-        haveOverlay={true}
-        height={300}
-        onDismissed={[Function]}
-        onShown={[Function]}
-        show={true}
-        width={750}
-      >
-        <DialogTitle
-          haveTitleBar={true}
-          title="Popup Dialog - ScaleAnimation Animation"
-          titleAlign="center"
-        />
-      </Dialog>,
-      "_rendering": false,
-      "_updater": [Circular],
-    },
-  },
+exports[`should render with FadeAnimation & show/hide correctly 3`] = `
+Object {
+  "dialogState": "opened",
 }
 `;
 
-exports[`should render with ScaleAnimation correctly 3`] = `
-PopupDialog {
-  "context": Object {},
-  "dismiss": [Function],
-  "props": Object {
-    "dialogAnimation": ScaleAnimation {
-      "animate": 0,
-      "animations": Object {
-        "transform": Array [
-          Object {
-            "scale": 0,
-          },
-          Object {
-            "scale": 0,
-          },
-        ],
-      },
-      "useNativeDriver": true,
-    },
-    "dialogTitle": <DialogTitle
-      haveTitleBar={true}
-      title="Popup Dialog - ScaleAnimation Animation"
-      titleAlign="center"
-    />,
-    "show": false,
-  },
-  "refs": Object {},
-  "show": [Function],
-  "state": Object {},
-  "updater": Updater {
-    "_callbacks": Array [],
-    "_renderer": ReactShallowRenderer {
-      "_context": Object {},
-      "_element": <PopupDialog
-        dialogAnimation={
-          ScaleAnimation {
-            "animate": 0,
-            "animations": Object {
-              "transform": Array [
-                Object {
-                  "scale": 0,
-                },
-                Object {
-                  "scale": 0,
-                },
-              ],
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dialogTitle={
-          <DialogTitle
-            haveTitleBar={true}
-            title="Popup Dialog - ScaleAnimation Animation"
-            titleAlign="center"
-          />
-        }
-        show={false}
-      />,
-      "_forcedUpdate": false,
-      "_instance": [Circular],
-      "_newState": null,
-      "_rendered": <Dialog
-        animationDuration={150}
-        containerStyle={null}
-        dialogAnimation={
-          ScaleAnimation {
-            "animate": 0,
-            "animations": Object {
-              "transform": Array [
-                Object {
-                  "scale": 0,
-                },
-                Object {
-                  "scale": 0,
-                },
-              ],
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dismissOnHardwareBackPress={true}
-        dismissOnTouchOutside={true}
-        haveOverlay={true}
-        height={300}
-        onDismissed={[Function]}
-        onShown={[Function]}
-        show={false}
-        width={750}
-      >
-        <DialogTitle
-          haveTitleBar={true}
-          title="Popup Dialog - ScaleAnimation Animation"
-          titleAlign="center"
-        />
-      </Dialog>,
-      "_rendering": false,
-      "_updater": [Circular],
-    },
-  },
+exports[`should render with FadeAnimation & show/hide correctly 4`] = `
+Object {
+  "dialogState": "closing",
 }
 `;
 
-exports[`should render with SlideAnimation correctly 1`] = `
-PopupDialog {
-  "context": Object {},
-  "dismiss": [Function],
-  "props": Object {
-    "dialogAnimation": SlideAnimation {
-      "animate": 0,
-      "animations": Object {
-        "transform": Array [
-          Object {
-            "translateY": 800,
-          },
-        ],
-      },
-      "useNativeDriver": true,
-    },
-    "dialogTitle": <DialogTitle
-      haveTitleBar={true}
-      title="Popup Dialog - SlideAnimation Animation"
-      titleAlign="center"
-    />,
-  },
-  "refs": Object {},
-  "show": [Function],
-  "state": null,
-  "updater": Updater {
-    "_callbacks": Array [],
-    "_renderer": ReactShallowRenderer {
-      "_context": Object {},
-      "_element": <PopupDialog
-        dialogAnimation={
-          SlideAnimation {
-            "animate": 0,
-            "animations": Object {
-              "transform": Array [
-                Object {
-                  "translateY": 800,
-                },
-              ],
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dialogTitle={
-          <DialogTitle
-            haveTitleBar={true}
-            title="Popup Dialog - SlideAnimation Animation"
-            titleAlign="center"
-          />
-        }
-      />,
-      "_forcedUpdate": false,
-      "_instance": [Circular],
-      "_newState": null,
-      "_rendered": <Dialog
-        animationDuration={150}
-        containerStyle={null}
-        dialogAnimation={
-          SlideAnimation {
-            "animate": 0,
-            "animations": Object {
-              "transform": Array [
-                Object {
-                  "translateY": 800,
-                },
-              ],
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dismissOnHardwareBackPress={true}
-        dismissOnTouchOutside={true}
-        haveOverlay={true}
-        height={300}
-        onDismissed={[Function]}
-        onShown={[Function]}
-        show={false}
-        width={750}
-      >
-        <DialogTitle
-          haveTitleBar={true}
-          title="Popup Dialog - SlideAnimation Animation"
-          titleAlign="center"
-        />
-      </Dialog>,
-      "_rendering": false,
-      "_updater": [Circular],
-    },
-  },
+exports[`should render with FadeAnimation & show/hide correctly 5`] = `
+Object {
+  "dialogState": "closed",
 }
 `;
 
-exports[`should render with SlideAnimation correctly 2`] = `
-PopupDialog {
-  "context": Object {},
-  "dismiss": [Function],
-  "props": Object {
-    "dialogAnimation": SlideAnimation {
-      "animate": 0,
-      "animations": Object {
-        "transform": Array [
-          Object {
-            "translateY": 800,
-          },
-        ],
-      },
-      "useNativeDriver": true,
-    },
-    "dialogTitle": <DialogTitle
-      haveTitleBar={true}
-      title="Popup Dialog - SlideAnimation Animation"
-      titleAlign="center"
-    />,
-    "show": true,
-  },
-  "refs": Object {},
-  "show": [Function],
-  "state": Object {},
-  "updater": Updater {
-    "_callbacks": Array [],
-    "_renderer": ReactShallowRenderer {
-      "_context": Object {},
-      "_element": <PopupDialog
-        dialogAnimation={
-          SlideAnimation {
-            "animate": 0,
-            "animations": Object {
-              "transform": Array [
-                Object {
-                  "translateY": 800,
-                },
-              ],
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dialogTitle={
-          <DialogTitle
-            haveTitleBar={true}
-            title="Popup Dialog - SlideAnimation Animation"
-            titleAlign="center"
-          />
-        }
-        show={true}
-      />,
-      "_forcedUpdate": false,
-      "_instance": [Circular],
-      "_newState": null,
-      "_rendered": <Dialog
-        animationDuration={150}
-        containerStyle={null}
-        dialogAnimation={
-          SlideAnimation {
-            "animate": 0,
-            "animations": Object {
-              "transform": Array [
-                Object {
-                  "translateY": 800,
-                },
-              ],
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dismissOnHardwareBackPress={true}
-        dismissOnTouchOutside={true}
-        haveOverlay={true}
-        height={300}
-        onDismissed={[Function]}
-        onShown={[Function]}
-        show={true}
-        width={750}
-      >
-        <DialogTitle
-          haveTitleBar={true}
-          title="Popup Dialog - SlideAnimation Animation"
-          titleAlign="center"
-        />
-      </Dialog>,
-      "_rendering": false,
-      "_updater": [Circular],
-    },
-  },
+exports[`should render with ScaleAnimation & show/hide correctly 1`] = `
+Object {
+  "dialogState": "closed",
 }
 `;
 
-exports[`should render with SlideAnimation correctly 3`] = `
-PopupDialog {
-  "context": Object {},
-  "dismiss": [Function],
-  "props": Object {
-    "dialogAnimation": SlideAnimation {
-      "animate": 0,
-      "animations": Object {
-        "transform": Array [
-          Object {
-            "translateY": 800,
-          },
-        ],
-      },
-      "useNativeDriver": true,
-    },
-    "dialogTitle": <DialogTitle
-      haveTitleBar={true}
-      title="Popup Dialog - SlideAnimation Animation"
-      titleAlign="center"
-    />,
-    "show": false,
-  },
-  "refs": Object {},
-  "show": [Function],
-  "state": Object {},
-  "updater": Updater {
-    "_callbacks": Array [],
-    "_renderer": ReactShallowRenderer {
-      "_context": Object {},
-      "_element": <PopupDialog
-        dialogAnimation={
-          SlideAnimation {
-            "animate": 0,
-            "animations": Object {
-              "transform": Array [
-                Object {
-                  "translateY": 800,
-                },
-              ],
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dialogTitle={
-          <DialogTitle
-            haveTitleBar={true}
-            title="Popup Dialog - SlideAnimation Animation"
-            titleAlign="center"
-          />
-        }
-        show={false}
-      />,
-      "_forcedUpdate": false,
-      "_instance": [Circular],
-      "_newState": null,
-      "_rendered": <Dialog
-        animationDuration={150}
-        containerStyle={null}
-        dialogAnimation={
-          SlideAnimation {
-            "animate": 0,
-            "animations": Object {
-              "transform": Array [
-                Object {
-                  "translateY": 800,
-                },
-              ],
-            },
-            "useNativeDriver": true,
-          }
-        }
-        dismissOnHardwareBackPress={true}
-        dismissOnTouchOutside={true}
-        haveOverlay={true}
-        height={300}
-        onDismissed={[Function]}
-        onShown={[Function]}
-        show={false}
-        width={750}
-      >
-        <DialogTitle
-          haveTitleBar={true}
-          title="Popup Dialog - SlideAnimation Animation"
-          titleAlign="center"
-        />
-      </Dialog>,
-      "_rendering": false,
-      "_updater": [Circular],
-    },
-  },
+exports[`should render with ScaleAnimation & show/hide correctly 2`] = `
+Object {
+  "dialogState": "opening",
+}
+`;
+
+exports[`should render with ScaleAnimation & show/hide correctly 3`] = `
+Object {
+  "dialogState": "opened",
+}
+`;
+
+exports[`should render with ScaleAnimation & show/hide correctly 4`] = `
+Object {
+  "dialogState": "closing",
+}
+`;
+
+exports[`should render with ScaleAnimation & show/hide correctly 5`] = `
+Object {
+  "dialogState": "closed",
+}
+`;
+
+exports[`should render with SlideAnimation & show/hide correctly 1`] = `
+Object {
+  "dialogState": "closed",
+}
+`;
+
+exports[`should render with SlideAnimation & show/hide correctly 2`] = `
+Object {
+  "dialogState": "opening",
+}
+`;
+
+exports[`should render with SlideAnimation & show/hide correctly 3`] = `
+Object {
+  "dialogState": "opened",
+}
+`;
+
+exports[`should render with SlideAnimation & show/hide correctly 4`] = `
+Object {
+  "dialogState": "closing",
+}
+`;
+
+exports[`should render with SlideAnimation & show/hide correctly 5`] = `
+Object {
+  "dialogState": "closed",
 }
 `;

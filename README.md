@@ -181,17 +181,20 @@ this.popupDialog.dismiss(() => {
 |---|---|---|---|
 | `toValue` | Number | 0 | |
 | `animationDuration` | Number | 150 | |
+| `useNativeDriver` | Boolean | true | |
 
 ### ScaleAnimation
 | Param | Type | Default | Note |
 |---|---|---|---|
 | `toValue` | Number | 0 | |
+| `useNativeDriver` | Boolean | true | |
 
 ### SlideAnimation
 | Param | Type | Default | Note |
 |---|---|---|---|
 | `toValue` | Number | 0 | |
 | `slideFrom` | String | `bottom` | Available option: `top`, `bottom`, `left`, `right` |
+| `useNativeDriver` | Boolean | true | |
 
 ## Development
 `yarn`

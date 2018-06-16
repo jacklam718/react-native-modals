@@ -4,9 +4,9 @@
   "description": "React Native Popup Dialog for IOS & Android.",
   "main": "dist/index.js",
   "scripts": {
-    "clean": "rimraf dist",
+    "test": "jest",
     "build": "npm run clean && babel src/ -d dist/",
-    "test": "jest"
+    "clean": "rimraf dist"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
   "homepage": "https://github.com/jacklam718/react-native-popup-dialog/blob/master/README.md",
   "dependencies": {
     "babel-plugin-flow-react-proptypes": "^9.1.1",
+    "jest-enzyme": "^6.0.1",
     "prop-types": "^15.6.0"
   },
   "peerDependencies": {
@@ -43,7 +44,6 @@
     "babel-preset-react-native": "^4.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "enzyme-react-16-adapter-setup": "^0.1.0",
     "eslint": "^4.11.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
@@ -52,20 +52,20 @@
     "eslint-plugin-react": "^7.5.1",
     "flow-bin": "^0.59.0",
     "jest": "^22.0.0",
-    "jest-enzyme": "^6.0.1",
-    "jest-react-native": "^18.0.0",
+    "jsdom": "^11.11.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-native": "^0.50.4",
+    "react-native-mock-render": "^0.0.26",
     "react-test-renderer": "^16.1.1",
     "rimraf": "^2.6.2"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
     "setupFiles": [
-      "enzyme-react-16-adapter-setup"
+      "./__tests__/setup-tests.js"
     ],
-    "preset": "jest-react-native",
+    "testRegex": "__tests__/.+\\.test.js$",
     "modulePathIgnorePatterns": [
       "popup-dialog-example/node_modules"
     ]
