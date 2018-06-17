@@ -22,6 +22,7 @@ export type DialogType = {
   onShown?: Function;
   onDismissed?: Function;
   actions?: Array<any>;
+  useNativeDriver?: boolean;
   children: any;
 }
 
@@ -51,4 +52,5 @@ export type OverlayType = {
   animationDuration?: number;
   showOverlay?: boolean;
   pointerEvents?: string;
+  useNativeDriver?: boolean;
 }

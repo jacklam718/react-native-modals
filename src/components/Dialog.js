@@ -185,6 +185,7 @@ class Dialog extends Component {
           backgroundColor={this.props.overlayBackgroundColor}
           opacity={this.props.overlayOpacity}
           animationDuration={this.props.animationDuration}
+          useNativeDriver={this.props.useNativeDriver}
         />
         <Animated.View
           style={[

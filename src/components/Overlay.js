@@ -25,6 +25,7 @@ class Overlay extends Component {
     opacity: OPACITY,
     animationDuration: ANIMATION_DURATION,
     showOverlay: SHOW_OVERLAY,
+    useNativeDriver: true,
   };
 
   constructor(props: OverlayType) {
@@ -35,11 +36,17 @@ class Overlay extends Component {
   }
 
   componentWillReceiveProps(nextProps: OverlayType) {
-    if (this.props.showOverlay !== nextProps.showOverlay) {
+    const {
+      showOverlay,
+      useNativeDriver,
+      animationDuration: duration,
+    } = this.props;
+    if (showOverlay !== nextProps.showOverlay) {
       const toValue = nextProps.showOverlay ? nextProps.opacity : 0;
       Animated.timing(this.state.opacity, {
         toValue,
-        duration: this.props.animationDuration,
+        duration,
+        useNativeDriver,
       }).start();
     }
   }
@@ -47,9 +54,13 @@ class Overlay extends Component {
   props: OverlayType
 
   render() {
-    const { onPress, pointerEvents } = this.props;
-    const backgroundColor = { backgroundColor: this.props.backgroundColor };
-    const opacity = { opacity: this.state.opacity };
+    const {
+      onPress,
+      pointerEvents,
+      backgroundColor,
+    } = this.props;
+
+    const { opacity } = this.state;
     const dimensions = {
       width: Dimensions.get('window').width,
       height: Dimensions.get('window').height,
@@ -58,9 +69,17 @@ class Overlay extends Component {
     return (
       <Animated.View
         pointerEvents={pointerEvents}
-        style={[styles.overlay, backgroundColor, opacity, dimensions]}
+        style={[
+          styles.overlay,
+          { backgroundColor },
+          { opacity },
+          dimensions,
+        ]}
       >
-        <TouchableOpacity onPress={onPress} style={[styles.overlay, dimensions]} />
+        <TouchableOpacity
+          onPress={onPress}
+          style={[styles.overlay, dimensions]}
+        />
       </Animated.View>
     );
   }
