@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
@@ -61,41 +61,22 @@ export default class App extends Component {
     this.fadeAnimationDialog.show();
   }
 
-  renderScene = () => (
-    <View style={styles.container}>
-      <Button
-        title="Show Dialog - Default Animation"
-        onPress={this.showFadeAnimationDialog}
-      />
-
-      <Button
-        title="Show Dialog - Scale Animation"
-        onPress={this.showScaleAnimationDialog}
-      />
-
-      <Button
-        title="Show Dialog - Slide Animation"
-        onPress={this.showSlideAnimationDialog}
-      />
-    </View>
-    )
-
   render() {
     return (
       <View style={{ flex: 1 }}>
         <View style={styles.container}>
-          <Button
-            title="Show Dialog - Default Animation"
+          <DialogButton
+            text="Show Dialog - Default Animation"
             onPress={this.showFadeAnimationDialog}
           />
 
-          <Button
-            title="Show Dialog - Scale Animation"
+          <DialogButton
+            text="Show Dialog - Scale Animation"
             onPress={this.showScaleAnimationDialog}
           />
 
-          <Button
-            title="Show Dialog - Slide Animation"
+          <DialogButton
+            text="Show Dialog - Slide Animation"
             onPress={this.showSlideAnimationDialog}
           />
         </View>
@@ -117,8 +98,8 @@ export default class App extends Component {
           ]}
         >
           <View style={styles.dialogContentView}>
-            <Button
-              title="Show Dialog - Default Animation"
+            <DialogButton
+              text="Show Dialog - Default Animation"
               onPress={this.showFadeAnimationDialog}
             />
           </View>
