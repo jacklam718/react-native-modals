@@ -177,19 +177,42 @@ this.popupDialog.dismiss(() => {
 ### Params for (*)Animation
 
 ### FadeAnimation
+##### Example:
+```javascript
+new FadeAnimation({
+  toValue: 0, // optional
+  animationDuration: 150, // optional
+  useNativeDriver: true, // optional
+})
+```
 | Param | Type | Default | Note |
 |---|---|---|---|
 | `toValue` | Number | 0 | |
-| `animationDuration` | Number | 150 | |
-| `useNativeDriver` | Boolean | true | |
+| `animationDuration?` | Number | 150 | |
+| `useNativeDriver?` | Boolean | true | |
 
 ### ScaleAnimation
+##### Example:
+```javascript
+new ScaleAnimation({
+  toValue: 0, // optional
+  useNativeDriver: true, // optional
+})
+```
 | Param | Type | Default | Note |
 |---|---|---|---|
 | `toValue` | Number | 0 | |
 | `useNativeDriver` | Boolean | true | |
 
 ### SlideAnimation
+##### Example:
+```javascript
+new SlideAnimation({
+  toValue: 0, // optional
+  slideFrom: 'bottom', // optional
+  useNativeDriver: true, // optional
+})
+```
 | Param | Type | Default | Note |
 |---|---|---|---|
 | `toValue` | Number | 0 | |
