@@ -28,7 +28,7 @@ const DEFAULT_WIDTH: number = Dimensions.get('window').width;
 const DEFAULT_HEIGHT: number = 300;
 const DISMISS_ON_TOUCH_OUTSIDE: boolean = true;
 const DISMISS_ON_HARDWARE_BACK_PRESS: boolean = true;
-const HAVE_OVERLAY: boolean = true;
+const OVERLAY: boolean = true;
 
 // event types
 const HARDWARE_BACK_PRESS_EVENT: string = 'hardwareBackPress';
@@ -64,7 +64,7 @@ class Dialog extends Component {
     height: DEFAULT_HEIGHT,
     dismissOnTouchOutside: DISMISS_ON_TOUCH_OUTSIDE,
     dismissOnHardwareBackPress: DISMISS_ON_HARDWARE_BACK_PRESS,
-    haveOverlay: HAVE_OVERLAY,
+    hasOverlay: OVERLAY,
     onShown: () => {},
     onDismissed: () => {},
     show: false,
@@ -79,6 +79,7 @@ class Dialog extends Component {
     if (show) {
       this.show();
     }
+
     BackHandler.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.hardwareBackEventHandler);
   }
 
@@ -171,7 +172,7 @@ class Dialog extends Component {
     const { dialogState } = this.state;
     const hidden = dialogState === DIALOG_CLOSED && styles.hidden;
     const isShowOverlay = (
-      [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState) && this.props.haveOverlay
+      [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState) && this.props.hasOverlay
     );
     const { width, height } = Dimensions.get('window');
     const containerSize = { width, height };

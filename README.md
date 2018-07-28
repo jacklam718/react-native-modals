@@ -141,9 +141,10 @@ this.popupDialog.dismiss(() => {
 | `overlayPointerEvents?` | `String` | | Available option: `auto`, `none` |
 | `overlayBackgroundColor?` | `String` | `#000` |
 | `overlayOpacity?` | `Number` | `0.5` |
-| `dismissOnTouchOutside?` | `Bool` | `true` | When touch overlay will dismiss dialog, but if `haveOverlay?` is false then the `dismissOnTouchOutside` won't work| |
+| `dismissOnTouchOutside?` | `Bool` | `true` | When touch overlay will dismiss dialog, but if `hasOverlay?` is false then the `dismissOnTouchOutside` won't work| |
 | `dismissOnHardwareBackPress?` | `Bool` | `true` | Only for Android | |
-| `haveOverlay?` | `Bool` | `true` | If false won't show overlay while dialog show | |
+| ~~`haveOverlay?`~~ **_(DEPRECATED)_** | | | | |
+| `hasOverlay?` | `Bool` | `true` | | |
 | `show?` | `Bool` | `false` |  | |
 | `onShown?` | `Function` | | You can pass shown function as a callback function, will call the function when dialog shown | |
 | `onDismissed?` | `Function` | | You can pass onDismissed function as a callback function, will call the function when dialog dismissed | |
@@ -157,7 +158,8 @@ this.popupDialog.dismiss(() => {
 | `titleStyle?` | `any` | | | |
 | `titleTextStyle?` | `any` | | | |
 | `titleAlign?` | `String` | `center` | Available option: `left`, `center`, `right` | |
-| `haveTitleBar?` | `Bool` | `true` | | |
+| ~~`haveTitleBar?`~~ **_(DEPRECATED)_** | | | | |
+| `hasTitleBar?` | `Bool` | `true` | | |
 
 
 ### DialogButton

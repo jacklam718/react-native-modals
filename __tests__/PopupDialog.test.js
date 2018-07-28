@@ -1,6 +1,7 @@
 import React from 'react';
 import expect from 'expect';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 
 import PopupDialog, {
   DialogTitle,
@@ -107,4 +108,26 @@ it('should render with SlideAnimation & show/hide correctly', async () => {
   expect(wrapper.instance().dialog.state).toMatchSnapshot();
   await sleep(DELAY_MS);
   expect(wrapper.instance().dialog.state).toMatchSnapshot();
+});
+
+it('should render with PopupDialog with Overlay', async () => {
+  const wrapper = mount((
+    <PopupDialog
+      show
+      hasOverlay
+    />
+  ));
+  await sleep(DELAY_MS);
+  expect(wrapper).toMatchSnapshot();
+});
+
+it('should render with PopupDialog without Overlay', async () => {
+  const wrapper = mount((
+    <PopupDialog
+      show
+      hasOverlay={false}
+    />
+  ));
+  await sleep(DELAY_MS);
+  expect(wrapper).toMatchSnapshot();
 });
