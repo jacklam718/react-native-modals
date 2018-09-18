@@ -65,7 +65,7 @@ class Overlay extends Component {
       >
         <TouchableOpacity
           onPress={onPress}
-          style={[styles.overlay, dimensions]}
+          style={StyleSheet.absoluteFill}
         />
       </Animated.View>
     );
