@@ -10,14 +10,6 @@ const OPACITY: number = 0.5;
 const ANIMATION_DURATION: number = 2000;
 const SHOW_OVERLAY: boolean = false;
 
-const styles = StyleSheet.create({
-  overlay: {
-    flex: 1,
-    top: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
 
 class Overlay extends Component {
   static defaultProps = {
@@ -61,19 +53,14 @@ class Overlay extends Component {
     } = this.props;
 
     const { opacity } = this.state;
-    const dimensions = {
-      width: Dimensions.get('window').width,
-      height: Dimensions.get('window').height,
-    };
+;
 
     return (
       <Animated.View
         pointerEvents={pointerEvents}
         style={[
-          styles.overlay,
-          { backgroundColor },
-          { opacity },
-          dimensions,
+          StyleSheet.absoluteFill,
+          { backgroundColor, opacity },
         ]}
       >
         <TouchableOpacity
