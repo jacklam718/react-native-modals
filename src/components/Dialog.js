@@ -80,9 +80,9 @@ class Dialog extends Component {
     BackHandler.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.hardwareBackEventHandler);
   }
 
-  componentWillReceiveProps(nextProps: DialogType) {
-    if (this.props.show !== nextProps.show) {
-      if (nextProps.show) {
+  componentDidUpdate({ show: prevShow }) {
+    if (this.props.show !== prevShow) {
+      if (this.props.show) {
         this.show();
         return;
       }
@@ -171,7 +171,7 @@ class Dialog extends Component {
     const isShowOverlay = (
       [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState) && this.props.hasOverlay
     );
-    
+
     return (
       <View style={[styles.container, hidden, this.props.containerStyle]}>
         <Overlay
