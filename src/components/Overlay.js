@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions, TouchableOpacity, Animated } from 'react-native';
+import { StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import type { OverlayType } from '../type';
 
 // default overlay options
@@ -53,7 +53,6 @@ class Overlay extends Component {
     } = this.props;
 
     const { opacity } = this.state;
-;
 
     return (
       <Animated.View
