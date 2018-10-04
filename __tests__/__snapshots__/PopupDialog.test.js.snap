@@ -106,18 +106,10 @@ exports[`should render with PopupDialog with Overlay 1`] = `
         Array [
           Object {
             "alignItems": "center",
-            "flex": 1,
             "justifyContent": "center",
-            "left": 0,
-            "position": "absolute",
-            "top": 0,
             "zIndex": 1000,
           },
           false,
-          Object {
-            "height": 768,
-            "width": 320,
-          },
           null,
         ]
       }
@@ -136,16 +128,9 @@ exports[`should render with PopupDialog with Overlay 1`] = `
             pointerEvents="none"
             style={
               Array [
-                Object {
-                  "flex": 1,
-                  "left": 0,
-                  "position": "absolute",
-                  "top": 0,
-                },
+                undefined,
                 Object {
                   "backgroundColor": "#000",
-                },
-                Object {
                   "opacity": AnimatedValue {
                     "_animation": null,
                     "_children": Array [],
@@ -155,10 +140,6 @@ exports[`should render with PopupDialog with Overlay 1`] = `
                     "_value": 0.5,
                   },
                 },
-                Object {
-                  "height": 768,
-                  "width": 320,
-                },
               ]
             }
           >
@@ -166,20 +147,6 @@ exports[`should render with PopupDialog with Overlay 1`] = `
               <react-native-mock>
                 <TouchableOpacity
                   onPress={[Function]}
-                  style={
-                    Array [
-                      Object {
-                        "flex": 1,
-                        "left": 0,
-                        "position": "absolute",
-                        "top": 0,
-                      },
-                      Object {
-                        "height": 768,
-                        "width": 320,
-                      },
-                    ]
-                  }
                 >
                   <react-native-mock />
                 </TouchableOpacity>
@@ -268,18 +235,10 @@ exports[`should render with PopupDialog without Overlay 1`] = `
         Array [
           Object {
             "alignItems": "center",
-            "flex": 1,
             "justifyContent": "center",
-            "left": 0,
-            "position": "absolute",
-            "top": 0,
             "zIndex": 1000,
           },
           false,
-          Object {
-            "height": 768,
-            "width": 320,
-          },
           null,
         ]
       }
@@ -298,16 +257,9 @@ exports[`should render with PopupDialog without Overlay 1`] = `
             pointerEvents="none"
             style={
               Array [
-                Object {
-                  "flex": 1,
-                  "left": 0,
-                  "position": "absolute",
-                  "top": 0,
-                },
+                undefined,
                 Object {
                   "backgroundColor": "#000",
-                },
-                Object {
                   "opacity": AnimatedValue {
                     "_animation": null,
                     "_children": Array [],
@@ -316,10 +268,6 @@ exports[`should render with PopupDialog without Overlay 1`] = `
                     "_value": 0,
                   },
                 },
-                Object {
-                  "height": 768,
-                  "width": 320,
-                },
               ]
             }
           >
@@ -327,20 +275,6 @@ exports[`should render with PopupDialog without Overlay 1`] = `
               <react-native-mock>
                 <TouchableOpacity
                   onPress={[Function]}
-                  style={
-                    Array [
-                      Object {
-                        "flex": 1,
-                        "left": 0,
-                        "position": "absolute",
-                        "top": 0,
-                      },
-                      Object {
-                        "height": 768,
-                        "width": 320,
-                      },
-                    ]
-                  }
                 >
                   <react-native-mock />
                 </TouchableOpacity>
