@@ -56,7 +56,6 @@ class Dialog extends Component {
   static defaultProps = {
     containerStyle: null,
     animationDuration: DEFAULT_ANIMATION_DURATION,
-    dialogAnimation: new FadeAnimation({ animationDuration: DEFAULT_ANIMATION_DURATION }),
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
     dismissOnTouchOutside: DISMISS_ON_TOUCH_OUTSIDE,
@@ -70,6 +69,14 @@ class Dialog extends Component {
   state = {
     dialogState: DIALOG_CLOSED,
   };
+
+  componentWillMount() {
+    if (!this.props.dialogAnimation) {
+      this.dialogAnimation = new FadeAnimation({ animationDuration: DEFAULT_ANIMATION_DURATION });
+    } else {
+      this.dialogAnimation = this.props.dialogAnimation;
+    }
+  }
 
   componentDidMount() {
     const { show } = this.props;
@@ -99,6 +106,23 @@ class Dialog extends Component {
     if (dismissOnTouchOutside) {
       this.dismiss();
     }
+  }
+
+  setDialogState(toValue: number, callback?: Function = () => {}) {
+    const { animationDuration } = this.props;
+    let dialogState = toValue ? DIALOG_OPENING : DIALOG_CLOSING;
+
+    // to make sure has passed the dialogAnimation prop and the dialogAnimation has toValue method
+    if (this.dialogAnimation && this.dialogAnimation.toValue) {
+      this.dialogAnimation.toValue(toValue);
+    }
+
+    this.setState({ dialogState });
+
+    setTimeout(() => {
+      dialogState = dialogState === DIALOG_CLOSING ? DIALOG_CLOSED : DIALOG_OPENED;
+      this.setState({ dialogState }, () => { callback(); });
+    }, animationDuration);
   }
 
   get pointerEvents(): string {
@@ -188,7 +212,7 @@ class Dialog extends Component {
             styles.dialog,
             this.dialogSize,
             this.props.dialogStyle,
-            this.props.dialogAnimation.animations,
+            this.dialogAnimation.animations,
           ]}
         >
           {this.props.children}
