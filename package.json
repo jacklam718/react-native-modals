@@ -1,12 +1,12 @@
 {
   "name": "react-native-popup-dialog",
-  "version": "0.11.46",
+  "version": "0.15.1",
   "description": "React Native Popup Dialog for IOS & Android.",
   "main": "dist/index.js",
   "scripts": {
-    "clean": "rimraf dist",
+    "test": "jest",
     "build": "npm run clean && babel src/ -d dist/",
-    "test": "jest"
+    "clean": "rimraf dist"
   },
   "repository": {
     "type": "git",
@@ -29,33 +29,42 @@
   "license": "MIT",
   "homepage": "https://github.com/jacklam718/react-native-popup-dialog/blob/master/README.md",
   "dependencies": {
-    "babel-plugin-flow-react-proptypes": "^9.1.1",
-    "prop-types": "^15.6.0"
+    "prop-types": "^15.6.0",
+    "babel-plugin-flow-react-proptypes": "^9.1.1"
+
   },
   "peerDependencies": {
-    "react": ">=16.0.0",
     "react-native": ">=0.50.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^8.0.2",
-    "babel-jest": "^21.2.0",
+    "babel-jest": "^23.0.1",
     "babel-preset-react-native": "^4.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.11.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.17.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.5.1",
     "flow-bin": "^0.59.0",
-    "jest": "^21.2.1",
-    "jest-react-native": "^18.0.0",
-    "react": "^16.1.1",
+    "jest": "^22.0.0",
+    "jest-enzyme": "^6.0.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-native": "^0.50.4",
-    "react-test-renderer": "^16.1.1",
+    "react-native-mock-render": "^0.0.26",
     "rimraf": "^2.6.2"
   },
   "jest": {
-    "preset": "jest-react-native",
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+    "setupFiles": [
+      "./__tests__/setup-tests.js"
+    ],
+    "testRegex": "__tests__/.+\\.test.js$",
     "modulePathIgnorePatterns": [
       "popup-dialog-example/node_modules"
     ]

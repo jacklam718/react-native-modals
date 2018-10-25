@@ -1,124 +1,378 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "flex": 1,
-        "justifyContent": "center",
-        "left": 0,
-        "position": "absolute",
-        "top": 0,
-        "zIndex": 1000,
-      },
-      false,
-      Object {
-        "height": 1334,
-        "width": 750,
-      },
-      null,
-    ]
-  }
+exports[`should render with Default & show/hide Animation correctly 1`] = `
+Object {
+  "dialogState": "closed",
+}
+`;
+
+exports[`should render with Default & show/hide Animation correctly 2`] = `
+Object {
+  "dialogState": "opening",
+}
+`;
+
+exports[`should render with Default & show/hide Animation correctly 3`] = `
+Object {
+  "dialogState": "opened",
+}
+`;
+
+exports[`should render with Default & show/hide Animation correctly 4`] = `
+Object {
+  "dialogState": "closing",
+}
+`;
+
+exports[`should render with Default & show/hide Animation correctly 5`] = `
+Object {
+  "dialogState": "closed",
+}
+`;
+
+exports[`should render with FadeAnimation & show/hide correctly 1`] = `
+Object {
+  "dialogState": "closed",
+}
+`;
+
+exports[`should render with FadeAnimation & show/hide correctly 2`] = `
+Object {
+  "dialogState": "opening",
+}
+`;
+
+exports[`should render with FadeAnimation & show/hide correctly 3`] = `
+Object {
+  "dialogState": "opened",
+}
+`;
+
+exports[`should render with FadeAnimation & show/hide correctly 4`] = `
+Object {
+  "dialogState": "closing",
+}
+`;
+
+exports[`should render with FadeAnimation & show/hide correctly 5`] = `
+Object {
+  "dialogState": "closed",
+}
+`;
+
+exports[`should render with PopupDialog with Overlay 1`] = `
+<PopupDialog
+  hasOverlay={true}
+  show={true}
 >
-  <View
-    collapsable={undefined}
-    pointerEvents="none"
-    style={
-      Object {
-        "backgroundColor": "#000",
-        "flex": 1,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "top": 0,
-        "width": 750,
+  <Dialog
+    animationDuration={150}
+    containerStyle={null}
+    dialogAnimation={
+      FadeAnimation {
+        "animate": AnimatedValue {
+          "_animation": null,
+          "_children": Array [],
+          "_listeners": Object {},
+          "_offset": 0,
+          "_tracking": null,
+          "_value": 1,
+        },
+        "animationDuration": 150,
+        "animations": Object {
+          "opacity": AnimatedValue {
+            "_animation": null,
+            "_children": Array [],
+            "_listeners": Object {},
+            "_offset": 0,
+            "_tracking": null,
+            "_value": 1,
+          },
+        },
+        "useNativeDriver": true,
       }
     }
-  >
-    <View
-      accessibilityComponentType={undefined}
-      accessibilityLabel={undefined}
-      accessibilityTraits={undefined}
-      accessible={true}
-      collapsable={undefined}
-      hitSlop={undefined}
-      isTVSelectable={true}
-      nativeID={undefined}
-      onLayout={undefined}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "flex": 1,
-          "height": 1334,
-          "left": 0,
-          "opacity": 1,
-          "position": "absolute",
-          "top": 0,
-          "width": 750,
-        }
-      }
-      testID={undefined}
-      tvParallaxProperties={undefined}
-    />
-  </View>
-  <View
-    collapsable={undefined}
-    style={
-      Object {
-        "backgroundColor": "#ffffff",
-        "borderRadius": 8,
-        "height": 300,
-        "opacity": 0,
-        "width": 750,
-      }
-    }
+    dismissOnHardwareBackPress={true}
+    dismissOnTouchOutside={true}
+    hasOverlay={true}
+    height={300}
+    onDismissed={[Function]}
+    onShown={[Function]}
+    show={true}
+    width={320}
   >
     <View
       style={
         Array [
           Object {
-            "borderTopLeftRadius": 8,
-            "borderTopRightRadius": 8,
-            "padding": 24,
-          },
-          Object {
             "alignItems": "center",
+            "justifyContent": "center",
+            "zIndex": 1000,
           },
-          Object {
-            "backgroundColor": "#F9F9FB",
-            "borderBottomWidth": 0.5,
-            "borderColor": "#DAD9DC",
-            "padding": 14,
-          },
-          undefined,
+          false,
+          null,
         ]
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Array [
-            Object {
-              "color": "#7F7D89",
-              "fontSize": 16,
-            },
-            undefined,
-          ]
-        }
-      >
-        Popup Dialog - Default Animation
-      </Text>
+      <react-native-mock>
+        <Overlay
+          animationDuration={150}
+          backgroundColor="#000"
+          onPress={[Function]}
+          opacity={0.5}
+          pointerEvents="none"
+          showOverlay={true}
+          useNativeDriver={true}
+        >
+          <AnimatedComponent
+            pointerEvents="none"
+            style={
+              Array [
+                undefined,
+                Object {
+                  "backgroundColor": "#000",
+                  "opacity": AnimatedValue {
+                    "_animation": null,
+                    "_children": Array [],
+                    "_listeners": Object {},
+                    "_offset": 0,
+                    "_tracking": null,
+                    "_value": 0.5,
+                  },
+                },
+              ]
+            }
+          >
+            <View>
+              <react-native-mock>
+                <TouchableOpacity
+                  onPress={[Function]}
+                >
+                  <react-native-mock />
+                </TouchableOpacity>
+              </react-native-mock>
+            </View>
+          </AnimatedComponent>
+        </Overlay>
+        <AnimatedComponent
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#ffffff",
+                "borderRadius": 8,
+              },
+              Object {
+                "height": 300,
+                "width": 320,
+              },
+              undefined,
+              Object {
+                "opacity": AnimatedValue {
+                  "_animation": null,
+                  "_children": Array [],
+                  "_listeners": Object {},
+                  "_offset": 0,
+                  "_tracking": null,
+                  "_value": 1,
+                },
+              },
+            ]
+          }
+        >
+          <View>
+            <react-native-mock />
+          </View>
+        </AnimatedComponent>
+      </react-native-mock>
     </View>
-  </View>
-</View>
+  </Dialog>
+</PopupDialog>
+`;
+
+exports[`should render with PopupDialog without Overlay 1`] = `
+<PopupDialog
+  hasOverlay={false}
+  show={true}
+>
+  <Dialog
+    animationDuration={150}
+    containerStyle={null}
+    dialogAnimation={
+      FadeAnimation {
+        "animate": AnimatedValue {
+          "_animation": null,
+          "_children": Array [],
+          "_listeners": Object {},
+          "_offset": 0,
+          "_tracking": null,
+          "_value": 1,
+        },
+        "animationDuration": 150,
+        "animations": Object {
+          "opacity": AnimatedValue {
+            "_animation": null,
+            "_children": Array [],
+            "_listeners": Object {},
+            "_offset": 0,
+            "_tracking": null,
+            "_value": 1,
+          },
+        },
+        "useNativeDriver": true,
+      }
+    }
+    dismissOnHardwareBackPress={true}
+    dismissOnTouchOutside={true}
+    hasOverlay={false}
+    height={300}
+    onDismissed={[Function]}
+    onShown={[Function]}
+    show={true}
+    width={320}
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "zIndex": 1000,
+          },
+          false,
+          null,
+        ]
+      }
+    >
+      <react-native-mock>
+        <Overlay
+          animationDuration={150}
+          backgroundColor="#000"
+          onPress={[Function]}
+          opacity={0.5}
+          pointerEvents="none"
+          showOverlay={false}
+          useNativeDriver={true}
+        >
+          <AnimatedComponent
+            pointerEvents="none"
+            style={
+              Array [
+                undefined,
+                Object {
+                  "backgroundColor": "#000",
+                  "opacity": AnimatedValue {
+                    "_animation": null,
+                    "_children": Array [],
+                    "_listeners": Object {},
+                    "_offset": 0,
+                    "_value": 0,
+                  },
+                },
+              ]
+            }
+          >
+            <View>
+              <react-native-mock>
+                <TouchableOpacity
+                  onPress={[Function]}
+                >
+                  <react-native-mock />
+                </TouchableOpacity>
+              </react-native-mock>
+            </View>
+          </AnimatedComponent>
+        </Overlay>
+        <AnimatedComponent
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#ffffff",
+                "borderRadius": 8,
+              },
+              Object {
+                "height": 300,
+                "width": 320,
+              },
+              undefined,
+              Object {
+                "opacity": AnimatedValue {
+                  "_animation": null,
+                  "_children": Array [],
+                  "_listeners": Object {},
+                  "_offset": 0,
+                  "_tracking": null,
+                  "_value": 1,
+                },
+              },
+            ]
+          }
+        >
+          <View>
+            <react-native-mock />
+          </View>
+        </AnimatedComponent>
+      </react-native-mock>
+    </View>
+  </Dialog>
+</PopupDialog>
+`;
+
+exports[`should render with ScaleAnimation & show/hide correctly 1`] = `
+Object {
+  "dialogState": "closed",
+}
+`;
+
+exports[`should render with ScaleAnimation & show/hide correctly 2`] = `
+Object {
+  "dialogState": "opening",
+}
+`;
+
+exports[`should render with ScaleAnimation & show/hide correctly 3`] = `
+Object {
+  "dialogState": "opened",
+}
+`;
+
+exports[`should render with ScaleAnimation & show/hide correctly 4`] = `
+Object {
+  "dialogState": "closing",
+}
+`;
+
+exports[`should render with ScaleAnimation & show/hide correctly 5`] = `
+Object {
+  "dialogState": "closed",
+}
+`;
+
+exports[`should render with SlideAnimation & show/hide correctly 1`] = `
+Object {
+  "dialogState": "closed",
+}
+`;
+
+exports[`should render with SlideAnimation & show/hide correctly 2`] = `
+Object {
+  "dialogState": "opening",
+}
+`;
+
+exports[`should render with SlideAnimation & show/hide correctly 3`] = `
+Object {
+  "dialogState": "opened",
+}
+`;
+
+exports[`should render with SlideAnimation & show/hide correctly 4`] = `
+Object {
+  "dialogState": "closing",
+}
+`;
+
+exports[`should render with SlideAnimation & show/hide correctly 5`] = `
+Object {
+  "dialogState": "closed",
+}
 `;

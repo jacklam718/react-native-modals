@@ -28,17 +28,14 @@ const DEFAULT_WIDTH: number = Dimensions.get('window').width;
 const DEFAULT_HEIGHT: number = 300;
 const DISMISS_ON_TOUCH_OUTSIDE: boolean = true;
 const DISMISS_ON_HARDWARE_BACK_PRESS: boolean = true;
-const HAVE_OVERLAY: boolean = true;
+const OVERLAY: boolean = true;
 
 // event types
 const HARDWARE_BACK_PRESS_EVENT: string = 'hardwareBackPress';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    position: 'absolute',
-    top: 0,
-    left: 0,
+    ...StyleSheet.absoluteFillObject,
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 1000,
@@ -63,7 +60,7 @@ class Dialog extends Component {
     height: DEFAULT_HEIGHT,
     dismissOnTouchOutside: DISMISS_ON_TOUCH_OUTSIDE,
     dismissOnHardwareBackPress: DISMISS_ON_HARDWARE_BACK_PRESS,
-    haveOverlay: HAVE_OVERLAY,
+    hasOverlay: OVERLAY,
     onShown: () => {},
     onDismissed: () => {},
     show: false,
@@ -86,12 +83,13 @@ class Dialog extends Component {
     if (show) {
       this.show();
     }
+
     BackHandler.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.hardwareBackEventHandler);
   }
 
-  componentWillReceiveProps(nextProps: DialogType) {
-    if (this.props.show !== nextProps.show) {
-      if (nextProps.show) {
+  componentDidUpdate({ show: prevShow }) {
+    if (this.props.show !== prevShow) {
+      if (this.props.show) {
         this.show();
         return;
       }
@@ -146,6 +144,23 @@ class Dialog extends Component {
     return { width, height };
   }
 
+  setDialogState(toValue: number, callback?: Function = () => {}) {
+    const { animationDuration, dialogAnimation } = this.props;
+    let dialogState = toValue ? DIALOG_OPENING : DIALOG_CLOSING;
+
+    // to make sure has passed the dialogAnimation prop and the dialogAnimation has toValue method
+    if (dialogAnimation && dialogAnimation.toValue) {
+      dialogAnimation.toValue(toValue);
+    }
+
+    this.setState({ dialogState });
+
+    setTimeout(() => {
+      dialogState = dialogState === DIALOG_CLOSING ? DIALOG_CLOSED : DIALOG_OPENED;
+      this.setState({ dialogState }, () => { callback(); });
+    }, animationDuration);
+  }
+
   show = (callback?: Function = () => {}) => {
     const { onShown } = this.props;
     callback();
@@ -175,16 +190,14 @@ class Dialog extends Component {
   props: DialogType
 
   render() {
-    const dialogState = this.state.dialogState;
+    const { dialogState } = this.state;
     const hidden = dialogState === DIALOG_CLOSED && styles.hidden;
     const isShowOverlay = (
-      [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState) && this.props.haveOverlay
+      [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState) && this.props.hasOverlay
     );
-    const { width, height } = Dimensions.get('window');
-    const containerSize = { width, height };
 
     return (
-      <View style={[styles.container, hidden, containerSize, this.props.containerStyle]}>
+      <View style={[styles.container, hidden, this.props.containerStyle]}>
         <Overlay
           pointerEvents={this.pointerEvents}
           showOverlay={isShowOverlay}
@@ -192,6 +205,7 @@ class Dialog extends Component {
           backgroundColor={this.props.overlayBackgroundColor}
           opacity={this.props.overlayOpacity}
           animationDuration={this.props.animationDuration}
+          useNativeDriver={this.props.useNativeDriver}
         />
         <Animated.View
           style={[

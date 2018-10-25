@@ -6,9 +6,6 @@ import { Positions } from '../constants/Constants';
 
 import type { DialogTitleType } from '../type';
 
-const DEFAULT_TITLE_ALIGN: string = 'center';
-const HAVE_TITLE_BAR: boolean = true;
-
 const styles = StyleSheet.create({
   title: {
     padding: 24,
@@ -31,10 +28,10 @@ function DialogTitle({
   title,
   titleStyle,
   titleTextStyle,
-  haveTitleBar,
+  hasTitleBar,
   titleAlign,
 }: DialogTitleType) {
-  const titleBar = haveTitleBar ? styles.titleBar : null;
+  const titleBar = hasTitleBar ? styles.titleBar : null;
   const titleItemsAlign = { alignItems: Positions[titleAlign] };
 
   return (
@@ -47,8 +44,8 @@ function DialogTitle({
 }
 
 DialogTitle.defaultProps = {
-  titleAlign: DEFAULT_TITLE_ALIGN,
-  haveTitleBar: HAVE_TITLE_BAR,
+  titleAlign: 'center',
+  hasTitleBar: true,
 };
 
 export default DialogTitle;

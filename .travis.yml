@@ -9,8 +9,7 @@ install:
 deploy:
   provider: npm
   email: jacklam718@gmail.com
-  api_key:
-    secure: yOZH+22ufpqtah0n35Z7GkU3Nh6nnguMB//ScpoSs+1lan0j6ft4QENdNLzsqhbQy1nrliKdCHRJXpoLqZPHt2Taa1HVwe6GwxDpdNoHOLO4iBB6TvV2LeiP/kX2s/z69OOBRZPrXuy+XG4krBeyeL9dJNH1N5Ssv4jIb6vCz6rrguZ1HYWInl/oUMkkyipr63E6UheILGizGeeWBknDl16vgkadQ+nk2Wh/ji2Nk+Q3XVs7KN4Oze3RbeOtXHCXsGSYQvTignkGQzCSZCT0JNQQNgyphx4eRqxhU3KIlLg4QywNmECFJ1xUeWzuDZkStbwz2dZHxX7t72k733S7/1qBHo2H08qZXABb+1mQI0RaHk561beHlIG1IOndXSFuRfygAK1cTldUFvvXU7pOxHrU86WcET0qHaO1XmWPv2url4HXPJ8JozqV7RXKp/7MWmDhebR37537rHtsI74qseRFcrzbKyVYq5fijq6LizvR72g9VdM6G0sQwJtgliEwnoS3ZhmdvIrcphQs17ZhAjm0FBIg3QQjSsKiMvFbxNrIhgx0dTBVCuUInImpteYzRTH8KvdeVi3c/BILxayUn3jBi45NW7XfM+0PxnCMMxs0yYVKDCiVi/VskIGfARRgtwZffP0a8/fZUpVeWAM7A4RaB0PocgHwL3t2+n3pdvg=
+  api_key: $NPM_TOKEN
   on:
     tags: true
     repo: jacklam718/react-native-popup-dialog

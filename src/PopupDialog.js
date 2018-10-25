@@ -9,22 +9,24 @@ class PopupDialog extends Component {
 
   dialog: Object
 
-  show(onShown: ?Function) {
+  show = (onShown: ?Function) => {
     this.dialog.show(onShown);
   }
 
-  dismiss(onDismissed: ?Function) {
+  dismiss = (onDismissed: ?Function) => {
     this.dialog.dismiss(onDismissed);
   }
 
   render() {
+    const { children, dialogTitle, ...restProps } = this.props;
+
     return (
       <Dialog
         ref={(dialog) => { this.dialog = dialog; }}
-        {...this.props}
+        {...restProps}
       >
-        {this.props.dialogTitle}
-        {this.props.children}
+        {dialogTitle}
+        {children}
       </Dialog>
     );
   }

@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions, TouchableOpacity, Animated } from 'react-native';
+import { StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import type { OverlayType } from '../type';
 
 // default overlay options
@@ -10,14 +10,6 @@ const OPACITY: number = 0.5;
 const ANIMATION_DURATION: number = 2000;
 const SHOW_OVERLAY: boolean = false;
 
-const styles = StyleSheet.create({
-  overlay: {
-    flex: 1,
-    top: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
 
 class Overlay extends Component {
   static defaultProps = {
@@ -25,6 +17,7 @@ class Overlay extends Component {
     opacity: OPACITY,
     animationDuration: ANIMATION_DURATION,
     showOverlay: SHOW_OVERLAY,
+    useNativeDriver: true,
   };
 
   constructor(props: OverlayType) {
@@ -35,11 +28,17 @@ class Overlay extends Component {
   }
 
   componentWillReceiveProps(nextProps: OverlayType) {
-    if (this.props.showOverlay !== nextProps.showOverlay) {
+    const {
+      showOverlay,
+      useNativeDriver,
+      animationDuration: duration,
+    } = this.props;
+    if (showOverlay !== nextProps.showOverlay) {
       const toValue = nextProps.showOverlay ? nextProps.opacity : 0;
       Animated.timing(this.state.opacity, {
         toValue,
-        duration: this.props.animationDuration,
+        duration,
+        useNativeDriver,
       }).start();
     }
   }
@@ -47,20 +46,26 @@ class Overlay extends Component {
   props: OverlayType
 
   render() {
-    const { onPress, pointerEvents } = this.props;
-    const backgroundColor = { backgroundColor: this.props.backgroundColor };
-    const opacity = { opacity: this.state.opacity };
-    const dimensions = {
-      width: Dimensions.get('window').width,
-      height: Dimensions.get('window').height,
-    };
+    const {
+      onPress,
+      pointerEvents,
+      backgroundColor,
+    } = this.props;
+
+    const { opacity } = this.state;
 
     return (
       <Animated.View
         pointerEvents={pointerEvents}
-        style={[styles.overlay, backgroundColor, opacity, dimensions]}
+        style={[
+          StyleSheet.absoluteFill,
+          { backgroundColor, opacity },
+        ]}
       >
-        <TouchableOpacity onPress={onPress} style={[styles.overlay, dimensions]} />
+        <TouchableOpacity
+          onPress={onPress}
+          style={StyleSheet.absoluteFill}
+        />
       </Animated.View>
     );
   }

@@ -9,6 +9,9 @@ Another similar dialog component: [react-native-dialog-component](https://github
 
 Pull request are welcomed. Please follow [Airbnb JS Style Guide](https://github.com/airbnb/javascript)
 
+#### How to thank me ?
+Just click on ⭐️ button 😘
+
 [Try it with Exponent](https://exp.host/@jacklam718/popup-dialog-example)<br>
 <img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/popup-dialog.png" width="200">
 <br>
@@ -138,9 +141,10 @@ this.popupDialog.dismiss(() => {
 | `overlayPointerEvents?` | `String` | | Available option: `auto`, `none` |
 | `overlayBackgroundColor?` | `String` | `#000` |
 | `overlayOpacity?` | `Number` | `0.5` |
-| `dismissOnTouchOutside?` | `Bool` | `true` | When touch overlay will dismiss dialog, but if `haveOverlay?` is false then the `dismissOnTouchOutside` won't work| |
+| `dismissOnTouchOutside?` | `Bool` | `true` | When touch overlay will dismiss dialog, but if `hasOverlay?` is false then the `dismissOnTouchOutside` won't work| |
 | `dismissOnHardwareBackPress?` | `Bool` | `true` | Only for Android | |
-| `haveOverlay?` | `Bool` | `true` | If false won't show overlay while dialog show | |
+| ~~`haveOverlay?`~~ **_(DEPRECATED)_** | | | | |
+| `hasOverlay?` | `Bool` | `true` | | |
 | `show?` | `Bool` | `false` |  | |
 | `onShown?` | `Function` | | You can pass shown function as a callback function, will call the function when dialog shown | |
 | `onDismissed?` | `Function` | | You can pass onDismissed function as a callback function, will call the function when dialog dismissed | |
@@ -154,7 +158,8 @@ this.popupDialog.dismiss(() => {
 | `titleStyle?` | `any` | | | |
 | `titleTextStyle?` | `any` | | | |
 | `titleAlign?` | `String` | `center` | Available option: `left`, `center`, `right` | |
-| `haveTitleBar?` | `Bool` | `true` | | |
+| ~~`haveTitleBar?`~~ **_(DEPRECATED)_** | | | | |
+| `hasTitleBar?` | `Bool` | `true` | | |
 
 
 ### DialogButton
@@ -174,21 +179,47 @@ this.popupDialog.dismiss(() => {
 ### Params for (*)Animation
 
 ### FadeAnimation
+##### Example:
+```javascript
+new FadeAnimation({
+  toValue: 0, // optional
+  animationDuration: 150, // optional
+  useNativeDriver: true, // optional
+})
+```
 | Param | Type | Default | Note |
 |---|---|---|---|
 | `toValue` | Number | 0 | |
-| `animationDuration` | Number | 150 | |
+| `animationDuration?` | Number | 150 | |
+| `useNativeDriver?` | Boolean | true | |
 
 ### ScaleAnimation
+##### Example:
+```javascript
+new ScaleAnimation({
+  toValue: 0, // optional
+  useNativeDriver: true, // optional
+})
+```
 | Param | Type | Default | Note |
 |---|---|---|---|
 | `toValue` | Number | 0 | |
+| `useNativeDriver` | Boolean | true | |
 
 ### SlideAnimation
+##### Example:
+```javascript
+new SlideAnimation({
+  toValue: 0, // optional
+  slideFrom: 'bottom', // optional
+  useNativeDriver: true, // optional
+})
+```
 | Param | Type | Default | Note |
 |---|---|---|---|
 | `toValue` | Number | 0 | |
 | `slideFrom` | String | `bottom` | Available option: `top`, `bottom`, `left`, `right` |
+| `useNativeDriver` | Boolean | true | |
 
 ## Development
 `yarn`

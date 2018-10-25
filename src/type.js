@@ -8,7 +8,7 @@ export type PopupDialogType = {
 export type DialogType = {
   width?: number;
   height?: number;
-  haveOverlay: boolean;
+  hasOverlay: boolean;
   overlayPointerEvents?: string;
   overlayBackgroundColor?: string;
   overlayOpacity?: number;
@@ -22,6 +22,7 @@ export type DialogType = {
   onShown?: Function;
   onDismissed?: Function;
   actions?: Array<any>;
+  useNativeDriver?: boolean;
   children: any;
 }
 
@@ -41,7 +42,7 @@ export type DialogTitleType = {
   titleStyle?: any;
   titleTextStyle?: any;
   titleAlign?: string;
-  haveTitleBar?: boolean;
+  hasTitleBar?: boolean;
 }
 
 export type OverlayType = {
@@ -51,4 +52,5 @@ export type OverlayType = {
   animationDuration?: number;
   showOverlay?: boolean;
   pointerEvents?: string;
+  useNativeDriver?: boolean;
 }
