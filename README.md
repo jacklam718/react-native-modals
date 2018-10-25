@@ -24,6 +24,9 @@ Just click on ⭐️ button 😘
 <!-- ![Example](https://jacklam718.github.io/react-native-popup-dialog/resources/react-native-popup-dialog-demo.png) -->
 <img src="https://jacklam718.github.io/react-native-popup-dialog/resources/react-native-popup-dialog-demo.png" width="250">
 
+## BREAKING CHANGE
+Has a lot of backward incompatible changes in `v0.16.0`. Please, Read the Docs before upgrading to `v0.16.0`
+
 ## Installation
 
 ```
@@ -35,19 +38,21 @@ yarn add react-native-popup-dialog
 ## Exposed Modules
 
 * Dialog
-* PopupDialog
-* DialogButton
-* DialogTitle
 * Overlay
+* DialogButton
+* DialogContent
+* DialogTitle
+* DialogActionList
 * Animation
 * FadeAnimation
 * ScaleAnimation
 * SlideAnimation
-* PopupDialogType
-* DialogType
-* DialogButtonType
-* DialogTitleType
-* OverlayType
+* DialogProps
+* DialogActionListProps
+* DialogButtonProps
+* DialogTitleProps
+* DialogContentProps
+* OverlayProps
 
 ## Examples
 [Example](https://github.com/jacklam718/react-native-popup-dialog/blob/master/popup-dialog-example/App.js)

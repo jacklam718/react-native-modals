@@ -1,8 +1,10 @@
 import {
-  DialogType,
-  DialogButtonType,
-  DialogTitleType,
-  OverlayType,
+  DialogProps,
+  DialogActionListProps,
+  DialogButtonProps,
+  DialogTitleProps,
+  DialogContentProps,
+  OverlayProps,
 } from './type';
 import PopupDialog from './PopupDialog';
 import Overlay from './components/Overlay';
@@ -27,10 +29,12 @@ export {
   FadeAnimation,
   ScaleAnimation,
   SlideAnimation,
-  DialogType,
-  DialogButtonType,
-  DialogTitleType,
-  OverlayType,
+  DialogProps,
+  DialogActionListProps,
+  DialogButtonProps,
+  DialogTitleProps,
+  DialogContentProps,
+  OverlayProps,
 };
 
 export default PopupDialog;
