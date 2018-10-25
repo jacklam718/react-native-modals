@@ -18,17 +18,17 @@ it('should render with Default & show/hide Animation correctly', async () => {
     />
   ));
 
-  expect(wrapper.instance().state).toMatchSnapshot();
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   // show dialog
-  wrapper.instance().show();
-  expect(wrapper.instance().state).toMatchSnapshot();
+  wrapper.setProps({ visible: true });
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().state).toMatchSnapshot();
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   // dismiss dialog
-  wrapper.instance().dismiss();
-  expect(wrapper.instance().state).toMatchSnapshot();
+  wrapper.setProps({ visible: false });
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().state).toMatchSnapshot();
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
 });
 
 it('should render with FadeAnimation & show/hide correctly', async () => {
@@ -44,17 +44,17 @@ it('should render with FadeAnimation & show/hide correctly', async () => {
     />
   ));
 
-  expect(wrapper.instance().state).toMatchSnapshot();
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   // show dialog
-  wrapper.instance().show();
-  expect(wrapper.instance().state).toMatchSnapshot();
+  wrapper.setProps({ visible: true });
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().state).toMatchSnapshot();
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   // dismiss dialog
-  wrapper.instance().dismiss();
-  expect(wrapper.instance().state).toMatchSnapshot();
+  wrapper.setProps({ visible: false });
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().state).toMatchSnapshot();
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
 });
 
 it('should render with ScaleAnimation & show/hide correctly', async () => {
@@ -69,17 +69,17 @@ it('should render with ScaleAnimation & show/hide correctly', async () => {
     />
   ));
 
-  expect(wrapper.instance().state).toMatchSnapshot();
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   // show dialog
-  wrapper.instance().show();
-  expect(wrapper.instance().state).toMatchSnapshot();
+  wrapper.setProps({ visible: true });
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().state).toMatchSnapshot();
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   // dismiss dialog
-  wrapper.instance().dismiss();
-  expect(wrapper.instance().state).toMatchSnapshot();
+  wrapper.setProps({ visible: false });
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().state).toMatchSnapshot();
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
 });
 
 it('should render with SlideAnimation & show/hide correctly', async () => {
@@ -95,17 +95,17 @@ it('should render with SlideAnimation & show/hide correctly', async () => {
     />
   ));
 
-  expect(wrapper.instance().state).toMatchSnapshot();
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   // show dialog
-  wrapper.instance().show();
-  expect(wrapper.instance().state).toMatchSnapshot();
+  wrapper.setProps({ visible: true });
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().state).toMatchSnapshot();
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   // dismiss dialog
-  wrapper.instance().dismiss();
-  expect(wrapper.instance().state).toMatchSnapshot();
+  wrapper.setProps({ visible: false });
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().state).toMatchSnapshot();
+  expect(wrapper.instance().state.dialogState).toMatchSnapshot();
 });
 
 it('should render with PopupDialog with Overlay', async () => {
