@@ -1,56 +1,69 @@
 // @flow
 
-export type PopupDialogType = {
-  dialogTitle?: any;
-  children: any;
-}
+import { type Element } from 'react';
+import DialogButton from './components/DialogButton';
 
-export type DialogType = {
+export type DialogProps = {
+  visible: boolean;
+  children: any;
   width?: number;
   height?: number;
-  hasOverlay: boolean;
-  overlayPointerEvents?: string;
+  rounded?: boolean;
+  hasOverlay?: boolean;
+  overlayPointerEvents?: 'auto' | 'none';
   overlayBackgroundColor?: string;
   overlayOpacity?: number;
+  dialogTitle?: Element<any>;
   dialogAnimation?: Object;
   dialogStyle?: any;
   containerStyle?: any;
+  actionContainerStyle?: any;
+  actionsBordered?: boolean;
   animationDuration?: number;
-  dismissOnTouchOutside?: boolean;
-  dismissOnHardwareBackPress?: boolean;
-  show?: boolean;
-  onShown?: Function;
-  onDismissed?: Function;
+  onTouchOutside?: () => void;
+  onHardwareBackPress?: () => boolean;
+  onShow?: () => void;
+  onDismiss?: () => void;
   actions?: Array<any>;
   useNativeDriver?: boolean;
-  children: any;
 }
 
-export type DialogButtonType = {
+export type DialogActionListProps = {
+  children: Array<DialogButton>;
+  style?: any;
+  bordered?: boolean;
+}
+
+export type DialogButtonProps = {
   text: string;
-  onPress: Function;
+  onPress: () => void;
   align?: string;
-  buttonStyle?: any;
+  style?: any;
   textStyle?: any;
-  textContainerStyle?: any;
   disabled?: boolean;
   activeOpacity?: number;
+  bordered?: boolean;
 }
 
-export type DialogTitleType = {
+export type DialogTitleProps = {
   title: any;
-  titleStyle?: any;
-  titleTextStyle?: any;
-  titleAlign?: string;
+  style?: any;
+  textStyle?: any;
+  align?: string;
   hasTitleBar?: boolean;
 }
 
-export type OverlayType = {
-  onPress: Function;
+export type DialogContentProps = {
+  children: any,
+  style?: any,
+}
+
+export type OverlayProps = {
+  visible: boolean;
+  opacity: number;
+  onPress: () => void;
   backgroundColor?: string;
-  opacity?: number;
   animationDuration?: number;
-  showOverlay?: boolean;
   pointerEvents?: string;
   useNativeDriver?: boolean;
 }

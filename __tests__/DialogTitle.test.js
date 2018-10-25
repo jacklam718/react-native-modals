@@ -2,7 +2,7 @@ import React from 'react';
 import expect from 'expect';
 import { shallow } from 'enzyme';
 
-import { DialogTitle } from '../src';
+import DialogTitle from '../src/components/DialogTitle';
 
 it('should render DialogTitle with title bar', () => {
   const wrapper = shallow((

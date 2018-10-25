@@ -55,82 +55,93 @@ yarn add react-native-popup-dialog
 
 ## Usage
 ```javascript
-import PopupDialog from 'react-native-popup-dialog';
+import Dialog from 'react-native-popup-dialog';
 import { Button } from 'react-native'
 
 <View style={styles.container}>
   <Button
     title="Show Dialog"
     onPress={() => {
-      this.popupDialog.show();
+      this.setState({ visible: true });
     }}
   />
-  <PopupDialog
-    ref={(popupDialog) => { this.popupDialog = popupDialog; }}
-  >
+  <Dialog visible={this.state.visible}>
     <View>
-      <Text>Hello</Text>
+      {...}
     </View>
-  </PopupDialog>
+  </Dialog>
 </View>
 ```
 
-## Usage - With Animation
+## Usage - Animation
 ```javascript
-import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
-
-const slideAnimation = new SlideAnimation({
-  slideFrom: 'bottom',
-});
+import Dialog, { SlideAnimation } from 'react-native-popup-dialog';
 
 <View style={styles.container}>
-  <PopupDialog
-    ref={(popupDialog) => { this.popupDialog = popupDialog; }}
-    dialogAnimation={slideAnimation}
+  <Dialog
+    visible={this.state.visible}
+    dialogAnimation={new SlideAnimation({
+      slideFrom: 'bottom',
+    })}
   >
     <View>
-      <Text>Hello</Text>
+      {...}
     </View>
-  </PopupDialog>
+  </Dialog>
 </View>
 ```
 
-## Usage - With Dialog Dialog Title
+## Usage - Dialog Dialog Title
 ```javascript
-import PopupDialog, { DialogTitle } from 'react-native-popup-dialog';
+import Dialog, { DialogTitle } from 'react-native-popup-dialog';
 
 <View style={styles.container}>
-  <PopupDialog
+  <Dialog
+    visible={this.state.visible}
     dialogTitle={<DialogTitle title="Dialog Title" />}
-    ref={(popupDialog) => { this.popupDialog = popupDialog; }}
   >
     <View>
-      <Text>Hello</Text>
+      {...}
     </View>
-  </PopupDialog>
+  </Dialog>
 </View>
 ```
 
-## Methods
-#### show
+## Usage - Dialog Action
 ```javascript
-this.popupDialog.show(() => {
-  console.log('callback - will be called immediately')
-});
+import Dialog, { DialogButton } from 'react-native-popup-dialog';
+
+<View style={styles.container}>
+  <Dialog
+    visible={this.state.visible}
+    actions={[
+      <DialogButton
+        text="CANCEL"
+        onPress={() => {}}
+      />,
+      <DialogButton
+        text="OK"
+        onPress={() => {}}
+      />,
+    ]}
+  >
+    <View>
+      {...}
+    </View>
+  </Dialog>
+</View>
 ```
 
-#### dismiss
-```javascript
-this.popupDialog.dismiss(() => {
-  console.log('callback - will be called immediately')
-});
-```
 
 ## Props
 
-### PopupDialog
+### Dialog
 | Prop | Type | Default | Note |
 |---|---|---|---|
+| `visible` | `boolean` | `false` | |
+| `rounded` | `boolean` | `true` | |
+| `useNativeDriver` | `boolean` | `true` | |
+| `children` | `any` | | |
 | `dialogTitle?` | `React Element` | | You can pass a `DialogTitle` component or pass a `View` for customizing titlebar |
 | `width?` | `Number` | Your device width | The Width of Dialog, you can use fixed width or use percentage. For example `0.5` it means `50%`
 | `height?` | `Number` | 300 | The Height of Dialog, you can use fixed height or use percentage. For example `0.5` it means `50%`
@@ -141,44 +152,74 @@ this.popupDialog.dismiss(() => {
 | `overlayPointerEvents?` | `String` | | Available option: `auto`, `none` |
 | `overlayBackgroundColor?` | `String` | `#000` |
 | `overlayOpacity?` | `Number` | `0.5` |
-| `dismissOnTouchOutside?` | `Bool` | `true` | When touch overlay will dismiss dialog, but if `hasOverlay?` is false then the `dismissOnTouchOutside` won't work| |
-| `dismissOnHardwareBackPress?` | `Bool` | `true` | Only for Android | |
-| ~~`haveOverlay?`~~ **_(DEPRECATED)_** | | | | |
-| `hasOverlay?` | `Bool` | `true` | | |
-| `show?` | `Bool` | `false` |  | |
-| `onShown?` | `Function` | | You can pass shown function as a callback function, will call the function when dialog shown | |
-| `onDismissed?` | `Function` | | You can pass onDismissed function as a callback function, will call the function when dialog dismissed | |
-| `actions?` | `Array` | | Array of `DialogButton` component for example: ```[<DialogButton text="DISMISS" align="center" onPress={() => this.popupDialog.dismiss()}/>]``` | |
+| `hasOverlay?` | `Boolean` | `true` | | |
+| `onShow?` | `Function` | | You can pass shown function as a callback function, will call the function when dialog shown | |
+| `onDismiss?` | `Function` | | You can pass onDismiss function as a callback function, will call the function when dialog dismissed | |
+| `onTouchOutside?` | `Function` | `() => {}` | | |
+| `onHardwareBackPress?` | `Function` | `() => true` | [Handle hardware button presses](https://facebook.github.io/react-native/docs/backhandler) | |
+| `actionContainerStyle?` | `any` | `null` | | |
+| `actions?` | `Array` | | Array of `DialogButton` component for example: ```[<DialogButton text="DISMISS" align="center" onPress={() => {}}/>]``` | |
+| `actionsBordered?` | `Boolean` | `true` | | |
 
 
 ### DialogTitle
 | Prop | Type | Default | Note |
 |---|---|---|---|
 | `title` | `String` | | | |
-| `titleStyle?` | `any` | | | |
-| `titleTextStyle?` | `any` | | | |
-| `titleAlign?` | `String` | `center` | Available option: `left`, `center`, `right` | |
-| ~~`haveTitleBar?`~~ **_(DEPRECATED)_** | | | | |
+| `style?` | `any` | `null` | | |
+| `textStyle?` | `any` | `null` | | |
+| `align?` | `String` | `center` | Available option: `left`, `center`, `right` | |
 | `hasTitleBar?` | `Bool` | `true` | | |
+
+
+### DialogContent
+| Prop | Type | Default | Note |
+|---|---|---|---|
+| `children` | `any` | | | |
+| `style?` | `any` | `null` | | |
+
+
+### DialogActionList
+| Prop | Type | Default | Note |
+|---|---|---|---|
+| `children` | `any` | | | |
+| `bordered?` | `Boolean` | `true` | | |
+| `style?` | `any` | null | | |
 
 
 ### DialogButton
 | Prop | Type | Default | Note |
 |---|---|---|---|
 | `text` | `String` | | | |
-| `align?` | `String` | `center` | The position of the button. Available option: `left`, `center`, `right` | |
-| `onPress?` | `Function` | | | |
-| `buttonStyle?` | `any` | | | |
-| `textStyle?` | `any` | | | |
-| `textContainerStyle?` | `any` | | | |
+| `onPress` | `Function` | | | |
+| `align?` | `String` | `center` | Available option: `left`, `center`, `right` | |
+| `style?` | `any` | `null` | | |
+| `textStyle?` | `any` | `null` | | |
+| `activeOpacity?` | `Number` | `0.6` | | |
 | `disabled?` | `Boolean` | `false` | | |
-| `activeOpacity?` | `Number` | | | |
+| `bordered?` | `Boolean` | `false` | | |
+
+
+### Overlay
+| Prop | Type | Default | Note |
+|---|---|---|---|
+| `visible` | `Boolean` | | | |
+| `onPress` | `Function` | | | |
+| `backgroundColor?` | `string` | `#000` | | |
+| `opacity` | `Number` | `0.5` | | |
+| `animationDuration` | `Number` | `200` | | |
+| `pointerEvents` | `String` | `null` | Available option: `auto`, `none` | |
+| `useNativeDriver` | `Boolean` | `true` | | |
+
 
 
 ## Animation
 ### Params for (*)Animation
 
 ### FadeAnimation
+##### Preview:
+<img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/fade-animation.gif" width="200">
+
 ##### Example:
 ```javascript
 new FadeAnimation({
@@ -194,6 +235,9 @@ new FadeAnimation({
 | `useNativeDriver?` | Boolean | true | |
 
 ### ScaleAnimation
+##### Preview:
+<img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/scale-animation.gif" width="200">
+
 ##### Example:
 ```javascript
 new ScaleAnimation({
@@ -204,9 +248,12 @@ new ScaleAnimation({
 | Param | Type | Default | Note |
 |---|---|---|---|
 | `toValue` | Number | 0 | |
-| `useNativeDriver` | Boolean | true | |
+| `useNativeDriver` | Boolean | true |  |
 
 ### SlideAnimation
+##### Preview:
+<img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/slide-animation.gif" width="200">
+
 ##### Example:
 ```javascript
 new SlideAnimation({
@@ -220,6 +267,7 @@ new SlideAnimation({
 | `toValue` | Number | 0 | |
 | `slideFrom` | String | `bottom` | Available option: `top`, `bottom`, `left`, `right` |
 | `useNativeDriver` | Boolean | true | |
+
 
 ## Development
 `yarn`

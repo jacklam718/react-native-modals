@@ -1,6 +1,6 @@
 {
   "name": "react-native-popup-dialog",
-  "version": "0.15.1",
+  "version": "0.16.0",
   "description": "React Native Popup Dialog for IOS & Android.",
   "main": "dist/index.js",
   "scripts": {
@@ -29,9 +29,9 @@
   "license": "MIT",
   "homepage": "https://github.com/jacklam718/react-native-popup-dialog/blob/master/README.md",
   "dependencies": {
+    "babel-plugin-flow-react-proptypes": "^9.1.1",
     "prop-types": "^15.6.0",
-    "babel-plugin-flow-react-proptypes": "^9.1.1"
-
+    "react-native-general-siblings": "^1.0.0"
   },
   "peerDependencies": {
     "react-native": ">=0.50.0"

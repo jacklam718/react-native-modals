@@ -9,9 +9,9 @@ export default class ScaleAnimation extends Animation {
       case 0:
         Animated.spring(this.animate, {
           toValue,
-          velocity: 3,
-          tension: 250,
-          friction: 20,
+          velocity: 0,
+          tension: 65,
+          friction: 7,
           useNativeDriver: this.useNativeDriver,
         }).start(onFinished);
         break;
@@ -31,12 +31,6 @@ export default class ScaleAnimation extends Animation {
 
   createAnimations(): Object {
     const transform = [
-      {
-        scale: this.animate.interpolate({
-          inputRange: [0, 1],
-          outputRange: [0, 1],
-        }),
-      },
       {
         scale: this.animate.interpolate({
           inputRange: [0, 1],

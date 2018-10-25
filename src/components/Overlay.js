@@ -2,40 +2,22 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, TouchableOpacity, Animated } from 'react-native';
-import type { OverlayType } from '../type';
+import type { OverlayProps } from '../type';
 
-// default overlay options
-const BACKGROUND_COLOR: string = '#000';
-const OPACITY: number = 0.5;
-const ANIMATION_DURATION: number = 2000;
-const SHOW_OVERLAY: boolean = false;
-
-
-class Overlay extends Component {
+class Overlay extends Component<OverlayProps> {
   static defaultProps = {
-    backgroundColor: BACKGROUND_COLOR,
-    opacity: OPACITY,
-    animationDuration: ANIMATION_DURATION,
-    showOverlay: SHOW_OVERLAY,
+    backgroundColor: '#000',
+    opacity: 0.5,
+    animationDuration: 2000,
+    visible: false,
     useNativeDriver: true,
   };
 
-  constructor(props: OverlayType) {
-    super(props);
-    this.state = {
-      opacity: new Animated.Value(0),
-    };
-  }
-
-  componentWillReceiveProps(nextProps: OverlayType) {
-    const {
-      showOverlay,
-      useNativeDriver,
-      animationDuration: duration,
-    } = this.props;
-    if (showOverlay !== nextProps.showOverlay) {
-      const toValue = nextProps.showOverlay ? nextProps.opacity : 0;
-      Animated.timing(this.state.opacity, {
+  componentWillReceiveProps(nextProps: OverlayProps) {
+    const { visible, useNativeDriver, animationDuration: duration } = this.props;
+    if (visible !== nextProps.visible) {
+      const toValue = nextProps.visible ? nextProps.opacity : 0;
+      Animated.timing(this.opacity, {
         toValue,
         duration,
         useNativeDriver,
@@ -43,23 +25,21 @@ class Overlay extends Component {
     }
   }
 
-  props: OverlayType
+  opacity = new Animated.Value(0)
 
   render() {
-    const {
-      onPress,
-      pointerEvents,
-      backgroundColor,
-    } = this.props;
-
-    const { opacity } = this.state;
+    const { onPress, pointerEvents, backgroundColor } = this.props;
+    const { opacity } = this;
 
     return (
       <Animated.View
         pointerEvents={pointerEvents}
         style={[
           StyleSheet.absoluteFill,
-          { backgroundColor, opacity },
+          {
+            backgroundColor,
+            opacity,
+          },
         ]}
       >
         <TouchableOpacity

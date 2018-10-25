@@ -1,6 +1,9 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
+  "scripts": {
+    "postinstall": "rimraf node_modules/react-native-popup-dialog/node_modules/react-native"
+  },
   "dependencies": {
     "expo": "^25.0.0",
     "prop-types": "^15.6.1",

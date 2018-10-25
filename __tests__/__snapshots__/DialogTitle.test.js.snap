@@ -8,6 +8,8 @@ exports[`should render DialogTitle with title bar 1`] = `
         "borderTopLeftRadius": 8,
         "borderTopRightRadius": 8,
         "padding": 24,
+        "paddingLeft": 18,
+        "paddingRight": 18,
       },
       Object {
         "alignItems": "center",
@@ -18,7 +20,7 @@ exports[`should render DialogTitle with title bar 1`] = `
         "borderColor": "#DAD9DC",
         "padding": 14,
       },
-      undefined,
+      null,
     ]
   }
 >
@@ -26,10 +28,12 @@ exports[`should render DialogTitle with title bar 1`] = `
     style={
       Array [
         Object {
-          "color": "#7F7D89",
-          "fontSize": 16,
+          "color": "#151822",
+          "fontFamily": "System",
+          "fontSize": 15,
+          "fontWeight": "500",
         },
-        undefined,
+        null,
       ]
     }
   >
@@ -46,12 +50,14 @@ exports[`should render DialogTitle without title bar 1`] = `
         "borderTopLeftRadius": 8,
         "borderTopRightRadius": 8,
         "padding": 24,
+        "paddingLeft": 18,
+        "paddingRight": 18,
       },
       Object {
         "alignItems": "center",
       },
       null,
-      undefined,
+      null,
     ]
   }
 >
@@ -59,10 +65,12 @@ exports[`should render DialogTitle without title bar 1`] = `
     style={
       Array [
         Object {
-          "color": "#7F7D89",
-          "fontSize": 16,
+          "color": "#151822",
+          "fontFamily": "System",
+          "fontSize": 15,
+          "fontWeight": "500",
         },
-        undefined,
+        null,
       ]
     }
   >

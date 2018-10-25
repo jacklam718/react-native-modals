@@ -1,14 +1,17 @@
 // @flow
 
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 import { Positions } from '../constants/Constants';
+import type { DialogTitleProps } from '../type';
 
-import type { DialogTitleType } from '../type';
+const isAndroid = Platform.OS === 'android';
 
 const styles = StyleSheet.create({
   title: {
     padding: 24,
+    paddingLeft: 18,
+    paddingRight: 18,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },
@@ -19,24 +22,27 @@ const styles = StyleSheet.create({
     borderColor: '#DAD9DC',
   },
   titleText: {
-    color: '#7F7D89',
-    fontSize: 16,
+    fontWeight: isAndroid ? '400' : '500',
+    fontFamily: isAndroid ? 'sans-serif-medium' : 'System',
+    fontSize: isAndroid ? 19 : 15,
+    color: '#151822',
+    // fontSize: 16,
   },
 });
 
 function DialogTitle({
   title,
-  titleStyle,
-  titleTextStyle,
+  style,
+  textStyle,
   hasTitleBar,
-  titleAlign,
-}: DialogTitleType) {
+  align,
+}: DialogTitleProps) {
   const titleBar = hasTitleBar ? styles.titleBar : null;
-  const titleItemsAlign = { alignItems: Positions[titleAlign] };
+  const titleItemsAlign = { alignItems: Positions[align] };
 
   return (
-    <View style={[styles.title, titleItemsAlign, titleBar, titleStyle]}>
-      <Text style={[styles.titleText, titleTextStyle]}>
+    <View style={[styles.title, titleItemsAlign, titleBar, style]}>
+      <Text style={[styles.titleText, textStyle]}>
         {title}
       </Text>
     </View>
@@ -44,7 +50,9 @@ function DialogTitle({
 }
 
 DialogTitle.defaultProps = {
-  titleAlign: 'center',
+  align: 'center',
+  style: null,
+  textStyle: null,
   hasTitleBar: true,
 };
 

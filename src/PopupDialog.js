@@ -1,35 +1,66 @@
 // @flow
 
 import React, { Component } from 'react';
+import Sibling from 'react-native-general-siblings';
 import Dialog from './components/Dialog';
-import type { PopupDialogType } from './type';
+import type { DialogProps } from './type';
 
-class PopupDialog extends Component {
-  props: PopupDialogType;
+type State = {
+  visible: boolean
+}
 
-  dialog: Object
-
-  show = (onShown: ?Function) => {
-    this.dialog.show(onShown);
+export default class PopupDialog extends Component<DialogProps, State> {
+  state = {
+    visible: false,
   }
 
-  dismiss = (onDismissed: ?Function) => {
-    this.dialog.dismiss(onDismissed);
+  componentDidUpdate(prevProps: DialogProps, prevState: State) {
+    if (prevState.visible !== this.props.visible) {
+      // will use getDerivedStateFromProps in future, then don't need to setState
+      // on componentDidUpdate
+      // eslint-disable-next-line
+      this.setState({ visible: this.props.visible });
+      if (this.props.visible) {
+        this.createDialog();
+        return;
+      }
+      this.updateDialog();
+    }
+  }
+
+  handleDismiss = () => {
+    const { onDismiss } = this.props;
+    if (onDismiss) {
+      onDismiss();
+    }
+    this.destroyDialog();
+  }
+
+  sibling: Sibling | null = null
+
+  createDialog() {
+    this.sibling = new Sibling(this.renderDialog());
+  }
+
+  updateDialog() {
+    this.sibling.update(this.renderDialog());
+  }
+
+  destroyDialog() {
+    this.sibling.destroy();
+  }
+
+  renderDialog() {
+    return (
+      <Dialog
+        {...this.props}
+        onDismiss={this.handleDismiss}
+        visible={this.state.visible}
+      />
+    );
   }
 
   render() {
-    const { children, dialogTitle, ...restProps } = this.props;
-
-    return (
-      <Dialog
-        ref={(dialog) => { this.dialog = dialog; }}
-        {...restProps}
-      >
-        {dialogTitle}
-        {children}
-      </Dialog>
-    );
+    return null;
   }
 }
-
-export default PopupDialog;

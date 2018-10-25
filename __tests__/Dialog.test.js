@@ -1,36 +1,34 @@
 import React from 'react';
 import expect from 'expect';
-import { mount, shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
-import PopupDialog, {
-  DialogTitle,
-  FadeAnimation,
-  ScaleAnimation,
-  SlideAnimation,
-} from '../src';
+import Dialog from '../src/components/Dialog';
+import DialogTitle from '../src/components/DialogTitle';
+import FadeAnimation from '../src/animations/FadeAnimation';
+import ScaleAnimation from '../src/animations/ScaleAnimation';
+import SlideAnimation from '../src/animations/SlideAnimation';
 
 const DELAY_MS = 1000;
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 it('should render with Default & show/hide Animation correctly', async () => {
   const wrapper = mount((
-    <PopupDialog
+    <Dialog
       dialogTitle={<DialogTitle title="Popup Dialog - Default Animation" />}
     />
   ));
 
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   // show dialog
   wrapper.instance().show();
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   // dismiss dialog
   wrapper.instance().dismiss();
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
 });
 
 it('should render with FadeAnimation & show/hide correctly', async () => {
@@ -40,23 +38,23 @@ it('should render with FadeAnimation & show/hide correctly', async () => {
     useNativeDriver: true,
   });
   const wrapper = mount((
-    <PopupDialog
+    <Dialog
       dialogTitle={<DialogTitle title="Popup Dialog - FadeAnimation Animation" />}
       dialogAnimation={fadeAnimation}
     />
   ));
 
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   // show dialog
   wrapper.instance().show();
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   // dismiss dialog
   wrapper.instance().dismiss();
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
 });
 
 it('should render with ScaleAnimation & show/hide correctly', async () => {
@@ -65,23 +63,23 @@ it('should render with ScaleAnimation & show/hide correctly', async () => {
     useNativeDriver: true,
   });
   const wrapper = mount((
-    <PopupDialog
+    <Dialog
       dialogTitle={<DialogTitle title="Popup Dialog - ScaleAnimation Animation" />}
       dialogAnimation={scaleAnimation}
     />
   ));
 
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   // show dialog
   wrapper.instance().show();
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   // dismiss dialog
   wrapper.instance().dismiss();
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
 });
 
 it('should render with SlideAnimation & show/hide correctly', async () => {
@@ -91,28 +89,28 @@ it('should render with SlideAnimation & show/hide correctly', async () => {
     useNativeDriver: true,
   });
   const wrapper = mount((
-    <PopupDialog
+    <Dialog
       dialogTitle={<DialogTitle title="Popup Dialog - SlideAnimation Animation" />}
       dialogAnimation={slideAnimation}
     />
   ));
 
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   // show dialog
   wrapper.instance().show();
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   // dismiss dialog
   wrapper.instance().dismiss();
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
   await sleep(DELAY_MS);
-  expect(wrapper.instance().dialog.state).toMatchSnapshot();
+  expect(wrapper.instance().state).toMatchSnapshot();
 });
 
 it('should render with PopupDialog with Overlay', async () => {
   const wrapper = mount((
-    <PopupDialog
+    <Dialog
       show
       hasOverlay
     />
@@ -123,7 +121,7 @@ it('should render with PopupDialog with Overlay', async () => {
 
 it('should render with PopupDialog without Overlay', async () => {
   const wrapper = mount((
-    <PopupDialog
+    <Dialog
       show
       hasOverlay={false}
     />
