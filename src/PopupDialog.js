@@ -36,7 +36,7 @@ export default class PopupDialog extends Component<DialogProps, State> {
     this.destroyDialog();
   }
 
-  sibling: Sibling | null = null
+  sibling: Sibling = null
 
   createDialog() {
     this.sibling = new Sibling(this.renderDialog());

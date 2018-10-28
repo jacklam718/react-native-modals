@@ -3,6 +3,8 @@
 import { type Element } from 'react';
 import DialogButton from './components/DialogButton';
 
+export type ActionList = Array<Element<DialogButton>>;
+
 export type DialogProps = {
   visible: boolean;
   children: any;
@@ -24,12 +26,12 @@ export type DialogProps = {
   onHardwareBackPress?: () => boolean;
   onShow?: () => void;
   onDismiss?: () => void;
-  actions?: Array<any>;
+  actions?: ActionList;
   useNativeDriver?: boolean;
 }
 
 export type DialogActionListProps = {
-  children: Array<DialogButton>;
+  actions?: ActionList;
   style?: any;
   bordered?: boolean;
 }
