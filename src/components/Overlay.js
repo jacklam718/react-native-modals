@@ -11,6 +11,7 @@ class Overlay extends Component<OverlayProps> {
     animationDuration: 2000,
     visible: false,
     useNativeDriver: true,
+    onPress: () => {},
   };
 
   componentWillReceiveProps(nextProps: OverlayProps) {

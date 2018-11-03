@@ -137,7 +137,7 @@ export default class App extends Component {
             }}
           >
             <Text>Default Animation</Text>
-            <Text>No onTouchOutside handler. won't dismiss when touch overlay.</Text>
+            <Text>No onTouchOutside handler. will not dismiss when touch overlay.</Text>
           </DialogContent>
         </Dialog>
 

@@ -11,6 +11,9 @@ export default class Animation {
   constructor({
     toValue = 0,
     useNativeDriver = true,
+  }: {
+    toValue?: number;
+    useNativeDriver?: boolean;
   } = {}) {
     this.useNativeDriver = useNativeDriver;
     this.animate = new Animated.Value(toValue);

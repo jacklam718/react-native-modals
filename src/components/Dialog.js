@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     height: 0,
     width: 0,
   },
-  rounded: {
+  round: {
     borderRadius: 8,
   },
 });
@@ -173,7 +173,7 @@ class Dialog extends Component<DialogProps, State> {
   render() {
     const { dialogState, dialogAnimation } = this.state;
     const {
-      rounded: isRounded,
+      rounded,
       dialogTitle,
       children,
       onTouchOutside,
@@ -186,15 +186,16 @@ class Dialog extends Component<DialogProps, State> {
       containerStyle,
       actionsBordered,
       actionContainerStyle,
+      actions,
     } = this.props;
 
     const overlayVisible = hasOverlay && [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState);
-    const rounded = isRounded ? styles.rounded : null;
+    const round = rounded ? styles.round : null;
     const hidden = dialogState === DIALOG_CLOSED && styles.hidden;
 
-    const actions = this.props.actions ? (
+    const buttons = actions ? (
       <DialogActionList style={actionContainerStyle} bordered={actionsBordered}>
-        {this.props.actions}
+        {actions}
       </DialogActionList>
     ) : null;
 
@@ -212,7 +213,7 @@ class Dialog extends Component<DialogProps, State> {
         <Animated.View
           style={[
             styles.dialog,
-            rounded,
+            round,
             this.dialogSize,
             dialogStyle,
             dialogAnimation.animations,
@@ -220,7 +221,7 @@ class Dialog extends Component<DialogProps, State> {
         >
           {dialogTitle}
           {children}
-          {actions}
+          {buttons}
         </Animated.View>
       </View>
     );

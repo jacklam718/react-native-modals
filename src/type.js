@@ -31,7 +31,7 @@ export type DialogProps = {
 }
 
 export type DialogActionListProps = {
-  actions?: ActionList;
+  children: ActionList;
   style?: any;
   bordered?: boolean;
 }
@@ -63,7 +63,7 @@ export type DialogContentProps = {
 export type OverlayProps = {
   visible: boolean;
   opacity: number;
-  onPress: () => void;
+  onPress?: () => void;
   backgroundColor?: string;
   animationDuration?: number;
   pointerEvents?: string;

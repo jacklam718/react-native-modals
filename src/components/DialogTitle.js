@@ -21,12 +21,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#F9F9FB',
     borderColor: '#DAD9DC',
   },
-  titleText: {
+  text: {
     fontWeight: isAndroid ? '400' : '500',
     fontFamily: isAndroid ? 'sans-serif-medium' : 'System',
     fontSize: isAndroid ? 19 : 15,
     color: '#151822',
-    // fontSize: 16,
   },
 });
 
@@ -38,11 +37,11 @@ function DialogTitle({
   align,
 }: DialogTitleProps) {
   const titleBar = hasTitleBar ? styles.titleBar : null;
-  const titleItemsAlign = { alignItems: Positions[align] };
+  const titleAlign = { alignItems: Positions[align] };
 
   return (
-    <View style={[styles.title, titleItemsAlign, titleBar, style]}>
-      <Text style={[styles.titleText, textStyle]}>
+    <View style={[styles.title, titleAlign, titleBar, style]}>
+      <Text style={[styles.text, textStyle]}>
         {title}
       </Text>
     </View>

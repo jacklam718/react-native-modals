@@ -58,9 +58,9 @@ yarn add react-native-popup-dialog
 [Example](https://github.com/jacklam718/react-native-popup-dialog/blob/master/popup-dialog-example/App.js)
 
 
-## Usage
+## Basic Usage
 ```javascript
-import Dialog from 'react-native-popup-dialog';
+import Dialog, { DialogContent } from 'react-native-popup-dialog';
 import { Button } from 'react-native'
 
 <View style={styles.container}>
@@ -70,17 +70,22 @@ import { Button } from 'react-native'
       this.setState({ visible: true });
     }}
   />
-  <Dialog visible={this.state.visible}>
-    <View>
+  <Dialog
+    visible={this.state.visible}
+    onTouchOutside={() => {
+      this.setState({ visible: false });
+    }}
+  >
+    <DialogContent>
       {...}
-    </View>
+    </DialogContent>
   </Dialog>
 </View>
 ```
 
 ## Usage - Animation
 ```javascript
-import Dialog, { SlideAnimation } from 'react-native-popup-dialog';
+import Dialog, { SlideAnimation, DialogContent } from 'react-native-popup-dialog';
 
 <View style={styles.container}>
   <Dialog
@@ -89,32 +94,32 @@ import Dialog, { SlideAnimation } from 'react-native-popup-dialog';
       slideFrom: 'bottom',
     })}
   >
-    <View>
+    <DialogContent>
       {...}
-    </View>
+    </DialogContent>
   </Dialog>
 </View>
 ```
 
 ## Usage - Dialog Dialog Title
 ```javascript
-import Dialog, { DialogTitle } from 'react-native-popup-dialog';
+import Dialog, { DialogTitle, DialogContent } from 'react-native-popup-dialog';
 
 <View style={styles.container}>
   <Dialog
     visible={this.state.visible}
     dialogTitle={<DialogTitle title="Dialog Title" />}
   >
-    <View>
+    <DialogContent>
       {...}
-    </View>
+    </DialogContent>
   </Dialog>
 </View>
 ```
 
 ## Usage - Dialog Action
 ```javascript
-import Dialog, { DialogButton } from 'react-native-popup-dialog';
+import Dialog, { DialogButton, DialogContent } from 'react-native-popup-dialog';
 
 <View style={styles.container}>
   <Dialog
@@ -130,9 +135,9 @@ import Dialog, { DialogButton } from 'react-native-popup-dialog';
       />,
     ]}
   >
-    <View>
+    <DialogContent>
       {...}
-    </View>
+    </DialogContent>
   </Dialog>
 </View>
 ```
@@ -209,13 +214,12 @@ import Dialog, { DialogButton } from 'react-native-popup-dialog';
 | Prop | Type | Default | Note |
 |---|---|---|---|
 | `visible` | `Boolean` | | | |
-| `onPress` | `Function` | | | |
-| `backgroundColor?` | `string` | `#000` | | |
 | `opacity` | `Number` | `0.5` | | |
-| `animationDuration` | `Number` | `200` | | |
-| `pointerEvents` | `String` | `null` | Available option: `auto`, `none` | |
-| `useNativeDriver` | `Boolean` | `true` | | |
-
+| `onPress?` | `Function` | | | |
+| `backgroundColor?` | `string` | `#000` | | |
+| `animationDuration?` | `Number` | `200` | | |
+| `pointerEvents?` | `String` | `null` | Available option: `auto`, `none` | |
+| `useNativeDriver?` | `Boolean` | `true` | | |
 
 
 ## Animation

@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 16,
   },
-  bordered: {
+  border: {
     borderLeftColor: '#CCD0D5',
     borderLeftWidth: 1 / PixelRatio.get(),
   },
@@ -26,33 +26,24 @@ const styles = StyleSheet.create({
     fontSize: isAndroid ? 19 : 16,
     color: '#044DE0',
   },
-  disabledText: {
+  disable: {
     color: '#C5C6C5',
-  },
-  textContainer: {
-    minWidth: 48,
-    // paddingHorizontal: 16,
-    // paddingVertical: 16,
-    // borderRadius: 8,
-    // justifyContent: 'center',
-    // alignItems: 'center',
   },
 });
 
-/* eslint max-len: [0] */
 function DialogButton({
   text,
   activeOpacity,
-  disabled,
   align,
   onPress,
-  buttonStyle,
+  style,
   textStyle,
+  disabled,
   bordered,
 }: DialogButtonProps) {
   const buttonAlign = { alignSelf: Positions[align] };
-  const disabledText = disabled ? styles.disabledText : null;
-  const dynamicStyles = bordered ? styles.bordered : null;
+  const disable = disabled ? styles.disable : null;
+  const border = bordered ? styles.border : null;
 
   return (
     <TouchableHighlight
@@ -60,9 +51,9 @@ function DialogButton({
       onPress={onPress}
       disabled={disabled}
       activeOpacity={activeOpacity}
-      style={[styles.button, buttonAlign, dynamicStyles, buttonStyle]}
+      style={[styles.button, buttonAlign, border, style]}
     >
-      <Text style={[styles.text, disabledText, textStyle]}>
+      <Text style={[styles.text, disable, textStyle]}>
         {text}
       </Text>
     </TouchableHighlight>
@@ -74,7 +65,7 @@ DialogButton.defaultProps = {
   disabled: false,
   bordered: false,
   align: 'center',
-  buttonStyle: null,
+  style: null,
   textStyle: null,
 };
 

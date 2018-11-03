@@ -5,12 +5,11 @@ import { View, StyleSheet } from 'react-native';
 import type { DialogActionListProps } from '../type';
 
 const styles = StyleSheet.create({
-  buttonsBorder: {
+  border: {
     borderColor: '#CCD0D5',
     borderTopWidth: 0.2,
   },
   actionsVertical: {
-    // flex: 1,
     height: 200,
     flexDirection: 'column',
   },
@@ -21,17 +20,18 @@ const styles = StyleSheet.create({
 
 function DialogActionList({
   style,
-  children,
   bordered,
+  children,
 }: DialogActionListProps) {
-  const buttonsStyle = children.length > 2
+  const containerStyle = children.length > 2
     ? styles.actionsVertical
     : styles.actionsHorizontal;
 
-  const buttonsBorder = bordered
-    ? styles.buttonsBorder
+  const border = bordered
+    ? styles.border
     : null;
 
+  // apply horizontal border if actions legnth is 2 & bordered is true
   const content = children.length === 2
     ? Children.map(children, ((child, index) => cloneElement(child, {
       bordered: (1 % index === 0 && bordered),
@@ -39,7 +39,7 @@ function DialogActionList({
     : children;
 
   return (
-    <View style={[buttonsStyle, buttonsBorder, style]}>
+    <View style={[containerStyle, border, style]}>
       {content}
     </View>
   );
