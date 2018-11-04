@@ -10,8 +10,19 @@ type State = {
 }
 
 export default class PopupDialog extends Component<DialogProps, State> {
-  state = {
-    visible: false,
+  constructor(props: DialogProps) {
+    super(props);
+
+    this.state = {
+      visible: props.visible,
+    };
+  }
+
+  componentDidMount() {
+    const { visible } = this.state;
+    if (visible) {
+      this.createDialog();
+    }
   }
 
   componentDidUpdate(prevProps: DialogProps, prevState: State) {
