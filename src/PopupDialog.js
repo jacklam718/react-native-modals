@@ -26,6 +26,7 @@ export default class PopupDialog extends Component<DialogProps, State> {
   }
 
   componentDidUpdate(prevProps: DialogProps, prevState: State) {
+    // update visible state and create dialog if visible is true
     if (prevState.visible !== this.props.visible) {
       // will use getDerivedStateFromProps in future, then don't need to setState
       // on componentDidUpdate
@@ -33,8 +34,10 @@ export default class PopupDialog extends Component<DialogProps, State> {
       this.setState({ visible: this.props.visible });
       if (this.props.visible) {
         this.createDialog();
-        return;
       }
+    }
+    // always re-render if sibling is not null
+    if (this.sibling) {
       this.updateDialog();
     }
   }
@@ -59,6 +62,7 @@ export default class PopupDialog extends Component<DialogProps, State> {
 
   destroyDialog() {
     this.sibling.destroy();
+    this.sibling = null;
   }
 
   renderDialog() {
