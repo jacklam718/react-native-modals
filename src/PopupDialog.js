@@ -53,7 +53,10 @@ export default class PopupDialog extends Component<DialogProps, State> {
   sibling: Sibling = null
 
   createDialog() {
-    this.sibling = new Sibling(this.renderDialog());
+    // Protect against setState happening asynchronously
+    if (!this.sibling) {
+      this.sibling = new Sibling(this.renderDialog());
+    }
   }
 
   updateDialog() {
