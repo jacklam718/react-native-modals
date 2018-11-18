@@ -74,7 +74,6 @@ class Dialog extends Component<DialogProps, State> {
     actionsBordered: true,
     animationDuration: DEFAULT_ANIMATION_DURATION,
     dialogStyle: null,
-    dialogAnimation: new FadeAnimation({ animationDuration: DEFAULT_ANIMATION_DURATION }),
     width: null,
     height: null,
     onTouchOutside: () => {},
@@ -93,7 +92,7 @@ class Dialog extends Component<DialogProps, State> {
     super(props);
 
     this.state = {
-      dialogAnimation: props.dialogAnimation,
+      dialogAnimation: props.dialogAnimation || new FadeAnimation({ animationDuration: DEFAULT_ANIMATION_DURATION }),
       dialogState: DIALOG_CLOSED,
     };
   }
