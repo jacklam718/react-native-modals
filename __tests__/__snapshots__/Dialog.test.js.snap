@@ -27,30 +27,6 @@ exports[`should render with PopupDialog with Overlay 1`] = `
   actionsBordered={true}
   animationDuration={150}
   containerStyle={null}
-  dialogAnimation={
-    FadeAnimation {
-      "animate": AnimatedValue {
-        "_animation": null,
-        "_children": Array [],
-        "_listeners": Object {},
-        "_offset": 0,
-        "_tracking": null,
-        "_value": 0,
-      },
-      "animationDuration": 150,
-      "animations": Object {
-        "opacity": AnimatedValue {
-          "_animation": null,
-          "_children": Array [],
-          "_listeners": Object {},
-          "_offset": 0,
-          "_tracking": null,
-          "_value": 0,
-        },
-      },
-      "useNativeDriver": true,
-    }
-  }
   dialogStyle={null}
   dialogTitle={null}
   hasOverlay={true}
@@ -146,7 +122,6 @@ exports[`should render with PopupDialog with Overlay 1`] = `
                 "_children": Array [],
                 "_listeners": Object {},
                 "_offset": 0,
-                "_tracking": null,
                 "_value": 0,
               },
             },
@@ -169,30 +144,6 @@ exports[`should render with PopupDialog without Overlay 1`] = `
   actionsBordered={true}
   animationDuration={150}
   containerStyle={null}
-  dialogAnimation={
-    FadeAnimation {
-      "animate": AnimatedValue {
-        "_animation": null,
-        "_children": Array [],
-        "_listeners": Object {},
-        "_offset": 0,
-        "_tracking": null,
-        "_value": 0,
-      },
-      "animationDuration": 150,
-      "animations": Object {
-        "opacity": AnimatedValue {
-          "_animation": null,
-          "_children": Array [],
-          "_listeners": Object {},
-          "_offset": 0,
-          "_tracking": null,
-          "_value": 0,
-        },
-      },
-      "useNativeDriver": true,
-    }
-  }
   dialogStyle={null}
   dialogTitle={null}
   hasOverlay={false}
@@ -288,7 +239,6 @@ exports[`should render with PopupDialog without Overlay 1`] = `
                 "_children": Array [],
                 "_listeners": Object {},
                 "_offset": 0,
-                "_tracking": null,
                 "_value": 0,
               },
             },

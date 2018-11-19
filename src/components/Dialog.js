@@ -92,7 +92,7 @@ class Dialog extends Component<DialogProps, State> {
     super(props);
 
     this.state = {
-      dialogAnimation: props.dialogAnimation || new FadeAnimation({ animationDuration: DEFAULT_ANIMATION_DURATION }),
+      dialogAnimation: props.dialogAnimation || new FadeAnimation({ animationDuration: props.animationDuration }),
       dialogState: DIALOG_CLOSED,
     };
   }
