@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import Sibling from 'react-native-general-siblings';
+import Sibling from 'react-native-root-siblings';
 import Dialog from './components/Dialog';
 import type { DialogProps } from './type';
 

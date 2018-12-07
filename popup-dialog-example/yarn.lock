@@ -3594,7 +3594,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1:
+prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
@@ -3688,13 +3688,6 @@ react-native-branch@2.0.0-beta.3:
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.0.0-beta.3.tgz#2167af86bbc9f964bd45bd5f37684e5b54965e32"
   integrity sha1-IWevhrvJ+WS9Rb1fN2hOW1SWXjI=
 
-react-native-general-siblings@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-general-siblings/-/react-native-general-siblings-1.0.0.tgz#fe19d2fb589fd482bedcf5e725d3855060c7febd"
-  integrity sha512-V6aqrGnVBeUPwnMG56NwyUl8Nqwax1M8gbzINAWgnBnUAqj7wBb6jxvOmAdtsUyV7yMhz+bu1a3hiGZKw7hRyQ==
-  dependencies:
-    static-container "^1.0.0"
-
 react-native-gesture-handler@1.0.0-alpha.39:
   version "1.0.0-alpha.39"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.0-alpha.39.tgz#e87851d5efc49d2d91ebf76ad59b7b5d1fd356f5"
@@ -3710,11 +3703,19 @@ react-native-maps@0.19.0:
   integrity sha512-1THgPVHh8/NL/kLIyPWIsfTpjncT94O92xW+NOt+VQrdMMLX2mynyKnD/we02H29urAtYBXO8ZmVTrZ4ITn8mg==
 
 react-native-popup-dialog@..:
-  version "0.15.1"
+  version "0.16.5"
   dependencies:
     babel-plugin-flow-react-proptypes "^9.1.1"
     prop-types "^15.6.0"
-    react-native-general-siblings "^1.0.0"
+    react-native-root-siblings "^3.1.7"
+
+react-native-root-siblings@^3.1.7:
+  version "3.1.7"
+  resolved "https://registry.npmjs.org/react-native-root-siblings/-/react-native-root-siblings-3.1.7.tgz#9af7cf7495311db9fbe929201a3234ed114cfe77"
+  integrity sha512-KYnDyEOR0YSt6WBY3zpF2OOC6AED7dOhdKZamOJaEmBVl8LO3bzvqu39AToH4G3fOspAJVtop7MjH7bzUxtUFQ==
+  dependencies:
+    prop-types "^15.6.2"
+    static-container "^1.0.0"
 
 react-native-safe-module@^1.1.0:
   version "1.2.0"
