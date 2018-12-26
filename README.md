@@ -13,16 +13,15 @@ Pull request are welcomed. Please follow [Airbnb JS Style Guide](https://github.
 Just click on ⭐️ button 😘
 
 [Try it with Exponent](https://exp.host/@jacklam718/popup-dialog-example)<br>
-<img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/popup-dialog.png" width="200">
+<img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/popup-dialog.png" width="220">
 <br>
 <br>
 <!-- ![Example](https://jacklam718.github.io/react-native-popup-dialog/resources/react-native-popup-dialog.gif) -->
-<img src="https://jacklam718.github.io/react-native-popup-dialog/resources/popup-dialog-scale-animation.gif" width="250" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://jacklam718.github.io/react-native-popup-dialog/resources/popup-dialog-slide-animation.gif" width="250" />
-
-<br>
-
-<!-- ![Example](https://jacklam718.github.io/react-native-popup-dialog/resources/react-native-popup-dialog-demo.png) -->
-<img src="https://jacklam718.github.io/react-native-popup-dialog/resources/react-native-popup-dialog-demo.png" width="250">
+<span>
+  <img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/fade-animation.gif" width="220">&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/scale-animation.gif" width="220">&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/slide-animation.gif" width="220">
+</span>
 
 ## BREAKING CHANGE
 Has a lot of backward incompatible changes in `v0.16.0`. Please, Read the Docs before upgrading to `v0.16.0`
@@ -282,3 +281,5 @@ new SlideAnimation({
 `yarn`
 
 `yarn run build`
+
+`yarn test`
