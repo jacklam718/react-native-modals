@@ -22,13 +22,11 @@ exports[`should render with FadeAnimation & show/hide correctly 5`] = `"closed"`
 
 exports[`should render with PopupDialog with Overlay 1`] = `
 <Dialog
-  actionContainerStyle={null}
-  actions={null}
-  actionsBordered={true}
   animationDuration={150}
   containerStyle={null}
   dialogStyle={null}
   dialogTitle={null}
+  footer={null}
   hasOverlay={true}
   height={null}
   onDismiss={[Function]}
@@ -139,13 +137,11 @@ exports[`should render with PopupDialog with Overlay 1`] = `
 
 exports[`should render with PopupDialog without Overlay 1`] = `
 <Dialog
-  actionContainerStyle={null}
-  actions={null}
-  actionsBordered={true}
   animationDuration={150}
   containerStyle={null}
   dialogStyle={null}
   dialogTitle={null}
+  footer={null}
   hasOverlay={false}
   height={null}
   onDismiss={[Function]}

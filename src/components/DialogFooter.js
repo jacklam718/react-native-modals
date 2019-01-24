@@ -2,7 +2,7 @@
 
 import React, { Children, cloneElement } from 'react';
 import { View, StyleSheet } from 'react-native';
-import type { DialogActionListProps } from '../type';
+import type { DialogFooterProps } from '../type';
 
 const styles = StyleSheet.create({
   border: {
@@ -22,7 +22,7 @@ function DialogActionList({
   style,
   bordered,
   children,
-}: DialogActionListProps) {
+}: DialogFooterProps) {
   const containerStyle = children.length > 2
     ? styles.actionsVertical
     : styles.actionsHorizontal;

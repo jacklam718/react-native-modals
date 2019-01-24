@@ -41,13 +41,13 @@ yarn add react-native-popup-dialog
 * DialogButton
 * DialogContent
 * DialogTitle
-* DialogActionList
+* DialogFooter
 * Animation
 * FadeAnimation
 * ScaleAnimation
 * SlideAnimation
 * DialogProps
-* DialogActionListProps
+* DialogFooterProps
 * DialogButtonProps
 * DialogTitleProps
 * DialogContentProps
@@ -58,7 +58,7 @@ yarn add react-native-popup-dialog
 
 
 ## Basic Usage
-```javascript
+```jsx
 import Dialog, { DialogContent } from 'react-native-popup-dialog';
 import { Button } from 'react-native'
 
@@ -83,7 +83,7 @@ import { Button } from 'react-native'
 ```
 
 ## Usage - Animation
-```javascript
+```jsx
 import Dialog, { SlideAnimation, DialogContent } from 'react-native-popup-dialog';
 
 <View style={styles.container}>
@@ -101,7 +101,7 @@ import Dialog, { SlideAnimation, DialogContent } from 'react-native-popup-dialog
 ```
 
 ## Usage - Dialog Dialog Title
-```javascript
+```jsx
 import Dialog, { DialogTitle, DialogContent } from 'react-native-popup-dialog';
 
 <View style={styles.container}>
@@ -117,22 +117,24 @@ import Dialog, { DialogTitle, DialogContent } from 'react-native-popup-dialog';
 ```
 
 ## Usage - Dialog Action
-```javascript
-import Dialog, { DialogButton, DialogContent } from 'react-native-popup-dialog';
+```jsx
+import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 
 <View style={styles.container}>
   <Dialog
     visible={this.state.visible}
-    actions={[
-      <DialogButton
-        text="CANCEL"
-        onPress={() => {}}
-      />,
-      <DialogButton
-        text="OK"
-        onPress={() => {}}
-      />,
-    ]}
+    footer={
+      <DialogFooter>
+        <DialogButton
+          text="CANCEL"
+          onPress={() => {}}
+        />
+        <DialogButton
+          text="OK"
+          onPress={() => {}}
+        />
+      </DialogFooter>
+    }
   >
     <DialogContent>
       {...}
@@ -166,9 +168,7 @@ import Dialog, { DialogButton, DialogContent } from 'react-native-popup-dialog';
 | `onDismiss?` | `Function` | | You can pass onDismiss function as a callback function, will call the function when dialog dismissed | |
 | `onTouchOutside?` | `Function` | `() => {}` | | |
 | `onHardwareBackPress?` | `Function` | `() => true` | [Handle hardware button presses](https://facebook.github.io/react-native/docs/backhandler) | |
-| `actionContainerStyle?` | `any` | `null` | | |
-| `actions?` | `Array` | | Array of `DialogButton` component for example: ```[<DialogButton text="DISMISS" align="center" onPress={() => {}}/>]``` | |
-| `actionsBordered?` | `Boolean` | `true` | | |
+| `footer?` | `React Element` | `null` | for example: ```<View><Button text="DISMISS" align="center" onPress={() => {}}/></View>``` | |
 
 
 ### DialogTitle
@@ -188,10 +188,10 @@ import Dialog, { DialogButton, DialogContent } from 'react-native-popup-dialog';
 | `style?` | `any` | `null` | | |
 
 
-### DialogActionList
+### DialogFooter
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| `children` | `any` | | | |
+| `children` | `DialogButton` | | | |
 | `bordered?` | `Boolean` | `true` | | |
 | `style?` | `any` | null | | |
 

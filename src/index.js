@@ -1,6 +1,7 @@
 import {
   DialogProps,
-  DialogActionListProps,
+  DialogFooterProps,
+  DialogFooterActionList,
   DialogButtonProps,
   DialogTitleProps,
   DialogContentProps,
@@ -9,7 +10,7 @@ import {
 import PopupDialog from './PopupDialog';
 import Overlay from './components/Overlay';
 import DialogTitle from './components/DialogTitle';
-import DialogActionList from './components/DialogActionList';
+import DialogFooter from './components/DialogFooter';
 import DialogButton from './components/DialogButton';
 import DialogContent from './components/DialogContent';
 import Dialog from './components/Dialog';
@@ -24,13 +25,14 @@ export {
   DialogButton,
   DialogContent,
   DialogTitle,
-  DialogActionList,
+  DialogFooter,
   Animation,
   FadeAnimation,
   ScaleAnimation,
   SlideAnimation,
   DialogProps,
-  DialogActionListProps,
+  DialogFooterProps,
+  DialogFooterActionList,
   DialogButtonProps,
   DialogTitleProps,
   DialogContentProps,

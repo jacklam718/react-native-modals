@@ -1,9 +1,7 @@
 // @flow
 
-import { type Element } from 'react';
+import { type Element, type Node } from 'react';
 import DialogButton from './components/DialogButton';
-
-export type ActionList = Array<Element<DialogButton>>;
 
 export type DialogProps = {
   visible: boolean;
@@ -19,19 +17,19 @@ export type DialogProps = {
   dialogAnimation?: Object;
   dialogStyle?: any;
   containerStyle?: any;
-  actionContainerStyle?: any;
-  actionsBordered?: boolean;
   animationDuration?: number;
   onTouchOutside?: () => void;
   onHardwareBackPress?: () => boolean;
   onShow?: () => void;
   onDismiss?: () => void;
-  actions?: ActionList;
+  footer?: Node;
   useNativeDriver?: boolean;
 }
 
-export type DialogActionListProps = {
-  children: ActionList;
+export type DialogFooterActionList = Array<Element<DialogButton>>;
+
+export type DialogFooterProps = {
+  children: DialogFooterActionList;
   style?: any;
   bordered?: boolean;
 }

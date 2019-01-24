@@ -3,6 +3,7 @@ import { Button, View, Text, StyleSheet } from 'react-native';
 import Dialog, {
   DialogTitle,
   DialogContent,
+  DialogFooter,
   DialogButton,
   SlideAnimation,
   ScaleAnimation,
@@ -104,6 +105,11 @@ export default class App extends Component {
           width={0.9}
           visible={this.state.defaultAnimationDialog}
           rounded
+          actionsBordered
+          // actionContainerStyle={{
+          //   height: 100,
+          //   flexDirection: 'column',
+          // }}
           dialogTitle={
             <DialogTitle
               title="Popup Dialog - Default Animation"
@@ -114,22 +120,26 @@ export default class App extends Component {
               align="left"
             />
           }
-          actions={[
-            <DialogButton
-              text="CANCEL"
-              onPress={() => {
-                this.setState({ defaultAnimationDialog: false });
-              }}
-              key="button-1"
-            />,
-            <DialogButton
-              text="OK"
-              onPress={() => {
-                this.setState({ defaultAnimationDialog: false });
-              }}
-              key="button-2"
-            />,
-          ]}
+          footer={
+            <DialogFooter>
+              <DialogButton
+                text="CANCEL"
+                bordered
+                onPress={() => {
+                  this.setState({ defaultAnimationDialog: false });
+                }}
+                key="button-1"
+              />
+              <DialogButton
+                text="OK"
+                bordered
+                onPress={() => {
+                  this.setState({ defaultAnimationDialog: false });
+                }}
+                key="button-2"
+              />
+            </DialogFooter>
+          }
         >
           <DialogContent
             style={{

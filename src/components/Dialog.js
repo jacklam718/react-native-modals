@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 
 import Overlay from './Overlay';
-import DialogActionList from './DialogActionList';
 import type { DialogProps } from '../type';
 import FadeAnimation from '../animations/FadeAnimation';
 import ScaleAnimation from '../animations/ScaleAnimation';
@@ -70,8 +69,6 @@ class Dialog extends Component<DialogProps, State> {
     dialogTitle: null,
     visible: false,
     containerStyle: null,
-    actionContainerStyle: null,
-    actionsBordered: true,
     animationDuration: DEFAULT_ANIMATION_DURATION,
     dialogStyle: null,
     width: null,
@@ -84,7 +81,7 @@ class Dialog extends Component<DialogProps, State> {
     overlayBackgroundColor: '#000',
     onShow: () => {},
     onDismiss: () => {},
-    actions: null,
+    footer: null,
     useNativeDriver: true,
   }
 
@@ -183,20 +180,12 @@ class Dialog extends Component<DialogProps, State> {
       useNativeDriver,
       overlayBackgroundColor,
       containerStyle,
-      actionsBordered,
-      actionContainerStyle,
-      actions,
+      footer,
     } = this.props;
 
     const overlayVisible = hasOverlay && [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState);
     const round = rounded ? styles.round : null;
     const hidden = dialogState === DIALOG_CLOSED && styles.hidden;
-
-    const buttons = actions ? (
-      <DialogActionList style={actionContainerStyle} bordered={actionsBordered}>
-        {actions}
-      </DialogActionList>
-    ) : null;
 
     return (
       <View style={[styles.container, hidden, containerStyle]}>
@@ -220,7 +209,7 @@ class Dialog extends Component<DialogProps, State> {
         >
           {dialogTitle}
           {children}
-          {buttons}
+          {footer}
         </Animated.View>
       </View>
     );
