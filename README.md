@@ -231,14 +231,14 @@ import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-
 ##### Example:
 ```javascript
 new FadeAnimation({
-  toValue: 0, // optional
+  initialValue: 0, // optional
   animationDuration: 150, // optional
   useNativeDriver: true, // optional
 })
 ```
 | Param | Type | Default | Note |
 |---|---|---|---|
-| `toValue` | Number | 0 | |
+| `initialValue` | Number | 0 | |
 | `animationDuration?` | Number | 150 | |
 | `useNativeDriver?` | Boolean | true | |
 
@@ -249,13 +249,13 @@ new FadeAnimation({
 ##### Example:
 ```javascript
 new ScaleAnimation({
-  toValue: 0, // optional
+  initialValue: 0, // optional
   useNativeDriver: true, // optional
 })
 ```
 | Param | Type | Default | Note |
 |---|---|---|---|
-| `toValue` | Number | 0 | |
+| `initialValue` | Number | 0 | |
 | `useNativeDriver` | Boolean | true |  |
 
 ### SlideAnimation
@@ -265,17 +265,50 @@ new ScaleAnimation({
 ##### Example:
 ```javascript
 new SlideAnimation({
-  toValue: 0, // optional
+  initialValue: 0, // optional
   slideFrom: 'bottom', // optional
   useNativeDriver: true, // optional
 })
 ```
 | Param | Type | Default | Note |
 |---|---|---|---|
-| `toValue` | Number | 0 | |
+| `initialValue` | Number | 0 | |
 | `slideFrom` | String | `bottom` | Available option: `top`, `bottom`, `left`, `right` |
 | `useNativeDriver` | Boolean | true | |
 
+### Create your custom animation
+
+##### Example:
+
+```javascript
+import { Animated } from 'react-native';
+import { Animation } from 'react-native-popup-dialog';
+
+class CustomAnimation extends Animation {
+  in(onFinished) {
+    Animated.spring(this.animate, {
+      toValue: 1,
+    }).start(onFinished);
+  }
+
+  out(onFinished) {
+    Animated.spring(this.animate, {
+      toValue: 0,
+    }).start(onFinished);
+  }
+
+  getAnimations() {
+    return {
+      transform: [{
+        translateY: this.animate.interpolate({
+          inputRange: [0, 1],
+          outputRange: [800, 1],
+        }),
+      }],
+    };
+  }
+}
+```
 
 ## Development
 `yarn`

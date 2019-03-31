@@ -1,21 +1,23 @@
 // flow
 
-import { Animated } from 'react-native';
+import { Animated, Dimensions } from 'react-native';
 import Animation from './Animation';
+
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export default class SlideAnimation extends Animation {
   constructor({
-    toValue = 0,
-    slideFrom = 'bottom',
+    initialValue = 0,
     useNativeDriver = true,
+    slideFrom = 'bottom',
   } = {}) {
-    super({ toValue, useNativeDriver });
-    this.animations = this.createAnimations(slideFrom);
+    super({ initialValue, useNativeDriver });
+    this.slideFrom = slideFrom;
   }
 
-  toValue(toValue: number, onFinished?: Function = () => {}): void {
+  in(onFinished?: Function = () => {}): void {
     Animated.spring(this.animate, {
-      toValue,
+      toValue: 1,
       velocity: 0,
       tension: 65,
       friction: 10,
@@ -23,47 +25,52 @@ export default class SlideAnimation extends Animation {
     }).start(onFinished);
   }
 
-  createAnimations(slideFrom: string): Object {
+  out(onFinished?: Function = () => {}): void {
+    Animated.spring(this.animate, {
+      toValue: 0,
+      velocity: 0,
+      tension: 65,
+      friction: 10,
+      useNativeDriver: this.useNativeDriver,
+    }).start(onFinished);
+  }
+
+  getAnimations(): Object {
     const transform = [];
-
-    if (['top', 'bottom'].includes(slideFrom)) {
-      if (slideFrom === 'bottom') {
-        transform.push({
-          translateY: this.animate.interpolate({
-            inputRange: [0, 1],
-            outputRange: [800, 1],
-          }),
-        });
-      } else {
-        transform.push({
-          translateY: this.animate.interpolate({
-            inputRange: [0, 1],
-            outputRange: [-800, 1],
-          }),
-        });
-      }
-    } else if (['left', 'right'].includes(slideFrom)) {
-      if (slideFrom === 'right') {
-        transform.push({
-          translateX: this.animate.interpolate({
-            inputRange: [0, 1],
-            outputRange: [800, 1],
-          }),
-        });
-      } else {
-        transform.push({
-          translateX: this.animate.interpolate({
-            inputRange: [0, 1],
-            outputRange: [-800, 1],
-          }),
-        });
-      }
+    if (this.slideFrom === 'top') {
+      transform.push({
+        translateY: this.animate.interpolate({
+          inputRange: [0, 1],
+          outputRange: [-SCREEN_HEIGHT, 1],
+        }),
+      });
     }
-
-    const animations = {
+    if (this.slideFrom === 'bottom') {
+      transform.push({
+        translateY: this.animate.interpolate({
+          inputRange: [0, 1],
+          outputRange: [SCREEN_HEIGHT, 1],
+        }),
+      });
+    }
+    if (this.slideFrom === 'left') {
+      transform.push({
+        translateX: this.animate.interpolate({
+          inputRange: [0, 1],
+          outputRange: [-SCREEN_WIDTH, 1],
+        }),
+      });
+    }
+    if (this.slideFrom === 'right') {
+      transform.push({
+        translateX: this.animate.interpolate({
+          inputRange: [0, 1],
+          outputRange: [SCREEN_WIDTH, 1],
+        }),
+      });
+    }
+    return {
       transform,
     };
-
-    return animations;
   }
 }

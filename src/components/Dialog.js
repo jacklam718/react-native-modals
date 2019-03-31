@@ -139,32 +139,20 @@ class Dialog extends Component<DialogProps, State> {
     return { width, height };
   }
 
-  setDialogState(toValue: number, callback?: Function = () => {}): void {
-    const { dialogAnimation } = this.state;
-    const { animationDuration } = this.props;
-    let dialogState = toValue ? DIALOG_OPENING : DIALOG_CLOSING;
-
-    dialogAnimation.toValue(toValue);
-    this.setState({ dialogState });
-
-    setTimeout(() => {
-      dialogState = dialogState === DIALOG_CLOSING ? DIALOG_CLOSED : DIALOG_OPENED;
-      this.setState({ dialogState }, callback);
-    }, animationDuration);
+  show(): void {
+    this.setState({ dialogState: DIALOG_OPENING }, () => {
+      this.state.dialogAnimation.in(() => {
+        this.setState({ dialogState: DIALOG_OPENED }, this.props.onShow);
+      });
+    });
   }
 
-  show = (): void => {
-    const { onShow } = this.props;
-    if (![DIALOG_OPENING, DIALOG_OPENED].includes(this.state.dialogState)) {
-      this.setDialogState(1, onShow);
-    }
-  }
-
-  dismiss = (): void => {
-    const { onDismiss } = this.props;
-    if (![DIALOG_CLOSING, DIALOG_CLOSED].includes(this.state.dialogState)) {
-      this.setDialogState(0, onDismiss);
-    }
+  dismiss(): void {
+    this.setState({ dialogState: DIALOG_CLOSING }, () => {
+      this.state.dialogAnimation.out(() => {
+        this.setState({ dialogState: DIALOG_CLOSED }, this.props.onDismiss);
+      });
+    });
   }
 
   render() {
@@ -205,7 +193,7 @@ class Dialog extends Component<DialogProps, State> {
             round,
             this.dialogSize,
             dialogStyle,
-            dialogAnimation.animations,
+            dialogAnimation.getAnimations(),
           ]}
         >
           {dialogTitle}

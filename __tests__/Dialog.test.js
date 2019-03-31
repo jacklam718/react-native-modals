@@ -33,7 +33,7 @@ it('should render with Default & show/hide Animation correctly', async () => {
 
 it('should render with FadeAnimation & show/hide correctly', async () => {
   const fadeAnimation = new FadeAnimation({
-    toValue: 0,
+    initialValue: 0,
     animationDuration: 200,
     useNativeDriver: true,
   });
@@ -59,7 +59,7 @@ it('should render with FadeAnimation & show/hide correctly', async () => {
 
 it('should render with ScaleAnimation & show/hide correctly', async () => {
   const scaleAnimation = new ScaleAnimation({
-    toValue: 0,
+    initialValue: 0,
     useNativeDriver: true,
   });
   const wrapper = mount((
@@ -84,7 +84,7 @@ it('should render with ScaleAnimation & show/hide correctly', async () => {
 
 it('should render with SlideAnimation & show/hide correctly', async () => {
   const slideAnimation = new SlideAnimation({
-    toValue: 0,
+    initialValue: 0,
     slideFrom: 'bottom',
     useNativeDriver: true,
   });
