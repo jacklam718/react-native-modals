@@ -1,13 +1,13 @@
 // @flow
 
 import React, { Children, cloneElement } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, PixelRatio } from 'react-native';
 import type { DialogFooterProps } from '../type';
 
 const styles = StyleSheet.create({
   border: {
     borderColor: '#CCD0D5',
-    borderTopWidth: 0.2,
+    borderTopWidth: 1 / PixelRatio.get(),
   },
   actionsVertical: {
     height: 200,

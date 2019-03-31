@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { View, Text, StyleSheet, Platform } from 'react-native';
+import { View, Text, StyleSheet, Platform, PixelRatio } from 'react-native';
 import { Positions } from '../constants/Constants';
 import type { DialogTitleProps } from '../type';
 
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
   titleBar: {
     padding: 14,
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 1 / PixelRatio.get(),
     backgroundColor: '#F9F9FB',
     borderColor: '#DAD9DC',
   },
