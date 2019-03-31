@@ -116,9 +116,7 @@ class Dialog extends Component<DialogProps, State> {
     BackHandler.removeEventListener(HARDWARE_BACK_PRESS_EVENT, this.onHardwareBackPress);
   }
 
-  onHardwareBackPress = () => {
-    return this.props.onHardwareBackPress();
-  }
+  onHardwareBackPress = (): boolean => this.props.onHardwareBackPress();
 
   get pointerEvents(): string {
     const { overlayPointerEvents } = this.props;
