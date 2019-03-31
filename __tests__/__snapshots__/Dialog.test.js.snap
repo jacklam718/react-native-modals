@@ -47,6 +47,7 @@ exports[`should render with PopupDialog with Overlay 1`] = `
       Array [
         Object {
           "alignItems": "center",
+          "elevation": 10,
           "justifyContent": "center",
           "zIndex": 1000,
         },
@@ -162,6 +163,7 @@ exports[`should render with PopupDialog without Overlay 1`] = `
       Array [
         Object {
           "alignItems": "center",
+          "elevation": 10,
           "justifyContent": "center",
           "zIndex": 1000,
         },
