@@ -75,7 +75,7 @@ class Dialog extends Component<DialogProps, State> {
     width: null,
     height: null,
     onTouchOutside: () => {},
-    onHardwareBackPress: () => true,
+    onHardwareBackPress: () => false,
     hasOverlay: true,
     overlayOpacity: 0.5,
     overlayPointerEvents: null,
@@ -96,11 +96,10 @@ class Dialog extends Component<DialogProps, State> {
   }
 
   componentDidMount() {
-    const { visible, onHardwareBackPress } = this.props;
-    if (visible) {
+    if (this.props.visible) {
       this.show();
     }
-    BackHandler.addEventListener(HARDWARE_BACK_PRESS_EVENT, onHardwareBackPress);
+    BackHandler.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.onHardwareBackPress);
   }
 
   componentDidUpdate(prevProps: DialogProps) {
@@ -114,8 +113,11 @@ class Dialog extends Component<DialogProps, State> {
   }
 
   componentWillUnmount() {
-    const { onHardwareBackPress } = this.props;
-    BackHandler.removeEventListener(HARDWARE_BACK_PRESS_EVENT, onHardwareBackPress);
+    BackHandler.removeEventListener(HARDWARE_BACK_PRESS_EVENT, this.onHardwareBackPress);
+  }
+
+  onHardwareBackPress = () => {
+    return this.props.onHardwareBackPress();
   }
 
   get pointerEvents(): string {

@@ -158,6 +158,11 @@ export default class App extends Component {
           width={0.9}
           visible={this.state.scaleAnimationDialog}
           dialogAnimation={new ScaleAnimation()}
+          onHardwareBackPress={() => {
+            console.log('onHardwareBackPress');
+            this.setState({ scaleAnimationDialog: false });
+            return true;
+          }}
           dialogTitle={
             <DialogTitle
               title="Popup Dialog - Scale Animation"
