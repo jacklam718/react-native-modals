@@ -48,7 +48,7 @@ export default class SlideAnimation extends Animation {
       transform.push({
         translateY: this.animate.interpolate({
           inputRange: [0, 1],
-          outputRange: [-SCREEN_HEIGHT, 1],
+          outputRange: [-SCREEN_HEIGHT, 0],
         }),
       });
     }
@@ -56,7 +56,7 @@ export default class SlideAnimation extends Animation {
       transform.push({
         translateY: this.animate.interpolate({
           inputRange: [0, 1],
-          outputRange: [SCREEN_HEIGHT, 1],
+          outputRange: [SCREEN_HEIGHT, 0],
         }),
       });
     }
@@ -64,7 +64,7 @@ export default class SlideAnimation extends Animation {
       transform.push({
         translateX: this.animate.interpolate({
           inputRange: [0, 1],
-          outputRange: [-SCREEN_WIDTH, 1],
+          outputRange: [-SCREEN_WIDTH, 0],
         }),
       });
     }
@@ -72,7 +72,7 @@ export default class SlideAnimation extends Animation {
       transform.push({
         translateX: this.animate.interpolate({
           inputRange: [0, 1],
-          outputRange: [SCREEN_WIDTH, 1],
+          outputRange: [SCREEN_WIDTH, 0],
         }),
       });
     }

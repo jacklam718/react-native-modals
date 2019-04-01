@@ -15,25 +15,21 @@ export default class ScaleAnimation extends Animation {
   }
 
   out(onFinished?: Function = () => {}): void {
-    Animated.spring(this.animate, {
+    Animated.timing(this.animate, {
       toValue: 0,
-      velocity: 0,
-      tension: 65,
-      friction: 7,
+      duration: 200,
       useNativeDriver: this.useNativeDriver,
     }).start(onFinished);
   }
 
   getAnimations(): Object {
     return {
-      transform: [
-        {
-          scale: this.animate.interpolate({
-            inputRange: [0, 1],
-            outputRange: [0, 1],
-          }),
-        },
-      ],
+      transform: [{
+        scale: this.animate.interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, 1],
+        }),
+      }],
     };
   }
 }
