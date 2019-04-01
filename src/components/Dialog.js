@@ -12,9 +12,8 @@ import {
 
 import Overlay from './Overlay';
 import type { DialogProps } from '../type';
+import Animation from '../animations/Animation';
 import FadeAnimation from '../animations/FadeAnimation';
-import ScaleAnimation from '../animations/ScaleAnimation';
-import SlideAnimation from '../animations/SlideAnimation';
 
 const BackHandler = RNBackHandler || RNBackAndroid;
 
@@ -60,8 +59,8 @@ type DialogState =
  | typeof DIALOG_CLOSED
 
 type State = {
-  dialogAnimation: FadeAnimation | ScaleAnimation | SlideAnimation;
-  dialogState: DialogState
+  dialogAnimation: Animation;
+  dialogState: DialogState;
 }
 
 class Dialog extends Component<DialogProps, State> {
@@ -90,7 +89,9 @@ class Dialog extends Component<DialogProps, State> {
     super(props);
 
     this.state = {
-      dialogAnimation: props.dialogAnimation || new FadeAnimation({ animationDuration: props.animationDuration }),
+      dialogAnimation: props.dialogAnimation || new FadeAnimation({
+        animationDuration: props.animationDuration,
+      }),
       dialogState: DIALOG_CLOSED,
     };
   }

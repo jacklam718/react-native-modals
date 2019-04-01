@@ -1,16 +1,23 @@
-// flow
+// @flow
 
 import { Animated, Dimensions } from 'react-native';
-import Animation from './Animation';
+import Animation, { type AnimationConfig } from './Animation';
+
+type SlideFrom = 'top' | 'bottom' | 'left' | 'right';
+type SlideAnimationConfig = AnimationConfig & {
+  slideFrom?: SlideFrom,
+}
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export default class SlideAnimation extends Animation {
+  slideFrom: SlideFrom
+
   constructor({
     initialValue = 0,
     useNativeDriver = true,
     slideFrom = 'bottom',
-  } = {}) {
+  }: SlideAnimationConfig = {}) {
     super({ initialValue, useNativeDriver });
     this.slideFrom = slideFrom;
   }

@@ -1,17 +1,20 @@
-// flow
+// @flow
 
 import { Animated } from 'react-native';
-import Animation from './Animation';
+import Animation, { type AnimationConfig } from './Animation';
+
+type FadeAnimationConfig = AnimationConfig & {
+  animationDuration?: number,
+}
 
 export default class FadeAnimation extends Animation {
-  animate: Animated.Value
   animationDuration: number
 
   constructor({
     initialValue = 0,
-    animationDuration = 200,
     useNativeDriver = true,
-  } = {}) {
+    animationDuration = 200,
+  }: FadeAnimationConfig = {}) {
     super({ initialValue, useNativeDriver });
     this.animationDuration = animationDuration;
   }

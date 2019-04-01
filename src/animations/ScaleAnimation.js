@@ -1,4 +1,4 @@
-// flow
+// @flow
 
 import { Animated } from 'react-native';
 import Animation from './Animation';

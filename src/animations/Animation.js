@@ -1,8 +1,14 @@
 // @flow
 
 /* eslint class-methods-use-this: ["error", { "exceptMethods": ["in", "out", "getAnimations"] }] */
+/* eslint no-unused-vars: ["error", { "argsIgnorePattern": "onFinished" }] */
 
 import { Animated } from 'react-native';
+
+export type AnimationConfig = {
+  initialValue?: number;
+  useNativeDriver?: boolean;
+};
 
 // Base Animation class
 export default class Animation {
@@ -12,19 +18,16 @@ export default class Animation {
   constructor({
     initialValue = 0,
     useNativeDriver = true,
-  }: {
-    initialValue?: number;
-    useNativeDriver?: boolean;
-  } = {}) {
+  }: AnimationConfig = {}) {
     this.animate = new Animated.Value(initialValue);
     this.useNativeDriver = useNativeDriver;
   }
 
-  in(): void {
+  in(onFinished?: Function): void {
     throw Error('not implemented yet');
   }
 
-  out(): void {
+  out(onFinished?: Function): void {
     throw Error('not implemented yet');
   }
 

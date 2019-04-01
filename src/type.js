@@ -26,7 +26,7 @@ export type DialogProps = {
   useNativeDriver?: boolean;
 }
 
-export type DialogFooterActionList = Array<Element<DialogButton>>;
+export type DialogFooterActionList = Array<Element<typeof DialogButton>>;
 
 export type DialogFooterProps = {
   children: DialogFooterActionList;
