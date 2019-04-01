@@ -288,12 +288,14 @@ class CustomAnimation extends Animation {
   in(onFinished) {
     Animated.spring(this.animate, {
       toValue: 1,
+      useNativeDriver: this.useNativeDriver,
     }).start(onFinished);
   }
 
   out(onFinished) {
     Animated.spring(this.animate, {
       toValue: 0,
+      useNativeDriver: this.useNativeDriver,
     }).start(onFinished);
   }
 
