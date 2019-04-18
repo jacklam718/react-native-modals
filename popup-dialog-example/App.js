@@ -160,6 +160,9 @@ export default class App extends Component {
           dialogAnimation={new ScaleAnimation()}
           onHardwareBackPress={() => {
             console.log('onHardwareBackPress');
+            if (!this.state.scaleAnimationDialog) {
+              return false;
+            }
             this.setState({ scaleAnimationDialog: false });
             return true;
           }}
