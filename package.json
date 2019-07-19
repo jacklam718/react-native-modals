@@ -30,8 +30,7 @@
   "homepage": "https://github.com/jacklam718/react-native-popup-dialog/blob/master/README.md",
   "dependencies": {
     "babel-plugin-flow-react-proptypes": "^9.1.1",
-    "prop-types": "^15.6.0",
-    "react-native-root-siblings": "^3.2.1"
+    "prop-types": "^15.6.0"
   },
   "peerDependencies": {
     "react-native": ">=0.50.0"

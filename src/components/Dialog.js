@@ -6,16 +6,12 @@ import {
   StyleSheet,
   Animated,
   Dimensions,
-  BackAndroid as RNBackAndroid,
-  BackHandler as RNBackHandler,
 } from 'react-native';
 
 import Overlay from './Overlay';
 import type { DialogProps } from '../type';
 import Animation from '../animations/Animation';
 import FadeAnimation from '../animations/FadeAnimation';
-
-const BackHandler = RNBackHandler || RNBackAndroid;
 
 // dialog states
 const DIALOG_OPENING: string = 'opening';
@@ -74,7 +70,6 @@ class Dialog extends Component<DialogProps, State> {
     width: null,
     height: null,
     onTouchOutside: () => {},
-    onHardwareBackPress: () => false,
     hasOverlay: true,
     overlayOpacity: 0.5,
     overlayPointerEvents: null,
@@ -100,7 +95,6 @@ class Dialog extends Component<DialogProps, State> {
     if (this.props.visible) {
       this.show();
     }
-    BackHandler.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.onHardwareBackPress);
   }
 
   componentDidUpdate(prevProps: DialogProps) {
@@ -112,12 +106,6 @@ class Dialog extends Component<DialogProps, State> {
       this.dismiss();
     }
   }
-
-  componentWillUnmount() {
-    BackHandler.removeEventListener(HARDWARE_BACK_PRESS_EVENT, this.onHardwareBackPress);
-  }
-
-  onHardwareBackPress = (): boolean => this.props.onHardwareBackPress();
 
   get pointerEvents(): string {
     const { overlayPointerEvents } = this.props;
