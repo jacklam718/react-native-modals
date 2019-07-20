@@ -1,42 +1,44 @@
 import {
-  DialogProps,
-  DialogFooterProps,
-  DialogFooterActionList,
-  DialogButtonProps,
-  DialogTitleProps,
-  DialogContentProps,
+  ModalProps,
+  ModalFooterProps,
+  ModalFooterActionList,
+  ModalButtonProps,
+  ModalTitleProps,
+  ModalContentProps,
   OverlayProps,
 } from './type';
-import PopupDialog from './PopupDialog';
+import Modal from './Modal';
+import BaseModal from './components/BaseModal';
+import BottomModal from './components/BottomModal';
 import Overlay from './components/Overlay';
-import DialogTitle from './components/DialogTitle';
-import DialogFooter from './components/DialogFooter';
-import DialogButton from './components/DialogButton';
-import DialogContent from './components/DialogContent';
-import Dialog from './components/Dialog';
+import ModalTitle from './components/ModalTitle';
+import ModalFooter from './components/ModalFooter';
+import ModalButton from './components/ModalButton';
+import ModalContent from './components/ModalContent';
 import Animation from './animations/Animation';
 import FadeAnimation from './animations/FadeAnimation';
 import ScaleAnimation from './animations/ScaleAnimation';
 import SlideAnimation from './animations/SlideAnimation';
 
 export {
-  Dialog,
+  BaseModal,
+  BottomModal,
   Overlay,
-  DialogButton,
-  DialogContent,
-  DialogTitle,
-  DialogFooter,
+  ModalButton,
+  ModalContent,
+  ModalTitle,
+  ModalFooter,
   Animation,
   FadeAnimation,
   ScaleAnimation,
   SlideAnimation,
-  DialogProps,
-  DialogFooterProps,
-  DialogFooterActionList,
-  DialogButtonProps,
-  DialogTitleProps,
-  DialogContentProps,
+  ModalProps,
+  ModalFooterProps,
+  ModalFooterActionList,
+  ModalButtonProps,
+  ModalTitleProps,
+  ModalContentProps,
   OverlayProps,
 };
 
-export default PopupDialog;
+export default Modal;

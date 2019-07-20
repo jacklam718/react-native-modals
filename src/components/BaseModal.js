@@ -10,18 +10,19 @@ import {
   BackHandler as RNBackHandler,
 } from 'react-native';
 
+import ModalContext from "./ModalContext";
 import Overlay from './Overlay';
-import type { DialogProps } from '../type';
+import type { ModalProps } from '../type';
 import Animation from '../animations/Animation';
 import FadeAnimation from '../animations/FadeAnimation';
 
 const BackHandler = RNBackHandler || RNBackAndroid;
 
 // dialog states
-const DIALOG_OPENING: string = 'opening';
-const DIALOG_OPENED: string = 'opened';
-const DIALOG_CLOSING: string = 'closing';
-const DIALOG_CLOSED: string = 'closed';
+const MODAL_OPENING: string = 'opening';
+const MODAL_OPENED: string = 'opened';
+const MODAL_CLOSING: string = 'closing';
+const MODAL_CLOSED: string = 'closed';
 
 // default dialog config
 const DEFAULT_ANIMATION_DURATION: number = 150;
@@ -37,9 +38,10 @@ const styles = StyleSheet.create({
     zIndex: 1000,
     elevation: 10,
   },
-  dialog: {
+  modal: {
     overflow: 'hidden',
     backgroundColor: '#ffffff',
+    justifyContent: 'space-between'
   },
   hidden: {
     top: -10000,
@@ -52,25 +54,25 @@ const styles = StyleSheet.create({
   },
 });
 
-type DialogState =
- | typeof DIALOG_OPENING
- | typeof DIALOG_OPENED
- | typeof DIALOG_CLOSING
- | typeof DIALOG_CLOSED
+type ModalState =
+ | typeof MODAL_OPENING
+ | typeof MODAL_OPENED
+ | typeof MODAL_CLOSING
+ | typeof MODAL_CLOSED
 
 type State = {
-  dialogAnimation: Animation;
-  dialogState: DialogState;
+  modalAnimation: Animation;
+  modalState: ModalState;
 }
 
-class Dialog extends Component<DialogProps, State> {
+class BaseModal extends Component<ModalProps, State> {
   static defaultProps = {
     rounded: true,
-    dialogTitle: null,
+    modalTitle: null,
     visible: false,
-    containerStyle: null,
+    style: null,
     animationDuration: DEFAULT_ANIMATION_DURATION,
-    dialogStyle: null,
+    modalStyle: null,
     width: null,
     height: null,
     onTouchOutside: () => {},
@@ -85,14 +87,14 @@ class Dialog extends Component<DialogProps, State> {
     useNativeDriver: true,
   }
 
-  constructor(props: DialogProps) {
+  constructor(props: ModalProps) {
     super(props);
 
     this.state = {
-      dialogAnimation: props.dialogAnimation || new FadeAnimation({
+      modalAnimation: props.modalAnimation || new FadeAnimation({
         animationDuration: props.animationDuration,
       }),
-      dialogState: DIALOG_CLOSED,
+      modalState: MODAL_CLOSED,
     };
   }
 
@@ -103,7 +105,7 @@ class Dialog extends Component<DialogProps, State> {
     BackHandler.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.onHardwareBackPress);
   }
 
-  componentDidUpdate(prevProps: DialogProps) {
+  componentDidUpdate(prevProps: ModalProps) {
     if (this.props.visible !== prevProps.visible) {
       if (this.props.visible) {
         this.show();
@@ -121,14 +123,14 @@ class Dialog extends Component<DialogProps, State> {
 
   get pointerEvents(): string {
     const { overlayPointerEvents } = this.props;
-    const { dialogState } = this.state;
+    const { modalState } = this.state;
     if (overlayPointerEvents) {
       return overlayPointerEvents;
     }
-    return dialogState === DIALOG_OPENED ? 'auto' : 'none';
+    return modalState === MODAL_OPENED ? 'auto' : 'none';
   }
 
-  get dialogSize(): Object {
+  get modalSize(): Object {
     const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
     let { width, height } = this.props;
     if (width && width > 0.0 && width <= 1.0) {
@@ -141,69 +143,76 @@ class Dialog extends Component<DialogProps, State> {
   }
 
   show(): void {
-    this.setState({ dialogState: DIALOG_OPENING }, () => {
-      this.state.dialogAnimation.in(() => {
-        this.setState({ dialogState: DIALOG_OPENED }, this.props.onShow);
+    this.setState({ modalState: MODAL_OPENING }, () => {
+      this.state.modalAnimation.in(() => {
+        this.setState({ modalState: MODAL_OPENED }, this.props.onShow);
       });
     });
   }
 
   dismiss(): void {
-    this.setState({ dialogState: DIALOG_CLOSING }, () => {
-      this.state.dialogAnimation.out(() => {
-        this.setState({ dialogState: DIALOG_CLOSED }, this.props.onDismiss);
+    this.setState({ modalState: MODAL_CLOSING }, () => {
+      this.state.modalAnimation.out(() => {
+        this.setState({ modalState: MODAL_CLOSED }, this.props.onDismiss);
       });
     });
   }
 
   render() {
-    const { dialogState, dialogAnimation } = this.state;
+    const { modalState, modalAnimation } = this.state;
     const {
       rounded,
-      dialogTitle,
+      modalTitle,
       children,
       onTouchOutside,
       hasOverlay,
-      dialogStyle,
+      modalStyle,
       animationDuration,
       overlayOpacity,
       useNativeDriver,
       overlayBackgroundColor,
-      containerStyle,
+      style,
       footer,
     } = this.props;
 
-    const overlayVisible = hasOverlay && [DIALOG_OPENING, DIALOG_OPENED].includes(dialogState);
+    const overlayVisible = hasOverlay && [MODAL_OPENING, MODAL_OPENED].includes(modalState);
     const round = rounded ? styles.round : null;
-    const hidden = dialogState === DIALOG_CLOSED && styles.hidden;
+    const hidden = modalState === MODAL_CLOSED && styles.hidden;
 
     return (
-      <View style={[styles.container, hidden, containerStyle]}>
-        <Overlay
-          pointerEvents={this.pointerEvents}
-          visible={overlayVisible}
-          onPress={onTouchOutside}
-          backgroundColor={overlayBackgroundColor}
-          opacity={overlayOpacity}
-          animationDuration={animationDuration}
-          useNativeDriver={useNativeDriver}
-        />
-        <Animated.View
-          style={[
-            styles.dialog,
-            round,
-            this.dialogSize,
-            dialogStyle,
-            dialogAnimation.getAnimations(),
-          ]}
-        >
-          {dialogTitle}
-          {children}
-          {footer}
-        </Animated.View>
-      </View>
+      <ModalContext.Provider
+        value={{
+          hasTitle: !!modalTitle,
+          basFooter: !!footer,
+        }}
+      >
+        <View style={[styles.container, hidden, style]}>
+          <Overlay
+            pointerEvents={this.pointerEvents}
+            visible={overlayVisible}
+            onPress={onTouchOutside}
+            backgroundColor={overlayBackgroundColor}
+            opacity={overlayOpacity}
+            animationDuration={animationDuration}
+            useNativeDriver={useNativeDriver}
+          />
+          <Animated.View
+            style={[
+              styles.modal,
+              round,
+              this.modalSize,
+              modalStyle,
+              modalAnimation.getAnimations(),
+            ]}
+          >
+            {modalTitle}
+            {children}
+            {footer}
+          </Animated.View>
+        </View>
+      </ModalContext.Provider>
     );
   }
 }
 
-export default Dialog;
+export default BaseModal;

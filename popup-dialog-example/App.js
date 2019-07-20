@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Button, View, Text, StyleSheet } from 'react-native';
-import Dialog, {
-  DialogTitle,
-  DialogContent,
-  DialogFooter,
-  DialogButton,
+import Modal, {
+  ModalTitle,
+  ModalContent,
+  ModalFooter,
+  ModalButton,
   SlideAnimation,
   ScaleAnimation,
 } from 'react-native-popup-dialog';
@@ -16,13 +16,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   dialogContentView: {
-    // flex: 1,
     paddingLeft: 18,
     paddingRight: 18,
-    // backgroundColor: '#000',
-    // opacity: 0.4,
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   navigationBar: {
     borderBottomColor: '#b5b5b5',
@@ -43,7 +38,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // backgroundColor: '#000000',
   },
-  customBackgroundDialog: {
+  customBackgroundModal: {
     opacity: 0.5,
     backgroundColor: '#000',
   },
@@ -51,21 +46,23 @@ const styles = StyleSheet.create({
 
 export default class App extends Component {
   state = {
-    customBackgroundDialog: false,
-    defaultAnimationDialog: false,
-    scaleAnimationDialog: false,
-    slideAnimationDialog: false,
+    customBackgroundModal: false,
+    defaultAnimationModal: false,
+    scaleAnimationModal: false,
+    slideAnimationModal: false,
+    bottomModalAndTitle: false,
+    bottomModal: false,
   };
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1}}>
         <View style={styles.container}>
           <Button
             title="Show Dialog - Default Animation"
             onPress={() => {
               this.setState({
-                defaultAnimationDialog: true,
+                defaultAnimationModal: true,
               });
             }}
           />
@@ -74,7 +71,7 @@ export default class App extends Component {
             title="Show Dialog - Scale Animation"
             onPress={() => {
               this.setState({
-                scaleAnimationDialog: true,
+                scaleAnimationModal: true,
               });
             }}
           />
@@ -83,8 +80,8 @@ export default class App extends Component {
             title="Show Dialog - Slide Animation"
             onPress={() => {
               this.setState({
-                slideAnimationDialog: true,
-              });
+                slideAnimationModal: true,
+              })
             }}
           />
 
@@ -92,144 +89,197 @@ export default class App extends Component {
             title="Show Dialog - Custom Background Style"
             onPress={() => {
               this.setState({
-                customBackgroundDialog: true,
+                customBackgroundModal: true,
+              });
+            }}
+          />
+          
+          <Button
+            title="Bottom Modal with Title"
+            onPress={() => {
+              this.setState({
+                bottomModalAndTitle: true,
+              });
+            }}
+          />
+
+          <Button
+            title="Bottom Modal without Title"
+            onPress={() => {
+              this.setState({
+                bottomModal: true,
               });
             }}
           />
         </View>
 
-        <Dialog
+        <Modal
           onDismiss={() => {
-            this.setState({ defaultAnimationDialog: false });
+            this.setState({ defaultAnimationModal: false });
           }}
           width={0.9}
-          visible={this.state.defaultAnimationDialog}
+          visible={this.state.defaultAnimationModal}
           rounded
           actionsBordered
-          // actionContainerStyle={{
-          //   height: 100,
-          //   flexDirection: 'column',
-          // }}
-          dialogTitle={
-            <DialogTitle
-              title="Popup Dialog - Default Animation"
-              style={{
-                backgroundColor: '#F7F7F8',
-              }}
-              hasTitleBar={false}
+          modalTitle={
+            <ModalTitle
+              title="Popup Modal - Default Animation"
               align="left"
             />
           }
           footer={
-            <DialogFooter>
-              <DialogButton
+            <ModalFooter>
+              <ModalButton
                 text="CANCEL"
                 bordered
                 onPress={() => {
-                  this.setState({ defaultAnimationDialog: false });
+                  this.setState({ defaultAnimationModal: false });
                 }}
                 key="button-1"
               />
-              <DialogButton
+              <ModalButton
                 text="OK"
                 bordered
                 onPress={() => {
-                  this.setState({ defaultAnimationDialog: false });
+                  this.setState({ defaultAnimationModal: false });
                 }}
                 key="button-2"
               />
-            </DialogFooter>
+            </ModalFooter>
           }
         >
-          <DialogContent
-            style={{
-              backgroundColor: '#F7F7F8',
-            }}
+          <ModalContent
+            style={{ backgroundColor: '#fff'}}
           >
             <Text>Default Animation</Text>
             <Text>No onTouchOutside handler. will not dismiss when touch overlay.</Text>
-          </DialogContent>
-        </Dialog>
+          </ModalContent>
+        </Modal>
 
-        <Dialog
+        <Modal
           onTouchOutside={() => {
-            this.setState({ scaleAnimationDialog: false });
+            this.setState({ scaleAnimationModal: false });
           }}
           width={0.9}
-          visible={this.state.scaleAnimationDialog}
-          dialogAnimation={new ScaleAnimation()}
+          visible={this.state.scaleAnimationModal}
+          modalAnimation={new ScaleAnimation()}
           onHardwareBackPress={() => {
             console.log('onHardwareBackPress');
-            this.setState({ scaleAnimationDialog: false });
+            this.setState({ scaleAnimationModal: false });
             return true;
           }}
-          dialogTitle={
-            <DialogTitle
+          modalTitle={
+            <ModalTitle
               title="Popup Dialog - Scale Animation"
               hasTitleBar={false}
             />
           }
           actions={[
-            <DialogButton
+            <ModalButton
               text="DISMISS"
               onPress={() => {
-                this.setState({ scaleAnimationDialog: false });
+                this.setState({ scaleAnimationModal: false });
               }}
               key="button-1"
             />,
           ]}
         >
-          <DialogContent>
+          <ModalContent>
             <Button
-              title="Show Dialog - Default Animation"
+              title="Show Modal - Default Animation"
               onPress={() => {
-                this.setState({ defaultAnimationDialog: true });
+                this.setState({ defaultAnimationModal: true });
               }}
             />
-          </DialogContent>
-        </Dialog>
+          </ModalContent>
+        </Modal>
 
-        <Dialog
+        <Modal
           onDismiss={() => {
-            this.setState({ slideAnimationDialog: false });
+            this.setState({ slideAnimationModal: false });
           }}
           onTouchOutside={() => {
-            this.setState({ slideAnimationDialog: false });
+            this.setState({ slideAnimationModal: false });
           }}
-          visible={this.state.slideAnimationDialog}
-          dialogTitle={<DialogTitle title="Popup Dialog - Slide Animation" />}
-          dialogAnimation={new SlideAnimation({ slideFrom: 'bottom' })}
+          visible={this.state.slideAnimationModal}
+          modalTitle={
+            <ModalTitle
+              title="Popup Dialog - Slide Animation"
+              hasTitleBar={false}
+            />
+          }
+          modalAnimation={new SlideAnimation({ slideFrom: 'bottom' })}
         >
-          <DialogContent>
+          <ModalContent>
             <Text>Slide Animation</Text>
-          </DialogContent>
-        </Dialog>
+          </ModalContent>
+        </Modal>
 
-        <Dialog
+        <Modal
           onDismiss={() => {
-            this.setState({ customBackgroundDialog: false });
+            this.setState({ customBackgroundModal: false });
           }}
           onTouchOutside={() => {
-            this.setState({ customBackgroundDialog: false });
+            this.setState({ customBackgroundModal: false });
           }}
           zIndex={1000}
-          backgroundStyle={styles.customBackgroundDialog}
-          dialogStyle={{
+          backgroundStyle={styles.customBackgroundModal}
+          modalStyle={{
             backgroundColor: 'rgba(0,0,0,0.5)',
           }}
-          dialogTitle={
-            <DialogTitle
+          modalTitle={
+            <ModalTitle
               title="Popup Dialog - Custom Background Style"
               hasTitleBar={false}
               textStyle={{ color: '#fff' }}
             />
           }
-          visible={this.state.customBackgroundDialog}
+          visible={this.state.customBackgroundModal}
         >
           <View style={styles.dialogContentView}>
             <Text style={{ color: '#fff' }}>Custom backgroundStyle</Text>
           </View>
-        </Dialog>
+        </Modal>
+
+        <Modal.BottomModal
+          visible={this.state.bottomModalAndTitle}
+          onTouchOutside={() => this.setState({ bottomModalAndTitle: false })}
+          height={0.4}
+          modalTitle={
+            <ModalTitle
+              title="Bottom Modal"
+              hasTitleBar
+            />
+          }
+        >
+          <ModalContent
+            style={{
+              flex: 1,
+              backgroundColor: 'fff',
+            }}
+          >
+            <Text>
+              Bottom Modal with Title
+            </Text>
+          </ModalContent>
+        </Modal.BottomModal>
+
+        <Modal.BottomModal
+          visible={this.state.bottomModal}
+          onTouchOutside={() => this.setState({ bottomModal: false })}
+          // modalStyle={{  }}
+        >
+          <ModalContent
+            style={{
+              backgroundColor: 'fff',
+              // height: '40%',
+            }}
+          >
+            <Text>
+              Bottom Modal without Title
+            </Text>
+          </ModalContent>
+        </Modal.BottomModal>
       </View>
     );
   }

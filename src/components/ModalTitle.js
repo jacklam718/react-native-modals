@@ -3,20 +3,18 @@
 import React from 'react';
 import { View, Text, StyleSheet, Platform, PixelRatio } from 'react-native';
 import { Positions } from '../constants/Constants';
-import type { DialogTitleProps } from '../type';
+import type { ModalTitleProps } from '../type';
 
 const isAndroid = Platform.OS === 'android';
 
 const styles = StyleSheet.create({
   title: {
-    padding: 24,
-    paddingLeft: 18,
-    paddingRight: 18,
+    padding: 14,
+    paddingHorizontal: 18,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },
   titleBar: {
-    padding: 14,
     borderBottomWidth: 1 / PixelRatio.get(),
     backgroundColor: '#F9F9FB',
     borderColor: '#DAD9DC',
@@ -35,7 +33,7 @@ function DialogTitle({
   textStyle,
   hasTitleBar,
   align,
-}: DialogTitleProps) {
+}: ModalTitleProps) {
   const titleBar = hasTitleBar ? styles.titleBar : null;
   const titleAlign = { alignItems: Positions[align] };
 

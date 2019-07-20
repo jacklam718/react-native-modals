@@ -30,23 +30,25 @@ export default class SlideAnimation extends Animation {
     this.slideFrom = slideFrom;
   }
 
-  in(onFinished?: Function = () => {}): void {
+  in(onFinished?: Function = () => {}, options = {}): void {
     Animated.spring(this.animate, {
       toValue: 1,
       velocity: 0,
       tension: 65,
-      friction: 10,
+      friction: 11,
       useNativeDriver: this.useNativeDriver,
+      ...options,
     }).start(onFinished);
   }
 
-  out(onFinished?: Function = () => {}): void {
+  out(onFinished?: Function = () => {}, options = {}): void {
     Animated.spring(this.animate, {
       toValue: 0,
       velocity: 0,
       tension: 65,
-      friction: 10,
+      friction: 11,
       useNativeDriver: this.useNativeDriver,
+      ...options,
     }).start(onFinished);
   }
 
