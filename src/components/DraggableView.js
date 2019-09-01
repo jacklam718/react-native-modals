@@ -1,14 +1,16 @@
 // @flow
 
 import React, { Component } from 'react';
-import { View, Animated, PanResponder, StyleSheet, Dimensions } from 'react-native';
-import type { SwipeDirection } from '../type';
+import { Animated, PanResponder, Dimensions } from 'react-native';
+import type { SwipeDirection, DragEvent } from '../type';
 
 export default class DraggableView extends Component {
   props: {
-    onMove?: () => void;
-    onRelease?: () => void;
-    onSwipeOut?: () => void;
+    style?: any;
+    onMove?: (event: DragEvent) => void;
+    onSwiping?: (event: DragEvent) => void;
+    onRelease?: (event: DragEvent) => void;
+    onSwipeOut?: (event: DragEvent) => void;
     swipeThreshold?: number;
     swipeDirection?: SwipeDirection | Array<SwipeDirection>;
     backdrop: React.Element;
@@ -16,6 +18,7 @@ export default class DraggableView extends Component {
   };
 
   static defaultProps = {
+    style: null,
     onMove: () => {},
     onRelease: () => {},
     swipeThreshold: 100,
@@ -23,8 +26,8 @@ export default class DraggableView extends Component {
   };
 
   constructor(props) {
-    super(props)
-    
+    super(props);
+
     this.pan = new Animated.ValueXY();
     this.allowedDirections = [].concat(props.swipeDirection);
     this.layout = null;
@@ -32,7 +35,7 @@ export default class DraggableView extends Component {
 
   componentDidMount() {
     this.panEventListenerId = this.pan.addListener((axis) => {      
-      this.props.onMove(this.createPanEvent(axis));
+      this.props.onMove(this.createDragEvent(axis));
     });
   }
 
@@ -42,9 +45,9 @@ export default class DraggableView extends Component {
 
   panResponder = PanResponder.create({
     onMoveShouldSetPanResponder: (evt, gestureState) => {
-      return gestureState.dx != 0 && gestureState.dy != 0;
+      return gestureState.dx !== 0 && gestureState.dy !== 0;
     },
-    onStartShouldSetPanResponder: (event, gestureState) => true,
+    onStartShouldSetPanResponder: () => true,
     onPanResponderMove: (event, gestureState) => {
       // get & set currentSwipeDirection
       if (!this.currentSwipeDirection) {
@@ -60,14 +63,14 @@ export default class DraggableView extends Component {
         }
         Animated.event([null, animEvent])(event, gestureState);
 
-        this.props.onSwiping(this.createPanEvent({
+        this.props.onSwiping(this.createDragEvent({
           x: this.pan.x._value,
           y: this.pan.y._value,
         }));
       }
     },
-    onPanResponderRelease: (_, gestureState) => {
-      const event = this.createPanEvent({
+    onPanResponderRelease: () => {
+      const event = this.createDragEvent({
         x: this.pan.x._value,
         y: this.pan.y._value,
       });
@@ -77,25 +80,25 @@ export default class DraggableView extends Component {
         Math.abs(this.pan.y._value) > this.props.swipeThreshold ||
         Math.abs(this.pan.x._value) > this.props.swipeThreshold
       ) {
-        let toValue
+        let toValue;
         if (this.currentSwipeDirection === 'up') {
           toValue = {
             x: 0,
-            y: -((Dimensions.get('window').height / 2) + this.layout.height / 2),
+            y: -((Dimensions.get('window').height / 2) + (this.layout.height / 2)),
           };
         } else if (this.currentSwipeDirection === 'down') {
           toValue = {
             x: 0,
-            y: ((Dimensions.get('window').height / 2) + this.layout.height / 2),
+            y: ((Dimensions.get('window').height / 2) + (this.layout.height / 2)),
           };
         } else if (this.currentSwipeDirection === 'left') {
           toValue = {
-            x: -((Dimensions.get('window').width / 2) + this.layout.width / 2),
+            x: -((Dimensions.get('window').width / 2) + (this.layout.width / 2)),
             y: 0,
           };
         } else if (this.currentSwipeDirection === 'right') {
           toValue = {
-            x: ((Dimensions.get('window').width / 2) + this.layout.width / 2),
+            x: ((Dimensions.get('window').width / 2) + (this.layout.width / 2)),
             y: 0,
           };
         }
@@ -121,12 +124,12 @@ export default class DraggableView extends Component {
     },
   });
 
-  createPanEvent(axis) {
+  createDragEvent(axis): DragEvent {
     return {
       axis,
       layout: this.layout,
       swipeDirection: this.currentSwipeDirection,
-    }
+    };
   }
 
   isAllowedDirection({ dy, dx }) {
@@ -135,20 +138,20 @@ export default class DraggableView extends Component {
     const draggedLeft = dx < 0;
     const draggedRight = dx > 0;
 
-    if (draggedDown && this._isAllowedDirection('down')) {
-      return true
-    } else if (draggedUp && this._isAllowedDirection('up')) {
-      return true
-    } else if (draggedLeft && this._isAllowedDirection('left')) {
-      return true
-    } else if (draggedRight && this._isAllowedDirection('right')) {
-      return true
-    }
-    return false
-  }
+    const isAllowedDirection = direction => (
+      this.currentSwipeDirection === direction && this.allowedDirections.includes(direction)
+    );
 
-  _isAllowedDirection(direction) {
-    return this.currentSwipeDirection === direction && this.allowedDirections.includes(direction);
+    if (draggedDown && isAllowedDirection('down')) {
+      return true;
+    } else if (draggedUp && isAllowedDirection('up')) {
+      return true;
+    } else if (draggedLeft && isAllowedDirection('left')) {
+      return true;
+    } else if (draggedRight && isAllowedDirection('right')) {
+      return true;
+    }
+    return false;
   }
 
   isValidSwipe(velocity, directionalOffset) {
