@@ -56,7 +56,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1}}>
+      <View style={{ flex: 1 }}>
         <View style={styles.container}>
           <Button
             title="Show Dialog - Default Animation"
@@ -81,7 +81,7 @@ export default class App extends Component {
             onPress={() => {
               this.setState({
                 slideAnimationModal: true,
-              })
+              });
             }}
           />
 
@@ -93,7 +93,7 @@ export default class App extends Component {
               });
             }}
           />
-          
+
           <Button
             title="Bottom Modal with Title"
             onPress={() => {
@@ -118,9 +118,19 @@ export default class App extends Component {
             this.setState({ defaultAnimationModal: false });
           }}
           width={0.9}
+          // overlayOpacity={0.5}
+          overlayOpacity={1}
+          // height={500}
           visible={this.state.defaultAnimationModal}
           rounded
           actionsBordered
+          onSwipeOut={() => {
+            this.setState({ defaultAnimationModal: false });
+          }}
+          onTouchOutside={() => {
+            this.setState({ defaultAnimationModal: false });
+          }}
+          swipeDirection={['down', 'up', 'left', 'right']}
           modalTitle={
             <ModalTitle
               title="Popup Modal - Default Animation"
@@ -149,7 +159,7 @@ export default class App extends Component {
           }
         >
           <ModalContent
-            style={{ backgroundColor: '#fff'}}
+            style={{ backgroundColor: '#fff' }}
           >
             <Text>Default Animation</Text>
             <Text>No onTouchOutside handler. will not dismiss when touch overlay.</Text>
@@ -162,6 +172,7 @@ export default class App extends Component {
           }}
           width={0.9}
           visible={this.state.scaleAnimationModal}
+          onSwipeOut={() => this.setState({ scaleAnimationModal: false })}
           modalAnimation={new ScaleAnimation()}
           onHardwareBackPress={() => {
             console.log('onHardwareBackPress');
@@ -201,6 +212,8 @@ export default class App extends Component {
           onTouchOutside={() => {
             this.setState({ slideAnimationModal: false });
           }}
+          swipeDirection="down"
+          onSwipeOut={() => this.setState({ slideAnimationModal: false })}
           visible={this.state.slideAnimationModal}
           modalTitle={
             <ModalTitle
@@ -244,7 +257,9 @@ export default class App extends Component {
         <Modal.BottomModal
           visible={this.state.bottomModalAndTitle}
           onTouchOutside={() => this.setState({ bottomModalAndTitle: false })}
-          height={0.4}
+          height={0.5}
+          width={1}
+          onSwipeOut={() => this.setState({ bottomModalAndTitle: false })}
           modalTitle={
             <ModalTitle
               title="Bottom Modal"

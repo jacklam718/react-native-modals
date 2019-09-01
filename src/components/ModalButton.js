@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import React from 'react';
 import { Text, PixelRatio, TouchableHighlight, StyleSheet, Platform } from 'react-native';
 import { Positions } from '../constants/Constants';
 import type { ModalButtonProps } from '../type';
@@ -10,7 +10,6 @@ const isAndroid = Platform.OS === 'android';
 const styles = StyleSheet.create({
   button: {
     flex: 1,
-    height: 50,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -26,56 +25,42 @@ const styles = StyleSheet.create({
     fontFamily: isAndroid ? 'sans-serif-medium' : 'System',
     fontSize: isAndroid ? 19 : 16,
     color: '#044DE0',
-    flexWrap: 'nowrap',
   },
   disable: {
     color: '#C5C6C5',
   },
 });
 
-class DialogButton extends Component {
-  onLayout(layout) {
-    console.log('DialogButton -> ', layout);
-  }
+function ModalButton({
+  text,
+  activeOpacity,
+  align,
+  onPress,
+  style,
+  textStyle,
+  disabled,
+  bordered,
+}: ModalButtonProps) {
+  const buttonAlign = { alignSelf: Positions[align] };
+  const disable = disabled ? styles.disable : null;
+  const border = bordered ? styles.border : null;
 
-  render() {
-    const {
-      text,
-      activeOpacity,
-      align,
-      onPress,
-      style,
-      textStyle,
-      disabled,
-      bordered,
-    } = this.props;
-    const buttonAlign = { alignSelf: Positions[align] };
-    const disable = disabled ? styles.disable : null;
-    const border = bordered ? styles.border : null;
-    const letterToWidthRatio = 0.33; // Approximate this by taking the width of some representative text samples
-
-    const buffer = 5 // arbitrary amount to decrease font size, just in case
-    let fontSize = ((375/2) / (text.length )) 
-    fontSize = Math.min(fontSize, 16)
-  
-    return (
-      <TouchableHighlight
-        underlayColor="#F1F2F2"
-        onPress={onPress}
-        disabled={disabled}
-        activeOpacity={activeOpacity}
-        style={[styles.button, buttonAlign, border, style]}
-      >
-        <Text style={[styles.text, disable, textStyle]} onLayout={this.onLayout}>
-          {text}
-        </Text>
-      </TouchableHighlight>
-    );  
-  }
+  return (
+    <TouchableHighlight
+      underlayColor="#F1F2F2"
+      onPress={onPress}
+      disabled={disabled}
+      activeOpacity={activeOpacity}
+      style={[styles.button, buttonAlign, border, style]}
+    >
+      <Text style={[styles.text, disable, textStyle]}>
+        {text}
+      </Text>
+    </TouchableHighlight>
+  );
 }
 
-
-DialogButton.defaultProps = {
+ModalButton.defaultProps = {
   activeOpacity: 0.6,
   disabled: false,
   bordered: false,
@@ -84,4 +69,4 @@ DialogButton.defaultProps = {
   textStyle: null,
 };
 
-export default DialogButton;
+export default ModalButton;

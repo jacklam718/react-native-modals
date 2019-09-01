@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   }
 });
 
-function DialogContent({ style, children }: ModalContentProps) {
+function ModalContent({ style, children }: ModalContentProps) {
   return (
     <ModalContext.Consumer>
       {({ hasTitle }) => (
@@ -27,8 +27,8 @@ function DialogContent({ style, children }: ModalContentProps) {
   );
 }
 
-DialogContent.defaultProps = {
+ModalContent.defaultProps = {
   style: null,
 };
 
-export default DialogContent;
+export default ModalContent;

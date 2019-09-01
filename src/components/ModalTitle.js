@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function DialogTitle({
+function ModalTitle({
   title,
   style,
   textStyle,
@@ -46,11 +46,11 @@ function DialogTitle({
   );
 }
 
-DialogTitle.defaultProps = {
+ModalTitle.defaultProps = {
   align: 'center',
   style: null,
   textStyle: null,
   hasTitleBar: true,
 };
 
-export default DialogTitle;
+export default ModalTitle;

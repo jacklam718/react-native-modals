@@ -6,12 +6,15 @@ import {
   StyleSheet,
   Animated,
   Dimensions,
+  Modal,
+  TouchableWithoutFeedback,
   BackAndroid as RNBackAndroid,
   BackHandler as RNBackHandler,
 } from 'react-native';
 
+import DraggableView from './DraggableView';
 import ModalContext from "./ModalContext";
-import Overlay from './Overlay';
+import Backdrop from './Backdrop';
 import type { ModalProps } from '../type';
 import Animation from '../animations/Animation';
 import FadeAnimation from '../animations/FadeAnimation';
@@ -33,15 +36,12 @@ const HARDWARE_BACK_PRESS_EVENT: string = 'hardwareBackPress';
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    justifyContent: 'center',
-    alignItems: 'center',
     zIndex: 1000,
     elevation: 10,
   },
   modal: {
     overflow: 'hidden',
     backgroundColor: '#ffffff',
-    justifyContent: 'space-between'
   },
   hidden: {
     top: -10000,
@@ -52,6 +52,11 @@ const styles = StyleSheet.create({
   round: {
     borderRadius: 8,
   },
+  draggableView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });
 
 type ModalState =
@@ -84,6 +89,10 @@ class BaseModal extends Component<ModalProps, State> {
     onShow: () => {},
     onDismiss: () => {},
     footer: null,
+    onMove: () => {},
+    onSwiping: () => {},
+    onSwipeRelease: () => {},
+    onSwipeOut: () => {},
     useNativeDriver: true,
   }
 
@@ -158,6 +167,27 @@ class BaseModal extends Component<ModalProps, State> {
     });
   }
 
+  handleMove = (event): void => {
+    if (!this.lastSwipeEvent) {
+      this.lastSwipeEvent = event;
+    }
+
+    let lastAxis;
+    let currAxis;
+    let newOpacity;
+    const opacity = this.props.overlayOpacity;
+    if (Math.abs(event.axis.y)) {
+      lastAxis = Math.abs(this.lastSwipeEvent.layout.y);
+      currAxis = Math.abs(event.axis.y);
+      newOpacity = opacity - (opacity * currAxis) / (Dimensions.get('window').height - lastAxis);
+    } else {
+      lastAxis = Math.abs(this.lastSwipeEvent.layout.x);
+      currAxis = Math.abs(event.axis.x);
+      newOpacity = opacity - (opacity * currAxis) / (Dimensions.get('window').width - lastAxis);
+    }    
+    this.backdrop.setOpacity(newOpacity);
+  }
+
   render() {
     const { modalState, modalAnimation } = this.state;
     const {
@@ -173,8 +203,13 @@ class BaseModal extends Component<ModalProps, State> {
       overlayBackgroundColor,
       style,
       footer,
+      onSwiping,
+      onSwipeRelease,
+      onSwipeOut,
+      swipeDirection,
+      swipeThreshold,
     } = this.props;
-
+    
     const overlayVisible = hasOverlay && [MODAL_OPENING, MODAL_OPENED].includes(modalState);
     const round = rounded ? styles.round : null;
     const hidden = modalState === MODAL_CLOSED && styles.hidden;
@@ -186,29 +221,45 @@ class BaseModal extends Component<ModalProps, State> {
           basFooter: !!footer,
         }}
       >
-        <View style={[styles.container, hidden, style]}>
-          <Overlay
-            pointerEvents={this.pointerEvents}
-            visible={overlayVisible}
-            onPress={onTouchOutside}
-            backgroundColor={overlayBackgroundColor}
-            opacity={overlayOpacity}
-            animationDuration={animationDuration}
-            useNativeDriver={useNativeDriver}
+        <View style={[styles.container, hidden]}>
+          <DraggableView
+            style={StyleSheet.flatten([styles.draggableView, style])}
+            onMove={this.handleMove}
+            onSwiping={onSwiping}
+            onRelease={onSwipeRelease}
+            onSwipeOut={onSwipeOut}
+            swipeDirection={swipeDirection}
+            swipeThreshold={swipeThreshold}
+            backdrop={
+              <Backdrop
+                ref={(ref) => {
+                  this.backdrop = ref;
+                }}
+                pointerEvents={this.pointerEvents}
+                visible={overlayVisible}
+                onPress={onTouchOutside}
+                backgroundColor={overlayBackgroundColor}
+                opacity={overlayOpacity}
+                animationDuration={animationDuration}
+                useNativeDriver={useNativeDriver}
+              />
+            }
+            content={
+              <Animated.View
+                style={[
+                  styles.modal,
+                  round,
+                  this.modalSize,
+                  modalStyle,
+                  modalAnimation.getAnimations(),
+                ]}
+              >
+                {modalTitle}
+                {children}
+                {footer}
+              </Animated.View>
+            }
           />
-          <Animated.View
-            style={[
-              styles.modal,
-              round,
-              this.modalSize,
-              modalStyle,
-              modalAnimation.getAnimations(),
-            ]}
-          >
-            {modalTitle}
-            {children}
-            {footer}
-          </Animated.View>
         </View>
       </ModalContext.Provider>
     );

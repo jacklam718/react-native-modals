@@ -3,6 +3,22 @@
 import { type Element, type Node } from 'react';
 import ModalButton from './components/ModalButton';
 
+export type SwipeDirection = 'up' | 'down' | 'left' | 'right'
+
+export type DragEvent = {
+  axis: {
+    x: number;
+    y: number;
+  },
+  layout: {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+  },
+  swipeDirection: string | null;
+}
+
 export type ModalProps = {
   visible: boolean;
   children: any;
@@ -23,6 +39,12 @@ export type ModalProps = {
   onShow?: () => void;
   onDismiss?: () => void;
   footer?: Node;
+  onMove?: (event: DragEvent) => void,
+  onSwiping?: (event :DragEvent) => void,
+  onSwipeRelease?: (event: DragEvent) => void,
+  onSwipeOut?: (event: DragEvent) => void,
+  swipeDirection?: SwipeDirection | Array<SwipeDirection>;
+  swipeThreshold?: number;
   useNativeDriver?: boolean;
 }
 
@@ -58,7 +80,7 @@ export type ModalContentProps = {
   style?: any,
 }
 
-export type OverlayProps = {
+export type BackdropProps = {
   visible: boolean;
   opacity: number;
   onPress?: () => void;

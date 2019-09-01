@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import Sibling from 'react-native-root-siblings';
 import BaseModal from './components/BaseModal';
-import BottomModal from './components/BottomModal';
 import type { ModalProps } from './type';
 
 type State = {
@@ -11,8 +10,6 @@ type State = {
 }
 
 export default class Modal extends Component<ModalProps, State> {
-  static BottomModal = BottomModal
-
   constructor(props: ModalProps) {
     super(props);
 

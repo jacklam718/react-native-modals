@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class DialogActionList extends Component {
+class ModalActionList extends Component {
   static defaultProps = {
     style: null,
     bordered: true,
@@ -54,4 +54,4 @@ class DialogActionList extends Component {
   }
 }
 
-export default DialogActionList;
+export default ModalActionList;

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import Dialog from './BaseModal';
+import Modal from '../Modal';
 import SlideAnimation from '../animations/SlideAnimation';
 import type { ModalProps } from './type';
 
@@ -11,19 +11,22 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   modal: {
-    width: '100%',
+    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 0,
   },
 });
 
 export default function BottomModal({ style, modalStyle, ...restProps }: ModalProps) {
   return (
-    <Dialog
-      style={StyleSheet.flatten([styles.container, style])}
-      modalStyle={StyleSheet.flatten([styles.modal, modalStyle])}
+    <Modal
       modalAnimation={new SlideAnimation({
         slideFrom: 'bottom',
       })}
       {...restProps}
+      style={StyleSheet.flatten([styles.container, style])}
+      modalStyle={StyleSheet.flatten([styles.modal, modalStyle])}
+      width={1}
+      swipeDirection="down"
     />
   );
 }
