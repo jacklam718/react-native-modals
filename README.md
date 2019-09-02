@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/jacklam718/react-native-popup-dialog.svg?branch=master)](https://travis-ci.org/jacklam718/react-native-popup-dialog)
-[![npm](https://img.shields.io/npm/dm/react-native-popup-dialog.svg)]()
-[![npm](https://img.shields.io/npm/v/react-native-popup-dialog.svg)]()
+[![Build Status](https://travis-ci.org/jacklam718/react-native-modals.svg?branch=master)](https://travis-ci.org/jacklam718/react-native-modals)
+[![npm](https://img.shields.io/npm/dm/react-native-modals.svg)]()
+[![npm](https://img.shields.io/npm/v/react-native-modals.svg)]()
 
 ## React Native Modals
 React Native Modals Library for iOS & Android.
@@ -8,8 +8,8 @@ React Native Modals Library for iOS & Android.
 #### How to thank me ?
 Just click on ⭐️ button 😘
 
-[Try it with Exponent](https://exp.host/@jacklam718/popup-dialog-example)<br>
-<img src="https://raw.githubusercontent.com/jacklam718/react-native-modals/master/.github/popup-dialog.png" width="220">
+[Try it with Exponent](https://exp.host/@jacklam718/modals-example)<br>
+
 <br>
 <br>
 <!-- ![Example](https://jacklam718.github.io/react-native-modals/resources/react-native-modals.gif) -->

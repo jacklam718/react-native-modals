@@ -25,6 +25,7 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": ""
+    "description": "",
+    "githubUrl": "https://github.com/jacklam718/react-native-modals"
   }
 }
