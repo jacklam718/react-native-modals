@@ -26,11 +26,11 @@ export default class Backdrop extends Component<BackdropProps> {
     }
   }
 
-  opacity = new Animated.Value(0)
-
   setOpacity = (value) => {
     this.opacity.setValue(value);
   }
+
+  opacity = new Animated.Value(0)
 
   render() {
     const { onPress, pointerEvents, backgroundColor } = this.props;

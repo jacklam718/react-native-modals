@@ -12,23 +12,20 @@ const styles = StyleSheet.create({
   },
   noPaddingTop: {
     paddingTop: 0,
-  }
+  },
 });
 
-function ModalContent({ style, children }: ModalContentProps) {
-  return (
-    <ModalContext.Consumer>
-      {({ hasTitle }) => (
-        <View style={[styles.content, style, hasTitle && styles.noPaddingTop]}>
-          {children}
-        </View>
-      )}
-    </ModalContext.Consumer>
-  );
-}
-
-ModalContent.defaultProps = {
-  style: null,
-};
+const ModalContent = ({
+  style,
+  children,
+}: ModalContentProps) => (
+  <ModalContext.Consumer>
+    {({ hasTitle }) => (
+      <View style={[styles.content, style, hasTitle && styles.noPaddingTop]}>
+        {children}
+      </View>
+    )}
+  </ModalContext.Consumer>
+);
 
 export default ModalContent;

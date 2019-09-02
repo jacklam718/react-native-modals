@@ -48,6 +48,7 @@ export default class App extends Component {
   state = {
     customBackgroundModal: false,
     defaultAnimationModal: false,
+    swipeableModal: false,
     scaleAnimationModal: false,
     slideAnimationModal: false,
     bottomModalAndTitle: false,
@@ -63,6 +64,15 @@ export default class App extends Component {
             onPress={() => {
               this.setState({
                 defaultAnimationModal: true,
+              });
+            }}
+          />
+
+          <Button
+            title="Show Dialog - Swipeable Modal Animation"
+            onPress={() => {
+              this.setState({
+                swipeableModal: true,
               });
             }}
           />
@@ -114,23 +124,13 @@ export default class App extends Component {
         </View>
 
         <Modal
-          onDismiss={() => {
-            this.setState({ defaultAnimationModal: false });
-          }}
           width={0.9}
-          // overlayOpacity={0.5}
-          overlayOpacity={1}
-          // height={500}
           visible={this.state.defaultAnimationModal}
           rounded
           actionsBordered
-          onSwipeOut={() => {
-            this.setState({ defaultAnimationModal: false });
-          }}
           onTouchOutside={() => {
             this.setState({ defaultAnimationModal: false });
           }}
-          swipeDirection={['down', 'up', 'left', 'right']}
           modalTitle={
             <ModalTitle
               title="Popup Modal - Default Animation"
@@ -163,6 +163,57 @@ export default class App extends Component {
           >
             <Text>Default Animation</Text>
             <Text>No onTouchOutside handler. will not dismiss when touch overlay.</Text>
+          </ModalContent>
+        </Modal>
+
+        <Modal
+          onDismiss={() => {
+            this.setState({ swipeableModal: false });
+          }}
+          width={0.9}
+          overlayOpacity={1}
+          visible={this.state.swipeableModal}
+          rounded
+          actionsBordered
+          onSwipeOut={() => {
+            this.setState({ swipeableModal: false });
+          }}
+          onTouchOutside={() => {
+            this.setState({ swipeableModal: false });
+          }}
+          swipeDirection={['down', 'up']}
+          modalAnimation={new SlideAnimation({ slideFrom: 'bottom' })}
+          modalTitle={
+            <ModalTitle
+              title="Swipeable Modal"
+            />
+          }
+          footer={
+            <ModalFooter>
+              <ModalButton
+                text="CANCEL"
+                bordered
+                onPress={() => {
+                  this.setState({ swipeableModal: false });
+                }}
+                key="button-1"
+              />
+              <ModalButton
+                text="OK"
+                bordered
+                onPress={() => {
+                  this.setState({ swipeableModal: false });
+                }}
+                key="button-2"
+              />
+            </ModalFooter>
+          }
+        >
+          <ModalContent
+            style={{ backgroundColor: '#fff', paddingTop: 24 }}
+          >
+            <Text>Swipeable</Text>
+            <Text>Swipe Up/Down</Text>
           </ModalContent>
         </Modal>
 

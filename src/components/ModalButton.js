@@ -31,16 +31,16 @@ const styles = StyleSheet.create({
   },
 });
 
-function ModalButton({
+const ModalButton = ({
   text,
-  activeOpacity,
-  align,
   onPress,
   style,
   textStyle,
-  disabled,
-  bordered,
-}: ModalButtonProps) {
+  activeOpacity = 0.6,
+  align = 'center',
+  disabled = false,
+  bordered = false,
+}: ModalButtonProps) => {
   const buttonAlign = { alignSelf: Positions[align] };
   const disable = disabled ? styles.disable : null;
   const border = bordered ? styles.border : null;
@@ -58,15 +58,6 @@ function ModalButton({
       </Text>
     </TouchableHighlight>
   );
-}
-
-ModalButton.defaultProps = {
-  activeOpacity: 0.6,
-  disabled: false,
-  bordered: false,
-  align: 'center',
-  style: null,
-  textStyle: null,
 };
 
 export default ModalButton;

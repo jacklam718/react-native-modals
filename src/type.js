@@ -42,6 +42,7 @@ export type ModalProps = {
   onMove?: (event: DragEvent) => void,
   onSwiping?: (event :DragEvent) => void,
   onSwipeRelease?: (event: DragEvent) => void,
+  onSwipingOut?: (event: DragEvent) => void,
   onSwipeOut?: (event: DragEvent) => void,
   swipeDirection?: SwipeDirection | Array<SwipeDirection>;
   swipeThreshold?: number;

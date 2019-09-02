@@ -27,13 +27,13 @@ const styles = StyleSheet.create({
   },
 });
 
-function ModalTitle({
+const ModalTitle = ({
   title,
   style,
   textStyle,
-  hasTitleBar,
-  align,
-}: ModalTitleProps) {
+  hasTitleBar = true,
+  align = 'center',
+}: ModalTitleProps) => {
   const titleBar = hasTitleBar ? styles.titleBar : null;
   const titleAlign = { alignItems: Positions[align] };
 
@@ -45,12 +45,5 @@ function ModalTitle({
     </View>
   );
 }
-
-ModalTitle.defaultProps = {
-  align: 'center',
-  style: null,
-  textStyle: null,
-  hasTitleBar: true,
-};
 
 export default ModalTitle;

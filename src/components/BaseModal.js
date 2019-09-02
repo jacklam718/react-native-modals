@@ -6,14 +6,12 @@ import {
   StyleSheet,
   Animated,
   Dimensions,
-  Modal,
-  TouchableWithoutFeedback,
   BackAndroid as RNBackAndroid,
   BackHandler as RNBackHandler,
 } from 'react-native';
 
 import DraggableView from './DraggableView';
-import ModalContext from "./ModalContext";
+import ModalContext from './ModalContext';
 import Backdrop from './Backdrop';
 import type { ModalProps } from '../type';
 import Animation from '../animations/Animation';
@@ -56,7 +54,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 });
 
 type ModalState =
@@ -92,6 +90,7 @@ class BaseModal extends Component<ModalProps, State> {
     onMove: () => {},
     onSwiping: () => {},
     onSwipeRelease: () => {},
+    onSwipingOut: () => {},
     onSwipeOut: () => {},
     useNativeDriver: true,
   }
@@ -172,20 +171,23 @@ class BaseModal extends Component<ModalProps, State> {
       this.lastSwipeEvent = event;
     }
 
-    let lastAxis;
-    let currAxis;
     let newOpacity;
     const opacity = this.props.overlayOpacity;
     if (Math.abs(event.axis.y)) {
-      lastAxis = Math.abs(this.lastSwipeEvent.layout.y);
-      currAxis = Math.abs(event.axis.y);
-      newOpacity = opacity - (opacity * currAxis) / (Dimensions.get('window').height - lastAxis);
+      const lastAxis = Math.abs(this.lastSwipeEvent.layout.y);
+      const currAxis = Math.abs(event.axis.y);
+      newOpacity = opacity - ((opacity * currAxis) / (Dimensions.get('window').height - lastAxis));
     } else {
-      lastAxis = Math.abs(this.lastSwipeEvent.layout.x);
-      currAxis = Math.abs(event.axis.x);
-      newOpacity = opacity - (opacity * currAxis) / (Dimensions.get('window').width - lastAxis);
-    }    
+      const lastAxis = Math.abs(this.lastSwipeEvent.layout.x);
+      const currAxis = Math.abs(event.axis.x);
+      newOpacity = opacity - ((opacity * currAxis) / (Dimensions.get('window').width - lastAxis));
+    }
     this.backdrop.setOpacity(newOpacity);
+  }
+
+  handleSwipingOut = (event) => {
+    this.isSwipingOut = true;
+    this.props.onSwipingOut(event);
   }
 
   render() {
@@ -209,7 +211,7 @@ class BaseModal extends Component<ModalProps, State> {
       swipeDirection,
       swipeThreshold,
     } = this.props;
-    
+
     const overlayVisible = hasOverlay && [MODAL_OPENING, MODAL_OPENED].includes(modalState);
     const round = rounded ? styles.round : null;
     const hidden = modalState === MODAL_CLOSED && styles.hidden;
@@ -227,6 +229,7 @@ class BaseModal extends Component<ModalProps, State> {
             onMove={this.handleMove}
             onSwiping={onSwiping}
             onRelease={onSwipeRelease}
+            onSwipingOut={this.handleSwipingOut}
             onSwipeOut={onSwipeOut}
             swipeDirection={swipeDirection}
             swipeThreshold={swipeThreshold}
