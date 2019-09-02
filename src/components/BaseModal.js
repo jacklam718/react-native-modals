@@ -91,7 +91,6 @@ class BaseModal extends Component<ModalProps, State> {
     onSwiping: () => {},
     onSwipeRelease: () => {},
     onSwipingOut: () => {},
-    onSwipeOut: () => {},
     useNativeDriver: true,
   }
 

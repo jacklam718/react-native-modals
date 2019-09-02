@@ -1,4 +1,6 @@
 import {
+  DragEvent,
+  SwipeDirection,
   ModalProps,
   ModalFooterProps,
   ModalFooterActionList,
@@ -21,7 +23,7 @@ import FadeAnimation from './animations/FadeAnimation';
 import ScaleAnimation from './animations/ScaleAnimation';
 import SlideAnimation from './animations/SlideAnimation';
 
-Modal.BottomModal = BottomModal
+Modal.BottomModal = BottomModal;
 
 export {
   DraggableView,
@@ -36,6 +38,8 @@ export {
   FadeAnimation,
   ScaleAnimation,
   SlideAnimation,
+  DragEvent,
+  SwipeDirection,
   ModalProps,
   ModalFooterProps,
   ModalFooterActionList,

@@ -14,8 +14,8 @@ Just click on ⭐️ button 😘
 <br>
 <!-- ![Example](https://jacklam718.github.io/react-native-modals/resources/react-native-modals.gif) -->
 <span>
-  <img src="https://raw.githubusercontent.com/jacklam718/react-native-modals/master/.github/fade-animation.gif" width="220">&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/jacklam718/react-native-modals/master/.github/scale-animation.gif" width="220">&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/jacklam718/react-native-modals/master/.github/swipeable-modal.gif" width="220">&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/jacklam718/react-native-modals/master/.github/bottom-modal.gif" width="220">&nbsp;&nbsp;
   <img src="https://raw.githubusercontent.com/jacklam718/react-native-modals/master/.github/slide-animation.gif" width="220">
 </span>
 
@@ -33,6 +33,7 @@ yarn add react-native-modals
 ## Exposed Modules
 
 * Modal
+* BottomModal
 * Backdrop
 * ModalButton
 * ModalContent
@@ -42,6 +43,8 @@ yarn add react-native-modals
 * FadeAnimation
 * ScaleAnimation
 * SlideAnimation
+* DragEvent,
+* SwipeDirection,
 * ModalProps
 * ModalFooterProps
 * ModalButtonProps
@@ -88,6 +91,27 @@ import Modal, { SlideAnimation, ModalContent } from 'react-native-modals';
     modalAnimation={new SlideAnimation({
       slideFrom: 'bottom',
     })}
+  >
+    <ModalContent>
+      {...}
+    </ModalContent>
+  </Modal>
+</View>
+```
+
+## Usage - Swipe
+```jsx
+import Modal, { ModalContent } from 'react-native-modals';
+import { Button } from 'react-native'
+
+<View style={styles.container}>
+  <Modal
+    visible={this.state.visible}
+    swipeDirection={['up', 'down']} // can be string or an array
+    swipeThreshold={200} // default 100
+    onSwipeOut={(event) => {
+      this.setState({ visible: false });
+    }}
   >
     <ModalContent>
       {...}
@@ -164,8 +188,14 @@ import Modal, { ModalFooter, ModalButton, ModalContent } from 'react-native-moda
 | `onDismiss?` | `Function` | | You can pass onDismiss function as a callback function, will call the function when modal dismissed | |
 | `onTouchOutside?` | `Function` | `() => {}` | | |
 | `onHardwareBackPress?` | `Function` | `() => true` | [Handle hardware button presses](https://facebook.github.io/react-native/docs/backhandler) | |
+| `onMove?` | `Function` | `() => {}` | | |
+| `onSwiping?` | `Function` | `() => {}` | | |
+| `onSwipeRelease?` | `Function` | `() => {}` | | |
+| `onSwipingOut?` | `Function` | `() => {}` | | |
+| `onSwipeOut?` | `Function` | | | |
+| `swipeDirection?` | `string or Array<string>` | [] | Available option: `up`, `down`, `left`, `right` | |
+| `swipeThreshold?` | `number` | `100` | | |
 | `footer?` | `React Element` | `null` | for example: ```<View><Button text="DISMISS" align="center" onPress={() => {}}/></View>``` | |
-
 
 ### ModalTitle
 | Prop | Type | Default | Note |
