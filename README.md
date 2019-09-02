@@ -20,7 +20,7 @@ Just click on ⭐️ button 😘
 </span>
 
 ## BREAKING CHANGE
-Has a lot of backward incompatible changes in `v0.16.0`. Please, Read the Docs before upgrading to `v0.16.0`
+A lot of backward incompatible changes in `v0.19.3`. Please, Read the Docs before upgrading to `v0.19.3`
 
 ## Installation
 
