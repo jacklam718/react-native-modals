@@ -5,13 +5,13 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "postinstall": "rimraf node_modules/react-native-popup-dialog/node_modules/react-native"
+    "postinstall": "rimraf node_modules/react-native-modals/node_modules/react-native"
   },
   "dependencies": {
     "expo": "^32.0.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-    "react-native-popup-dialog": ".."
+    "react-native-modals": ".."
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
