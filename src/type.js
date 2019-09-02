@@ -1,9 +1,25 @@
 // @flow
 
 import { type Element, type Node } from 'react';
-import DialogButton from './components/DialogButton';
+import ModalButton from './components/ModalButton';
 
-export type DialogProps = {
+export type SwipeDirection = 'up' | 'down' | 'left' | 'right'
+
+export type DragEvent = {
+  axis: {
+    x: number;
+    y: number;
+  },
+  layout: {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+  },
+  swipeDirection: string | null;
+}
+
+export type ModalProps = {
   visible: boolean;
   children: any;
   width?: number;
@@ -13,28 +29,35 @@ export type DialogProps = {
   overlayPointerEvents?: 'auto' | 'none';
   overlayBackgroundColor?: string;
   overlayOpacity?: number;
-  dialogTitle?: Element<any>;
-  dialogAnimation?: Object;
-  dialogStyle?: any;
-  containerStyle?: any;
+  modalTitle?: Element<any>;
+  modalAnimation?: Object;
+  modalStyle?: any;
+  style?: any;
   animationDuration?: number;
   onTouchOutside?: () => void;
   onHardwareBackPress?: () => boolean;
   onShow?: () => void;
   onDismiss?: () => void;
   footer?: Node;
+  onMove?: (event: DragEvent) => void,
+  onSwiping?: (event :DragEvent) => void,
+  onSwipeRelease?: (event: DragEvent) => void,
+  onSwipingOut?: (event: DragEvent) => void,
+  onSwipeOut?: (event: DragEvent) => void,
+  swipeDirection?: SwipeDirection | Array<SwipeDirection>;
+  swipeThreshold?: number;
   useNativeDriver?: boolean;
 }
 
-export type DialogFooterActionList = Array<Element<typeof DialogButton>>;
+export type ModalFooterActionList = Array<Element<typeof ModalButton>>;
 
-export type DialogFooterProps = {
-  children: DialogFooterActionList;
+export type modalFooterProps = {
+  children: ModalFooterActionList;
   style?: any;
   bordered?: boolean;
 }
 
-export type DialogButtonProps = {
+export type ModalButtonProps = {
   text: string;
   onPress: () => void;
   align?: string;
@@ -45,7 +68,7 @@ export type DialogButtonProps = {
   bordered?: boolean;
 }
 
-export type DialogTitleProps = {
+export type ModalTitleProps = {
   title: any;
   style?: any;
   textStyle?: any;
@@ -53,12 +76,12 @@ export type DialogTitleProps = {
   hasTitleBar?: boolean;
 }
 
-export type DialogContentProps = {
+export type ModalContentProps = {
   children: any,
   style?: any,
 }
 
-export type OverlayProps = {
+export type BackdropProps = {
   visible: boolean;
   opacity: number;
   onPress?: () => void;

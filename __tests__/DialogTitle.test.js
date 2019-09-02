@@ -2,11 +2,11 @@ import React from 'react';
 import expect from 'expect';
 import { shallow } from 'enzyme';
 
-import DialogTitle from '../src/components/DialogTitle';
+import ModalTitle from '../src/components/ModalTitle';
 
 it('should render DialogTitle with title bar', () => {
   const wrapper = shallow((
-    <DialogTitle
+    <ModalTitle
       title="DialogTitle - Should has title bar"
       hasTitleBar
     />
@@ -16,7 +16,7 @@ it('should render DialogTitle with title bar', () => {
 
 it('should render DialogTitle without title bar', () => {
   const wrapper = shallow((
-    <DialogTitle
+    <ModalTitle
       title="DialogTitle - Should has no title bar"
       hasTitleBar={false}
     />

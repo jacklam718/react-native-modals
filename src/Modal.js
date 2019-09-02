@@ -2,15 +2,15 @@
 
 import React, { Component } from 'react';
 import Sibling from 'react-native-root-siblings';
-import Dialog from './components/Dialog';
-import type { DialogProps } from './type';
+import BaseModal from './components/BaseModal';
+import type { ModalProps } from './type';
 
 type State = {
   visible: boolean
 }
 
-export default class PopupDialog extends Component<DialogProps, State> {
-  constructor(props: DialogProps) {
+export default class Modal extends Component<ModalProps, State> {
+  constructor(props: ModalProps) {
     super(props);
 
     this.state = {
@@ -21,11 +21,11 @@ export default class PopupDialog extends Component<DialogProps, State> {
   componentDidMount() {
     const { visible } = this.state;
     if (visible) {
-      this.createDialog();
+      this.createModal();
     }
   }
 
-  componentDidUpdate(prevProps: DialogProps, prevState: State) {
+  componentDidUpdate(prevProps: ModalProps, prevState: State) {
     // update visible state and create dialog if visible is true
     if (prevState.visible !== this.props.visible) {
       // will use getDerivedStateFromProps in future, then don't need to setState
@@ -33,12 +33,12 @@ export default class PopupDialog extends Component<DialogProps, State> {
       // eslint-disable-next-line
       this.setState({ visible: this.props.visible });
       if (this.props.visible) {
-        this.createDialog();
+        this.createModal();
       }
     }
     // always re-render if sibling is not null
     if (this.sibling) {
-      this.updateDialog();
+      this.updateModal();
     }
   }
 
@@ -47,30 +47,30 @@ export default class PopupDialog extends Component<DialogProps, State> {
     if (onDismiss) {
       onDismiss();
     }
-    this.destroyDialog();
+    this.destroyModal();
   }
 
   sibling: Sibling = null
 
-  createDialog() {
+  createModal() {
     // Protect against setState happening asynchronously
     if (!this.sibling) {
-      this.sibling = new Sibling(this.renderDialog());
+      this.sibling = new Sibling(this.renderModal());
     }
   }
 
-  updateDialog() {
-    this.sibling.update(this.renderDialog());
+  updateModal() {
+    this.sibling.update(this.renderModal());
   }
 
-  destroyDialog() {
+  destroyModal() {
     this.sibling.destroy();
     this.sibling = null;
   }
 
-  renderDialog() {
+  renderModal() {
     return (
-      <Dialog
+      <BaseModal
         {...this.props}
         onDismiss={this.handleDismiss}
         visible={this.state.visible}

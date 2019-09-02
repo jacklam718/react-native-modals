@@ -21,23 +21,28 @@ exports[`should render with FadeAnimation & show/hide correctly 4`] = `"closing"
 exports[`should render with FadeAnimation & show/hide correctly 5`] = `"closed"`;
 
 exports[`should render with PopupDialog with Overlay 1`] = `
-<Dialog
+<BaseModal
   animationDuration={150}
-  containerStyle={null}
-  dialogStyle={null}
-  dialogTitle={null}
   footer={null}
   hasOverlay={true}
   height={null}
+  modalStyle={null}
+  modalTitle={null}
   onDismiss={[Function]}
   onHardwareBackPress={[Function]}
+  onMove={[Function]}
   onShow={[Function]}
+  onSwipeOut={[Function]}
+  onSwipeRelease={[Function]}
+  onSwiping={[Function]}
+  onSwipingOut={[Function]}
   onTouchOutside={[Function]}
   overlayBackgroundColor="#000"
   overlayOpacity={0.5}
   overlayPointerEvents={null}
   rounded={true}
   show={true}
+  style={null}
   useNativeDriver={true}
   visible={false}
   width={null}
@@ -46,9 +51,7 @@ exports[`should render with PopupDialog with Overlay 1`] = `
     style={
       Array [
         Object {
-          "alignItems": "center",
           "elevation": 10,
-          "justifyContent": "center",
           "zIndex": 1000,
         },
         Object {
@@ -57,103 +60,220 @@ exports[`should render with PopupDialog with Overlay 1`] = `
           "top": -10000,
           "width": 0,
         },
-        null,
       ]
     }
   >
     <react-native-mock>
-      <Overlay
-        animationDuration={150}
-        backgroundColor="#000"
-        onPress={[Function]}
-        opacity={0.5}
-        pointerEvents="none"
-        useNativeDriver={true}
-        visible={false}
+      <DraggableView
+        backdrop={
+          <Backdrop
+            animationDuration={150}
+            backgroundColor="#000"
+            onPress={[Function]}
+            opacity={0.5}
+            pointerEvents="none"
+            useNativeDriver={true}
+            visible={false}
+          />
+        }
+        content={
+          <AnimatedComponent
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#ffffff",
+                  "overflow": "hidden",
+                },
+                Object {
+                  "borderRadius": 8,
+                },
+                Object {
+                  "height": null,
+                  "width": null,
+                },
+                null,
+                Object {
+                  "opacity": AnimatedValue {
+                    "_animation": null,
+                    "_children": Array [],
+                    "_listeners": Object {},
+                    "_offset": 0,
+                    "_value": 0,
+                  },
+                },
+              ]
+            }
+          />
+        }
+        onMove={[Function]}
+        onRelease={[Function]}
+        onSwipeOut={[Function]}
+        onSwiping={[Function]}
+        onSwipingOut={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+          }
+        }
+        swipeDirection={Array []}
+        swipeThreshold={100}
       >
         <AnimatedComponent
-          pointerEvents="none"
+          onMoveShouldSetResponder={[Function]}
+          onMoveShouldSetResponderCapture={[Function]}
+          onResponderEnd={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderReject={[Function]}
+          onResponderRelease={[Function]}
+          onResponderStart={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          onStartShouldSetResponderCapture={[Function]}
           style={
-            Array [
-              undefined,
-              Object {
-                "backgroundColor": "#000",
-                "opacity": AnimatedValue {
-                  "_animation": null,
-                  "_children": Array [],
-                  "_listeners": Object {},
-                  "_offset": 0,
-                  "_value": 0,
-                },
-              },
-            ]
+            Object {
+              "alignItems": "center",
+              "flex": 1,
+              "justifyContent": "center",
+            }
           }
         >
           <View>
             <react-native-mock>
-              <TouchableOpacity
+              <Backdrop
+                animationDuration={150}
+                backgroundColor="#000"
                 onPress={[Function]}
+                opacity={0.5}
+                pointerEvents="none"
+                useNativeDriver={true}
+                visible={false}
               >
-                <react-native-mock />
-              </TouchableOpacity>
+                <AnimatedComponent
+                  pointerEvents="none"
+                  style={
+                    Object {
+                      "backgroundColor": "#000",
+                      "height": 2304,
+                      "opacity": AnimatedValue {
+                        "_animation": null,
+                        "_children": Array [],
+                        "_listeners": Object {},
+                        "_offset": 0,
+                        "_value": 0,
+                      },
+                      "position": "absolute",
+                      "width": 960,
+                    }
+                  }
+                >
+                  <View>
+                    <react-native-mock>
+                      <TouchableOpacity
+                        onPress={[Function]}
+                      >
+                        <react-native-mock />
+                      </TouchableOpacity>
+                    </react-native-mock>
+                  </View>
+                </AnimatedComponent>
+              </Backdrop>
+              <AnimatedComponent
+                onLayout={[Function]}
+                style={
+                  Object {
+                    "left": AnimatedValue {
+                      "_animation": null,
+                      "_children": Array [],
+                      "_listeners": Object {
+                        "14": [Function],
+                      },
+                      "_offset": 0,
+                      "_value": 0,
+                    },
+                    "top": AnimatedValue {
+                      "_animation": null,
+                      "_children": Array [],
+                      "_listeners": Object {
+                        "15": [Function],
+                      },
+                      "_offset": 0,
+                      "_value": 0,
+                    },
+                  }
+                }
+              >
+                <View>
+                  <react-native-mock>
+                    <AnimatedComponent
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#ffffff",
+                            "overflow": "hidden",
+                          },
+                          Object {
+                            "borderRadius": 8,
+                          },
+                          Object {
+                            "height": null,
+                            "width": null,
+                          },
+                          null,
+                          Object {
+                            "opacity": AnimatedValue {
+                              "_animation": null,
+                              "_children": Array [],
+                              "_listeners": Object {},
+                              "_offset": 0,
+                              "_value": 0,
+                            },
+                          },
+                        ]
+                      }
+                    >
+                      <View>
+                        <react-native-mock />
+                      </View>
+                    </AnimatedComponent>
+                  </react-native-mock>
+                </View>
+              </AnimatedComponent>
             </react-native-mock>
           </View>
         </AnimatedComponent>
-      </Overlay>
-      <AnimatedComponent
-        style={
-          Array [
-            Object {
-              "backgroundColor": "#ffffff",
-              "overflow": "hidden",
-            },
-            Object {
-              "borderRadius": 8,
-            },
-            Object {
-              "height": null,
-              "width": null,
-            },
-            null,
-            Object {
-              "opacity": AnimatedValue {
-                "_animation": null,
-                "_children": Array [],
-                "_listeners": Object {},
-                "_offset": 0,
-                "_value": 0,
-              },
-            },
-          ]
-        }
-      >
-        <View>
-          <react-native-mock />
-        </View>
-      </AnimatedComponent>
+      </DraggableView>
     </react-native-mock>
   </View>
-</Dialog>
+</BaseModal>
 `;
 
 exports[`should render with PopupDialog without Overlay 1`] = `
-<Dialog
+<BaseModal
   animationDuration={150}
-  containerStyle={null}
-  dialogStyle={null}
-  dialogTitle={null}
   footer={null}
   hasOverlay={false}
   height={null}
+  modalStyle={null}
+  modalTitle={null}
   onDismiss={[Function]}
   onHardwareBackPress={[Function]}
+  onMove={[Function]}
   onShow={[Function]}
+  onSwipeOut={[Function]}
+  onSwipeRelease={[Function]}
+  onSwiping={[Function]}
+  onSwipingOut={[Function]}
   onTouchOutside={[Function]}
   overlayBackgroundColor="#000"
   overlayOpacity={0.5}
   overlayPointerEvents={null}
   rounded={true}
   show={true}
+  style={null}
   useNativeDriver={true}
   visible={false}
   width={null}
@@ -162,9 +282,7 @@ exports[`should render with PopupDialog without Overlay 1`] = `
     style={
       Array [
         Object {
-          "alignItems": "center",
           "elevation": 10,
-          "justifyContent": "center",
           "zIndex": 1000,
         },
         Object {
@@ -173,83 +291,195 @@ exports[`should render with PopupDialog without Overlay 1`] = `
           "top": -10000,
           "width": 0,
         },
-        null,
       ]
     }
   >
     <react-native-mock>
-      <Overlay
-        animationDuration={150}
-        backgroundColor="#000"
-        onPress={[Function]}
-        opacity={0.5}
-        pointerEvents="none"
-        useNativeDriver={true}
-        visible={false}
+      <DraggableView
+        backdrop={
+          <Backdrop
+            animationDuration={150}
+            backgroundColor="#000"
+            onPress={[Function]}
+            opacity={0.5}
+            pointerEvents="none"
+            useNativeDriver={true}
+            visible={false}
+          />
+        }
+        content={
+          <AnimatedComponent
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#ffffff",
+                  "overflow": "hidden",
+                },
+                Object {
+                  "borderRadius": 8,
+                },
+                Object {
+                  "height": null,
+                  "width": null,
+                },
+                null,
+                Object {
+                  "opacity": AnimatedValue {
+                    "_animation": null,
+                    "_children": Array [],
+                    "_listeners": Object {},
+                    "_offset": 0,
+                    "_value": 0,
+                  },
+                },
+              ]
+            }
+          />
+        }
+        onMove={[Function]}
+        onRelease={[Function]}
+        onSwipeOut={[Function]}
+        onSwiping={[Function]}
+        onSwipingOut={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "center",
+          }
+        }
+        swipeDirection={Array []}
+        swipeThreshold={100}
       >
         <AnimatedComponent
-          pointerEvents="none"
+          onMoveShouldSetResponder={[Function]}
+          onMoveShouldSetResponderCapture={[Function]}
+          onResponderEnd={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderReject={[Function]}
+          onResponderRelease={[Function]}
+          onResponderStart={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          onStartShouldSetResponderCapture={[Function]}
           style={
-            Array [
-              undefined,
-              Object {
-                "backgroundColor": "#000",
-                "opacity": AnimatedValue {
-                  "_animation": null,
-                  "_children": Array [],
-                  "_listeners": Object {},
-                  "_offset": 0,
-                  "_value": 0,
-                },
-              },
-            ]
+            Object {
+              "alignItems": "center",
+              "flex": 1,
+              "justifyContent": "center",
+            }
           }
         >
           <View>
             <react-native-mock>
-              <TouchableOpacity
+              <Backdrop
+                animationDuration={150}
+                backgroundColor="#000"
                 onPress={[Function]}
+                opacity={0.5}
+                pointerEvents="none"
+                useNativeDriver={true}
+                visible={false}
               >
-                <react-native-mock />
-              </TouchableOpacity>
+                <AnimatedComponent
+                  pointerEvents="none"
+                  style={
+                    Object {
+                      "backgroundColor": "#000",
+                      "height": 2304,
+                      "opacity": AnimatedValue {
+                        "_animation": null,
+                        "_children": Array [],
+                        "_listeners": Object {},
+                        "_offset": 0,
+                        "_value": 0,
+                      },
+                      "position": "absolute",
+                      "width": 960,
+                    }
+                  }
+                >
+                  <View>
+                    <react-native-mock>
+                      <TouchableOpacity
+                        onPress={[Function]}
+                      >
+                        <react-native-mock />
+                      </TouchableOpacity>
+                    </react-native-mock>
+                  </View>
+                </AnimatedComponent>
+              </Backdrop>
+              <AnimatedComponent
+                onLayout={[Function]}
+                style={
+                  Object {
+                    "left": AnimatedValue {
+                      "_animation": null,
+                      "_children": Array [],
+                      "_listeners": Object {
+                        "17": [Function],
+                      },
+                      "_offset": 0,
+                      "_value": 0,
+                    },
+                    "top": AnimatedValue {
+                      "_animation": null,
+                      "_children": Array [],
+                      "_listeners": Object {
+                        "18": [Function],
+                      },
+                      "_offset": 0,
+                      "_value": 0,
+                    },
+                  }
+                }
+              >
+                <View>
+                  <react-native-mock>
+                    <AnimatedComponent
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#ffffff",
+                            "overflow": "hidden",
+                          },
+                          Object {
+                            "borderRadius": 8,
+                          },
+                          Object {
+                            "height": null,
+                            "width": null,
+                          },
+                          null,
+                          Object {
+                            "opacity": AnimatedValue {
+                              "_animation": null,
+                              "_children": Array [],
+                              "_listeners": Object {},
+                              "_offset": 0,
+                              "_value": 0,
+                            },
+                          },
+                        ]
+                      }
+                    >
+                      <View>
+                        <react-native-mock />
+                      </View>
+                    </AnimatedComponent>
+                  </react-native-mock>
+                </View>
+              </AnimatedComponent>
             </react-native-mock>
           </View>
         </AnimatedComponent>
-      </Overlay>
-      <AnimatedComponent
-        style={
-          Array [
-            Object {
-              "backgroundColor": "#ffffff",
-              "overflow": "hidden",
-            },
-            Object {
-              "borderRadius": 8,
-            },
-            Object {
-              "height": null,
-              "width": null,
-            },
-            null,
-            Object {
-              "opacity": AnimatedValue {
-                "_animation": null,
-                "_children": Array [],
-                "_listeners": Object {},
-                "_offset": 0,
-                "_value": 0,
-              },
-            },
-          ]
-        }
-      >
-        <View>
-          <react-native-mock />
-        </View>
-      </AnimatedComponent>
+      </DraggableView>
     </react-native-mock>
   </View>
-</Dialog>
+</BaseModal>
 `;
 
 exports[`should render with ScaleAnimation & show/hide correctly 1`] = `"closed"`;

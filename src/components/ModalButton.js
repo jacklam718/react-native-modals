@@ -3,7 +3,7 @@
 import React from 'react';
 import { Text, PixelRatio, TouchableHighlight, StyleSheet, Platform } from 'react-native';
 import { Positions } from '../constants/Constants';
-import type { DialogButtonProps } from '../type';
+import type { ModalButtonProps } from '../type';
 
 const isAndroid = Platform.OS === 'android';
 
@@ -31,16 +31,16 @@ const styles = StyleSheet.create({
   },
 });
 
-function DialogButton({
+const ModalButton = ({
   text,
-  activeOpacity,
-  align,
   onPress,
   style,
   textStyle,
-  disabled,
-  bordered,
-}: DialogButtonProps) {
+  activeOpacity = 0.6,
+  align = 'center',
+  disabled = false,
+  bordered = false,
+}: ModalButtonProps) => {
   const buttonAlign = { alignSelf: Positions[align] };
   const disable = disabled ? styles.disable : null;
   const border = bordered ? styles.border : null;
@@ -58,15 +58,6 @@ function DialogButton({
       </Text>
     </TouchableHighlight>
   );
-}
-
-DialogButton.defaultProps = {
-  activeOpacity: 0.6,
-  disabled: false,
-  bordered: false,
-  align: 'center',
-  style: null,
-  textStyle: null,
 };
 
-export default DialogButton;
+export default ModalButton;

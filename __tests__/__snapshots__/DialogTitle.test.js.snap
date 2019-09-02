@@ -7,9 +7,8 @@ exports[`should render DialogTitle with title bar 1`] = `
       Object {
         "borderTopLeftRadius": 8,
         "borderTopRightRadius": 8,
-        "padding": 24,
-        "paddingLeft": 18,
-        "paddingRight": 18,
+        "padding": 14,
+        "paddingHorizontal": 18,
       },
       Object {
         "alignItems": "center",
@@ -18,9 +17,8 @@ exports[`should render DialogTitle with title bar 1`] = `
         "backgroundColor": "#F9F9FB",
         "borderBottomWidth": 0.5,
         "borderColor": "#DAD9DC",
-        "padding": 14,
       },
-      null,
+      undefined,
     ]
   }
 >
@@ -33,7 +31,7 @@ exports[`should render DialogTitle with title bar 1`] = `
           "fontSize": 15,
           "fontWeight": "500",
         },
-        null,
+        undefined,
       ]
     }
   >
@@ -49,15 +47,14 @@ exports[`should render DialogTitle without title bar 1`] = `
       Object {
         "borderTopLeftRadius": 8,
         "borderTopRightRadius": 8,
-        "padding": 24,
-        "paddingLeft": 18,
-        "paddingRight": 18,
+        "padding": 14,
+        "paddingHorizontal": 18,
       },
       Object {
         "alignItems": "center",
       },
       null,
-      null,
+      undefined,
     ]
   }
 >
@@ -70,7 +67,7 @@ exports[`should render DialogTitle without title bar 1`] = `
           "fontSize": 15,
           "fontWeight": "500",
         },
-        null,
+        undefined,
       ]
     }
   >

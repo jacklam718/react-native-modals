@@ -2,176 +2,172 @@
 [![npm](https://img.shields.io/npm/dm/react-native-popup-dialog.svg)]()
 [![npm](https://img.shields.io/npm/v/react-native-popup-dialog.svg)]()
 
-## React Native Popup Dialog
-React Native Popup Dialog for iOS & Android.
-
-Another similar dialog component: [react-native-dialog-component](https://github.com/jacklam718/react-native-dialog-component) the main difference is style.
-
-Pull request are welcomed. Please follow [Airbnb JS Style Guide](https://github.com/airbnb/javascript)
+## React Native Modals
+React Native Modals Library for iOS & Android.
 
 #### How to thank me ?
 Just click on ⭐️ button 😘
 
 [Try it with Exponent](https://exp.host/@jacklam718/popup-dialog-example)<br>
-<img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/popup-dialog.png" width="220">
+<img src="https://raw.githubusercontent.com/jacklam718/react-native-modals/master/.github/popup-dialog.png" width="220">
 <br>
 <br>
-<!-- ![Example](https://jacklam718.github.io/react-native-popup-dialog/resources/react-native-popup-dialog.gif) -->
+<!-- ![Example](https://jacklam718.github.io/react-native-modals/resources/react-native-modals.gif) -->
 <span>
-  <img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/fade-animation.gif" width="220">&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/scale-animation.gif" width="220">&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/slide-animation.gif" width="220">
+  <img src="https://raw.githubusercontent.com/jacklam718/react-native-modals/master/.github/fade-animation.gif" width="220">&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/jacklam718/react-native-modals/master/.github/scale-animation.gif" width="220">&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/jacklam718/react-native-modals/master/.github/slide-animation.gif" width="220">
 </span>
 
 ## BREAKING CHANGE
-Has a lot of backward incompatible changes in `v0.16.0`. Please, Read the Docs before upgrading to `v0.16.0`
+A lot of backward incompatible changes in `v0.19.3`. Please, Read the Docs before upgrading to `v0.19.3`
 
 ## Installation
 
 ```
-npm install --save react-native-popup-dialog
+npm install --save react-native-modals
 # OR
-yarn add react-native-popup-dialog
+yarn add react-native-modals
 ```
 
 ## Exposed Modules
 
-* Dialog
-* Overlay
-* DialogButton
-* DialogContent
-* DialogTitle
-* DialogFooter
+* Modal
+* Backdrop
+* ModalButton
+* ModalContent
+* ModalTitle
+* ModalFooter
 * Animation
 * FadeAnimation
 * ScaleAnimation
 * SlideAnimation
-* DialogProps
-* DialogFooterProps
-* DialogButtonProps
-* DialogTitleProps
-* DialogContentProps
-* OverlayProps
+* ModalProps
+* ModalFooterProps
+* ModalButtonProps
+* ModalTitleProps
+* ModalContentProps
+* BackdropProps
 
 ## Examples
-[Example](https://github.com/jacklam718/react-native-popup-dialog/blob/master/popup-dialog-example/App.js)
+[Example](https://github.com/jacklam718/react-native-modals/blob/master/modals-example/App.js)
 
 
 ## Basic Usage
 ```jsx
-import Dialog, { DialogContent } from 'react-native-popup-dialog';
+import Modal, { ModalContent } from 'react-native-modals';
 import { Button } from 'react-native'
 
 <View style={styles.container}>
   <Button
-    title="Show Dialog"
+    title="Show Modal"
     onPress={() => {
       this.setState({ visible: true });
     }}
   />
-  <Dialog
+  <Modal
     visible={this.state.visible}
     onTouchOutside={() => {
       this.setState({ visible: false });
     }}
   >
-    <DialogContent>
+    <ModalContent>
       {...}
-    </DialogContent>
-  </Dialog>
+    </ModalContent>
+  </Modal>
 </View>
 ```
 
 ## Usage - Animation
 ```jsx
-import Dialog, { SlideAnimation, DialogContent } from 'react-native-popup-dialog';
+import Modal, { SlideAnimation, ModalContent } from 'react-native-modals';
 
 <View style={styles.container}>
-  <Dialog
+  <Modal
     visible={this.state.visible}
-    dialogAnimation={new SlideAnimation({
+    modalAnimation={new SlideAnimation({
       slideFrom: 'bottom',
     })}
   >
-    <DialogContent>
+    <ModalContent>
       {...}
-    </DialogContent>
-  </Dialog>
+    </ModalContent>
+  </Modal>
 </View>
 ```
 
-## Usage - Dialog Dialog Title
+## Usage - Modal Title
 ```jsx
-import Dialog, { DialogTitle, DialogContent } from 'react-native-popup-dialog';
+import Modal, { ModalTitle, ModalContent } from 'react-native-modals';
 
 <View style={styles.container}>
-  <Dialog
+  <Modal
     visible={this.state.visible}
-    dialogTitle={<DialogTitle title="Dialog Title" />}
+    modalTitle={<ModalTitle title="Modal Title" />}
   >
-    <DialogContent>
+    <ModalContent>
       {...}
-    </DialogContent>
-  </Dialog>
+    </ModalContent>
+  </Modal>
 </View>
 ```
 
-## Usage - Dialog Action
+## Usage - Modal Action
 ```jsx
-import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
+import Modal, { ModalFooter, ModalButton, ModalContent } from 'react-native-modals';
 
 <View style={styles.container}>
-  <Dialog
+  <Modal
     visible={this.state.visible}
     footer={
-      <DialogFooter>
-        <DialogButton
+      <ModalFooter>
+        <ModalButton
           text="CANCEL"
           onPress={() => {}}
         />
-        <DialogButton
+        <ModalButton
           text="OK"
           onPress={() => {}}
         />
-      </DialogFooter>
+      </ModalFooter>
     }
   >
-    <DialogContent>
+    <ModalContent>
       {...}
-    </DialogContent>
-  </Dialog>
+    </ModalContent>
+  </Modal>
 </View>
 ```
 
 
 ## Props
 
-### Dialog
+### Modal
 | Prop | Type | Default | Note |
 |---|---|---|---|
 | `visible` | `boolean` | `false` | |
 | `rounded` | `boolean` | `true` | |
 | `useNativeDriver` | `boolean` | `true` | |
 | `children` | `any` | | |
-| `dialogTitle?` | `React Element` | | You can pass a `DialogTitle` component or pass a `View` for customizing titlebar |
-| `width?` | `Number` | Your device width | The Width of Dialog, you can use fixed width or use percentage. For example `0.5` it means `50%`
-| `height?` | `Number` | 300 | The Height of Dialog, you can use fixed height or use percentage. For example `0.5` it means `50%`
-| `dialogAnimation?` |  | `FadeAnimation` | animation for dialog | |
-| `dialogStyle?` | `any` | | | |
+| `modalTitle?` | `React Element` | | You can pass a `modalTitle` component or pass a `View` for customizing titlebar |
+| `width?` | `Number` | Your device width | The Width of modal, you can use fixed width or use percentage. For example `0.5` it means `50%`
+| `height?` | `Number` | 300 | The Height of modal, you can use fixed height or use percentage. For example `0.5` it means `50%`
+| `modalAnimation?` |  | `FadeAnimation` | animation for modal | |
+| `modalStyle?` | `any` | | | |
 | `containerStyle?` | `any` | `null` | For example: ``` {  zIndex: 10, elevation: 10 } ``` | |
 | `animationDuration?` | `Number` | `200` | | |
 | `overlayPointerEvents?` | `String` | | Available option: `auto`, `none` |
 | `overlayBackgroundColor?` | `String` | `#000` |
 | `overlayOpacity?` | `Number` | `0.5` |
 | `hasOverlay?` | `Boolean` | `true` | | |
-| `onShow?` | `Function` | | You can pass shown function as a callback function, will call the function when dialog shown | |
-| `onDismiss?` | `Function` | | You can pass onDismiss function as a callback function, will call the function when dialog dismissed | |
+| `onShow?` | `Function` | | You can pass shown function as a callback function, will call the function when modal shown | |
+| `onDismiss?` | `Function` | | You can pass onDismiss function as a callback function, will call the function when modal dismissed | |
 | `onTouchOutside?` | `Function` | `() => {}` | | |
 | `onHardwareBackPress?` | `Function` | `() => true` | [Handle hardware button presses](https://facebook.github.io/react-native/docs/backhandler) | |
 | `footer?` | `React Element` | `null` | for example: ```<View><Button text="DISMISS" align="center" onPress={() => {}}/></View>``` | |
 
 
-### DialogTitle
+### ModalTitle
 | Prop | Type | Default | Note |
 |---|---|---|---|
 | `title` | `String` | | | |
@@ -181,22 +177,22 @@ import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-
 | `hasTitleBar?` | `Bool` | `true` | | |
 
 
-### DialogContent
+### ModalContent
 | Prop | Type | Default | Note |
 |---|---|---|---|
 | `children` | `any` | | | |
 | `style?` | `any` | `null` | | |
 
 
-### DialogFooter
+### ModalFooter
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| `children` | `DialogButton` | | | |
+| `children` | `ModalButton` | | | |
 | `bordered?` | `Boolean` | `true` | | |
 | `style?` | `any` | null | | |
 
 
-### DialogButton
+### ModalButton
 | Prop | Type | Default | Note |
 |---|---|---|---|
 | `text` | `String` | | | |
@@ -209,7 +205,7 @@ import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-
 | `bordered?` | `Boolean` | `false` | | |
 
 
-### Overlay
+### Backdrop
 | Prop | Type | Default | Note |
 |---|---|---|---|
 | `visible` | `Boolean` | | | |
@@ -226,7 +222,7 @@ import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-
 
 ### FadeAnimation
 ##### Preview:
-<img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/fade-animation.gif" width="200">
+<img src="https://raw.githubusercontent.com/jacklam718/react-native-modals/master/.github/fade-animation.gif" width="200">
 
 ##### Example:
 ```javascript
@@ -244,7 +240,7 @@ new FadeAnimation({
 
 ### ScaleAnimation
 ##### Preview:
-<img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/scale-animation.gif" width="200">
+<img src="https://raw.githubusercontent.com/jacklam718/react-native-modals/master/.github/scale-animation.gif" width="200">
 
 ##### Example:
 ```javascript
@@ -260,7 +256,7 @@ new ScaleAnimation({
 
 ### SlideAnimation
 ##### Preview:
-<img src="https://raw.githubusercontent.com/jacklam718/react-native-popup-dialog/master/.github/slide-animation.gif" width="200">
+<img src="https://raw.githubusercontent.com/jacklam718/react-native-modals/master/.github/slide-animation.gif" width="200">
 
 ##### Example:
 ```javascript
@@ -282,7 +278,7 @@ new SlideAnimation({
 
 ```javascript
 import { Animated } from 'react-native';
-import { Animation } from 'react-native-popup-dialog';
+import { Animation } from 'react-native-modals';
 
 class CustomAnimation extends Animation {
   in(onFinished) {

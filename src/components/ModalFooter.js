@@ -2,7 +2,7 @@
 
 import React, { Children, cloneElement } from 'react';
 import { View, StyleSheet, PixelRatio } from 'react-native';
-import type { DialogFooterProps } from '../type';
+import type { ModalFooterProps } from '../type';
 
 const styles = StyleSheet.create({
   border: {
@@ -18,11 +18,11 @@ const styles = StyleSheet.create({
   },
 });
 
-function DialogActionList({
+const ModalActionList = ({
   style,
-  bordered,
   children,
-}: DialogFooterProps) {
+  bordered = true,
+}: ModalFooterProps) => {
   const containerStyle = children.length > 2
     ? styles.actionsVertical
     : styles.actionsHorizontal;
@@ -43,11 +43,6 @@ function DialogActionList({
       {content}
     </View>
   );
-}
-
-DialogActionList.defaultProps = {
-  style: null,
-  bordered: true,
 };
 
-export default DialogActionList;
+export default ModalActionList;
