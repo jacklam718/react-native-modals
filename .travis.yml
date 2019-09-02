@@ -3,7 +3,7 @@ cache: yarn
 before_install:
 - npm install -g yarn --cache-min "999999999"
 node_js:
-- '7'
+- '10'
 install:
 - yarn
 deploy:
