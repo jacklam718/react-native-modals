@@ -160,6 +160,10 @@ class BaseModal extends Component<ModalProps, State> {
 
   dismiss(): void {
     this.setState({ modalState: MODAL_CLOSING }, () => {
+      if (this.isSwipingOut) {
+        this.setState({ modalState: MODAL_CLOSED }, this.props.onDismiss);
+        return;
+      }
       this.state.modalAnimation.out(() => {
         this.setState({ modalState: MODAL_CLOSED }, this.props.onDismiss);
       });

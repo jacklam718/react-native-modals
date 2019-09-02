@@ -21,7 +21,7 @@ const ModalContent = ({
 }: ModalContentProps) => (
   <ModalContext.Consumer>
     {({ hasTitle }) => (
-      <View style={[styles.content, style, hasTitle && styles.noPaddingTop]}>
+      <View style={[styles.content, hasTitle && styles.noPaddingTop, style]}>
         {children}
       </View>
     )}
