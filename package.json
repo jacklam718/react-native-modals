@@ -1,7 +1,7 @@
 {
-  "name": "react-native-popup-dialog",
-  "version": "0.18.3",
-  "description": "React Native Popup Dialog for IOS & Android.",
+  "name": "react-native-modals",
+  "version": "0.19.3",
+  "description": "React Native Modals Library for IOS & Android.",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
@@ -10,24 +10,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jacklam718/react-native-popup-dialog.git"
+    "url": "https://github.com/jacklam718/react-native-modals.git"
   },
   "keywords": [
     "dialog",
     "popup",
     "react dialog",
     "react-native",
-    "react-native-popup-dialog",
+    "react-native-modals",
     "react-native-dialog",
     "react native dialog",
-    "popup-dialog",
+    "modals",
     "react-component",
     "ios",
     "android"
   ],
   "author": "jacklam <jacklam718@gmail.com> (https://github.com/jacklam718)",
   "license": "MIT",
-  "homepage": "https://github.com/jacklam718/react-native-popup-dialog/blob/master/README.md",
+  "homepage": "https://github.com/jacklam718/react-native-modals/blob/master/README.md",
   "dependencies": {
     "babel-plugin-flow-react-proptypes": "^9.1.1",
     "prop-types": "^15.6.0",
@@ -66,7 +66,7 @@
     ],
     "testRegex": "__tests__/.+\\.test.js$",
     "modulePathIgnorePatterns": [
-      "popup-dialog-example/node_modules"
+      "modals-example/node_modules"
     ]
   }
 }

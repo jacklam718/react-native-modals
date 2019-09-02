@@ -7,7 +7,7 @@ import Modal, {
   ModalButton,
   SlideAnimation,
   ScaleAnimation,
-} from 'react-native-popup-dialog';
+} from 'react-native-modals';
 
 const styles = StyleSheet.create({
   container: {
@@ -60,7 +60,7 @@ export default class App extends Component {
       <View style={{ flex: 1 }}>
         <View style={styles.container}>
           <Button
-            title="Show Dialog - Default Animation"
+            title="Show Modal - Default Animation"
             onPress={() => {
               this.setState({
                 defaultAnimationModal: true,
@@ -69,7 +69,7 @@ export default class App extends Component {
           />
 
           <Button
-            title="Show Dialog - Swipeable Modal Animation"
+            title="Show Modal - Swipeable Modal Animation"
             onPress={() => {
               this.setState({
                 swipeableModal: true,
@@ -78,7 +78,7 @@ export default class App extends Component {
           />
 
           <Button
-            title="Show Dialog - Scale Animation"
+            title="Show Modal - Scale Animation"
             onPress={() => {
               this.setState({
                 scaleAnimationModal: true,
@@ -87,7 +87,7 @@ export default class App extends Component {
           />
 
           <Button
-            title="Show Dialog - Slide Animation"
+            title="Show Modal - Slide Animation"
             onPress={() => {
               this.setState({
                 slideAnimationModal: true,
@@ -96,7 +96,7 @@ export default class App extends Component {
           />
 
           <Button
-            title="Show Dialog - Custom Background Style"
+            title="Show Modal - Custom Background Style"
             onPress={() => {
               this.setState({
                 customBackgroundModal: true,
@@ -232,7 +232,7 @@ export default class App extends Component {
           }}
           modalTitle={
             <ModalTitle
-              title="Popup Dialog - Scale Animation"
+              title="Modal - Scale Animation"
               hasTitleBar={false}
             />
           }
@@ -268,7 +268,7 @@ export default class App extends Component {
           visible={this.state.slideAnimationModal}
           modalTitle={
             <ModalTitle
-              title="Popup Dialog - Slide Animation"
+              title="Modal - Slide Animation"
               hasTitleBar={false}
             />
           }
@@ -293,7 +293,7 @@ export default class App extends Component {
           }}
           modalTitle={
             <ModalTitle
-              title="Popup Dialog - Custom Background Style"
+              title="Modal - Custom Background Style"
               hasTitleBar={false}
               textStyle={{ color: '#fff' }}
             />
