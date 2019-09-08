@@ -6066,7 +6066,7 @@ react-native-mock-render@^0.0.26:
     react-timer-mixin "^0.13.3"
     warning "^2.1.0"
 
-react-native-root-siblings@^3.2.1:
+react-native-root-siblings@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/react-native-root-siblings/-/react-native-root-siblings-3.2.2.tgz#2b5105d4bb236041148248b94c6dc04601205eb8"
   integrity sha512-J74JmwwEpv22Q3g91mdTW0ZuMsuexFmuH/wUuY50ZyvOX/yfDY76htXjtra8bcUwCfkGOjbW5/do2Ob9cGSAnA==
