@@ -106,6 +106,7 @@ exports[`should render with PopupDialog with Overlay 1`] = `
         }
         onMove={[Function]}
         onRelease={[Function]}
+        onSwipeOut={null}
         onSwiping={[Function]}
         onSwipingOut={[Function]}
         style={
@@ -335,6 +336,7 @@ exports[`should render with PopupDialog without Overlay 1`] = `
         }
         onMove={[Function]}
         onRelease={[Function]}
+        onSwipeOut={null}
         onSwiping={[Function]}
         onSwipingOut={[Function]}
         style={
