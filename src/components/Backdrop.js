@@ -15,6 +15,7 @@ export default class Backdrop extends Component<BackdropProps> {
   };
 
   constructor(props) {
+    super(props)
     this.state = {
             backgroundColor: props.backgroundColor,
             animationDuration: props.animationDuration,
