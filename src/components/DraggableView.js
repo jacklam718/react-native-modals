@@ -3,6 +3,7 @@
 
 import React, { Component } from 'react';
 import { Animated, PanResponder, Dimensions } from 'react-native';
+import type { ViewLayoutEvent } from 'react-native/Libraries/Components/View/ViewPropTypes';
 import type { SwipeDirection, DragEvent } from '../type';
 
 type Props = {
@@ -14,8 +15,10 @@ type Props = {
   onSwipeOut?: (event: DragEvent) => void;
   swipeThreshold?: number;
   swipeDirection?: SwipeDirection | Array<SwipeDirection>;
-  backdrop: React.Element;
-  content: React.Element;
+  children: ({
+    onLayout: (event: ViewLayoutEvent) => void;
+    pan: Animated.ValueXY;
+  }) => React.Node;
 }
 
 export default class DraggableView extends Component<Props> {
@@ -163,7 +166,6 @@ export default class DraggableView extends Component<Props> {
       }
     },
     onPanResponderRelease: () => {
-      this.currentSwipeDirection = null;
       this.pan.flattenOffset();
       const event = this.createDragEvent({
         x: this.pan.x._value,
@@ -187,6 +189,7 @@ export default class DraggableView extends Component<Props> {
         return;
       }
       // on release
+      this.currentSwipeDirection = null;
       this.props.onRelease(event);
       Animated.spring(this.pan, {
         toValue: { x: 0, y: 0 },
@@ -198,19 +201,18 @@ export default class DraggableView extends Component<Props> {
   });
 
   render() {
-    const { style, backdrop, content } = this.props;
+    const { style, children: renderContent } = this.props;
+    const content = renderContent({
+      pan: this.pan,
+      onLayout: this.onLayout,
+    });
+
     return (
       <Animated.View
         {...this.panResponder.panHandlers}
         style={style}
       >
-        {backdrop}
-        <Animated.View
-          style={this.pan.getLayout()}
-          onLayout={this.onLayout}
-        >
-          {content}
-        </Animated.View>
+        {content}
       </Animated.View>
     );
   }

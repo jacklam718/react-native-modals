@@ -64,46 +64,6 @@ exports[`should render with PopupDialog with Overlay 1`] = `
   >
     <react-native-mock>
       <DraggableView
-        backdrop={
-          <Backdrop
-            animationDuration={150}
-            backgroundColor="#000"
-            onPress={[Function]}
-            opacity={0.5}
-            pointerEvents="none"
-            useNativeDriver={true}
-            visible={false}
-          />
-        }
-        content={
-          <AnimatedComponent
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "#ffffff",
-                  "overflow": "hidden",
-                },
-                Object {
-                  "borderRadius": 8,
-                },
-                Object {
-                  "height": null,
-                  "width": null,
-                },
-                null,
-                Object {
-                  "opacity": AnimatedValue {
-                    "_animation": null,
-                    "_children": Array [],
-                    "_listeners": Object {},
-                    "_offset": 0,
-                    "_value": 0,
-                  },
-                },
-              ]
-            }
-          />
-        }
         onMove={[Function]}
         onRelease={[Function]}
         onSwipeOut={null}
@@ -156,7 +116,6 @@ exports[`should render with PopupDialog with Overlay 1`] = `
                   style={
                     Object {
                       "backgroundColor": "#000",
-                      "height": 2304,
                       "opacity": AnimatedValue {
                         "_animation": null,
                         "_children": Array [],
@@ -164,8 +123,6 @@ exports[`should render with PopupDialog with Overlay 1`] = `
                         "_offset": 0,
                         "_value": 0,
                       },
-                      "position": "absolute",
-                      "width": 960,
                     }
                   }
                 >
@@ -294,46 +251,6 @@ exports[`should render with PopupDialog without Overlay 1`] = `
   >
     <react-native-mock>
       <DraggableView
-        backdrop={
-          <Backdrop
-            animationDuration={150}
-            backgroundColor="#000"
-            onPress={[Function]}
-            opacity={0.5}
-            pointerEvents="none"
-            useNativeDriver={true}
-            visible={false}
-          />
-        }
-        content={
-          <AnimatedComponent
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "#ffffff",
-                  "overflow": "hidden",
-                },
-                Object {
-                  "borderRadius": 8,
-                },
-                Object {
-                  "height": null,
-                  "width": null,
-                },
-                null,
-                Object {
-                  "opacity": AnimatedValue {
-                    "_animation": null,
-                    "_children": Array [],
-                    "_listeners": Object {},
-                    "_offset": 0,
-                    "_value": 0,
-                  },
-                },
-              ]
-            }
-          />
-        }
         onMove={[Function]}
         onRelease={[Function]}
         onSwipeOut={null}
@@ -386,7 +303,6 @@ exports[`should render with PopupDialog without Overlay 1`] = `
                   style={
                     Object {
                       "backgroundColor": "#000",
-                      "height": 2304,
                       "opacity": AnimatedValue {
                         "_animation": null,
                         "_children": Array [],
@@ -394,8 +310,6 @@ exports[`should render with PopupDialog without Overlay 1`] = `
                         "_offset": 0,
                         "_value": 0,
                       },
-                      "position": "absolute",
-                      "width": 960,
                     }
                   }
                 >

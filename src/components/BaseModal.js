@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import {
   View,
   StyleSheet,
@@ -236,36 +236,42 @@ class BaseModal extends Component<ModalProps, State> {
             onSwipeOut={onSwipeOut}
             swipeDirection={swipeDirection}
             swipeThreshold={swipeThreshold}
-            backdrop={
-              <Backdrop
-                ref={(ref) => {
-                  this.backdrop = ref;
-                }}
-                pointerEvents={this.pointerEvents}
-                visible={overlayVisible}
-                onPress={onTouchOutside}
-                backgroundColor={overlayBackgroundColor}
-                opacity={overlayOpacity}
-                animationDuration={animationDuration}
-                useNativeDriver={useNativeDriver}
-              />
-            }
-            content={
-              <Animated.View
-                style={[
-                  styles.modal,
-                  round,
-                  this.modalSize,
-                  modalStyle,
-                  modalAnimation.getAnimations(),
-                ]}
-              >
-                {modalTitle}
-                {children}
-                {footer}
-              </Animated.View>
-            }
-          />
+          >
+            {({ pan, onLayout }) => (
+              <Fragment>
+                <Backdrop
+                  ref={(ref) => {
+                    this.backdrop = ref;
+                  }}
+                  pointerEvents={this.pointerEvents}
+                  visible={overlayVisible}
+                  onPress={onTouchOutside}
+                  backgroundColor={overlayBackgroundColor}
+                  opacity={overlayOpacity}
+                  animationDuration={animationDuration}
+                  useNativeDriver={useNativeDriver}
+                />
+                <Animated.View
+                  style={pan.getLayout()}
+                  onLayout={onLayout}
+                >
+                  <Animated.View
+                    style={[
+                      styles.modal,
+                      round,
+                      this.modalSize,
+                      modalStyle,
+                      modalAnimation.getAnimations(),
+                    ]}
+                  >
+                    {modalTitle}
+                    {children}
+                    {footer}
+                  </Animated.View>
+                </Animated.View>
+              </Fragment>
+            )}
+          </DraggableView>
         </View>
       </ModalContext.Provider>
     );
