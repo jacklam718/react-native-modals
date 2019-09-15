@@ -36,7 +36,11 @@ export default class Backdrop extends Component<BackdropProps> {
         duration,
         useNativeDriver,
       }).start();
+      return {visible: nextProps.visible}
     }
+
+    return null;
+
   }
 
   setOpacity = (value) => {
