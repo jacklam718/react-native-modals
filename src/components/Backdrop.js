@@ -14,8 +14,19 @@ export default class Backdrop extends Component<BackdropProps> {
     onPress: () => {},
   };
 
-  componentWillReceiveProps(nextProps: BackdropProps) {
-    const { visible, useNativeDriver, animationDuration: duration } = this.props;
+  constructor(props) {
+    this.state = {
+            backgroundColor: props.backgroundColor,
+            animationDuration: props.animationDuration,
+            visible: props.visible,
+            useNativeDriver: props.useNativeDriver,
+          }
+      
+      //    this.opacity.setValue(props.opacity)
+  }
+
+  static getDerivedStateFromProps(nextProps, state) {
+    const { visible, useNativeDriver, animationDuration: duration } = this.state;
     if (visible !== nextProps.visible) {
       const toValue = nextProps.visible ? nextProps.opacity : 0;
       Animated.timing(this.opacity, {
@@ -30,7 +41,7 @@ export default class Backdrop extends Component<BackdropProps> {
     this.opacity.setValue(value);
   }
 
-  opacity = new Animated.Value(0)
+  opacity = new Animated.Value(0);
 
   render() {
     const { onPress, pointerEvents, backgroundColor } = this.props;
