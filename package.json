@@ -1,6 +1,6 @@
 {
   "name": "react-native-modals",
-  "version": "0.19.7",
+  "version": "0.19.8",
   "description": "React Native Modals Library for IOS & Android.",
   "main": "dist/index.js",
   "scripts": {
