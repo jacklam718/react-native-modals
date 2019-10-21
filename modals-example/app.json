@@ -3,10 +3,11 @@
     "name": "modals-example",
     "slug": "modals-example",
     "privacy": "public",
-    "sdkVersion": "32.0.0",
+    "sdkVersion": "35.0.0",
     "platforms": [
       "ios",
-      "android"
+      "android",
+      "web"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,8 +25,6 @@
     ],
     "ios": {
       "supportsTablet": true
-    },
-    "description": "",
-    "githubUrl": "https://github.com/jacklam718/react-native-modals"
+    }
   }
 }
