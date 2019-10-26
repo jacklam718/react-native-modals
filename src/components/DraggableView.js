@@ -114,11 +114,9 @@ export default class DraggableView extends Component<Props> {
     const draggedUp = dy < 0;
     const draggedLeft = dx < 0;
     const draggedRight = dx > 0;
-
-    const isAllowedDirection = direction => (
-      this.currentSwipeDirection === direction && this.allowedDirections.includes(direction)
+    const isAllowedDirection = d => (
+      this.currentSwipeDirection === d && this.allowedDirections.includes(d)
     );
-
     if (draggedDown && isAllowedDirection('down')) {
       return true;
     } else if (draggedUp && isAllowedDirection('up')) {
@@ -145,20 +143,25 @@ export default class DraggableView extends Component<Props> {
     ),
     onStartShouldSetPanResponder: () => true,
     onPanResponderMove: (event, gestureState) => {
-      // get & set currentSwipeDirection
-      if (!this.currentSwipeDirection) {
-        this.currentSwipeDirection = this.getSwipeDirection(gestureState);
+      const isVerticalSwipe = d => ['up', 'down'].includes(d);
+      const isHorizontalSwipe = d => ['left', 'right'].includes(d);
+      
+      const newSwipeDirection = this.getSwipeDirection(gestureState);
+      const isSameDirection =
+        isVerticalSwipe(this.currentSwipeDirection) === isVerticalSwipe(newSwipeDirection) ||
+        isHorizontalSwipe(this.currentSwipeDirection) === isHorizontalSwipe(newSwipeDirection)
+      // newDirection & currentSwipeDirection must be same direction
+      if (newSwipeDirection && isSameDirection) {
+        this.currentSwipeDirection = newSwipeDirection;
       }
-
       if (this.isAllowedDirection(gestureState)) {
         let animEvent;
-        if (['up', 'down'].includes(this.currentSwipeDirection)) {
+        if (isVerticalSwipe(this.currentSwipeDirection)) {
           animEvent = { dy: this.pan.y };
-        } else if (['left', 'right'].includes(this.currentSwipeDirection)) {
+        } else if (isHorizontalSwipe(this.currentSwipeDirection)) {
           animEvent = { dx: this.pan.x };
         }
         Animated.event([null, animEvent])(event, gestureState);
-
         this.props.onSwiping(this.createDragEvent({
           x: this.pan.x._value,
           y: this.pan.y._value,

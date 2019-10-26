@@ -170,10 +170,13 @@ class BaseModal extends Component<ModalProps, State> {
   }
 
   handleMove = (event): void => {
+    // prevent flashing when modal is closing and onMove callback invoked
+    if (this.state.modalState === MODAL_CLOSING) {
+      return;
+    }
     if (!this.lastSwipeEvent) {
       this.lastSwipeEvent = event;
     }
-
     let newOpacity;
     const opacity = this.props.overlayOpacity;
     if (Math.abs(event.axis.y)) {
