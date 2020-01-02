@@ -1,4 +1,4 @@
-import {
+import ModalButton, {
   DragEvent,
   SwipeDirection,
   ModalProps,
@@ -16,7 +16,6 @@ import BottomModal from './components/BottomModal';
 import Backdrop from './components/Backdrop';
 import ModalTitle from './components/ModalTitle';
 import ModalFooter from './components/ModalFooter';
-import ModalButton from './components/ModalButton';
 import ModalContent from './components/ModalContent';
 import Animation from './animations/Animation';
 import FadeAnimation from './animations/FadeAnimation';
