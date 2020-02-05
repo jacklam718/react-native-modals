@@ -226,7 +226,7 @@ class BaseModal extends Component<ModalProps, State> {
       <ModalContext.Provider
         value={{
           hasTitle: !!modalTitle,
-          basFooter: !!footer,
+          hasFooter: !!footer,
         }}
       >
         <View style={[styles.container, hidden]}>
