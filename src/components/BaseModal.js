@@ -205,6 +205,7 @@ class BaseModal extends Component<ModalProps, State> {
       onTouchOutside,
       hasOverlay,
       modalStyle,
+      outsideModalContent,
       animationDuration,
       overlayOpacity,
       useNativeDriver,
@@ -254,10 +255,12 @@ class BaseModal extends Component<ModalProps, State> {
                   animationDuration={animationDuration}
                   useNativeDriver={useNativeDriver}
                 />
+                {outsideModalContent}
                 <Animated.View
                   style={pan.getLayout()}
                   onLayout={onLayout}
                 >
+
                   <Animated.View
                     style={[
                       styles.modal,
