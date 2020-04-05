@@ -3,7 +3,17 @@
 import React from 'react';
 import { Text, PixelRatio, TouchableHighlight, StyleSheet, Platform } from 'react-native';
 import { Positions } from '../constants/Constants';
-import type { ModalButtonProps } from '../type';
+
+type ModalButtonProps = {
+  text: string,
+  onPress: () => void,
+  align?: string,
+  style?: any,
+  textStyle?: any,
+  disabled?: boolean,
+  activeOpacity?: number,
+  bordered?: boolean,
+};
 
 const isAndroid = Platform.OS === 'android';
 
@@ -61,3 +71,4 @@ const ModalButton = ({
 };
 
 export default ModalButton;
+export type { ModalButtonProps };
