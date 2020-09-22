@@ -10,18 +10,18 @@ type State = {
 }
 
 export default class Modal extends Component<ModalProps, State> {
-  constructor(props: ModalProps) {
-    super(props);
-
-    this.state = {
-      visible: props.visible,
-    };
-  }
-
   componentDidMount() {
     const { visible } = this.state;
     if (visible) {
       this.createModal();
+    }
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    if (nextProps.visible) {
+      this.state = {
+        visible: nextProps.visible,
+      };
     }
   }
 
