@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render DialogTitle with title bar 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "borderTopLeftRadius": 8,
+        "borderTopRightRadius": 8,
+        "padding": 14,
+        "paddingHorizontal": 18,
+      },
+      Object {
+        "alignItems": "center",
+      },
+      Object {
+        "backgroundColor": "#F9F9FB",
+        "borderBottomWidth": 0.5,
+        "borderColor": "#DAD9DC",
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#151822",
+          "fontFamily": "System",
+          "fontSize": 15,
+          "fontWeight": "500",
+        },
+        undefined,
+      ]
+    }
+  >
+    DialogTitle - Should has title bar
+  </Text>
+</View>
+`;
+
+exports[`should render DialogTitle without title bar 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "borderTopLeftRadius": 8,
+        "borderTopRightRadius": 8,
+        "padding": 14,
+        "paddingHorizontal": 18,
+      },
+      Object {
+        "alignItems": "center",
+      },
+      null,
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#151822",
+          "fontFamily": "System",
+          "fontSize": 15,
+          "fontWeight": "500",
+        },
+        undefined,
+      ]
+    }
+  >
+    DialogTitle - Should has no title bar
+  </Text>
+</View>
+`;

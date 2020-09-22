@@ -1,0 +1,15 @@
+language: node_js
+cache: yarn
+before_install:
+- npm install -g yarn --cache-min "999999999"
+node_js:
+- '10'
+install:
+- yarn
+deploy:
+  provider: npm
+  email: jacklam718@gmail.com
+  api_key: $NPM_TOKEN
+  on:
+    tags: true
+    repo: jacklam718/react-native-modals
