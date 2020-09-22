@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest",
     "build": "npm run clean && babel src/ -d dist/",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -31,7 +33,8 @@
   "dependencies": {
     "babel-plugin-flow-react-proptypes": "^9.1.1",
     "prop-types": "^15.6.0",
-    "react-native-root-siblings": "^3.2.2"
+    "react-native-root-siblings": "^3.2.2",
+    "snyk": "^1.399.1"
   },
   "peerDependencies": {
     "react-native": ">=0.50.0"
@@ -68,5 +71,6 @@
     "modulePathIgnorePatterns": [
       "modals-example/node_modules"
     ]
-  }
+  },
+  "snyk": true
 }
