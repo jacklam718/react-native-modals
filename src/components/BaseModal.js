@@ -94,22 +94,20 @@ class BaseModal extends Component<ModalProps, State> {
     useNativeDriver: true,
   }
 
-  constructor(props: ModalProps) {
-    super(props);
-
-    this.state = {
-      modalAnimation: props.modalAnimation || new FadeAnimation({
-        animationDuration: props.animationDuration,
-      }),
-      modalState: MODAL_CLOSED,
-    };
-  }
-
   componentDidMount() {
     if (this.props.visible) {
       this.show();
     }
     BackHandler.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.onHardwareBackPress);
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    this.state = {
+      modalAnimation: nextProps.modalAnimation || new FadeAnimation({
+        animationDuration: nextProps.animationDuration,
+      }),
+      modalState: MODAL_CLOSED,
+    };
   }
 
   componentDidUpdate(prevProps: ModalProps) {
