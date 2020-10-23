@@ -161,7 +161,7 @@ export default class DraggableView extends Component<Props> {
         } else if (isHorizontalSwipe(this.currentSwipeDirection)) {
           animEvent = { dx: this.pan.x };
         }
-        Animated.event([null, animEvent])(event, gestureState);
+        Animated.event([null, animEvent], {useNativeDriver: false})(event, gestureState);
         this.props.onSwiping(this.createDragEvent({
           x: this.pan.x._value,
           y: this.pan.y._value,
@@ -186,6 +186,7 @@ export default class DraggableView extends Component<Props> {
           velocity: 0,
           tension: 65,
           friction: 11,
+          useNativeDriver: false,
         }).start(() => {
           this.props.onSwipeOut(event);
         });
@@ -199,6 +200,7 @@ export default class DraggableView extends Component<Props> {
         velocity: 0,
         tension: 65,
         friction: 11,
+        useNativeDriver: false,
       }).start();
     },
   });
