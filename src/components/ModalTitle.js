@@ -39,9 +39,11 @@ const ModalTitle = ({
 
   return (
     <View style={[styles.title, titleAlign, titleBar, style]}>
+      {React.isValidElement(title) ? title:
       <Text style={[styles.text, textStyle]}>
         {title}
       </Text>
+      }
     </View>
   );
 }

@@ -53,9 +53,11 @@ const ModalButton = ({
       activeOpacity={activeOpacity}
       style={[styles.button, buttonAlign, border, style]}
     >
+      {React.isValidElement(text) ? text :
       <Text style={[styles.text, disable, textStyle]}>
         {text}
       </Text>
+      }
     </TouchableHighlight>
   );
 };

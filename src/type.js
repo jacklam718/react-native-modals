@@ -58,7 +58,7 @@ export type modalFooterProps = {
 }
 
 export type ModalButtonProps = {
-  text: string;
+  text: string | React.Element;
   onPress: () => void;
   align?: string;
   style?: any;
@@ -69,7 +69,7 @@ export type ModalButtonProps = {
 }
 
 export type ModalTitleProps = {
-  title: any;
+  title: string | React.Element;
   style?: any;
   textStyle?: any;
   align?: string;
