@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Button, View, Text, StyleSheet } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import Modal, {
-  ModalTitle,
+  ModalButton,
   ModalContent,
   ModalFooter,
-  ModalButton,
-  SlideAnimation,
+  ModalTitle,
   ScaleAnimation,
+  SlideAnimation,
 } from 'react-native-modals';
 
 const styles = StyleSheet.create({
@@ -48,6 +48,7 @@ export default class App extends Component {
   state = {
     customBackgroundModal: false,
     defaultAnimationModal: false,
+    outsideModalContent: false,
     swipeableModal: false,
     scaleAnimationModal: false,
     slideAnimationModal: false,
@@ -100,6 +101,15 @@ export default class App extends Component {
             onPress={() => {
               this.setState({
                 customBackgroundModal: true,
+              });
+            }}
+          />
+
+          <Button
+            title="Show Modal - Outside modal content"
+            onPress={() => {
+              this.setState({
+                outsideModalContent: true,
               });
             }}
           />
@@ -167,6 +177,49 @@ export default class App extends Component {
         </Modal>
 
         <Modal
+          width={0.9}
+          visible={this.state.outsideModalContent}
+          rounded
+          actionsBordered
+          outsideModalContent={
+            <ModalFooter style={{position: 'absolute', bottom: 40, backgroundColor: 'white', padding: 5, marginBottom: 20, marginHorizontal: 20, borderRadius: 4}}>
+              <ModalButton
+                text="CANCEL"
+                bordered
+                onPress={() => {
+                  this.setState({ outsideModalContent: false });
+                }}
+                key="button-1"
+              />
+              <ModalButton
+                text="OK"
+                bordered
+                onPress={() => {
+                  this.setState({ outsideModalContent: false });
+                }}
+                key="button-2"
+              />
+            </ModalFooter>
+          }
+          onTouchOutside={() => {
+            this.setState({ outsideModalContent: false });
+          }}
+          modalTitle={
+            <ModalTitle
+              title="Popup Modal - Outside modal content"
+              align="left"
+            />
+          }
+        >
+          <ModalContent
+            style={{ backgroundColor: '#fff' }}
+          >
+            <Text>Default Animation</Text>
+            <Text>No onTouchOutside handler. will not dismiss when touch overlay.</Text>
+          </ModalContent>
+        </Modal>
+
+        <Modal
           onDismiss={() => {
             this.setState({ swipeableModal: false });
           }}
@@ -210,7 +263,10 @@ export default class App extends Component {
           }
         >
           <ModalContent
-            style={{ backgroundColor: '#fff', paddingTop: 24 }}
+            style={{
+              backgroundColor: '#fff',
+              paddingTop: 24
+            }}
           >
             <Text>Swipeable</Text>
             <Text>Swipe Up/Down</Text>

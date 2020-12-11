@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "npm run clean && babel src/ -d dist/",
+    "dev": "npm run clean && babel --watch src/ -d modals-example/node_modules/react-native-modals/dist",
     "clean": "rimraf dist"
   },
   "repository": {
