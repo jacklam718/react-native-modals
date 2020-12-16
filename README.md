@@ -20,7 +20,7 @@ Just click on ⭐️ button 😘
 </span>
 
 ## BREAKING CHANGE
-A lot of backward incompatible changes in `v0.19.3`. Please, Read the Docs before upgrading to `v0.19.3`
+A lot of backward incompatible changes in `v0.20.0`. Please, Read the Docs before upgrading to `v0.20.0`
 
 ## Installation
 
@@ -33,7 +33,8 @@ yarn add react-native-modals
 ## Exposed Modules
 
 * Modal
-* BottomModal
+* ModalPortal
+* AbstractPortal
 * Backdrop
 * ModalButton
 * ModalContent
@@ -58,7 +59,7 @@ yarn add react-native-modals
 
 ## Basic Usage
 ```jsx
-import Modal, { ModalContent } from 'react-native-modals';
+import { Modal, ModalContent } from 'react-native-modals';
 import { Button } from 'react-native'
 
 <View style={styles.container}>
@@ -81,9 +82,42 @@ import { Button } from 'react-native'
 </View>
 ```
 
+## Usage - Imperative APIs
+show
+```jsx
+import { ModalPortal } from 'react-native-modals';
+
+const id = ModalPortal.show((
+  <View>
+    {...}
+  <View>
+));
+```
+
+update
+```jsx
+ModalPortal.update(id, {
+  children: (
+    <View>
+      <Text>Updated</Text>
+    </View>
+  ),
+});
+```
+
+dimiss
+```jsx
+ModalPortal.dismiss(id);
+```
+
+dimissAll
+```jsx
+ModalPortal.dismissAll(id);
+```
+
 ## Usage - Animation
 ```jsx
-import Modal, { SlideAnimation, ModalContent } from 'react-native-modals';
+import { Modal, SlideAnimation, ModalContent } from 'react-native-modals';
 
 <View style={styles.container}>
   <Modal
@@ -101,7 +135,7 @@ import Modal, { SlideAnimation, ModalContent } from 'react-native-modals';
 
 ## Usage - Swipe
 ```jsx
-import Modal, { ModalContent } from 'react-native-modals';
+import { Modal, ModalContent } from 'react-native-modals';
 import { Button } from 'react-native'
 
 <View style={styles.container}>
@@ -122,7 +156,7 @@ import { Button } from 'react-native'
 
 ## Usage - Modal Title
 ```jsx
-import Modal, { ModalTitle, ModalContent } from 'react-native-modals';
+import { Modal, ModalTitle, ModalContent } from 'react-native-modals';
 
 <View style={styles.container}>
   <Modal
@@ -138,7 +172,7 @@ import Modal, { ModalTitle, ModalContent } from 'react-native-modals';
 
 ## Usage - Modal Action
 ```jsx
-import Modal, { ModalFooter, ModalButton, ModalContent } from 'react-native-modals';
+import { Modal, ModalFooter, ModalButton, ModalContent } from 'react-native-modals';
 
 <View style={styles.container}>
   <Modal
@@ -170,6 +204,7 @@ import Modal, { ModalFooter, ModalButton, ModalContent } from 'react-native-moda
 | Prop | Type | Default | Note |
 |---|---|---|---|
 | `visible` | `boolean` | `false` | |
+| `type` | `String` | `modal` | Available option: `modal`, `bottomModal` |
 | `rounded` | `boolean` | `true` | |
 | `useNativeDriver` | `boolean` | `true` | |
 | `children` | `any` | | |

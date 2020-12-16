@@ -7,6 +7,7 @@ import Modal, {
   ModalButton,
   SlideAnimation,
   ScaleAnimation,
+  BottomModal,
 } from 'react-native-modals';
 
 const styles = StyleSheet.create({
@@ -305,8 +306,9 @@ export default class App extends Component {
           </View>
         </Modal>
 
-        <Modal.BottomModal
+        <Modal
           visible={this.state.bottomModalAndTitle}
+          type="bottomModal"
           onTouchOutside={() => this.setState({ bottomModalAndTitle: false })}
           height={0.5}
           width={1}
@@ -328,10 +330,11 @@ export default class App extends Component {
               Bottom Modal with Title
             </Text>
           </ModalContent>
-        </Modal.BottomModal>
+        </Modal>
 
-        <Modal.BottomModal
+        <Modal
           visible={this.state.bottomModal}
+          type="bottomModal"
           onTouchOutside={() => this.setState({ bottomModal: false })}
           // modalStyle={{  }}
         >
@@ -345,7 +348,7 @@ export default class App extends Component {
               Bottom Modal without Title
             </Text>
           </ModalContent>
-        </Modal.BottomModal>
+        </Modal>
       </View>
     );
   }
