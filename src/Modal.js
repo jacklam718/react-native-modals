@@ -1,43 +1,29 @@
 // @flow
 
-import React, { Component } from 'react';
-import Sibling from 'react-native-root-siblings';
-import BaseModal from './components/BaseModal';
-import type { ModalProps } from './type';
+import React from 'react';
+import ModalPortal from './ModalPortal';
 
-type State = {
-  visible: boolean
-}
+class Portal extends ModalPortal {}
 
-export default class Modal extends Component<ModalProps, State> {
+class Modal extends React.Component {
   constructor(props: ModalProps) {
     super(props);
-
-    this.state = {
-      visible: props.visible,
-    };
   }
 
   componentDidMount() {
-    const { visible } = this.state;
-    if (visible) {
+    if (this.props.visible) {
       this.createModal();
     }
   }
 
-  componentDidUpdate(prevProps: ModalProps, prevState: State) {
-    // update visible state and create dialog if visible is true
-    if (prevState.visible !== this.props.visible) {
-      // will use getDerivedStateFromProps in future, then don't need to setState
-      // on componentDidUpdate
-      // eslint-disable-next-line
-      this.setState({ visible: this.props.visible });
+  componentDidUpdate(prevProps) {
+    if (prevProps.visible !== this.props.visible) {
       if (this.props.visible) {
         this.createModal();
       }
     }
-    // always re-render if sibling is not null
-    if (this.sibling) {
+    // always re-render
+    if (this.id) {
       this.updateModal();
     }
   }
@@ -47,38 +33,33 @@ export default class Modal extends Component<ModalProps, State> {
     if (onDismiss) {
       onDismiss();
     }
-    this.destroyModal();
+    this.id = null;
   }
 
-  sibling: Sibling = null
-
   createModal() {
-    // Protect against setState happening asynchronously
-    if (!this.sibling) {
-      this.sibling = new Sibling(this.renderModal());
+    const { children, ...props } = this.props;
+    if (!this.id) {
+      this.id = Portal.show(children, {
+        ...props,
+        onDismiss: () => this.handleDismiss(),
+      });
     }
   }
 
   updateModal() {
-    this.sibling.update(this.renderModal());
-  }
-
-  destroyModal() {
-    this.sibling.destroy();
-    this.sibling = null;
-  }
-
-  renderModal() {
-    return (
-      <BaseModal
-        {...this.props}
-        onDismiss={this.handleDismiss}
-        visible={this.state.visible}
-      />
-    );
+    Portal.update(this.id, {
+      ...this.props,
+      onDismiss: () => this.handleDismiss(),
+    });
   }
 
   render() {
-    return null;
+    return <Portal />;
   }
 }
+
+Modal.defaultProps = {
+  type: 'modal',
+};
+
+export default Modal;

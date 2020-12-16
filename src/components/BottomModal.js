@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import Modal from '../Modal';
+import type { BaseModalProps } from '../type';
 import SlideAnimation from '../animations/SlideAnimation';
-import type { ModalProps } from '../type';
+import BaseModal from './BaseModal';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,8 +20,8 @@ const BottomModal = ({
   style,
   modalStyle,
   ...restProps
-}: ModalProps) => (
-  <Modal
+}: BaseModalProps) => (
+  <BaseModal
     modalAnimation={new SlideAnimation({
       slideFrom: 'bottom',
     })}

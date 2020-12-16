@@ -13,7 +13,7 @@ import {
 import DraggableView from './DraggableView';
 import ModalContext from './ModalContext';
 import Backdrop from './Backdrop';
-import type { ModalProps } from '../type';
+import type { BaseModalProps } from '../type';
 import Animation from '../animations/Animation';
 import FadeAnimation from '../animations/FadeAnimation';
 
@@ -68,7 +68,7 @@ type State = {
   modalState: ModalState;
 }
 
-class BaseModal extends Component<ModalProps, State> {
+class Modal extends Component<BaseModalProps, State> {
   static defaultProps = {
     rounded: true,
     modalTitle: null,
@@ -94,7 +94,7 @@ class BaseModal extends Component<ModalProps, State> {
     useNativeDriver: true,
   }
 
-  constructor(props: ModalProps) {
+  constructor(props: BaseModalProps) {
     super(props);
 
     this.state = {
@@ -112,7 +112,7 @@ class BaseModal extends Component<ModalProps, State> {
     BackHandler.addEventListener(HARDWARE_BACK_PRESS_EVENT, this.onHardwareBackPress);
   }
 
-  componentDidUpdate(prevProps: ModalProps) {
+  componentDidUpdate(prevProps: BaseModalProps) {
     if (this.props.visible !== prevProps.visible) {
       if (this.props.visible) {
         this.show();
@@ -225,8 +225,8 @@ class BaseModal extends Component<ModalProps, State> {
     return (
       <ModalContext.Provider
         value={{
-          hasTitle: !!modalTitle,
-          basFooter: !!footer,
+          hasTitle: Boolean(modalTitle),
+          basFooter: Boolean(footer),
         }}
       >
         <View style={[styles.container, hidden]}>
@@ -281,4 +281,4 @@ class BaseModal extends Component<ModalProps, State> {
   }
 }
 
-export default BaseModal;
+export default Modal;
