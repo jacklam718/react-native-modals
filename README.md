@@ -83,6 +83,24 @@ import { Button } from 'react-native'
 ```
 
 ## Usage - Imperative APIs
+The api can not be used until `ModalPortal` is mounted.
+You should register in your app root. For example:
+```jsx
+import { ModalPortal } from 'react-native-modals';
+import { Provider } from 'react-redux';
+
+const Root = () => {
+  return (
+    <React.Figment>
+      <Provider store={store}>
+        <App />
+        <ModalPortal />
+      </Provider>
+    </React.Figment>
+  )
+}
+```
+
 show
 ```jsx
 import { ModalPortal } from 'react-native-modals';
