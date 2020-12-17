@@ -123,12 +123,12 @@ ModalPortal.update(id, {
 });
 ```
 
-dimiss
+dismiss
 ```jsx
 ModalPortal.dismiss(id);
 ```
 
-dimissAll
+dismissAll
 ```jsx
 ModalPortal.dismissAll(id);
 ```
