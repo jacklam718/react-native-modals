@@ -19,7 +19,7 @@ export type DragEvent = {
   swipeDirection: string | null;
 }
 
-export type BaseModalProps = {
+export type ModalProps = {
   visible?: boolean;
   children?: any;
   width?: number;
@@ -48,10 +48,6 @@ export type BaseModalProps = {
   swipeThreshold?: number;
   useNativeDriver?: boolean;
   key?: string;
-}
-
-export type ModalProps = ModalPropsBase & {
-  type:? 'modal' | 'bottomModal';
 }
 
 export type ModalFooterActionList = Array<Element<typeof ModalButton>>;

@@ -33,8 +33,8 @@ yarn add react-native-modals
 ## Exposed Modules
 
 * Modal
+* ButtomModal
 * ModalPortal
-* AbstractPortal
 * Backdrop
 * ModalButton
 * ModalContent
@@ -222,7 +222,6 @@ import { Modal, ModalFooter, ModalButton, ModalContent } from 'react-native-moda
 | Prop | Type | Default | Note |
 |---|---|---|---|
 | `visible` | `boolean` | `false` | |
-| `type` | `String` | `modal` | Available option: `modal`, `bottomModal` |
 | `rounded` | `boolean` | `true` | |
 | `useNativeDriver` | `boolean` | `true` | |
 | `children` | `any` | | |

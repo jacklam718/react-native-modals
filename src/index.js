@@ -9,9 +9,9 @@ import {
   ModalContentProps,
   BackdropProps,
 } from './type';
-import Modal from './Modal';
 import ModalPortal from './ModalPortal';
-import AbstractPortal from './AbstractPortal';
+import Modal from './components/Modal';
+import BottomModal from './components/BottomModal';
 import DraggableView from './components/DraggableView';
 import Backdrop from './components/Backdrop';
 import ModalTitle from './components/ModalTitle';
@@ -24,9 +24,9 @@ import ScaleAnimation from './animations/ScaleAnimation';
 import SlideAnimation from './animations/SlideAnimation';
 
 export {
-  Modal,
   ModalPortal,
-  AbstractPortal,
+  Modal,
+  BottomModal,
   Backdrop,
   DraggableView,
   ModalButton,

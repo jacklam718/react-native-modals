@@ -129,6 +129,7 @@ export default class App extends Component {
           visible={this.state.defaultAnimationModal}
           rounded
           actionsBordered
+          style={{ zIndex: 1000 }}
           onTouchOutside={() => {
             this.setState({ defaultAnimationModal: false });
           }}
@@ -249,9 +250,9 @@ export default class App extends Component {
         >
           <ModalContent>
             <Button
-              title="Show Modal - Default Animation"
+              title="Show Modal - Slide Animation"
               onPress={() => {
-                this.setState({ defaultAnimationModal: true });
+                this.setState({ slideAnimationModal: true });
               }}
             />
           </ModalContent>
@@ -306,9 +307,8 @@ export default class App extends Component {
           </View>
         </Modal>
 
-        <Modal
+        <BottomModal
           visible={this.state.bottomModalAndTitle}
-          type="bottomModal"
           onTouchOutside={() => this.setState({ bottomModalAndTitle: false })}
           height={0.5}
           width={1}
@@ -330,11 +330,10 @@ export default class App extends Component {
               Bottom Modal with Title
             </Text>
           </ModalContent>
-        </Modal>
+        </BottomModal>
 
-        <Modal
+        <BottomModal
           visible={this.state.bottomModal}
-          type="bottomModal"
           onTouchOutside={() => this.setState({ bottomModal: false })}
           // modalStyle={{  }}
         >
@@ -348,7 +347,7 @@ export default class App extends Component {
               Bottom Modal without Title
             </Text>
           </ModalContent>
-        </Modal>
+        </BottomModal>
       </View>
     );
   }

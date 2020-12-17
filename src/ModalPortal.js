@@ -1,13 +1,89 @@
 import React from 'react';
-import BaseModal from './components/BaseModal';
+import Modal from './components/Modal';
 import BottomModal from './components/BottomModal';
-import AbstractPortal from './AbstractPortal';
 
-class ModalPortal extends AbstractPortal {
+
+let modal
+class ModalPortal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { stack: [] };
+    this.id = 0;
+    modal = this;
+  }
+
+  static get size() {
+    return modal.state.stack.length;
+  }
+
+  static show(children, props) {
+    return modal.show({ children, ...props });
+  }
+
+  static update(key, props) {
+    modal.update(key, props);
+  }
+
+  static dismiss(key) {
+    modal.dismiss(key);
+  }
+
+  static dismissAll() {
+    modal.dismissAll();
+  }
+
+  get current() {
+    if (this.state.stack.length) {
+      return this.state.stack[this.state.stack.length-1].key;
+    }
+  }
+
+  generateKey = () => `modal-${this.id++}`
+
+  getIndex = key => this.state.stack.findIndex(i => i.key === key)
+
+  getProps = (props) => {
+    const key = props.key || this.generateKey();
+    return { isVisible: true, ...props, key };
+  }
+
+  show = (props) => {
+    const mergedProps = this.getProps(props);
+    this.setState(({ stack }) => {
+      return { stack: stack.concat(mergedProps) };
+    });
+    return mergedProps.key;
+  }
+
+  update = (key, props) => {
+    const mergedProps = this.getProps({ ...props, key });
+    this.setState(({ stack }) => {
+      const index = this.getIndex(key);
+      stack[index] = { ...stack[index], ...mergedProps };
+      return { stack };
+    });
+  }
+
+  dismiss = (key = this.current) => {
+    if (!key) return;
+    const props = { ...this.state.stack[this.getIndex(key)], isVisible: false };
+    this.update(key, props);
+  }
+
+  dismissAll = () => this.state.stack.forEach(({ key }) => this.dismiss(key));
+
+  dismissHandler = (key) => {
+    // dismiss hander: which will remove data from stack and call onDismissed callback
+    const { onDismiss = () => {} } = this.state.stack[this.getIndex(key)];
+    this.setState(({ stack }) => {
+      return { stack: stack.filter(i => i.key !== key) };
+    }, onDismiss);
+  }
+
   renderModal = ({ type = 'modal', ...props }) => {
     if (type === 'modal') {
       return (
-        <BaseModal
+        <Modal
           {...props}
           onDismiss={() => this.dismissHandler(props.key)}
         />
