@@ -21,7 +21,7 @@ exports[`should render with FadeAnimation & show/hide correctly 4`] = `"closing"
 exports[`should render with FadeAnimation & show/hide correctly 5`] = `"closed"`;
 
 exports[`should render with PopupDialog with Overlay 1`] = `
-<Modal
+<BaseModal
   animationDuration={150}
   footer={null}
   hasOverlay={true}
@@ -204,11 +204,11 @@ exports[`should render with PopupDialog with Overlay 1`] = `
       </DraggableView>
     </react-native-mock>
   </View>
-</Modal>
+</BaseModal>
 `;
 
 exports[`should render with PopupDialog without Overlay 1`] = `
-<Modal
+<BaseModal
   animationDuration={150}
   footer={null}
   hasOverlay={false}
@@ -391,7 +391,7 @@ exports[`should render with PopupDialog without Overlay 1`] = `
       </DraggableView>
     </react-native-mock>
   </View>
-</Modal>
+</BaseModal>
 `;
 
 exports[`should render with ScaleAnimation & show/hide correctly 1`] = `"closed"`;
