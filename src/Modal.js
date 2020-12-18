@@ -28,6 +28,12 @@ export default class Modal extends React.Component<ModalProps> {
     }
   }
 
+  componentWillUnmount() {
+    if (this.id) {
+      this.dismiss();
+    }
+  }
+
   show() {
     const { children, ...options } = this.props;
     this.id = ModalPortal.show(children, options);
