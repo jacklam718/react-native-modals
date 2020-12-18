@@ -10,8 +10,8 @@ import {
   BackdropProps,
 } from './type';
 import ModalPortal from './ModalPortal';
-import Modal from './components/Modal';
-import BottomModal from './components/BottomModal';
+import Modal from './Modal';
+import BottomModal from './BottomModal';
 import DraggableView from './components/DraggableView';
 import Backdrop from './components/Backdrop';
 import ModalTitle from './components/ModalTitle';

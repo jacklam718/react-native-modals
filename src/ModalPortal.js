@@ -1,7 +1,6 @@
 import React from 'react';
-import Modal from './components/Modal';
+import BaseModal from './components/BaseModal';
 import BottomModal from './components/BottomModal';
-
 
 let modal
 class ModalPortal extends React.Component {
@@ -10,6 +9,10 @@ class ModalPortal extends React.Component {
     this.state = { stack: [] };
     this.id = 0;
     modal = this;
+  }
+
+  static get ref() {
+    return modal;
   }
 
   static get size() {
@@ -44,7 +47,7 @@ class ModalPortal extends React.Component {
 
   getProps = (props) => {
     const key = props.key || this.generateKey();
-    return { isVisible: true, ...props, key };
+    return { visible: true, ...props, key };
   }
 
   show = (props) => {
@@ -65,8 +68,9 @@ class ModalPortal extends React.Component {
   }
 
   dismiss = (key = this.current) => {
+    console.log('key: ', key);
     if (!key) return;
-    const props = { ...this.state.stack[this.getIndex(key)], isVisible: false };
+    const props = { ...this.state.stack[this.getIndex(key)], visible: false };
     this.update(key, props);
   }
 
@@ -83,7 +87,7 @@ class ModalPortal extends React.Component {
   renderModal = ({ type = 'modal', ...props }) => {
     if (type === 'modal') {
       return (
-        <Modal
+        <BaseModal
           {...props}
           onDismiss={() => this.dismissHandler(props.key)}
         />

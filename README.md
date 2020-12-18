@@ -20,7 +20,7 @@ Just click on ⭐️ button 😘
 </span>
 
 ## BREAKING CHANGE
-A lot of backward incompatible changes in `v0.20.0`. Please, Read the Docs before upgrading to `v0.20.0`
+A lot of backward incompatible changes in `v0.22.0`. Please, Read the Docs before upgrading to `v0.22.0`
 
 ## Installation
 
@@ -54,8 +54,24 @@ yarn add react-native-modals
 * BackdropProps
 
 ## Examples
-[Example](https://github.com/jacklam718/react-native-modals/blob/master/modals-example/App.js)
+[Example](https://github.com/jacklam718/react-native-modals/blob/master/example/src/DemoScreen.js)
 
+## Setup - this is essential step
+The Component can not be used until `ModalPortal` is mounted.
+You should register in your app root. For example:
+```jsx
+import { ModalPortal } from 'react-native-modals';
+import { Provider } from 'react-redux';
+
+const Root = () => {
+  return (
+    <Provider store={store}>
+      <App />
+      <ModalPortal />
+    </Provider>
+  );
+}
+```
 
 ## Basic Usage
 ```jsx
@@ -83,24 +99,6 @@ import { Button } from 'react-native'
 ```
 
 ## Usage - Imperative APIs
-The api can not be used until `ModalPortal` is mounted.
-You should register in your app root. For example:
-```jsx
-import { ModalPortal } from 'react-native-modals';
-import { Provider } from 'react-redux';
-
-const Root = () => {
-  return (
-    <React.Fragment>
-      <Provider store={store}>
-        <App />
-        <ModalPortal />
-      </Provider>
-    </React.Fragment>
-  )
-}
-```
-
 show
 ```jsx
 import { ModalPortal } from 'react-native-modals';

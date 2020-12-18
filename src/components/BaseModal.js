@@ -35,8 +35,6 @@ const HARDWARE_BACK_PRESS_EVENT: string = 'hardwareBackPress';
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    zIndex: 1000,
-    elevation: 10,
   },
   modal: {
     overflow: 'hidden',
