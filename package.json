@@ -1,6 +1,6 @@
 {
   "name": "react-native-modals",
-  "version": "0.19.9",
+  "version": "0.22.0",
   "description": "React Native Modals Library for IOS & Android.",
   "main": "dist/index.js",
   "scripts": {
@@ -30,8 +30,7 @@
   "homepage": "https://github.com/jacklam718/react-native-modals/blob/master/README.md",
   "dependencies": {
     "babel-plugin-flow-react-proptypes": "^9.1.1",
-    "prop-types": "^15.6.0",
-    "react-native-root-siblings": "^3.2.2"
+    "prop-types": "^15.6.0"
   },
   "peerDependencies": {
     "react-native": ">=0.50.0"

@@ -20,7 +20,7 @@ Just click on ⭐️ button 😘
 </span>
 
 ## BREAKING CHANGE
-A lot of backward incompatible changes in `v0.19.3`. Please, Read the Docs before upgrading to `v0.19.3`
+A lot of backward incompatible changes in `v0.22.0`. Please, Read the Docs before upgrading to `v0.22.0`
 
 ## Installation
 
@@ -33,7 +33,8 @@ yarn add react-native-modals
 ## Exposed Modules
 
 * Modal
-* BottomModal
+* ButtomModal
+* ModalPortal
 * Backdrop
 * ModalButton
 * ModalContent
@@ -53,12 +54,28 @@ yarn add react-native-modals
 * BackdropProps
 
 ## Examples
-[Example](https://github.com/jacklam718/react-native-modals/blob/master/modals-example/App.js)
+[Example](https://github.com/jacklam718/react-native-modals/blob/master/example/src/DemoScreen.js)
 
+## Setup - this is essential step
+The Component can not be used until `ModalPortal` is mounted.
+You should register in your app root. For example:
+```jsx
+import { ModalPortal } from 'react-native-modals';
+import { Provider } from 'react-redux';
+
+const Root = () => {
+  return (
+    <Provider store={store}>
+      <App />
+      <ModalPortal />
+    </Provider>
+  );
+}
+```
 
 ## Basic Usage
 ```jsx
-import Modal, { ModalContent } from 'react-native-modals';
+import { Modal, ModalContent } from 'react-native-modals';
 import { Button } from 'react-native'
 
 <View style={styles.container}>
@@ -81,9 +98,42 @@ import { Button } from 'react-native'
 </View>
 ```
 
+## Usage - Imperative APIs
+show
+```jsx
+import { ModalPortal } from 'react-native-modals';
+
+const id = ModalPortal.show((
+  <View>
+    {...}
+  </View>
+));
+```
+
+update
+```jsx
+ModalPortal.update(id, {
+  children: (
+    <View>
+      <Text>Updated</Text>
+    </View>
+  ),
+});
+```
+
+dismiss
+```jsx
+ModalPortal.dismiss(id);
+```
+
+dismissAll
+```jsx
+ModalPortal.dismissAll(id);
+```
+
 ## Usage - Animation
 ```jsx
-import Modal, { SlideAnimation, ModalContent } from 'react-native-modals';
+import { Modal, SlideAnimation, ModalContent } from 'react-native-modals';
 
 <View style={styles.container}>
   <Modal
@@ -101,7 +151,7 @@ import Modal, { SlideAnimation, ModalContent } from 'react-native-modals';
 
 ## Usage - Swipe
 ```jsx
-import Modal, { ModalContent } from 'react-native-modals';
+import { Modal, ModalContent } from 'react-native-modals';
 import { Button } from 'react-native'
 
 <View style={styles.container}>
@@ -122,7 +172,7 @@ import { Button } from 'react-native'
 
 ## Usage - Modal Title
 ```jsx
-import Modal, { ModalTitle, ModalContent } from 'react-native-modals';
+import { Modal, ModalTitle, ModalContent } from 'react-native-modals';
 
 <View style={styles.container}>
   <Modal
@@ -138,7 +188,7 @@ import Modal, { ModalTitle, ModalContent } from 'react-native-modals';
 
 ## Usage - Modal Action
 ```jsx
-import Modal, { ModalFooter, ModalButton, ModalContent } from 'react-native-modals';
+import { Modal, ModalFooter, ModalButton, ModalContent } from 'react-native-modals';
 
 <View style={styles.container}>
   <Modal

@@ -7,6 +7,8 @@ import Modal, {
   ModalButton,
   SlideAnimation,
   ScaleAnimation,
+  BottomModal,
+  ModalPortal,
 } from 'react-native-modals';
 
 const styles = StyleSheet.create({
@@ -128,6 +130,7 @@ export default class App extends Component {
           visible={this.state.defaultAnimationModal}
           rounded
           actionsBordered
+          style={{ zIndex: 1000 }}
           onTouchOutside={() => {
             this.setState({ defaultAnimationModal: false });
           }}
@@ -163,6 +166,17 @@ export default class App extends Component {
           >
             <Text>Default Animation</Text>
             <Text>No onTouchOutside handler. will not dismiss when touch overlay.</Text>
+
+            <Button
+              title="To Empty Screen"
+              onPress={() => {
+                this.setState({
+                  defaultAnimationModal: false,
+                  scaleAnimationModal: false,
+                });
+                this.props.navigation.navigate('Empty');
+              }}
+            />
           </ModalContent>
         </Modal>
 
@@ -305,7 +319,7 @@ export default class App extends Component {
           </View>
         </Modal>
 
-        <Modal.BottomModal
+        <BottomModal
           visible={this.state.bottomModalAndTitle}
           onTouchOutside={() => this.setState({ bottomModalAndTitle: false })}
           height={0.5}
@@ -328,9 +342,9 @@ export default class App extends Component {
               Bottom Modal with Title
             </Text>
           </ModalContent>
-        </Modal.BottomModal>
+        </BottomModal>
 
-        <Modal.BottomModal
+        <BottomModal
           visible={this.state.bottomModal}
           onTouchOutside={() => this.setState({ bottomModal: false })}
           // modalStyle={{  }}
@@ -345,7 +359,7 @@ export default class App extends Component {
               Bottom Modal without Title
             </Text>
           </ModalContent>
-        </Modal.BottomModal>
+        </BottomModal>
       </View>
     );
   }

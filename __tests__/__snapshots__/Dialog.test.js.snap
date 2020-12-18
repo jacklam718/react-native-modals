@@ -47,12 +47,10 @@ exports[`should render with PopupDialog with Overlay 1`] = `
   width={null}
 >
   <View
+    pointerEvents="auto"
     style={
       Array [
-        Object {
-          "elevation": 10,
-          "zIndex": 1000,
-        },
+        Object {},
         Object {
           "height": 0,
           "left": 0,
@@ -234,12 +232,10 @@ exports[`should render with PopupDialog without Overlay 1`] = `
   width={null}
 >
   <View
+    pointerEvents="auto"
     style={
       Array [
-        Object {
-          "elevation": 10,
-          "zIndex": 1000,
-        },
+        Object {},
         Object {
           "height": 0,
           "left": 0,

@@ -9,10 +9,10 @@ import {
   ModalContentProps,
   BackdropProps,
 } from './type';
+import ModalPortal from './ModalPortal';
 import Modal from './Modal';
+import BottomModal from './BottomModal';
 import DraggableView from './components/DraggableView';
-import BaseModal from './components/BaseModal';
-import BottomModal from './components/BottomModal';
 import Backdrop from './components/Backdrop';
 import ModalTitle from './components/ModalTitle';
 import ModalFooter from './components/ModalFooter';
@@ -23,13 +23,12 @@ import FadeAnimation from './animations/FadeAnimation';
 import ScaleAnimation from './animations/ScaleAnimation';
 import SlideAnimation from './animations/SlideAnimation';
 
-Modal.BottomModal = BottomModal;
-
 export {
-  DraggableView,
-  BaseModal,
+  ModalPortal,
+  Modal,
   BottomModal,
   Backdrop,
+  DraggableView,
   ModalButton,
   ModalContent,
   ModalTitle,

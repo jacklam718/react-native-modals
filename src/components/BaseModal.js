@@ -1,3 +1,4 @@
+
 // @flow
 
 import React, { Fragment, Component } from 'react';
@@ -34,8 +35,6 @@ const HARDWARE_BACK_PRESS_EVENT: string = 'hardwareBackPress';
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    zIndex: 1000,
-    elevation: 10,
   },
   modal: {
     overflow: 'hidden',
@@ -225,11 +224,11 @@ class BaseModal extends Component<ModalProps, State> {
     return (
       <ModalContext.Provider
         value={{
-          hasTitle: !!modalTitle,
-          hasFooter: !!footer,
+          hasTitle: Boolean(modalTitle),
+          hasFooter: Boolean(footer),
         }}
       >
-        <View style={[styles.container, hidden]}>
+        <View pointerEvents={this.isSwipingOut ? 'none' : 'auto'} style={[styles.container, hidden]}>
           <DraggableView
             style={StyleSheet.flatten([styles.draggableView, style])}
             onMove={this.handleMove}

@@ -20,8 +20,8 @@ export type DragEvent = {
 }
 
 export type ModalProps = {
-  visible: boolean;
-  children: any;
+  visible?: boolean;
+  children?: any;
   width?: number;
   height?: number;
   rounded?: boolean;
@@ -47,11 +47,12 @@ export type ModalProps = {
   swipeDirection?: SwipeDirection | Array<SwipeDirection>;
   swipeThreshold?: number;
   useNativeDriver?: boolean;
+  key?: string;
 }
 
 export type ModalFooterActionList = Array<Element<typeof ModalButton>>;
 
-export type modalFooterProps = {
+export type ModalFooterProps = {
   children: ModalFooterActionList;
   style?: any;
   bordered?: boolean;
