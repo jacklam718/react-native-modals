@@ -230,7 +230,7 @@ class BaseModal extends Component<ModalProps, State> {
           basFooter: Boolean(footer),
         }}
       >
-        <View style={[styles.container, hidden]}>
+        <View pointerEvents={this.isSwipingOut ? 'none' : 'auto'} style={[styles.container, hidden]}>
           <DraggableView
             style={StyleSheet.flatten([styles.draggableView, style])}
             onMove={this.handleMove}
