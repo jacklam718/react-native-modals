@@ -91,12 +91,12 @@ import { Provider } from 'react-redux';
 
 const Root = () => {
   return (
-    <React.Figment>
+    <React.Fragment>
       <Provider store={store}>
         <App />
         <ModalPortal />
       </Provider>
-    </React.Figment>
+    </React.Fragment>
   )
 }
 ```
@@ -108,7 +108,7 @@ import { ModalPortal } from 'react-native-modals';
 const id = ModalPortal.show((
   <View>
     {...}
-  <View>
+  </View>
 ));
 ```
 
