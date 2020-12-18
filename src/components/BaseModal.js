@@ -225,7 +225,7 @@ class BaseModal extends Component<ModalProps, State> {
       <ModalContext.Provider
         value={{
           hasTitle: Boolean(modalTitle),
-          basFooter: Boolean(footer),
+          hasFooter: Boolean(footer),
         }}
       >
         <View pointerEvents={this.isSwipingOut ? 'none' : 'auto'} style={[styles.container, hidden]}>
