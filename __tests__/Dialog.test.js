@@ -2,7 +2,7 @@ import React from 'react';
 import expect from 'expect';
 import { mount } from 'enzyme';
 
-import Modal from '../src/components/Modal';
+import Modal from '../src/components/BaseModal';
 import ModalTitle from '../src/components/ModalTitle';
 import FadeAnimation from '../src/animations/FadeAnimation';
 import ScaleAnimation from '../src/animations/ScaleAnimation';
