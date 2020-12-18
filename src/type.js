@@ -2,6 +2,7 @@
 
 import { type Element, type Node } from 'react';
 import ModalButton from './components/ModalButton';
+export type { ModalButtonProps } from './components/ModalButton';
 
 export type SwipeDirection = 'up' | 'down' | 'left' | 'right'
 
@@ -55,17 +56,6 @@ export type ModalFooterActionList = Array<Element<typeof ModalButton>>;
 export type ModalFooterProps = {
   children: ModalFooterActionList;
   style?: any;
-  bordered?: boolean;
-}
-
-export type ModalButtonProps = {
-  text: string;
-  onPress: () => void;
-  align?: string;
-  style?: any;
-  textStyle?: any;
-  disabled?: boolean;
-  activeOpacity?: number;
   bordered?: boolean;
 }
 
