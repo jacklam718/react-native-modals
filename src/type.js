@@ -1,7 +1,6 @@
 // @flow
 
 import { type Element, type Node } from 'react';
-import ModalButton from './components/ModalButton';
 
 export type SwipeDirection = 'up' | 'down' | 'left' | 'right'
 
@@ -29,7 +28,7 @@ export type ModalProps = {
   overlayPointerEvents?: 'auto' | 'none';
   overlayBackgroundColor?: string;
   overlayOpacity?: number;
-  modalTitle?: Element<any>;
+  modalTitle?: any;
   modalAnimation?: Object;
   modalStyle?: any;
   style?: any;
@@ -47,20 +46,17 @@ export type ModalProps = {
   swipeDirection?: SwipeDirection | Array<SwipeDirection>;
   swipeThreshold?: number;
   useNativeDriver?: boolean;
-  key?: string;
 }
 
-export type ModalFooterActionList = Array<Element<typeof ModalButton>>;
-
 export type ModalFooterProps = {
-  children: ModalFooterActionList;
+  children?: any;
   style?: any;
   bordered?: boolean;
 }
 
 export type ModalButtonProps = {
   text: string;
-  onPress: () => void;
+  onPress?: () => void;
   align?: string;
   style?: any;
   textStyle?: any;
