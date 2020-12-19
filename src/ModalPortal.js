@@ -68,7 +68,6 @@ class ModalPortal extends React.Component {
   }
 
   dismiss = (key = this.current) => {
-    console.log('key: ', key);
     if (!key) return;
     const props = { ...this.state.stack[this.getIndex(key)], visible: false };
     this.update(key, props);
