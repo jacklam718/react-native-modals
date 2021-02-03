@@ -33,7 +33,7 @@ yarn add react-native-modals
 ## Exposed Modules
 
 * Modal
-* ButtomModal
+* ButtonModal
 * ModalPortal
 * Backdrop
 * ModalButton
