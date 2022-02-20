@@ -25,11 +25,11 @@ const BottomModal = ({
     modalAnimation={new SlideAnimation({
       slideFrom: 'bottom',
     })}
-    {...restProps}
     style={StyleSheet.flatten([styles.container, style])}
     modalStyle={StyleSheet.flatten([styles.modal, modalStyle])}
     width={1}
     swipeDirection="down"
+    {...restProps}
   />
 );
 
