@@ -18,7 +18,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
     "react-native-gesture-handler": "~1.8.0",
     "react-native-modals": "file:..",
-    "react-native-reanimated": "~1.13.0",
+    "react-native-reanimated": "~2.10.0",
     "react-native-safe-area-context": "3.1.9",
     "react-native-screens": "~2.15.0",
     "react-native-web": "~0.13.12"
